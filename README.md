@@ -15,6 +15,14 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 <img src="ImageInReadme/WeMatch.png" alt="WeMatch" style="zoom:33%;" />
 
+### 系統使用流程
+
+- SignInPage.jsp：使用者可以執行登入的動作或是註冊的動作。
+- SignUpPage.jsp：使用者輸入相關資料並註冊送出，送出之後即重新轉回至Login Page。
+  P.S. 未來可以再增加、註冊成功或失敗提示頁面、email驗證頁面…等頁面。
+
+![ActionFlow](ImageInReadme/ActionFlow.png)
+
 ### 工作分支
 
 請自行增加以下分支名稱，並以「未開發」、「"開發人員名稱"-"yyyy-mm-dd"-開發中」、「"開發人員名稱"-"yyyy-mm-dd"-結案」三種狀態來表示開發進度。
