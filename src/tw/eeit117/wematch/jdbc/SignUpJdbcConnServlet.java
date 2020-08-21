@@ -119,7 +119,7 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 			if (uploadPics.size() == 1) {
 				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
 				preState.setBinaryStream(13, null);
-			} else if (uploadPics.size() == 2) {
+			} else if (uploadPics.size() >= 2) {
 				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
 				preState.setBinaryStream(13, uploadPics.get(1).getInputStream());
 			}
