@@ -114,6 +114,7 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 		Iterator<Part> pic = uploadPics.iterator();
 		preState.setBinaryStream(12, (FileInputStream)pic.next().getInputStream());
 		preState.setBinaryStream(13, (FileInputStream)pic.next().getInputStream());
+		
 		preState.setInt(14, memberStatus);
 		preState.setString(15, selfIntro);
 		preState.execute();
