@@ -17,8 +17,8 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 ### 系統使用流程
 
-- Login Page：使用者可以執行登入的動作或是註冊的動作。
-- Sign Up Page：使用者輸入相關資料並註冊送出，送出之後即重新轉回至Login Page。
+- SignInPage.jsp：使用者可以執行登入的動作或是註冊的動作。
+- SignUpPage.jsp：使用者輸入相關資料並註冊送出，送出之後即重新轉回至Login Page。
   P.S. 未來可以再增加、註冊成功或失敗提示頁面、email驗證頁面…等頁面。
 
 ![ActionFlow](ImageInReadme/ActionFlow.png)
