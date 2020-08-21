@@ -43,6 +43,31 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 ------
 
+## 素材統一存放路徑
+
+我們以後要放在網頁的素材，要參考以下路徑去放：
+| - eclipse
+
+| - - eclipse.exe
+
+| - 統一的workspace名稱
+
+| - - 統一的專案名稱
+
+| - - - WebContent
+
+| - - - - images
+
+| - - - - - 圖片素材
+
+| - - - - 自行分類好資料夾的名稱
+
+| - - - - - 該分類的素材
+
+這樣素材路徑就可以用類似"../workspace/WeMatch_dev/WebContent/images/xxx.jpg"這樣的路徑。workspace一定要放在eclipse旁邊，workspace中的專案名稱要統一。
+
+------
+
 ## 如何從GitHub建立repository？
 
 
