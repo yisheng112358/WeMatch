@@ -37,7 +37,7 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 5. 註冊頁面SQL程式-補資料(yisheng112358-2020-08-20-結案)
 
-6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-開發中)
+6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-結案)
 
    P.S. 分支合併(merge)之後若有任何修改，不管範圍再小，將必須另外再開分支。
 
