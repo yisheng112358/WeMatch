@@ -1,35 +1,23 @@
 package tw.eeit117.wematch.jdbc;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
-import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import javax.sql.DataSource;
 
 @WebServlet("/SignUpJdbcConnServlet.do")
 @javax.servlet.annotation.MultipartConfig
 public class SignUpJdbcConnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Connection conn;
 	private PrintWriter out;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,15 +28,6 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processAction(request, response);
-	}
-
-	private void createConn() throws Exception {
-		InitialContext context = new InitialContext();
-		DataSource ds = (DataSource) context.lookup("java:comp/env/connectSQLServerJdbc/WeMatch");
-		conn = ds.getConnection();
-
-		boolean status2 = !conn.isClosed();
-		out.write("Connction Status2:" + status2 + "<br/>");
 	}
 
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
@@ -72,11 +51,8 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 			int memberStatus = 1; // 1: general member by default
 			String selfIntro = request.getParameter("selfIntro");
 
-			createConn();
 			processInsert(memberAccount, memberPwd, memberName, memberEmail, nickname, gender, city, birthday, starSign,
 					bloodType, hobbies, uploadParts, memberStatus, selfIntro);
-
-			closeConn();
 
 			out.close();
 
@@ -87,10 +63,11 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 
 	private void processInsert(String memberAccount, String memberPwd, String memberName, String memberEmail,
 			String nickname, String gender, String city, String birthday, String starSign, String bloodType,
-			String[] hobbies, Collection<Part> uploadParts, int memberStatus, String selfIntro)
-			throws SQLException, IOException, ParseException {
-		String sqlstr = "Insert Into members(member_account, member_pwd, member_name, member_email, nickname, gender, city, birthday, star_sign, blood_type, hobbies, picture_1, picture_2, member_status, self_intro) Values(?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
-		PreparedStatement preState = conn.prepareStatement(sqlstr);
+			String[] hobbies, Collection<Part> uploadParts, int memberStatus, String selfIntro) throws Exception {
+		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
+
+		String sqlstr = "INSERT INTO members(member_account, member_pwd, member_name, member_email, nickname, gender, city, birthday, star_sign, blood_type, hobbies, picture_1, picture_2, member_status, self_intro) Values(?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?);";
+		PreparedStatement preState = jdbcConnServlet.getConn().prepareStatement(sqlstr);
 		preState.setString(1, memberAccount);
 		preState.setString(2, memberPwd);
 		preState.setString(3, memberName);
@@ -128,26 +105,8 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 		preState.setString(15, selfIntro);
 		preState.execute();
 		preState.close();
-	}
 
-	private void processQuery() throws SQLException {
-		String sqlstr = "Select * From Profiles";
-		PreparedStatement preState = conn.prepareStatement(sqlstr);
-		ResultSet rs = preState.executeQuery();
-
-		while (rs.next()) {
-			out.write(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + "<br/>");
-		}
-
-		rs.close();
-		preState.close();
-	}
-
-	private void closeConn() throws SQLException {
-		if (conn != null) {
-			conn.close();
-			out.write("Connection Closed.<br/>");
-		}
+		jdbcConnServlet.closeConn();
 	}
 
 }
