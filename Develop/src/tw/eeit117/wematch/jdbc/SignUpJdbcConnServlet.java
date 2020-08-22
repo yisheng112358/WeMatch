@@ -2,6 +2,7 @@ package tw.eeit117.wematch.jdbc;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
@@ -24,7 +26,7 @@ import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 @WebServlet("/SignUpJdbcConnServlet.do")
-@ javax.servlet.annotation.MultipartConfig
+@javax.servlet.annotation.MultipartConfig
 public class SignUpJdbcConnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection conn;
@@ -50,11 +52,11 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 	}
 
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
-		try {			
+		try {
 			request.setCharacterEncoding("UTF-8");
-			out = response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
-			
+			out = response.getWriter();
+
 			String memberAccount = request.getParameter("memberAccount");
 			String memberPwd = request.getParameter("memberPwd");
 			String memberName = request.getParameter("memberName");
@@ -70,11 +72,10 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 			int memberStatus = 1; // 1: general member by default
 			String selfIntro = request.getParameter("selfIntro");
 
-
 			createConn();
 			processInsert(memberAccount, memberPwd, memberName, memberEmail, nickname, gender, city, birthday, starSign,
 					bloodType, hobbies, uploadParts, memberStatus, selfIntro);
-			
+
 			closeConn();
 
 			out.close();
@@ -105,15 +106,24 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 		preState.setString(10, bloodType);
 		String joinedHobbies = String.join(", ", hobbies);
 		preState.setString(11, joinedHobbies);
-		Collection<Part> uploadPics = new ArrayList<Part>();
-		for (Part pic: uploadParts) {
-			if(pic.getContentType()!=null && pic.getContentType().contains("image")) {
+		ArrayList<Part> uploadPics = new ArrayList<Part>();
+		for (Part pic : uploadParts) {
+			if (pic.getContentType() != null && pic.getContentType().contains("image")) {
 				uploadPics.add(pic);
 			}
 		}
-		Iterator<Part> pic = uploadPics.iterator();
-		preState.setBinaryStream(12, (FileInputStream)pic.next().getInputStream());
-		preState.setBinaryStream(13, (FileInputStream)pic.next().getInputStream());
+		if (uploadPics.isEmpty()) {
+			preState.setBinaryStream(12, null);
+			preState.setBinaryStream(13, null);
+		} else {
+			if (uploadPics.size() == 1) {
+				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
+				preState.setBinaryStream(13, null);
+			} else if (uploadPics.size() >= 2) {
+				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
+				preState.setBinaryStream(13, uploadPics.get(1).getInputStream());
+			}
+		}
 		preState.setInt(14, memberStatus);
 		preState.setString(15, selfIntro);
 		preState.execute();
