@@ -68,27 +68,31 @@ hr {
 	<h1>配對結果</h1>
 	<div>
 		你的天選之人:${Name[0]}<br /> <img
-			src="${pageContext.request.contextPath}/images/10.jpg"><br />
+			src="${pageContext.request.contextPath}/images/10.jpg"> <img
+			src="${pageContext.request.contextPath}/images/100.jpg"> <br />
 		<br />
 
 	</div>
 
 	<div>
 		你的天選之人:${Name[1]}<br /> <img
-			src="${pageContext.request.contextPath}/images/100.jpg"><br />
+			src="${pageContext.request.contextPath}/images/20.jpg"> <img
+			src="${pageContext.request.contextPath}/images/200.jpg"> <br />
 		<br />
 
 	</div>
 
 	<div>
 		你的天選之人3:${Name[2]}<br /> <img
-			src="${pageContext.request.contextPath}/images/20.jpg"><br />
+			src="${pageContext.request.contextPath}/images/30.jpg"> <img
+			src="${pageContext.request.contextPath}/images/300.jpg"> <br />
 		<br />
 
 	</div>
 	<div>
 		你的天選之人4:${Name[3]}<br /> <img
-			src="${pageContext.request.contextPath}/images/200.jpg"><br />
+			src="${pageContext.request.contextPath}/images/40.jpg"> <img
+			src="${pageContext.request.contextPath}/images/400.jpg"> <br />
 		<br />
 
 	</div>
