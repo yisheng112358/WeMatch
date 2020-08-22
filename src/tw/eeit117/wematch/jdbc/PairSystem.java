@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-@WebServlet("/TestHomeWork")
-public class TestHomeWork extends HttpServlet {
+@WebServlet("/PairSystem")
+public class PairSystem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection conn;
 	private String bloodType;
@@ -37,31 +37,33 @@ public class TestHomeWork extends HttpServlet {
 	private String ShowName2;
 	private LinkedList list;
 	private String city;
-	
+	private String star_sign;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		  response.setContentType("image/jpg");
+		response.setContentType("image/jpg");
 		bloodType = request.getParameter("bloodType");
 		gender = request.getParameter("gender");
 		city = request.getParameter("city");
-        
+		star_sign = request.getParameter("star_sign");
+
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		out = response.getWriter();
 		out.write("bloodType:" + bloodType + "<br/>");
 		out.write("Sex:" + gender + "<br/>");
 		out.write("city:" + city + "<br/>");
+		out.write("star_sign:" + star_sign + "<br/>");
 
 		try {
 			selectuser();
-			
+
 			request.setAttribute("Name", list);
 
-//            RequestDispatcher rd = request.getRequestDispatcher("JSP/fuckShitHw.jsp");
-//			rd.forward(request,response);
-			
+			RequestDispatcher rd = request.getRequestDispatcher("JSP/PairResult.jsp");
+			rd.forward(request, response);
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -83,48 +85,48 @@ public class TestHomeWork extends HttpServlet {
 	private void selectuser() throws Exception {
 
 		createConn();
-		PreparedStatement state = conn.prepareStatement("Select * From members Where blood_type=? and gender=? and city=?");
+		PreparedStatement state = conn
+				.prepareStatement("Select * From members Where blood_type=? and gender=? and city=? and star_sign=?");
 		state.setString(1, bloodType);
 		state.setString(2, gender);
 		state.setString(3, city);
+		state.setString(4, star_sign);
 
-		
 		ResultSet rs = state.executeQuery();
-		
-		
-           int i =1;
-           
-            list = new LinkedList();
-         
+
+		int i = 1;
+
+		list = new LinkedList();
+
 		while (rs.next()) {
 
-			out.write("命中注定"+i+":" + rs.getString(4) + "<br/>");
+			out.write("命中注定" + i + ":" + rs.getString(4) + "<br/>");
 //			out.write("命中注定"+i+":" + rs.getString(2) + "<br/>");
 //			ShowName=rs.getString(1);
 //			ShowName=rs.getString(2);
-			
-			 list.add(rs.getString(4));
+
+			list.add(rs.getString(4));
 //			 list.add(rs.getString(2));
-			 System.out.println(list);   //檢查LIST裡面資料
-			 
-			    bos1 = new BufferedOutputStream(new FileOutputStream("C:\\DateSource_servlet\\workspace\\HomeWork\\WebContent\\images\\"+i+"0.jpg"));
-			   bos1.write(rs.getBytes(13));
-			    bos2 = new BufferedOutputStream(new FileOutputStream("C:\\DateSource_servlet\\workspace\\HomeWork\\WebContent\\images\\"+i+"00.jpg"));
-			   bos2.write(rs.getBytes(14));
+			System.out.println(list); // 檢查LIST裡面資料
 
-			   i++;
-			   out.write(i);
-			  }
-		
-		  
-		   bos1.flush();
-		   bos1.close();
-		   bos2.flush();
-		   bos2.close();
+			bos1 = new BufferedOutputStream(
+					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\images\\" + i + "0.jpg"));
+			bos1.write(rs.getBytes(13));
+			bos2 = new BufferedOutputStream(
+					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\images\\" + i + "00.jpg"));
+			bos2.write(rs.getBytes(14));
 
+			i++;
+			out.write(i);
+		}
+
+		bos1.flush();
+		bos1.close();
+		bos2.flush();
+		bos2.close();
 
 		rs.close();
 		state.close();
 	}
-	
+
 }
