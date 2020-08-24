@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PAIR SYSTEM</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/style.css">
 <style type="text/css">
 div {
 	text-align: center;
@@ -28,7 +28,7 @@ hr {
 </head>
 <body>
 	<h1>輸入期望對象的條件</h1>
-	<form action="../PairSystem" method="post">
+	<form action="PairSystem.do" method="post">
 		<div style="font-size: normal">
 			<br /> 📝血型 : <input type="text" name="bloodType"
 				placeholder="A/B/AB/O [測試→A]" /><br /> <br /> 🚻性別 : <input

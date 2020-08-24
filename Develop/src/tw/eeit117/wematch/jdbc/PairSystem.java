@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-@WebServlet("/PairSystem")
+@WebServlet("/PairSystem.do")
 public class PairSystem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection conn;
@@ -61,7 +61,7 @@ public class PairSystem extends HttpServlet {
 
 			request.setAttribute("Name", list);
 
-			RequestDispatcher rd = request.getRequestDispatcher("JSP/PairResult.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("PairResult.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
@@ -110,10 +110,10 @@ public class PairSystem extends HttpServlet {
 			System.out.println(list); // 檢查LIST裡面資料
 
 			bos1 = new BufferedOutputStream(
-					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\images\\" + i + "0.jpg"));
+					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\temp\\" + i + "0.jpg"));
 			bos1.write(rs.getBytes(13));
 			bos2 = new BufferedOutputStream(
-					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\images\\" + i + "00.jpg"));
+					new FileOutputStream("..\\workspace\\WeMatch_dev\\WebContent\\temp\\" + i + "00.jpg"));
 			bos2.write(rs.getBytes(14));
 
 			i++;
