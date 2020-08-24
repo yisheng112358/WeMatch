@@ -7,8 +7,10 @@ function checkAccount() {
 
 	if (theAccountObjVal == "") {
 		accountObj.innerHTML = "帳號不可空白";
+		return false;
 	} else if (theAccountObjValLen < 8) {
 		accountObj.innerHTML = "帳號至少8個字";
+		return false;
 	} else {
 		for (let i = 0; i < theAccountObjValLen; i++) {
 			let ch = theAccountObjVal.charAt(i).toUpperCase();
@@ -23,8 +25,10 @@ function checkAccount() {
 		}
 		if (flag1 && flag2) {
 			accountObj.innerHTML = "帳號正確";
+			return true;
 		} else {
 			accountObj.innerHTML = "帳號格式錯誤";
+			return false;
 		}
 
 	}
@@ -39,8 +43,10 @@ function checkPwd() {
 
 	if (thePwdObjVal == "") {
 		pwdObj.innerHTML = "密碼不可空白";
+		return false;
 	} else if (thePwdObjValLen < 8) {
 		pwdObj.innerHTML = "密碼至少8個字";
+		return false;
 	} else {
 		for (let i = 0; i < thePwdObjValLen; i++) {
 			let ch = thePwdObjVal.charAt(i).toUpperCase();
@@ -57,8 +63,10 @@ function checkPwd() {
 		}
 		if (flag3 && flag4 && flag5) {
 			pwdObj.innerHTML = "密碼正確";
+			return true;
 		} else {
 			pwdObj.innerHTML = "密碼格式錯誤";
+			return false;
 		}
 
 	}
@@ -75,11 +83,14 @@ function checkRepwd() {
 
 	if (theRepwdObjVal == "") {
 		repwdObj.innerHTML = "確認密碼不可空白";
+		return false;
 	} else if (theRepwdObjVal != "") {
 		if (theRepwdObjVal = checkPwdObj) {
 			repwdObj.innerHTML = "確認密碼正確";
+			return true;
 		} else {
 			repwdObj.innerHTML = "確認密碼錯誤";
+			return false;
 		}
 	}
 
@@ -94,6 +105,7 @@ function checkName() {
 
 	if (theNameObjVal == "") {
 		nameObj.innerHTML = "姓名不可空白";
+		return false;
 	} else if (theNameObjValLen >= 2) {
 
 		for (let i = 0; i <= theNameObjValLen; i++) {
@@ -102,12 +114,15 @@ function checkName() {
 				flag6 = true;
 			break;
 		}
-		if (flag6)
+		if (flag6){
 			nameObj.innerHTML = "姓名正確";
-		else
+			return true;
+		}else{
 			nameObj.innerHTML = "姓名格式錯誤";
-	} else {
+			return false;
+	}} else {
 		document.getElementById("namesp").innerHTML = "姓名至少2個字";
+		return false;
 	}
 }
 
@@ -118,8 +133,10 @@ function checkNick() {
 
 	if (theNickObjVal == "") {
 		nickObj.innerHTML = "暱稱不可空白";
+		return false;
 	} else {
 		nickObj.innerHTML = "暱稱正確";
+		return true;
 	}
 }
 
@@ -130,7 +147,27 @@ function checkMail() {
 
 	if (theMailObjVal == "") {
 		mailObj.innerHTML = "電子郵件不可空白";
+		return false;
 	} else {
 		mailObj.innerHTML = " ";
+		return true;
+	}
+}
+
+function submitFunc(){
+	if(checkAccount() && checkPwd()){
+		return true;
+	}else{
+		alert("帳號或密碼格式錯誤, 請再確認輸入內容");
+		return false;
+	}
+}
+
+function submitFunc2(){
+	if(checkAccount() && checkPwd() && checkRepwd() && checkName() && checkNick() && checkMail()){
+		return true;
+	}else{
+		alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
+		return false;
 	}
 }

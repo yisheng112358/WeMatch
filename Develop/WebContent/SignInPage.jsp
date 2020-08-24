@@ -101,7 +101,7 @@
 				<h3 class="mb-5">會員登入</h3>
 				<form action="SignInJdbcConnServlet.do" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;">
+					style="position: relative; border: 1px solid;" onsubmit="return submitFunc()";>
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
@@ -122,7 +122,7 @@
 
 					<div class="form-group">
 						<a href="SignUpPage.jsp">尚未註冊？</a> <br /> <input type="submit"
-							value="註冊" class="btn py-3 px-4 btn-primary">
+							value="登入" class="btn py-3 px-4 btn-primary">
 					</div>
 
 				</form>

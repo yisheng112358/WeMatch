@@ -106,13 +106,13 @@
 					<h3 class="mb-5">帳號註冊</h3>
 					<form action="SignUpJdbcConnServlet.do" method="post"
 						enctype="multipart/form-data" class="p-5 bg-light"
-						style="position: relative; border: 1px solid;">
-						<div id="memo">*為必填</div>
+						style="position: relative; border: 1px solid;" onsubmit="return submitFunc2();">
+						<div id="memo">*欄位為必填</div>
 						<div class="form-group">
 							<label for="memberAccount">帳號 *</label> <span id="accountsp"
 								class="notice"></span><br /> <input type="text" id="account1"
 								class="form-control" name="memberAccount" required="required"
-								placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
+								placeholder="請輸入至少8個字字母、數字及混合字元且不可空白(至多20個)" maxlength="20"
 								autocomplete="on" onblur="checkAccount()">
 						</div>
 						<div class="form-group">

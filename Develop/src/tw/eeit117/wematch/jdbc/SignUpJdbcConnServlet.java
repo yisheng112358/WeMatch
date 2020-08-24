@@ -53,7 +53,9 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 
 			processInsert(memberAccount, memberPwd, memberName, memberEmail, nickname, gender, city, birthday, starSign,
 					bloodType, hobbies, uploadParts, memberStatus, selfIntro);
-
+			
+			response.sendRedirect("SignInPage.jsp");
+			
 			out.close();
 
 		} catch (Exception e) {
@@ -76,7 +78,7 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 		preState.setString(6, gender);
 		preState.setString(7, city);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		out.write("birthday: " + birthday);
+		//out.write("birthday: " + birthday);
 		java.util.Date utilDate = sdf.parse(birthday);
 		preState.setDate(8, new java.sql.Date(utilDate.getTime()));
 		preState.setString(9, starSign);
@@ -104,6 +106,7 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 		preState.setInt(14, memberStatus);
 		preState.setString(15, selfIntro);
 		preState.execute();
+		System.out.println(memberAccount + "已註冊完成");
 		preState.close();
 
 		jdbcConnServlet.closeConn();
