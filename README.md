@@ -15,19 +15,60 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 <img src="ImageInReadme/WeMatch.png" alt="WeMatch" style="zoom:33%;" />
 
+### 系統使用流程
+
+- SignInPage.jsp：使用者可以執行登入的動作或是註冊的動作。
+- SignUpPage.jsp：使用者輸入相關資料並註冊送出，送出之後即重新轉回至Login Page。
+  P.S. 未來可以再增加、註冊成功或失敗提示頁面、email驗證頁面…等頁面。
+
+![ActionFlow](ImageInReadme/ActionFlow.png)
+
 ### 工作分支
 
 請自行增加以下分支名稱，並以「未開發」、「"開發人員名稱"-"yyyy-mm-dd"-開發中」、「"開發人員名稱"-"yyyy-mm-dd"-結案」三種狀態來表示開發進度。
 
-1. 登入頁面 (尚未開發)
+1. 登入頁面 (yisheng112358-2020-08-20-開發中)
 
-2. 註冊頁面(尚未開發)
+2. 註冊頁面(iwei-eeit11732-2020-08-20-開發中)
 
 3. 註冊頁面SQL程式(yisheng112358-2020-08-20-結案)
 
-4. ...(請自行增加)
+4. 配對系統 (ax785412 ChiaoHsuan-2020-08-22-結案)
+
+5. 註冊頁面SQL程式-補資料(yisheng112358-2020-08-20-結案)
+
+6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-結案)
+
+5. 註冊頁面SQL程式-補資料(yisheng112358-2020-08-20-結案)
+
+6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-結案)
 
    P.S. 分支合併(merge)之後若有任何修改，不管範圍再小，將必須另外再開分支。
+
+------
+
+## 素材統一存放路徑
+
+我們以後要放在網頁的素材，要參考以下路徑去放：
+| - eclipse
+
+| - - eclipse.exe
+
+| - 統一的workspace名稱
+
+| - - 統一的專案名稱
+
+| - - - WebContent
+
+| - - - - images
+
+| - - - - - 圖片素材
+
+| - - - - 自行分類好資料夾的名稱
+
+| - - - - - 該分類的素材
+
+這樣素材路徑就可以用類似"../workspace/WeMatch_dev/WebContent/images/xxx.jpg"這樣的路徑。workspace一定要放在eclipse旁邊，workspace中的專案名稱要統一。
 
 ------
 
