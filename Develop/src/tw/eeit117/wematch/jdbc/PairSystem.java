@@ -1,19 +1,13 @@
 package tw.eeit117.wematch.jdbc;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
@@ -33,9 +27,7 @@ public class PairSystem extends HttpServlet {
 	private PrintWriter out;
 	private BufferedOutputStream bos1;
 	private BufferedOutputStream bos2;
-	private String ShowName;
-	private String ShowName2;
-	private LinkedList list;
+	private LinkedList<String> list;
 	private String city;
 	private String star_sign;
 
@@ -96,17 +88,14 @@ public class PairSystem extends HttpServlet {
 
 		int i = 1;
 
-		list = new LinkedList();
+		list = new LinkedList<String>();
 
 		while (rs.next()) {
 
 			out.write("命中注定" + i + ":" + rs.getString(4) + "<br/>");
-//			out.write("命中注定"+i+":" + rs.getString(2) + "<br/>");
-//			ShowName=rs.getString(1);
-//			ShowName=rs.getString(2);
 
 			list.add(rs.getString(4));
-//			 list.add(rs.getString(2));
+
 			System.out.println(list); // 檢查LIST裡面資料
 
 			bos1 = new BufferedOutputStream(

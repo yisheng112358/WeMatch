@@ -96,15 +96,15 @@ hr {
 		<br />
 
 	</div>
-	<!-- 	<div> -->
-	<%-- 		你的天選之人5:${Name[4]}<br /> --%>
-	<!-- 	</div> -->
-	<!-- </body> -->
-
-
-
-	<div style="background-color: #ffffff">
-		<input class="button" type="button" onclick="history.back() "
-			value="回到配對首頁"></input>
+	<div>
+		<%-- 		你的天選之人5:${Name[4]}<br /> --%>
 	</div>
+</body>
+
+
+
+<div style="background-color: #ffffff">
+	<input class="button" type="button" onclick="history.back() "
+		value="回到配對首頁"></input>
+</div>
 </html>

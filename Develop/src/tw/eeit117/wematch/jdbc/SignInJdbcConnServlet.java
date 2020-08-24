@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,17 +32,15 @@ public class SignInJdbcConnServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
-			out = response.getWriter();
 
 			String memberAccount = request.getParameter("memberAccount");
 			String memberPwd = request.getParameter("memberPwd");
 
 			String memberName = processQuery(memberAccount, memberPwd);
 			if (!memberName.equals("")) {
-				out.write(memberName + "您好！觀迎光臨！");
+				RequestDispatcher rd = request.getRequestDispatcher("PairSystemPage.jsp");
+				rd.forward(request, response);
 			}
-
-			out.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,10 +59,10 @@ public class SignInJdbcConnServlet extends HttpServlet {
 		if (rs.next()) {
 			memberName = rs.getString(4);
 		} else {
-			   out.println("<script type=\"text/javascript\">");
-			   out.println("alert('您輸入的訊息可能錯誤或尚未註冊帳號！');");
-			   out.println("location='SignInPage.jsp';");
-			   out.println("</script>");
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('您輸入的訊息可能錯誤或尚未註冊帳號！');");
+			out.println("location='SignInPage.jsp';");
+			out.println("</script>");
 		}
 
 		rs.close();
