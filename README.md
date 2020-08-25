@@ -39,7 +39,7 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-結案)
 
-7. integrate-login-system-and-pair-sysem(yisheng112358-2020-08-24-開發中)
+7. integrate-login-system-and-pair-sysem(iwei-eeit11732-2020-08-25-結案)
 
    P.S. 
 
