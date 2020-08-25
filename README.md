@@ -39,44 +39,14 @@ P.S. 可使用[XMind](https://www.xmind.net/)來編輯WeMatch.xmind，並匯出�
 
 6. bugfix-sql-for-sign-up-page-submit-without-image(yisheng112358-2020-08-21-結案)
 
-7. integrate-login-system-and-pair-sysem(yisheng112358-2020-08-24-開發中)
+7. integrate-login-system-and-pair-sysem(yisheng112358-2020-08-24-開發中-ax785412 ChiaoHsuan-2020-08-25-結案)
 
    P.S. 
 
    1. 分支合併(merge)之後若有任何修改，不管範圍再小，將必須另外再開分支。
    2. 把開發中與結案的狀態串在一起，這樣才能把工作天數紀錄下來，以累積針對各類工作所需工時之評估的經驗。
+   3. 之後相關專案管理將移至：https://github.com/yisheng112358/WeMatch/projects
 
 ------
 
-## 素材統一存放路徑
-
-我們以後要放在網頁的素材，要參考以下路徑去放：
-| - eclipse
-
-| - - eclipse.exe
-
-| - 統一的workspace名稱
-
-| - - 統一的專案名稱
-
-| - - - WebContent
-
-| - - - - images
-
-| - - - - - 圖片素材
-
-| - - - - 自行分類好資料夾的名稱
-
-| - - - - - 該分類的素材
-
-這樣素材路徑就可以用類似"../workspace/WeMatch_dev/WebContent/images/xxx.jpg"這樣的路徑。workspace一定要放在eclipse旁邊，workspace中的專案名稱要統一。
-
-------
-
-## 如何從GitHub建立repository？
-
-
-
-<img src="ImageInReadme/NewRepo.png" alt="image-20200818215307574" style="zoom:33%;" />
-
-<img src="ImageInReadme/EditRepo.png" alt="image-20200818215442326" style="zoom:33%;" />
+相關教學與規範請參考：https://github.com/yisheng112358/WeMatch/wiki
