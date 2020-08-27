@@ -122,63 +122,59 @@
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
+		<div class="container">
+			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 
-		<div style="text-align: center;">
-			<%
-				String path = request.getContextPath();
-			String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-			%>
+				<div style="text-align: center;">
+					<%
+						String path = request.getContextPath();
+					String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+					%>
 
-			<%-- <base href="<%=basePath%>"> --%>
+					<h1 style="font-family: 微軟正黑體">配對結果</h1>
+					<div style="font-family: 微軟正黑體">
+						你的天選之人1:${matchNames[0]}<br /> <img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[0]).get(0)}">
+						<img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[0]).get(1)}">
+						<br /> <br />
+					</div>
 
+					<div style="font-family: 微軟正黑體">
+						你的天選之人2:${matchNames[1]}<br /> <img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[1]).get(0)}">
+						<img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[1]).get(1)}">
+						<br /> <br />
+					</div>
 
-			<%-- <img src="${pageContext.request.contextPath }"><br/> --%>
-			<h1 style="font-family: 微軟正黑體">配對結果</h1>
-			<div style="font-family: 微軟正黑體">
-				你的天選之人:${Name[0]}<br /> <img
-					src="${pageContext.request.contextPath}/temp/10.jpg"> <img
-					src="${pageContext.request.contextPath}/temp/100.jpg"> <br />
-				<br />
+					<div style="font-family: 微軟正黑體">
+						你的天選之人3:${matchNames[2]}<br /> <img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[2]).get(0)}">
+						<img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[2]).get(1)}">
+						<br /> <br />
+					</div>
+
+					<div style="font-family: 微軟正黑體">
+						你的天選之人4:${matchNames[3]}<br /> <img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[3]).get(0)}">
+						<img
+							src="data:image/jpg;base64,${imageMap.get(matchNames[3]).get(1)}">
+						<br /> <br />
+					</div>
+
+					<div style="background-color: #ffffff">
+						<input class="button" type="button" onclick="history.back()"
+							value="回到配對首頁"></input> <input class="button" type="button"
+							value="回到登入頁面" onclick="location.href='SignInPage.jsp'">
+						<br />
+					</div>
+				</div>
 
 			</div>
-
-			<div style="font-family: 微軟正黑體">
-				你的天選之人:${Name[1]}<br /> <img
-					src="${pageContext.request.contextPath}/temp/20.jpg"> <img
-					src="${pageContext.request.contextPath}/temp/200.jpg"> <br />
-				<br />
-
-			</div>
-
-			<div style="font-family: 微軟正黑體">
-				你的天選之人3:${Name[2]}<br /> <img
-					src="${pageContext.request.contextPath}/temp/30.jpg"> <img
-					src="${pageContext.request.contextPath}/temp/300.jpg"> <br />
-				<br />
-
-			</div>
-			<div style="font-family: 微軟正黑體">
-				你的天選之人4:${Name[3]}<br /> <img
-					src="${pageContext.request.contextPath}/temp/40.jpg"> <img
-					src="${pageContext.request.contextPath}/temp/400.jpg"> <br />
-				<br />
-
-			</div>
-			<!-- 	<div> -->
-			<%-- 		你的天選之人5:${Name[4]}<br /> --%>
-			<!-- 	</div> -->
-			<!-- </body> -->
-
-
-
-			<div style="background-color: #ffffff">
-				<input class="button" type="button" onclick="history.back()"
-					value="回到配對首頁"></input> <input class="button" type="button"
-					value="回到登入頁面" onclick="location.href='SignInPage.jsp'"> <br />
-			</div>
+		</div>
 	</section>
-
-
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">

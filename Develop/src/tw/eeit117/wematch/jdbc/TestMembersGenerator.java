@@ -17,19 +17,19 @@ public class TestMembersGenerator {
 
 	public static void main(String[] args) throws Exception {
 
-		Member mem1 = new Member("doraemon001", "zxcvb234!", "小叮噹", "doraemon@gmail.com", "dora", "O", "TPE",
-				"1990-01-29", "AGR", "Other", new String[] { "sport" },
+		Member mem1 = new Member("doraemon001", "zxcvb234!", "小叮噹", "doraemon@gmail.com", "dora", "M", "KLU",
+				"1990-01-29", "ARI", "A", new String[] { "sport" },
 				new FileInputStream("WebContent\\testData\\dora01.jpg"),
 				new FileInputStream("WebContent\\testData\\dora02.jpg"), 1, "我喜歡大雄很久了");
-		Member mem2 = new Member("yaguza002", "aervb1234!", "胖虎", "yaguza002@gmail.com", "fattiger", "M", "TTT",
-				"1980-06-30", "CNC", "B", new String[] { "travel" },
+		Member mem2 = new Member("yaguza002", "aervb1234!", "胖虎", "yaguza002@gmail.com", "fattiger", "M", "KLU",
+				"1980-06-30", "ARI", "A", new String[] { "travel" },
 				new FileInputStream("WebContent\\testData\\fattiger01.jpg"),
 				new FileInputStream("WebContent\\testData\\fattiger02.jpg"), 1, "小夫是我的!");
-		Member mem3 = new Member("afuuuuu003", "yhjkcvb254!", "小夫", "afuuuu@gmail.com", "afu", "M", "HWA", "1980-10-18",
-				"LIB", "AB", new String[] { "reading" }, new FileInputStream("WebContent\\testData\\afu01.jpg"),
+		Member mem3 = new Member("afuuuuu003", "yhjkcvb254!", "小夫", "afuuuu@gmail.com", "afu", "M", "KLU", "1980-10-18",
+				"ARI", "A", new String[] { "reading" }, new FileInputStream("WebContent\\testData\\afu01.jpg"),
 				new FileInputStream("WebContent\\testData\\afu02.jpg"), 1, "我是胖虎的人!");
-		Member mem4 = new Member("nobita004", "gkohvb2h4!", "大雄", "noobita@gmail.com", "nobita", "M", "HSC",
-				"1980-04-04", "ARI", "B", new String[] { "movie" },
+		Member mem4 = new Member("nobita004", "gkohvb2h4!", "大雄", "noobita@gmail.com", "nobita", "M", "KLU",
+				"1980-04-04", "ARI", "A", new String[] { "movie" },
 				new FileInputStream("WebContent\\testData\\nobita01.jpg"),
 				new FileInputStream("WebContent\\testData\\nobita02.jpg"), 1, "多拉A夢救救我啦~胖虎打我");
 		Member mem5 = new Member("shitsuka005", "shiivb674!", "靜香", "shitsuka@gmail.com", "shitsuka", "F", "TPH",
