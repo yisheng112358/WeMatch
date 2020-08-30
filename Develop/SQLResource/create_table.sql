@@ -26,3 +26,17 @@ member_status varchar(20) Not NULL,
 self_intro nvarchar(MAX),
 )
 GO
+
+-- (4)
+CREATE table Product(
+ProductId int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+Category nvarchar(50),
+ProductName nvarchar(50)  NOT NULL,
+Price money DEFAULT 0,
+Stock int NOT NULL DEFAULT 0,
+ProductDescription nvarchar(MAX),
+Thumbnail image,
+DetailImg image,
+AddTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+)
+GO
