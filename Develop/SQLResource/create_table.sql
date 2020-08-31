@@ -29,14 +29,14 @@ GO
 
 -- (4)
 CREATE table Product(
-ProductId int IDENTITY(1,1) PRIMARY KEY NOT NULL,
-Category nvarchar(50),
-ProductName nvarchar(50)  NOT NULL,
-Price money DEFAULT 0,
-Stock int NOT NULL DEFAULT 0,
-ProductDescription nvarchar(MAX),
-Thumbnail image,
-DetailImg image,
-AddTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+productId int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+category nvarchar(50),
+productName nvarchar(50)  NOT NULL,
+price money DEFAULT 0,
+stock int NOT NULL DEFAULT 0,
+productDescription nvarchar(MAX),
+thumbnail image,
+detailImg image,
+addTime DATETIME DEFAULT CURRENT_TIMESTAMP,
 )
 GO
