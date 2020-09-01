@@ -89,7 +89,7 @@ public class TestMembersGenerator {
 	private boolean createConn() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String urlstr = "jdbc:sqlserver://localhost:1433;databaseName=wematch;user=sa;password=P@ssw0rd";
+			String urlstr = "jdbc:sqlserver://localhost:1433;databaseName=wematch;user=sa;password=0000";
 			conn = DriverManager.getConnection(urlstr);
 
 			boolean status = !conn.isClosed();
