@@ -21,14 +21,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import tw.eeit117.wematch.member.Member;
+import tw.eeit117.wematch.member.members;
 import tw.eeit117.wematch.util.HibernateUtil;
 
 @WebServlet("/PairSystem.do")
 public class PairSystem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Session session;
-	private Query<Member> query;
+	private Query<members> query;
 	private LinkedHashMap<String, List<String>> imageMap;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -63,9 +63,9 @@ public class PairSystem extends HttpServlet {
 			SessionFactory factory = HibernateUtil.getSessionFactory();
 			session = factory.getCurrentSession();
 			session.beginTransaction();
-//		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
-			String hqlstr = "Select * From members Where blood_type=:myBt and gender=:myGender and city=:myCity and star_sign=:mySS";
-			query = session.createQuery(hqlstr, Member.class);
+
+			String hqlstr = "From members Where blood_type=:myBt and gender=:myGender and city=:myCity and star_sign=:mySS";
+			query = session.createQuery(hqlstr, members.class);
 			
 			query.setParameter("myBt", bloodType);
 			query.setParameter("myGender", gender);
