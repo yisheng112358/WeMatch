@@ -1,22 +1,65 @@
 package tw.eeit117.wematch.member;
 
 import java.io.FileInputStream;
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "Member")
 public class Member {
+	@Id
+	@Column(name = "member_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int memberid;
+	
+	@Column(name = "member_account")
 	private String memberAccount;
+	
+	@Column(name = "member_pwd")
 	private String memberPwd;
+	
+	@Column(name = "member_name")
 	private String memberName;
+	
+	@Column(name = "member_email")
 	private String memberEmail;
+	
+	@Column(name = "gender")
 	private String nickname;
+	
+	@Column(name = "gender")
 	private String gender;
+	
+	@Column(name = "city")
 	private String city;
+	
+	@Column(name = "birthday")
 	private String birthday;
+	
+	@Column(name = "star_sign")
 	private String starSign;
+	
+	@Column(name = "blood_type")
 	private String bloodType;
+	
+	@Column(name = "hobbies")
 	private String[] hobbies;
+	
+	@Column(name = "picture_1")
 	private FileInputStream pic1;
+	
+	@Column(name = "picture_2")
 	private FileInputStream pic2;
+	
+	@Column(name = "member_status")
 	private int memberStatus;
+	
+	@Column(name = "self_intro")
 	private String selfIntro;
 
 	public Member() {
@@ -42,6 +85,7 @@ public class Member {
 		this.memberStatus = memberStatus;
 		this.selfIntro = selfIntro;
 	}
+	
 
 	public String getMemberAccount() {
 		return memberAccount;
@@ -161,6 +205,14 @@ public class Member {
 
 	public void setSelfIntro(String selfIntro) {
 		this.selfIntro = selfIntro;
+	}
+
+	public int getMemberid() {
+		return memberid;
+	}
+
+	public void setMemberid(int memberid) {
+		this.memberid = memberid;
 	}
 
 }

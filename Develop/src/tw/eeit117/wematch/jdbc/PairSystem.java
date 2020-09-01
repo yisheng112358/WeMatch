@@ -17,9 +17,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import tw.eeit117.wematch.member.Member;
+import tw.eeit117.wematch.util.HibernateUtil;
+
 @WebServlet("/PairSystem.do")
 public class PairSystem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Session session;
+	private Query<Member> query;
+	private LinkedHashMap<String, List<String>> imageMap;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -45,64 +55,76 @@ public class PairSystem extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private LinkedHashMap<String, List<String>> selectuser(String bloodType, String gender, String city,
 			String star_sign) throws Exception {
-		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
-		PreparedStatement state = jdbcConnServlet.getConn()
-				.prepareStatement("Select * From members Where blood_type=? and gender=? and city=? and star_sign=?");
-		state.setString(1, bloodType);
-		state.setString(2, gender);
-		state.setString(3, city);
-		state.setString(4, star_sign);
-		ResultSet rs = state.executeQuery();
+		try {
+			SessionFactory factory = HibernateUtil.getSessionFactory();
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+//		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
+			String hqlstr = "Select * From members Where blood_type=:myBt and gender=:myGender and city=:myCity and star_sign=:mySS";
+			query = session.createQuery(hqlstr, Member.class);
+			
+			query.setParameter("myBt", bloodType);
+			query.setParameter("myGender", gender);
+			query.setParameter("myCity", city);
+			query.setParameter("mySS", star_sign);
+			ResultSet pair = (ResultSet)query.uniqueResult();
+			
+//			ResultSet rs = state.executeQuery();
 
-		List<String> nameList = new ArrayList<String>();
-		LinkedHashMap<String, List<String>> imageMap = new LinkedHashMap<String, List<String>>();
-		while (rs.next()) {
-			List<String> imageList = new ArrayList<String>();
+			List<String> nameList = new ArrayList<String>();
+			imageMap = new LinkedHashMap<String, List<String>>();
+			while (pair.next()) {
+				List<String> imageList = new ArrayList<String>();
 
-			String matchName = rs.getString(4);
-			nameList.add(matchName);
+				String matchName = pair.getString(4);
+				nameList.add(matchName);
 
-			InputStream inputStream1 = rs.getBlob(13).getBinaryStream();
-			ByteArrayOutputStream outputStream1 = new ByteArrayOutputStream();
-			byte[] buffer1 = new byte[4096];
-			int bytesRead1 = -1;
-			while ((bytesRead1 = inputStream1.read(buffer1)) != -1) {
-				outputStream1.write(buffer1, 0, bytesRead1);
+				InputStream inputStream1 = pair.getBlob(13).getBinaryStream();
+				ByteArrayOutputStream outputStream1 = new ByteArrayOutputStream();
+				byte[] buffer1 = new byte[4096];
+				int bytesRead1 = -1;
+				while ((bytesRead1 = inputStream1.read(buffer1)) != -1) {
+					outputStream1.write(buffer1, 0, bytesRead1);
+				}
+				byte[] imageBytes1 = outputStream1.toByteArray();
+				imageList.add(Base64.getEncoder().encodeToString(imageBytes1));
+
+				inputStream1.close();
+				outputStream1.close();
+
+				InputStream inputStream2 = pair.getBlob(14).getBinaryStream();
+				ByteArrayOutputStream outputStream2 = new ByteArrayOutputStream();
+				byte[] buffer2 = new byte[4096];
+				int bytesRead2 = -1;
+				while ((bytesRead2 = inputStream2.read(buffer2)) != -1) {
+					outputStream2.write(buffer2, 0, bytesRead2);
+				}
+				byte[] imageBytes2 = outputStream2.toByteArray();
+				imageList.add(Base64.getEncoder().encodeToString(imageBytes2));
+
+				inputStream2.close();
+				outputStream2.close();
+
+				imageMap.put(matchName, imageList);
 			}
-			byte[] imageBytes1 = outputStream1.toByteArray();
-			imageList.add(Base64.getEncoder().encodeToString(imageBytes1));
 
-			inputStream1.close();
-			outputStream1.close();
+			System.out.println(nameList); // 檢查LIST裡面資料
 
-			InputStream inputStream2 = rs.getBlob(14).getBinaryStream();
-			ByteArrayOutputStream outputStream2 = new ByteArrayOutputStream();
-			byte[] buffer2 = new byte[4096];
-			int bytesRead2 = -1;
-			while ((bytesRead2 = inputStream2.read(buffer2)) != -1) {
-				outputStream2.write(buffer2, 0, bytesRead2);
-			}
-			byte[] imageBytes2 = outputStream2.toByteArray();
-			imageList.add(Base64.getEncoder().encodeToString(imageBytes2));
-
-			inputStream2.close();
-			outputStream2.close();
-
-			imageMap.put(matchName, imageList);
+			pair.close();
+//			state.close();
+//			jdbcConnServlet.closeConn();
+			
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+//			HibernateUtil.closeSessionFactory();
+			return imageMap;
 		}
-
-		System.out.println(nameList); // 檢查LIST裡面資料
-
-		rs.close();
-		state.close();
-		jdbcConnServlet.closeConn();
-
-		return imageMap;
 	}
-
 }

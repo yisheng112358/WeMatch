@@ -2,6 +2,7 @@ package tw.eeit117.wematch.jdbc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Member;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -12,11 +13,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import tw.eeit117.wematch.util.HibernateUtil;
+
+
 @WebServlet("/SignInJdbcConnServlet.do")
 @javax.servlet.annotation.MultipartConfig
 public class SignInJdbcConnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PrintWriter out;
+	private Session session;
+	private tw.eeit117.wematch.member.Member qMember;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -48,27 +58,40 @@ public class SignInJdbcConnServlet extends HttpServlet {
 	}
 
 	private String processQuery(String memberAccount, String memberPwd) throws Exception {
-		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
-		String sqlstr = "SELECT * FROM members WHERE member_account = ? AND member_pwd = ?;";
-		PreparedStatement preState = jdbcConnServlet.getConn().prepareStatement(sqlstr);
-		preState.setString(1, memberAccount);
-		preState.setString(2, memberPwd);
-		ResultSet rs = preState.executeQuery();
+		try {
+			SessionFactory factory = HibernateUtil.getSessionFactory();
 
-		String memberName = "";
-		if (rs.next()) {
-			memberName = rs.getString(4);
-		} else {
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('您輸入的訊息可能錯誤或尚未註冊帳號！');");
-			out.println("location='SignInPage.jsp';");
-			out.println("</script>");
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+
+//			JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
+
+			String sqlstr = "SELECT * FROM members WHERE member_account =:myAccount AND member_pwd =:myPwd;";
+			
+			Query<tw.eeit117.wematch.member.Member> query = session.createQuery(sqlstr, tw.eeit117.wematch.member.Member.class);
+			query.setParameter("myAccount", memberAccount);
+			query.setParameter("myPwd", memberPwd);
+			
+			qMember = query.uniqueResult();
+			if(qMember != null) {
+				System.out.println(qMember.getMemberid() + ":" + qMember.getMemberName());
+			}else {
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('您輸入的訊息可能錯誤或尚未註冊帳號！');");
+				out.println("location='SignInPage.jsp';");
+				out.println("</script>");
+			}
+			
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+
+		} finally {
+//			HibernateUtil.closeSessionFactory();
+			System.out.println(qMember.getMemberName());
+			return (String)qMember.getMemberName();
 		}
-
-		rs.close();
-		preState.close();
-		jdbcConnServlet.closeConn();
-		return memberName;
 	}
 
 }

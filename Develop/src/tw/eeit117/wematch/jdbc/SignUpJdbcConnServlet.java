@@ -14,11 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import tw.eeit117.wematch.member.Member;
+import tw.eeit117.wematch.util.HibernateUtil;
+
 @WebServlet("/SignUpJdbcConnServlet.do")
 @javax.servlet.annotation.MultipartConfig
 public class SignUpJdbcConnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PrintWriter out;
+	private Session session;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -53,9 +61,9 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 
 			processInsert(memberAccount, memberPwd, memberName, memberEmail, nickname, gender, city, birthday, starSign,
 					bloodType, hobbies, uploadParts, memberStatus, selfIntro);
-			
+
 			response.sendRedirect("SignInPage.jsp");
-			
+
 			out.close();
 
 		} catch (Exception e) {
@@ -66,50 +74,61 @@ public class SignUpJdbcConnServlet extends HttpServlet {
 	private void processInsert(String memberAccount, String memberPwd, String memberName, String memberEmail,
 			String nickname, String gender, String city, String birthday, String starSign, String bloodType,
 			String[] hobbies, Collection<Part> uploadParts, int memberStatus, String selfIntro) throws Exception {
-		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
+//		JdbcConnServlet jdbcConnServlet = new JdbcConnServlet();
+		try {
+			SessionFactory factory = HibernateUtil.getSessionFactory();
+			session = factory.getCurrentSession();
 
-		String sqlstr = "INSERT INTO members(member_account, member_pwd, member_name, member_email, nickname, gender, city, birthday, star_sign, blood_type, hobbies, picture_1, picture_2, member_status, self_intro) Values(?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?);";
-		PreparedStatement preState = jdbcConnServlet.getConn().prepareStatement(sqlstr);
-		preState.setString(1, memberAccount);
-		preState.setString(2, memberPwd);
-		preState.setString(3, memberName);
-		preState.setString(4, memberEmail);
-		preState.setString(5, nickname);
-		preState.setString(6, gender);
-		preState.setString(7, city);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		//out.write("birthday: " + birthday);
-		java.util.Date utilDate = sdf.parse(birthday);
-		preState.setDate(8, new java.sql.Date(utilDate.getTime()));
-		preState.setString(9, starSign);
-		preState.setString(10, bloodType);
-		String joinedHobbies = String.join(", ", hobbies);
-		preState.setString(11, joinedHobbies);
-		ArrayList<Part> uploadPics = new ArrayList<Part>();
-		for (Part pic : uploadParts) {
-			if (pic.getContentType() != null && pic.getContentType().contains("image")) {
-				uploadPics.add(pic);
-			}
-		}
-		if (uploadPics.isEmpty()) {
-			preState.setBinaryStream(12, null);
-			preState.setBinaryStream(13, null);
-		} else {
-			if (uploadPics.size() == 1) {
-				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
-				preState.setBinaryStream(13, null);
-			} else if (uploadPics.size() >= 2) {
-				preState.setBinaryStream(12, uploadPics.get(0).getInputStream());
-				preState.setBinaryStream(13, uploadPics.get(1).getInputStream());
-			}
-		}
-		preState.setInt(14, memberStatus);
-		preState.setString(15, selfIntro);
-		preState.execute();
-		System.out.println(memberAccount + "已註冊完成");
-		preState.close();
+			session.beginTransaction();
 
-		jdbcConnServlet.closeConn();
+			String sqlstr = "INSERT INTO members(member_account, member_pwd, member_name, member_email, nickname, gender, city, birthday, star_sign, blood_type, hobbies, picture_1, picture_2, member_status, self_intro) Values(?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?);";
+			Query<Member> query = session.createQuery(sqlstr, Member.class);
+			query.setParameter(1, memberAccount);
+			query.setParameter(2, memberPwd);
+			query.setParameter(3, memberName);
+			query.setParameter(4, memberEmail);
+			query.setParameter(5, nickname);
+			query.setParameter(6, gender);
+			query.setParameter(7, city);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// out.write("birthday: " + birthday);
+			java.util.Date utilDate = sdf.parse(birthday);
+			query.setParameter(8, new java.sql.Date(utilDate.getTime()));
+			query.setParameter(9, starSign);
+			query.setParameter(10, bloodType);
+			String joinedHobbies = String.join(", ", hobbies);
+			query.setParameter(11, joinedHobbies);
+			ArrayList<Part> uploadPics = new ArrayList<Part>();
+			for (Part pic : uploadParts) {
+				if (pic.getContentType() != null && pic.getContentType().contains("image")) {
+					uploadPics.add(pic);
+				}
+			}
+			if (uploadPics.isEmpty()) {
+				query.setParameter(12, null);
+				query.setParameter(13, null);
+			} else {
+				if (uploadPics.size() == 1) {
+					query.setParameter(12, uploadPics.get(0).getInputStream());
+					query.setParameter(13, null);
+				} else if (uploadPics.size() >= 2) {
+					query.setParameter(12, uploadPics.get(0).getInputStream());
+					query.setParameter(13, uploadPics.get(1).getInputStream());
+				}
+			}
+			query.setParameter(14, memberStatus);
+			query.setParameter(15, selfIntro);
+//			query.execute();
+			System.out.println(memberAccount + "已註冊完成");
+//			query.close();
+
+//			jdbcConnServlet.closeConn();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+//			HibernateUtil.closeSessionFactory();
+		}
 	}
-
 }
