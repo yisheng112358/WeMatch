@@ -34,6 +34,19 @@
 	text-align: right;
 	padding-right: 50px;
 }
+
+h3 {
+	display: inline;
+}
+
+h3:hover {
+	cursor: pointer;
+	background: rgba(255, 255, 255, .4);
+}
+
+h3:active {
+	background: rgba(255, 255, 255, .8);
+}
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -131,30 +144,27 @@
 								role="tabpanel" aria-labelledby="day-8-tab">
 								<div class="coach-wrap ftco-animate d-sm-flex">
 									<!--Show Products & Page-->
-									<table id="content" class="productTable"></table>
-									<br> <br>
-									<div id="page" class="pageview"></div>
+									<table id="contentMassager" class="productTable"></table>
 								</div>
+								<div id="pageMassager" class="text-center"></div>
 							</div>
 
 							<div class="tab-pane fade" id="v-pills-9" role="tabpanel"
 								aria-labelledby="v-pills-day-9-tab">
 								<div class="coach-wrap ftco-animate d-sm-flex">
 									<!--Show Products & Page-->
-									<table id="content" class="productTable"></table>
-									<br> <br>
-									<div id="page" class="pageview"></div>
+									<table id="contentYoga" class="productTable"></table>
 								</div>
+								<div id="pageYoga" class="text-center"></div>
 							</div>
 
 							<div class="tab-pane fade" id="v-pills-10" role="tabpanel"
 								aria-labelledby="v-pills-day-10-tab">
 								<div class="coach-wrap ftco-animate d-sm-flex">
 									<!--Show Products & Page-->
-									<table id="content" class="productTable"></table>
-									<br> <br>
-									<div id="page" class="pageview"></div>
+									<table id="contentSupplement" class="productTable"></table>
 								</div>
+								<div id="pageSupplement" class="text-center"></div>
 							</div>
 
 						</div>
