@@ -39,7 +39,7 @@ public class Product {
 	}
 
 	@Id
-	@Column(name = "ProductId")
+	@Column(name = "productId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getProductID() {
 		return productID;
@@ -49,7 +49,7 @@ public class Product {
 		this.productID = productID;
 	}
 
-	@Column(name = "Category")
+	@Column(name = "category")
 	public String getCategory() {
 		return category;
 	}
@@ -58,7 +58,7 @@ public class Product {
 		this.category = category;
 	}
 
-	@Column(name = "ProductName")
+	@Column(name = "productName")
 	public String getProductName() {
 		return productName;
 	}
@@ -67,7 +67,7 @@ public class Product {
 		this.productName = productName;
 	}
 
-	@Column(name = "Price")
+	@Column(name = "price")
 	public double getPrice() {
 		return price;
 	}
@@ -76,7 +76,7 @@ public class Product {
 		this.price = price;
 	}
 
-	@Column(name = "Stock")
+	@Column(name = "stock")
 	public Integer getStock() {
 		return stock;
 	}
@@ -85,7 +85,7 @@ public class Product {
 		this.stock = stock;
 	}
 
-	@Column(name = "ProductDescription")
+	@Column(name = "productDescription")
 	public String getProductDescription() {
 		return productDescription;
 	}
@@ -94,7 +94,7 @@ public class Product {
 		this.productDescription = productDescription;
 	}
 
-	@Column(name = "Thumbnail")
+	@Column(name = "thumbnail")
 	public byte[] getThumbnail() {
 		return thumbnail;
 	}
@@ -103,7 +103,7 @@ public class Product {
 		this.thumbnail = thumbnail;
 	}
 
-	@Column(name = "DetailImg")
+	@Column(name = "detailImg")
 	public byte[] getDetailImg() {
 		return detailImg;
 	}
