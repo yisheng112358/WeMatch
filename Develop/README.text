@@ -1,0 +1,4 @@
+How to demo the Product Browsing Page:
+	1. Execute SQLResource\create_table.sql to create tables.
+	2. Execute src\tw\eeit117\wematch\product\TestProductsGenerator.java  to insert data.
+	3. Execute WebContent\ProductsBrowsePage.jsp to demo the Product Browsing Page.
