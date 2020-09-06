@@ -15,5 +15,6 @@
 		<property name="current_session_context_class">thread</property>
 
 		<mapping class="tw.eeit117.wematch.product.Product" />
+		<mapping class="tw.eeit117.wematch.booking.bookingBean"/>
 	</session-factory>
 </hibernate-configuration>
