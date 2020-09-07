@@ -48,13 +48,13 @@ public class TestbookingWeb extends HttpServlet {
 		String Dumbbells4 = request.getParameter("Dumbbells4");
 		String date = request.getParameter("date");
 		String time = request.getParameter("time");
-		
-		System.out.println("date"+date);
-		System.out.println("time"+time);
-		System.out.println("Dumbbells1"+Dumbbells1);
-		System.out.println("Dumbbells2"+Dumbbells2);
-		System.out.println("Dumbbells3"+Dumbbells3);
-		System.out.println("Dumbbells4"+Dumbbells4);
+
+		System.out.println("date:"+date);
+		System.out.println("time:"+time);
+		System.out.println("Dumbbells1:"+Dumbbells1);
+		System.out.println("Dumbbells2:"+Dumbbells2);
+		System.out.println("Dumbbells3:"+Dumbbells3);
+		System.out.println("Dumbbells4:"+Dumbbells4);
 
 		bookingBean bookingBean = new bookingBean();
 		bookingBean.setBookingDate(date);
@@ -68,6 +68,8 @@ public class TestbookingWeb extends HttpServlet {
 		
 
 		session.getTransaction().commit();
+		
+		
 
 	}
 
