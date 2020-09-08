@@ -64,6 +64,7 @@ public class CheckBooking extends HttpServlet {
 		    
 		for(bookingBean i:serch) {                  //讀取bookingBean陣列 需要的值 存到ArrayList
 //			System.out.println("1"+location);
+			
 			arrL1.add(i.getEpt1());
 		}
 		

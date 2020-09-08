@@ -110,19 +110,12 @@
 		
 		<input style="display:none" type="hidden" id="test1"  value="${D1}">
 		X======${D1}
-		<input style="display:none" type="hidden" id="test2"  value="<c:forEach var="result2" items="${D2}">   
-		                                                                              <c:out value="${result2}"/>    <%-- 測試放值進去 --%>
-                                                                                      </c:forEach>">
-         		
-		<input style="display:none" type="hidden" id="test3"  value="<c:forEach var="result2" items="${D3}">   
-		                                                                              <c:out value="${result2}"/>    
-                                                                                      </c:forEach>">                                                                             
-                                                                                      
-        <input style="display:none" type="hidden" id="test4"  value="<c:forEach var="result2" items="${D4}">   
-		                                                                              <c:out value="${result2}"/>    
-                                                                                      </c:forEach>"> 
-                                                                                      
-                                                                               
+		<input style="display:none" type="hidden" id="test2"  value="${D2}">
+        X======${D2}	
+		<input style="display:none" type="hidden" id="test3"  value="${D3}">                                                                             
+        X======${D3}                                                                           
+        <input style="display:none" type="hidden" id="test4"  value="${D4}"> 
+        X======${D4}                                                                   
                                                                                       
                                                                                       
 		
@@ -166,9 +159,10 @@ $("#button").click(function(){
 $(document).ready(function() {
 	var x=document.getElementById("test1")
 	var y=x.value;
-	console.log(x)
-	console.log(y)
-	if(y){                                               // 當VALUE有值時候  設置不可預定
+	
+    var z=y.includes("Dumbbells1")   
+                                                                // 當VALUE有值時候  設置不可預定
+	if(z){                                           
         $("#image1").attr("src","images/cantorderstar.gif")
         $("#Dumbbells1").attr("disabled","disabled")
         $("#image1").attr('onclick','null').unbind('click');
@@ -176,8 +170,12 @@ $(document).ready(function() {
 	});
 
 $(document).ready(function() {
-	var x=document.getElementById("test2").value
-	if(x!=null || x!=""){                                               
+	var x=document.getElementById("test2")
+	var y=x.value;
+	
+	var z=y.includes("Dumbbells2")  
+
+	if(z){                                               
         $("#image2").attr("src","images/cantorderstar.gif")
         $("#Dumbbells2").attr("disabled","disabled")
         $("#image2").attr('onclick','null').unbind('click');
@@ -186,8 +184,12 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-	var x=document.getElementById("test3").value
-	if(x!=null || x!=""){                                               
+	var x=document.getElementById("test3")
+	var y=x.value;
+
+	var z=y.includes("Dumbbells3") 
+	
+	if(z){                                               
         $("#image3").attr("src","images/cantorderstar.gif")
         $("#Dumbbells3").attr("disabled","disabled")
         $("#image3").attr('onclick','null').unbind('click');
@@ -196,8 +198,12 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-	var x=document.getElementById("test4").value
-	if(x!=null || x!=""){                                               
+	var x=document.getElementById("test4")
+	var y=x.value;
+
+	var z=y.includes("Dumbbells4") 
+	
+	if(z){                                               
         $("#image4").attr("src","images/cantorderstar.gif")
         $("#Dumbbells4").attr("disabled","disabled")
         $("#image4").attr('onclick','null').unbind('click');
