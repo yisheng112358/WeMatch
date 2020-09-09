@@ -1,5 +1,8 @@
 package tw.eeit117.wematch.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,5 +28,13 @@ public class MemberService {
 	
 	public Member selectMember(String memberAccount, String memberPwd) {
 		return mDAO.selectMember(memberAccount, memberPwd);
+	}
+	
+	public List<Member> selectAllMember() {
+		return mDAO.selectAllMember();
+	}
+	
+	public void deleteMember(Integer memberId) {
+		mDAO.deleteMember(memberId);
 	}
 }

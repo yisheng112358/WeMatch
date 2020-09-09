@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,52 +96,42 @@
 			</div>
 		</div>
 	</section>
-	<script type="text/javascript">
-		alert('小日曆的圖');
-	</script>
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員管理資料</h3>
-				<form class="p-5 bg-light"
-					style="position: relative; border: 1px solid;">
-					<div class="form-group">
-						<label>姓名：</label> <label for="memberAccount">${session.getMemberName}</label>
-					</div>
-					<div class="form-group">
-						<label>${session.getPicture_1}</label>
-					</div>
-					<div class="form-group">
-						<label for="nickname">綽號：</label> <label>${session.getNickname}</label>
-					</div>
-					<div class="form-group">
-						<label for="gender">性別：</label> <label>${session.getGender}</label>
-					</div>
-					<div class="form-group">
-						<label for="memberEmail">Email：</label> <label>${session.getMemberEmail}</label>
-					</div>
-					<div class="form-group">
-						<label for="birthdayDate">生日：</label> <label>${session.getBirthdayDate}</label>
-					</div>
-					<div class="form-group">
-						<label for="starSign">星座：</label> <label>${session.getStarSign}</label>
-					</div>
-					<div class="form-group">
-						<label for="city">居住/生活城市：</label> <label>${session.getCity}</label>
-					</div>
-					<div class="form-group">
-						<label for="bloodType">血型：</label> <label>${session.getBloodType}</label>
-					</div>
-					<div class="form-group">
-						<label for="hobbies">興趣喜好：</label> <label>${session.getHobbies}</label>
-					</div>
-					<div class="form-group">
-						<label for="selfIntro">關於我：</label> <label>${session.getSelfIntro}</label>
-					</div>
-					<div class="form-group">
-						<a href="MemberPage_update">修改</a> <br />
-					</div>
+				<form class="p-5 bg-light" action="preInsert"
+					style="position: relative; border: 1px solid;" method="post">
+					<table class="form-group">
+						<div class="form-group">
+							<input type="submit" value="查詢" class="btn py-3 px-4 btn-primary">
+						</div>
+						<thead>
+							<tr>
+								<th>序號</th>
+								<th>編號</th>
+								<th>帳號</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach varStatus="status" var="result" items="${results}">
+								<tr>
+									<td>${status.count}</td>
+									<td>${result.memberId}</td>
+									<td>${result.memberAccount}</td>
+									<td>
+									<a
+										href="<c:url value='/preUpdate?id=${result.memberId}' />">查詢</a>
+										<a
+										href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<div class="form-group"></div>
+
 				</form>
 			</div>
 		</div>

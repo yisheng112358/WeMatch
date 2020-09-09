@@ -103,42 +103,39 @@
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員資料</h3>
 				<form class="p-5 bg-light"
-					style="position: relative; border: 1px solid;">
+					style="position: relative; border: 1px solid;" method="post">
 					<div class="form-group">
-						<label for="memberAccount">會員帳號：</label> <label>${MemberAccount}</label>
+						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
 					</div>
 					<div class="form-group">
-						<label>姓名：</label> <label for="memberAccount">${session.MemberName}</label>
+						<label>姓名：</label> <label for="memberAccount">${name}</label>
 					</div>
 					<div class="form-group">
-						<label>${session.getPicture_1}</label>
+						<label for="nickname">綽號：</label> <label>${nickname}</label>
 					</div>
 					<div class="form-group">
-						<label for="nickname">綽號：</label> <label>${session.Nickname}</label>
+						<label for="gender">性別：</label> <label>${gender}</label>
 					</div>
 					<div class="form-group">
-						<label for="gender">性別：</label> <label>${session.Gender}</label>
+						<label for="memberEmail">Email：</label> <label>${email}</label>
 					</div>
 					<div class="form-group">
-						<label for="memberEmail">Email：</label> <label>${session.MemberEmail}</label>
+						<label for="birthdayDate">生日：</label> <label>${birthday}</label>
 					</div>
 					<div class="form-group">
-						<label for="birthdayDate">生日：</label> <label>${session.BirthdayDate}</label>
+						<label for="starSign">星座：</label> <label>${starSign}</label>
 					</div>
 					<div class="form-group">
-						<label for="starSign">星座：</label> <label>${session.StarSign}</label>
+						<label for="city">居住/生活城市：</label> <label>${city}</label>
 					</div>
 					<div class="form-group">
-						<label for="city">居住/生活城市：</label> <label>${session.City}</label>
+						<label for="bloodType">血型：</label> <label>${bloodtype}</label>
 					</div>
 					<div class="form-group">
-						<label for="bloodType">血型：</label> <label>${session.BloodType}</label>
+						<label for="hobbies">興趣喜好：</label> <label>${hobbies}</label>
 					</div>
 					<div class="form-group">
-						<label for="hobbies">興趣喜好：</label> <label>${session.Hobbies}</label>
-					</div>
-					<div class="form-group">
-						<label for="selfIntro">關於我：</label> <label>${session.SelfIntro}</label>
+						<label for="selfIntro">關於我：</label> <label>${selfintro}</label>
 					</div>
 					<div class="form-group">
 						<a href="<c:url value='MemberPage_update'/>">修改</a> <br />

@@ -100,24 +100,16 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員資料</h3>
-				<form:form servletRelativeAction="MemberPage_updatedata" method="post" 
-				enctype="multipart/form-data" modelAttribute="Member">
-				<%-- <form action="MemberPage_updatedata" method="post"
-						enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;"> --%>
+				<form:form Action="MemberPage_DB" method="post" modelAttribute="Member">
 					<div class="form-group">
 						<label for="memberName">姓名：</label>
-						<input type="text" id="memberName"
+						<input type="text" id="memberName" value="林小明"
 							class="form-control" name="memberName" maxlength="20"
 							autocomplete="on">
 					</div>
 					<div class="form-group">
-						<label for="uploadPics">Upload Your Beautiful Pictures：</label> <input
-							type="file" name="uploadPics" multiple>
-					</div>
-					<div class="form-group">
 						<label for="nickname">暱稱：</label><input type="text" id="nickname"
-							class="form-control" name="nickname" maxlength="20"
+							class="form-control" name="nickname" maxlength="20" value="明明"
 							autocomplete="on">
 					</div>
 					<div class="form-group">
@@ -131,7 +123,7 @@
 					<div class="form-group">
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
-							class="form-control" name="memberEmail" onblur="checkMail()">
+							class="form-control" name="memberEmail" onblur="checkMail()" value="a1234@mail.com">
 					</div>
 					<div class="form-group">
 						<label for="birthday">生日：</label> <input type="date"
@@ -198,7 +190,7 @@
 					</div>
 					<div class="form-group">
 						<label for="hobbies">興趣喜好：</label><br /> <label for="movie">
-							<input type="checkbox" name="hobbies" id="movie" value="movie">電影
+							<input type="checkbox" name="hobbies" id="movie" value="movie" checked="checked">電影
 						</label> <label for="sport"> <input type="checkbox" name="hobbies"
 							id="sport" value="sport">運動
 						</label> <label for="reading"> <input type="checkbox"
@@ -213,8 +205,7 @@
 					</div>
 					<div class="form-group">
 						<label for="selfIntro">關於我：</label>
-						<textarea name="selfIntro" cols="30" rows="10"
-							class="form-control"></textarea>
+						<textarea name="selfIntro" cols="30" rows="10" class="form-control">Hi</textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="更新" class="btn py-3 px-4 btn-primary">

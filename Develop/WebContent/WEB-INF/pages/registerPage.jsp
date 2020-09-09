@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,6 +125,7 @@
 					</div>
 
 					<div class="form-group">
+					<a href='<c:url value="/loginPage"/>'>回到登入</a><br/>
 							<input type="submit"
 							value="送出" class="btn py-3 px-4 btn-primary">
 							<span>${errors.msg}</span>

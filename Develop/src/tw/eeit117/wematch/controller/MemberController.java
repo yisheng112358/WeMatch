@@ -1,24 +1,23 @@
 package tw.eeit117.wematch.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -28,24 +27,35 @@ import tw.eeit117.wematch.model.MemberDAO;
 import tw.eeit117.wematch.model.MemberService;
 
 @Controller
-@SessionAttributes(names = { "user", "pwd" })
+@SessionAttributes(names = { "MemberAccount", "MemberPwd", "Member" })
 public class MemberController {
 	@Autowired
 	private HttpServletRequest request;
 
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping(path = "/loginPage", method = RequestMethod.GET)
+	public String loginPage() {
+		return "SignInPage";
+	}
+	
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public String register() {
+		return "registerPage";
+	}
 
 	@RequestMapping(path = "/loginsystem.controller", method = RequestMethod.POST)
-	public String checkLogin(HttpServletRequest request, @RequestParam(name = "memberAccount", required = true) String myUser,
-			@RequestParam(name = "memberPwd", required = true) String myPwd, Model m) {
+	public String checkLogin(HttpServletRequest request,
+			@RequestParam(name = "memberAccount", required = true ) String myUser,
+			@RequestParam(name = "memberPwd", required = true) String myPwd, Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
 		ServletContext app = request.getServletContext();
 		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(app);
-		
-		//MemberPage
+
+		// MemberPage
 		if (myUser == null || myUser.length() == 0) {
 			errors.put("name", "name is required");
 		}
@@ -56,32 +66,34 @@ public class MemberController {
 			return "SignInPage";
 		}
 
-//		MemberDAO mDAO = (MemberDAO)context.getBean("MemberDAO");
+		MemberDAO mDAO = (MemberDAO) context.getBean("MemberDAO");
 		Boolean checkUser = memberService.checkLogin(new Member(myUser, myPwd));
 		Member users = memberService.selectMember(myUser, myPwd);
-		System.out.println("MemberStatus:" + users.getMemberStatus());
-		
+
 		m.addAttribute("MemberAccount", myUser);
 		m.addAttribute("MemberPwd", myPwd);
 		m.addAttribute("checkUser", checkUser);
 
 		if (checkUser) {
-			//AdminPage
-			if(users.getMemberStatus()==2) {
+			// AdminPage
+			if (users.getMemberStatus() == 2) {
+				session.setAttribute("Account", myUser);
+				session.setAttribute("Password", myPwd);
 				return "MemberAdminPage";
+			} else {
+				session.setAttribute("Account", myUser);
+				return "MemberPage";
 			}
-			else { 
-				return "MemberPage";}
-			}
+		}
 		errors.put("msg", "please input correct useraccount or password");
 		return "SignInPage";
-		
+
 	}
 
 	@RequestMapping(path = "/register.controller", method = RequestMethod.POST)
 	public String memberCreate(HttpServletRequest request, @RequestParam(name = "memberAccount") String myUser,
-			@RequestParam(name = "memberPwd") String myPwd, Model m) {
-		
+			@RequestParam(name = "memberPwd") String myPwd, Model m, HttpSession session) {
+
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
@@ -100,64 +112,44 @@ public class MemberController {
 
 		Boolean check = memberService.insertMember(myUser, myPwd);
 
-		if(check) {
-		m.addAttribute("MemberAccount", myUser);
-		m.addAttribute("MemberPwd", myPwd);
-		return "MemberPage";
+		if (check) {
+			m.addAttribute("MemberAccount", myUser);
+			m.addAttribute("MemberPwd", myPwd);
+			session.setAttribute("Account", myUser);
+			session.setAttribute("Password", myPwd);
+			return "MemberPage";
 		}
 		errors.put("msg", "帳號密碼重複");
 		return "registerPage";
 	}
 
-	@RequestMapping(path = "/MemberPage_updatedata", method = RequestMethod.POST)
-	@ModelAttribute(name = "Member")
-	public String memberUpdate(HttpServletRequest request, HttpServletResponse response, Model m, Member member) throws Exception {
-		m.addAttribute("Member", new Member());
+	@RequestMapping(path = "/MemberPage_update", method = RequestMethod.GET)
+	public String MemberPage_update(Model m) {
+		Member member = new Member();
+		m.addAttribute("Member", member);
+		return "MemberPage_update";
+	}
+	
+	@RequestMapping(path = "/MemberPage_DB", method = RequestMethod.POST)
+	public String updateMember(@ModelAttribute("Member")Member member, Model m, HttpSession session) {
+		session.setAttribute("name", member.getMemberName());
+		session.setAttribute("nickname", member.getNickname());
+		session.setAttribute("gender", member.getGender());
+		session.setAttribute("email", member.getMemberEmail());
+		session.setAttribute("birthday", member.getBirthdayDate());
+		session.setAttribute("starSign", member.getStarSign());
+		session.setAttribute("city", member.getCity());
+		session.setAttribute("booldtype", member.getBloodType());
+		session.setAttribute("hobbies", member.getHobbies());
+		session.setAttribute("selfinfo", member.getSelfIntro());
+//		memberService.updateMember(member); 存不進去 目前有500的bug 待處理
 		
-		//		System.out.println(m.getAttribute("memberAccount"));
-//		System.out.println(m.getAttribute("memberPwd"));
-//		Member mem = memberService.selectMember(m.getAttribute("memberAccount").toString(), m.getAttribute("memberPwd").toString());
-//		
-//		if (request.getParameter("memberName") != null) {
-//			mem.setMemberName(request.getParameter("memberName"));
-//			m.addAttribute("memberName", request.getParameter("memberName"));
-//		}
-//		if (request.getParameter("gender") != null) {
-//			mem.setGender(request.getParameter("gender"));
-//		}
-//		if (request.getParameter("memberEmail") != null) {
-//			mem.setMemberEmail(request.getParameter("memberEmail"));
-//		}
-//		if (request.getParameter("nickname") != null) {
-//			mem.setNickname(request.getParameter("nickname"));
-//		}
-//		if (request.getParameter("birthday") != null) {
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//			java.util.Date utilDate = sdf.parse(request.getParameter("birthday"));
-//			mem.setBirthdayDate(utilDate);
-//		}
-//		if (request.getParameter("starSign") != null) {
-//			mem.setStarSign(request.getParameter("starSign"));
-//		}
-//		if (request.getParameter("city") != null) {
-//			mem.setCity(request.getParameter("city"));
-//		}
-//		if (request.getParameter("bloodType") != null) {
-//			mem.setMemberName(request.getParameter("bloodType"));
-//		}
-//		if (request.getParameter("hobbies") != null) {
-//			mem.setHobbies(request.getParameter("hobbies"));
-//		}
-//		if (request.getParameter("selfIntro") != null) {
-//			mem.setSelfIntro(request.getParameter("selfIntro"));
-//		}
-//		if (request.getParameter("hobbies") != null) {
-//			mem.setHobbies(request.getParameter("hobbies"));
-//		}
-//		//照片上傳還沒寫
-//		System.out.println(mem.getMemberName());
-//		memberService.updateMember(mem);
-		memberService.updateMember(member);
 		return "MemberPage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(path = "/test", method = RequestMethod.GET)
+	public List<Member> test(){
+		return memberService.selectAllMember();
 	}
 }

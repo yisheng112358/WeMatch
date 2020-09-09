@@ -11,71 +11,95 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "Member")
 @Component("Member")
 public class Member {
-	@Id @Column(name = "MEMBERID") 
+	@Id
+	@Column(name = "MEMBERID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int memberId;
-	
+
 	@Column(name = "MEMBERACCOUNT")
 	private String memberAccount;
-	
+
 	@Column(name = "MEMBERPWD")
 	private String memberPwd;
-	
+
 	@Column(name = "MEMBERSTATUS")
 	private int memberStatus;
-	
+
 	@Column(name = "MEMBERNAME")
 	private String memberName;
-	
+
 	@Column(name = "MEMBEREMAIL")
 	private String memberEmail;
-	
+
 	@Column(name = "BIRTHDAYDATE")
 	private Date birthdayDate;
-	
+
 	@Column(name = "GENDER")
 	private String gender;
-	
+
 	@Column(name = "NICKNAME")
 	private String nickname;
-	
+
 	@Column(name = "STARSIGN")
 	private String starSign;
-	
+
 	@Column(name = "CITY")
 	private String city;
-	
+
 	@Column(name = "BLOODTYPE")
 	private String bloodType;
-	
+
 	@Column(name = "HOBBIES")
 	private String hobbies;
-	
+
 	@Column(name = "PICTURE_1")
 	private byte[] picture_1;
-	
+
 	@Column(name = "PICTURE_2")
 	private byte[] picture_2;
-	
+
 	@Column(name = "SELFINTRO")
 	private String selfIntro;
-	
+
 	public Member() {
-		
+
 	}
 
 	public Member(String memberAccount, String memberPwd) {
 		this.memberAccount = memberAccount;
-		this.memberPwd = memberPwd;		
+		this.memberPwd = memberPwd;
+	}
+
+	public Member(int memberId, String memberAccount, String memberPwd, int memberStatus, String memberName,
+			String memberEmail, Date birthdayDate, String gender, String nickname, String starSign, String city,
+			String bloodType, String hobbies, byte[] picture_1, byte[] picture_2, String selfIntro) {
+		this.memberId = memberId;
+		this.memberAccount = memberAccount;
+		this.memberPwd = memberPwd;
+		this.memberStatus = memberStatus;
+		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.birthdayDate = birthdayDate;
+		this.gender = gender;
+		this.nickname = nickname;
+		this.starSign = starSign;
+		this.city = city;
+		this.bloodType = bloodType;
+		this.hobbies = hobbies;
+		this.picture_1 = picture_1;
+		this.picture_2 = picture_2;
+		this.selfIntro = selfIntro;
 	}
 
 	public int getMemberId() {
 		return memberId;
 	}
+
 	@Transient
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
@@ -86,7 +110,6 @@ public class Member {
 	}
 
 	public void setMemberAccount(String memberAccount) {
-		System.out.println("zzz");
 		this.memberAccount = memberAccount;
 	}
 
