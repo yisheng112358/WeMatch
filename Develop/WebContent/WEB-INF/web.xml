@@ -13,6 +13,15 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<filter>
+		<filter-name>OpenSessionViewFilter1</filter-name>
+		<filter-class>tw.wematch.util.OpenSessionViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionViewFilter1</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<resource-ref>
 		<description>SQLServerJDBCConnection</description>
 		<res-ref-name>connectSQLServerJdbc/WeMatch</res-ref-name>

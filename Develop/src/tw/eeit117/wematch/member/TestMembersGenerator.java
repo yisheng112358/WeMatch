@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.jdbc;
+package tw.eeit117.wematch.member;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import tw.eeit117.wematch.member.Member;
 
 public class TestMembersGenerator {
 
