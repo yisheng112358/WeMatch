@@ -3,14 +3,28 @@ package tw.eeit117.wematch.product;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+@WebServlet("/BaseServlet.do")
 public abstract class BaseServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private WebApplicationContext context;
+
+	@Override
+	public void init() throws ServletException {
+		ServletContext application = getServletContext();
+		context = WebApplicationContextUtils.getWebApplicationContext(application);
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,6 +51,15 @@ public abstract class BaseServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	public WebApplicationContext getContext() {
+		return context;
+	}
+
+	@Override
+	public void destroy() {
+		((ConfigurableApplicationContext) getContext()).close();
 	}
 
 }
