@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.google.gson.Gson;
+
+import tw.wematch.util.HibernateUtil;
 
 @WebServlet("/RetrieveProductServlet.do")
 public class RetrieveProductServlet extends BaseServlet {
@@ -23,14 +22,11 @@ public class RetrieveProductServlet extends BaseServlet {
 
 	protected void RetrieveProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
-		SessionFactory sessionFactory = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
-		Session session = sessionFactory.openSession();
+
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
 
 		List<Product> productList = session.createQuery("From Product", Product.class).list();
-
-		session.close();
-		sessionFactory.close();
 
 		Gson gson = new Gson();
 		String productJasonString = gson.toJson(productList);
