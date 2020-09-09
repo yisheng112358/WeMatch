@@ -13,9 +13,23 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/beans.config.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<filter>
 		<filter-name>OpenSessionViewFilter1</filter-name>
 		<filter-class>tw.wematch.util.OpenSessionViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<!--Spring設定檔的SessionFactory名稱: sessionFactory -->
+			<param-value>sessionFactory</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>OpenSessionViewFilter1</filter-name>
