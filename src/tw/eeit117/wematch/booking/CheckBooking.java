@@ -60,16 +60,19 @@ public class CheckBooking extends HttpServlet {
 		ArrayList<String> arrL2 = new ArrayList<String>(12);
 		ArrayList<String> arrL3 = new ArrayList<String>(12);
 		ArrayList<String> arrL4 = new ArrayList<String>(12);
-
-		    
-		for(bookingBean i:serch) {                  //讀取bookingBean陣列 需要的值 存到ArrayList
-//			System.out.println("1"+location);
-			
+		ArrayList<String> arrL5 = new ArrayList<String>(12);
+		ArrayList<String> arrL6 = new ArrayList<String>(12);
+		ArrayList<String> arrL7 = new ArrayList<String>(12);
+		ArrayList<String> arrL8 = new ArrayList<String>(12);
+		ArrayList<String> arrL9 = new ArrayList<String>(12);
+		ArrayList<String> arrL10 = new ArrayList<String>(12);
+		ArrayList<String> arrL11 = new ArrayList<String>(12);
+		ArrayList<String> arrL12 = new ArrayList<String>(12);
+		//讀取bookingBean陣列 需要的值 存到ArrayList
+		
+		for(bookingBean i:serch) {                  
 			arrL1.add(i.getEpt1());
 		}
-		
-		
-		
 		for(bookingBean i:serch) {
 			arrL2.add(i.getEpt2());
 		}
@@ -78,6 +81,30 @@ public class CheckBooking extends HttpServlet {
 		}
 		for(bookingBean i:serch) {
 			arrL4.add(i.getEpt4());
+		}
+		for(bookingBean i:serch) {
+			arrL5.add(i.getEpt5());
+		}
+		for(bookingBean i:serch) {
+			arrL6.add(i.getEpt6());
+		}
+		for(bookingBean i:serch) {
+			arrL7.add(i.getEpt7());
+		}
+		for(bookingBean i:serch) {
+			arrL8.add(i.getEpt8());
+		}
+		for(bookingBean i:serch) {
+			arrL9.add(i.getEpt9());
+		}
+		for(bookingBean i:serch) {
+			arrL10.add(i.getEpt10());
+		}
+		for(bookingBean i:serch) {
+			arrL11.add(i.getEpt11());
+		}
+		for(bookingBean i:serch) {
+			arrL12.add(i.getEpt12());
 		}
 		
 		
@@ -91,6 +118,14 @@ public class CheckBooking extends HttpServlet {
 		request.setAttribute("D2", arrL2);
 		request.setAttribute("D3", arrL3);
 		request.setAttribute("D4", arrL4);
+		request.setAttribute("D5", arrL5);
+		request.setAttribute("D6", arrL6);
+		request.setAttribute("D7", arrL7);
+		request.setAttribute("D8", arrL8);
+		request.setAttribute("D9", arrL9);
+		request.setAttribute("D10", arrL10);
+		request.setAttribute("D11", arrL11);
+		request.setAttribute("D12", arrL12);
 		
 	
 

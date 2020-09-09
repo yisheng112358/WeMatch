@@ -37,8 +37,8 @@ body {
 <body>
 
 
-
-	<form action="CheckBooking" method="post" id="form1" name="form1">
+<div style="text-align:center;background-color:lightblue;">
+	<form action="CheckBooking" method="post" id="form1" name="form1" >
 	
 	    <input type="date" name="date" required value="2020-09-05" min="2020-09-05"max="2020-09-10" step="1"> <br />
 	    
@@ -52,47 +52,10 @@ body {
 		<input type="submit" name="button" id="button" value="go" >  <input type="reset" name="reset" id="reset" value="back" >
 		
     </form>
-    
+</div>
 
 
-<script>
-// document.getElementById("image1").value;
-
-
-$('#checkboxGroup input').click(function(){         //只能選取一個時間段
-	 if($(this).prop('checked')){
-	   $('#checkboxGroup input:checkbox').prop('checked',false);
-	   $(this).prop('checked',true);
-	   }
-	  });
-
-$("#button").click(function(){
-	var check=$("input[name='time']:checked").length;//判斷有多少個方框被勾選
-	if(check==0){
-		alert("您尚未選取時間");
-		return false;//不要提交表單
-	}else{
-
-		return true;//提交表單
-	}
-})
-
-
-
-$("#reset").click(function(){                                 //click事件 之後 重製所有圖片
-            $("#image1").attr("src","images/star.gif");      
-            $("#image2").attr("src","images/star.gif");      
-            $("#image3").attr("src","images/star.gif");      
-            $("#image4").attr("src","images/star.gif");      
-});
-
-
-
-
-
-
-</script>
-
+<script src="js/bookingcheck-web1.js"></script>
 
 </body>
 </html>

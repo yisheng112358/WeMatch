@@ -23,17 +23,33 @@ public class bookingBean {
 	private String ept2;
 	private String ept3;
 	private String ept4;
+	private String ept5;
+	private String ept6;
+	private String ept7;
+	private String ept8;
+	private String ept9;
+	private String ept10;
+	private String ept11;
+	private String ept12;
 
 	public bookingBean() {
 	}
 
-	public bookingBean(String bookingDate, String bookingTime, String ept1, String ept2, String ept3, String ept4) {
+	public bookingBean(String bookingDate, String bookingTime, String ept1, String ept2, String ept3, String ept4,String ept5,String ept6,String ept7,String ept8,String ept9,String ept10,String ept11,String ept12) {
 		this.bookingDate = bookingDate;
 		this.bookingTime = bookingTime;
 		this.ept1 = ept1;
 		this.ept2 = ept2;
 		this.ept3 = ept3;
 		this.ept4 = ept4;
+		this.ept5 = ept5;
+		this.ept6 = ept6;
+		this.ept7 = ept7;
+		this.ept8 = ept8;
+		this.ept9 = ept9;
+		this.ept10 = ept10;
+		this.ept11 = ept11;
+		this.ept12 = ept12;
 
 	}
 
@@ -101,11 +117,86 @@ public class bookingBean {
 	public void setEpt4(String ept4) {
 		this.ept4 = ept4;
 	}
-
-	@Override
-	public String toString() {
-		return "bookingBean [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", bookingTime=" + bookingTime
-				+ ", ept1=" + ept1 + ", ept2=" + ept2 + ", ept3=" + ept3 + ", ept4=" + ept4 + " ]";
+	
+	@Column(name = "ept5")
+	public String getEpt5() {
+		return ept5;
 	}
+
+	public void setEpt5(String ept5) {
+		this.ept5 = ept5;
+	}
+	
+	@Column(name = "ept6")
+	public String getEpt6() {
+		return ept6;
+	}
+
+	public void setEpt6(String ept6) {
+		this.ept6 = ept6;
+	}
+	
+	@Column(name = "ept7")
+	public String getEpt7() {
+		return ept7;
+	}
+
+	public void setEpt7(String ept7) {
+		this.ept7 = ept7;
+	}
+	
+	@Column(name = "ept8")
+	public String getEpt8() {
+		return ept8;
+	}
+
+	public void setEpt8(String ept8) {
+		this.ept8 = ept8;
+	}
+	
+	@Column(name = "ept9")
+	public String getEpt9() {
+		return ept9;
+	}
+
+	public void setEpt9(String ept9) {
+		this.ept9 = ept9;
+	}
+	
+	@Column(name = "ept10")
+	public String getEpt10() {
+		return ept10;
+	}
+
+	public void setEpt10(String ept10) {
+		this.ept10 = ept10;
+	}
+	
+	
+	@Column(name = "ept11")
+	public String getEpt11() {
+		return ept11;
+	}
+
+	public void setEpt11(String ept11) {
+		this.ept11 = ept11;
+	}
+	
+	@Column(name = "ept12")
+	public String getEpt12() {
+		return ept12;
+	}
+
+	public void setEpt12(String ept12) {
+		this.ept12 = ept12;
+	}
+
+
+
+//	@Override
+//	public String toString() {
+//		return "bookingBean [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", bookingTime=" + bookingTime
+//				+ ", ept1=" + ept1 + ", ept2=" + ept2 + ", ept3=" + ept3 + ", ept4=" + ept4 + ",ept5="+ept5+" ]";
+//	}
 
 }
