@@ -60,6 +60,17 @@ public class MemberDAO {
 
 		return resultAccount;
 	}
+	
+	public Member selectMemberById(int memberId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlstr = "From Member where memberId=:id";
+		Query<Member> query = session.createQuery(hqlstr, Member.class);
+		query.setParameter("id", memberId);
+		Member resultAccount = query.uniqueResult();
+		
+		return resultAccount;
+	}
 
 	public List<Member> selectAllMember() {
 		Session session = sessionFactory.getCurrentSession();

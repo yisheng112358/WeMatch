@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>會員資料</title>
+<title>後台會員資料</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -54,8 +54,6 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="MemberAdminPages"
-						class="nav-link"><span>Admin</span></a></li>
 					<li class="nav-item"><a href="index.html#home-section"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
@@ -100,39 +98,46 @@
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員管理資料</h3>
-				<form class="p-5 bg-light" action="preInsert"
+				<h3 class="mb-5">後台會員資料</h3>
+				<form class="p-5 bg-light"
 					style="position: relative; border: 1px solid;" method="post">
-					<table class="form-group">
-						<div class="form-group">
-							<input type="submit" value="查詢" class="btn py-3 px-4 btn-primary">
-							<a href="<c:url value='/preInsert.do' />">新增</a>
-						</div>
-						<thead>
-							<tr>
-								<th>序號</th>
-								<th>編號</th>
-								<th>帳號</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach varStatus="status" var="result" items="${results}">
-								<tr>
-									<td>${status.count}</td>
-									<td>${result.memberId}</td>
-									<td>${result.memberAccount}</td>
-									<td>
-									<a
-										href="<c:url value='/preUpdate?id=${result.memberId}' />">查詢</a>
-										<a
-										href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<div class="form-group"></div>
-
+					<div class="form-group">
+						<label for="memberAccount">會員帳號：</label> <label>${Member.memberAccount}</label>
+					</div>
+					<div class="form-group">
+						<label>姓名：</label> <label for="memberAccount">${Member.memberName}</label>
+					</div>
+					<div class="form-group">
+						<label for="nickname">綽號：</label> <label>${Member.nickname}</label>
+					</div>
+					<div class="form-group">
+						<label for="gender">性別：</label> <label>${Member.gender}</label>
+					</div>
+					<div class="form-group">
+						<label for="memberEmail">Email：</label> <label>${Member.memberEmail}</label>
+					</div>
+					<div class="form-group">
+						<label for="birthdayDate">生日：</label> <label>${Member.birthdayDate}</label>
+					</div>
+					<div class="form-group">
+						<label for="starSign">星座：</label> <label>${Member.starSign}</label>
+					</div>
+					<div class="form-group">
+						<label for="city">居住/生活城市：</label> <label>${Member.city}</label>
+					</div>
+					<div class="form-group">
+						<label for="bloodType">血型：</label> <label>${Member.bloodType}</label>
+					</div>
+					<div class="form-group">
+						<label for="hobbies">興趣喜好：</label> <label>${Member.hobbies}</label>
+					</div>
+					<div class="form-group">
+						<label for="selfIntro">關於我：</label> <label>${Member.selfIntro}</label>
+					</div>
+					<div class="form-group">
+						<a href="<c:url value='/MemberPage_Adminupdate'/>">修改</a>
+						<a href="<c:url value='/MemberAdminPage'/>">返回</a>
+					</div>
 				</form>
 			</div>
 		</div>

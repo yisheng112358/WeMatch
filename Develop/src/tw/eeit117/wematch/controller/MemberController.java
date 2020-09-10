@@ -1,5 +1,6 @@
 package tw.eeit117.wematch.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,6 +138,7 @@ public class MemberController {
 		session.setAttribute("gender", member.getGender());
 		session.setAttribute("email", member.getMemberEmail());
 		session.setAttribute("birthday", member.getBirthdayDate());
+		Date bd = member.getBirthdayDate();
 		session.setAttribute("starSign", member.getStarSign());
 		session.setAttribute("city", member.getCity());
 		session.setAttribute("booldtype", member.getBloodType());

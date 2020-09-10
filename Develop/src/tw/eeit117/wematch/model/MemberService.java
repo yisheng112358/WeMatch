@@ -30,6 +30,10 @@ public class MemberService {
 		return mDAO.selectMember(memberAccount, memberPwd);
 	}
 	
+	public Member selectMemberById(int memberId) {
+		return mDAO.selectMemberById(memberId);
+	}
+	
 	public List<Member> selectAllMember() {
 		return mDAO.selectAllMember();
 	}

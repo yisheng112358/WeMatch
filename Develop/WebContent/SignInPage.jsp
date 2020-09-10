@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +75,7 @@
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_3.jpg');"
+		style="background-image: url('../../images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -99,9 +100,9 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員登入</h3>
-				<form action="SignInJdbcConnServlet.do" method="post"
+				<form action="loginsystem.controller" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;" onsubmit="return submitFunc()";>
+					style="position: relative; border: 1px solid;" onsubmit="return submitFunc()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
@@ -110,6 +111,7 @@
 							name="memberAccount" required="required"
 							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
 							autocomplete="on" onblur="checkAccount()">
+							<span>${errors.name}</span>
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
@@ -118,11 +120,13 @@
 							name="memberPwd" required="required"
 							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
 							maxlength="20" onblur="checkPwd()">
+							<span>${errors.pwd}</span>
 					</div>
 
 					<div class="form-group">
-						<a href="SignUpPage.jsp">尚未註冊？</a> <br /> <input type="submit"
+						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br /> <input type="submit"
 							value="登入" class="btn py-3 px-4 btn-primary">
+							<span>${errors.msg}</span>
 					</div>
 
 				</form>

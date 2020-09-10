@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,39 +102,30 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員管理資料</h3>
-				<form class="p-5 bg-light" action="preInsert"
-					style="position: relative; border: 1px solid;" method="post">
+				<form:form class="p-5 bg-light" action="Insert"
+					style="position: relative; border: 1px solid;" method="post"
+					modelAttribute="Member">
 					<table class="form-group">
-						<div class="form-group">
-							<input type="submit" value="查詢" class="btn py-3 px-4 btn-primary">
-							<a href="<c:url value='/preInsert.do' />">新增</a>
-						</div>
 						<thead>
 							<tr>
-								<th>序號</th>
-								<th>編號</th>
 								<th>帳號</th>
+								<th>密碼</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach varStatus="status" var="result" items="${results}">
-								<tr>
-									<td>${status.count}</td>
-									<td>${result.memberId}</td>
-									<td>${result.memberAccount}</td>
-									<td>
-									<a
-										href="<c:url value='/preUpdate?id=${result.memberId}' />">查詢</a>
-										<a
-										href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
-									</td>
-								</tr>
-							</c:forEach>
+							<tr>
+								<td><input type="text" id="memberAccount"
+									class="form-control" name="memberAccount" maxlength="20" /></td>
+								<td><input type="password" id="memberPwd"
+									class="form-control" name="memberPwd" maxlength="20" /></td>
+								<td>${errors.msg}</td>
+								<td><input type="submit" value="更新" class="btn py-3 px-4 btn-primary">
+								</td>
+							</tr>
 						</tbody>
 					</table>
-					<div class="form-group"></div>
-
-				</form>
+				</form:form>
+				<div class="form-group"></div>
 			</div>
 		</div>
 	</section>
