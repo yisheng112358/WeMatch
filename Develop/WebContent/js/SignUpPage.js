@@ -24,7 +24,7 @@ function checkAccount() {
 			}
 		}
 		if (flag1 && flag2) {
-			accountObj.innerHTML = "帳號格式正確";
+			accountObj.innerHTML = "帳號正確";
 			return true;
 		} else {
 			accountObj.innerHTML = "帳號格式錯誤";
@@ -62,7 +62,7 @@ function checkPwd() {
 			}
 		}
 		if (flag3 && flag4 && flag5) {
-			pwdObj.innerHTML = "密碼格式正確";
+			pwdObj.innerHTML = "密碼正確";
 			return true;
 		} else {
 			pwdObj.innerHTML = "密碼格式錯誤";
