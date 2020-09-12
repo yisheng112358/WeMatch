@@ -3,6 +3,8 @@ package tw.eeit117.wematch.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -60,15 +62,26 @@ public class MemberDAO {
 
 		return resultAccount;
 	}
-	
+
+	public Member selectMemberByAccount(String memberAccount) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String hqlstr = "From Member where memberAccount=:account";
+		Query<Member> query = session.createQuery(hqlstr, Member.class);
+		query.setParameter("account", memberAccount);
+		Member resultAccount = query.uniqueResult();
+
+		return resultAccount;
+	}
+
 	public Member selectMemberById(int memberId) {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		String hqlstr = "From Member where memberId=:id";
 		Query<Member> query = session.createQuery(hqlstr, Member.class);
 		query.setParameter("id", memberId);
 		Member resultAccount = query.uniqueResult();
-		
+
 		return resultAccount;
 	}
 
@@ -80,11 +93,11 @@ public class MemberDAO {
 		return resultAccount;
 	}
 
-	public void updateMember(Member member) {
+	public void updateMember(Member member, HttpSession HttpSession) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String hqlstr = "Update Member set memberName=:name, nickname=:nickname, gender=:gender, memberMail=:mail, birthdayDate=:birthday, starSign=:starSign, city=:city, bloodType=:bloodType, hobbies=:hobbies, selfIntro=:selfIntro where memberId=:id";
-		Query<Member> query = session.createQuery(hqlstr, Member.class);
+		String hqlstr = "Update Member set memberName=:name, nickname=:nickname, gender=:gender, memberEmail=:mail, birthdayDate=:birthday, starSign=:starSign, city=:city, bloodType=:bloodType, hobbies=:hobbies, selfIntro=:selfIntro where memberAccount=:account";
+		Query<Member> query = (Query<Member>) session.createQuery(hqlstr);
 		query.setParameter("name", member.getMemberName());
 		query.setParameter("nickname", member.getNickname());
 		query.setParameter("gender", member.getGender());
@@ -95,9 +108,8 @@ public class MemberDAO {
 		query.setParameter("bloodType", member.getBloodType());
 		query.setParameter("hobbies", member.getHobbies());
 		query.setParameter("selfIntro", member.getSelfIntro());
-		query.setParameter("id", member.getMemberId());
-		
-		session.save(query);
+		query.setParameter("account", HttpSession.getAttribute("Account").toString());
+		query.executeUpdate();
 	}
 
 	public void deleteMember(Integer memberId) {

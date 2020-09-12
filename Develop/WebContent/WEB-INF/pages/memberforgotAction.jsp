@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>會員登入</title>
+<title>忘記密碼</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -81,6 +82,7 @@
 	width: 100px;
 	height: 30px;
 }
+}
 </style>
 <script type="text/javascript">
 	var code;
@@ -155,6 +157,8 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="MemberAdminPages"
+						class="nav-link"><span>Admin</span></a></li>
 					<li class="nav-item"><a href="index.html#home-section"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
@@ -176,7 +180,7 @@
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('../../images/bg_3.jpg');"
+		style="background-image: url('images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -195,56 +199,28 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員登入</h3>
-				<form action="loginsystem.controller" method="post"
-					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;"
+				<h3 class="mb-5">忘記密碼</h3>
+				<form action="memberforgot.controller" method="post"
+					class="p-5 bg-light" style="position: relative; border: 1px solid;"
 					onsubmit="return submitFunc()">
-					<div id="memo">*為必填</div>
 					<div class="form-group">
-						<label for="memberAccount">帳號 *</label> <span id="accountsp"
+						<label for="memberPwd">密碼</label> <span id="pwdsp"
 							class="notice"></span><br />
-						<input type="text" id="account1" class="form-control"
-							name="memberAccount" required="required"
-							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
-							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
+							${newPwd}
 					</div>
 					<div class="form-group">
-						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <a href="MemberForgot">忘記密碼？</a>
-						<input type="password" id="pwd1" class="form-control"
-							name="memberPwd" required="required"
-							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
-							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
-					</div>
-
-					<div class="form-group">
-						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br />
-						<div class="v_code">
-							<div class="code_show">
-								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>
-							</div>
-							<div class="input_code">
-								<label for="inputCode">驗證碼：</label> <input type="text"
-									id="inputCode" name="inputCode" required="required" /> <span id="text_show">${errors.incode}</span>
-							</div>
-						</div>
-						<input  id="Button1" type="submit" value="登入" class="btn py-3 px-4 btn-primary">
-						<span>${errors.msg}</span>
+						<a href='<c:url value="/loginPage"/>'>回到登入</a><br/>
 					</div>
 
 				</form>
+				<div class="form-group"></div>
 			</div>
 		</div>
 	</section>
-
-
-
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">

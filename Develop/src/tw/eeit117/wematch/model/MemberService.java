@@ -3,6 +3,8 @@ package tw.eeit117.wematch.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,8 +24,8 @@ public class MemberService {
 		return mDAO.insertMember(memberAccount, memberPwd);
 	}
 	
-	public void updateMember(Member member) {
-		mDAO.updateMember(member);
+	public void updateMember(Member member,HttpSession HttpSession) {
+		mDAO.updateMember(member, HttpSession);
 	}
 	
 	public Member selectMember(String memberAccount, String memberPwd) {
@@ -32,6 +34,10 @@ public class MemberService {
 	
 	public Member selectMemberById(int memberId) {
 		return mDAO.selectMemberById(memberId);
+	}
+	
+	public Member selectMemberByAccount(String memberAccount) {
+		return mDAO.selectMemberByAccount(memberAccount);
 	}
 	
 	public List<Member> selectAllMember() {
