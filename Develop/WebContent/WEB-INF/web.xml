@@ -51,7 +51,6 @@
 		<filter-name>myCharacterEncoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
 	<resource-ref>
 		<description>SQLServerJDBCConnection</description>
 		<res-ref-name>connectSQLServerJdbc/WeMatch</res-ref-name>
