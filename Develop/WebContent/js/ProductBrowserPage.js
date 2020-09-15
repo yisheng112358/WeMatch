@@ -6,6 +6,7 @@ $(document).ready(() => {
 
     $.ajax({
         url: "RetrieveProductServlet.do",
+        // url: "<c:url value='/RetrieveProductServlet.do' />",
         data: {
             action: "RetrieveProduct"
         },
