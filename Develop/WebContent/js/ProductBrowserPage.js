@@ -5,11 +5,13 @@ $(document).ready(() => {
     var totalPage = 0; // 全部頁數
 
     $.ajax({
-        url: "RetrieveProductServlet.do",
+        url: "RetrieveProductServlet.co",
+        // url: "RetrieveProductServlet.do",
         // url: "<c:url value='/RetrieveProductServlet.do' />",
-        data: {
-            action: "RetrieveProduct"
-        },
+        // data: {
+        //     // action: "RetrieveProduct"
+        //     action: "RetrieveProduct"
+        // },
         type: "get",
         dataType: "json",
         success: function(data) {
