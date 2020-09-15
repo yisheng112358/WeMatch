@@ -13,15 +13,16 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- 建立Web版的IoC容器 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/beans.config.xml</param-value>
 	</context-param>
-
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- Session-per-request -->
 	<filter>
 		<filter-name>OpenSessionViewFilter1</filter-name>
 		<filter-class>tw.wematch.util.OpenSessionViewFilter</filter-class>
@@ -36,11 +37,15 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<resource-ref>
-		<description>SQLServerJDBCConnection</description>
-		<res-ref-name>connectSQLServerJdbc/WeMatch</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-	</resource-ref>
+	<!-- 在filter下方比較安全 -->
+	<servlet>
+		<servlet-name>mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 </web-app>

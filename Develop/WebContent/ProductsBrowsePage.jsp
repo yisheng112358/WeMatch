@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +49,7 @@ h3:active {
 	background: rgba(255, 255, 255, .8);
 }
 </style>
+<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -278,9 +280,9 @@ h3:active {
 	<script src="js/aos.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
+<!-- 	<script -->
+<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+<!-- 	<script src="js/google-map.js"></script> -->
 	<script src="js/main.js"></script>
 
 	<script src="js/ProductBrowserPage.js" type="text/javascript"></script>
