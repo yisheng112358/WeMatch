@@ -9,38 +9,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<!-- 啟動註釋功能 -->
 	<context:annotation-config />
+	<!-- 啟動註釋功能所掃描的系統範圍 -->
 	<context:component-scan
 		base-package="tw.eeit117.wematch" />
-
-	<bean id="sqlserverdataSource"
-		class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName"
-			value="java:comp/env/connectSQLServerJdbc/WeMatch" />
-	</bean>
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="sqlserverdataSource" />
-		<property name="packagesToScan" value="tw.eeit117.wematch" />
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean id="productBeanDAO"
-		class="tw.eeit117.wematch.product.model.ProductBeanDAO">
-		<constructor-arg ref="sessionFactory" />
-	</bean>
-
-	<bean id="productBeanService"
-		class="tw.eeit117.wematch.product.model.ProductBeanService">
-		<constructor-arg ref="productBeanDAO" />
-	</bean>
 
 </beans>
