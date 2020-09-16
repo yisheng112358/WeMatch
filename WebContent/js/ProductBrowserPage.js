@@ -13,11 +13,11 @@ $(document).ready(() => {
         dataType: "json",
         success: function(data) {
             // 上傳檔案
-            function uploadDataToTable(producCategory) {
+            function uploadDataToTable(productCategory) {
                 var txt = ' ';
                 var dataLength = 0;
                 for (let i = 0; i < data.length; i++) {
-                    if (data[i].category == producCategory) {
+                    if (data[i].category == productCategory) {
 
                         var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(data[i].thumbnail)));
                         txt += "<tr><td>" + "<a href='searchGame?productName=" + data[i].productName + "'><img src='data:image/jpg;base64," + base64String + "' width='230px'></a>" +
@@ -28,48 +28,48 @@ $(document).ready(() => {
                     }
                 }
                 // txt += ' ';
-                $("#content" + producCategory).append(txt);
+                $("#content" + productCategory).append(txt);
 
                 // 計算總頁數
                 totalPage = Math.ceil(dataLength / itemPerPage);
 
                 // 建立頁面數字連結
-                $("#page" + producCategory).append('<br/');
-                $("#page" + producCategory).append('<h3 id="pre' + producCategory + '"> << </h3>');
+                $("#page" + productCategory).append('<br/');
+                $("#page" + productCategory).append('<h3 id="pre' + productCategory + '"> << </h3>');
 
                 for (let i = 0; i < totalPage; i++) {
                     // 建立頁面數字
-                    $("#page" + producCategory).append('<h3>' + (i + 1) + '</h3>');
+                    $("#page" + productCategory).append('<h3>' + (i + 1) + '</h3>');
 
-                    $("#page" + producCategory + " h3").eq(i + 1).click(() => {
-                        $("#content" + producCategory + " tr").hide();
+                    $("#page" + productCategory + " h3").eq(i + 1).click(() => {
+                        $("#content" + productCategory + " tr").hide();
                         for (let item = i * itemPerPage; item < (i + 1) * itemPerPage; item++) {
-                            $("#content" + producCategory + " tr").eq(item).show();
+                            $("#content" + productCategory + " tr").eq(item).show();
                         }
                         nowPage = i + 1;
                         $("#nowPage").text(nowPage);
                     })
                 }
-                $("#page" + producCategory).append('<h3 id="next' + producCategory + '">>></h3>');
+                $("#page" + productCategory).append('<h3 id="next' + productCategory + '">>></h3>');
 
                 // 上一頁
-                $("#pre" + producCategory).click(() => {
+                $("#pre" + productCategory).click(() => {
                         if (nowPage > 1) {
                             nowPage = nowPage - 1;
-                            $("#page" + producCategory + " h3").eq(nowPage).click();
+                            $("#page" + productCategory + " h3").eq(nowPage).click();
                             $("#nowPage").text(nowPage);
                         }
                     })
                     // 下一頁
-                $("#next" + producCategory).click(() => {
+                $("#next" + productCategory).click(() => {
                         if (nowPage < totalPage) {
                             nowPage = nowPage + 1;
-                            $("#page" + producCategory + " h3").eq(nowPage).click();
+                            $("#page" + productCategory + " h3").eq(nowPage).click();
                             $("#nowPage").text(nowPage);
                         }
                     })
                     // 初次建立
-                $("#page" + producCategory + " h3").eq(1).click();
+                $("#page" + productCategory + " h3").eq(1).click();
 
             }
 

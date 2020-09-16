@@ -1,7 +1,5 @@
-package tw.eeit117.wematch.booking;
+package tw.eeit117.wematch.model;
 
-import java.util.Arrays;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "Booking")
-@Component
+@Component("Booking")
 public class bookingBean {
 	private Integer bookingId;
 	private String bookingDate;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>會員登入</title>
+<title>會員資料</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -75,7 +75,7 @@
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('../../images/bg_3.jpg');"
+		style="background-image: url('images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -94,48 +94,56 @@
 			</div>
 		</div>
 	</section>
-
+	<script type="text/javascript">
+	alert('小日曆的圖');
+	</script>
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員登入</h3>
-				<form action="loginsystem.controller" method="post"
-					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;" onsubmit="return submitFunc()">
-					<div id="memo">*為必填</div>
+				<h3 class="mb-5">會員資料</h3>
+				<form class="p-5 bg-light"
+					style="position: relative; border: 1px solid;" method="post">
 					<div class="form-group">
-						<label for="memberAccount">帳號 *</label> <span id="accountsp"
-							class="notice"></span><br /> <a href="SignUpPage.jsp">忘記帳號？</a>
-						<input type="text" id="account1" class="form-control"
-							name="memberAccount" required="required"
-							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
-							autocomplete="on" onblur="checkAccount()">
-							<span>${errors.name}</span>
+						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
 					</div>
 					<div class="form-group">
-						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <a href="SignUpPage.jsp">忘記密碼？</a>
-						<input type="password" id="pwd1" class="form-control"
-							name="memberPwd" required="required"
-							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
-							maxlength="20" onblur="checkPwd()">
-							<span>${errors.pwd}</span>
+						<label>姓名：</label> <label for="memberAccount">${name}</label>
 					</div>
-
 					<div class="form-group">
-						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br /> <input type="submit"
-							value="登入" class="btn py-3 px-4 btn-primary">
-							<span>${errors.msg}</span>
+						<label for="nickname">綽號：</label> <label>${nickname}</label>
 					</div>
-
+					<div class="form-group">
+						<label for="gender">性別：</label> <label>${gender}</label>
+					</div>
+					<div class="form-group">
+						<label for="memberEmail">Email：</label> <label>${email}</label>
+					</div>
+					<div class="form-group">
+						<label for="birthdayDate">生日：</label> <label>${birthday}</label>
+					</div>
+					<div class="form-group">
+						<label for="starSign">星座：</label> <label>${starSign}</label>
+					</div>
+					<div class="form-group">
+						<label for="city">居住/生活城市：</label> <label>${city}</label>
+					</div>
+					<div class="form-group">
+						<label for="bloodType">血型：</label> <label>${bloodtype}</label>
+					</div>
+					<div class="form-group">
+						<label for="hobbies">興趣喜好：</label> <label>${hobbies}</label>
+					</div>
+					<div class="form-group">
+						<label for="selfIntro">關於我：</label> <label>${selfintro}</label>
+					</div>
+					<div class="form-group">
+						<a href="<c:url value='MemberPage_update'/>">修改</a> <br />
+					</div>
 				</form>
 			</div>
 		</div>
 	</section>
-
-
-
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">

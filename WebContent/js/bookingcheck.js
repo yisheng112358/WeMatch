@@ -24,6 +24,10 @@ $("#button").click(function(){
 //判斷有多少個方框被勾選
 
 
+
+
+
+
 $(document).ready(function() {
 	var x=document.getElementById("test1")
 	var y=x.value;
@@ -31,7 +35,7 @@ $(document).ready(function() {
     var z=y.includes("Dumbbells1")   
                                                                 // 當VALUE有值時候  設置不可預定
 	if(z){                                           
-        $("#image1").attr("src","images/ordered.jpg")
+        $("#image1").attr("src","../images/ordered.jpg")
         $("#Dumbbells1").attr("disabled","disabled")
         $("#image1").attr('onclick','null').unbind('click');
 		}
@@ -44,7 +48,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells2")  
 
 	if(z){                                               
-        $("#image2").attr("src","images/ordered.jpg")
+        $("#image2").attr("src","../images/ordered.jpg")
         $("#Dumbbells2").attr("disabled","disabled")
         $("#image2").attr('onclick','null').unbind('click');
 		}
@@ -58,7 +62,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells3") 
 	
 	if(z){                                               
-        $("#image3").attr("src","images/ordered.jpg")
+        $("#image3").attr("src","../images/ordered.jpg")
         $("#Dumbbells3").attr("disabled","disabled")
         $("#image3").attr('onclick','null').unbind('click');
 		}
@@ -72,7 +76,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells4") 
 	
 	if(z){                                               
-        $("#image4").attr("src","images/ordered.jpg")
+        $("#image4").attr("src","../images/ordered.jpg")
         $("#Dumbbells4").attr("disabled","disabled")
         $("#image4").attr('onclick','null').unbind('click');
 		}
@@ -85,7 +89,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells5") 
 	
 	if(z){                                               
-        $("#image5").attr("src","images/ordered.jpg")
+        $("#image5").attr("src","../images/ordered.jpg")
         $("#Dumbbells5").attr("disabled","disabled")
         $("#image5").attr('onclick','null').unbind('click');
 		}
@@ -98,7 +102,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells6") 
 	
 	if(z){                                               
-        $("#image6").attr("src","images/ordered.jpg")
+        $("#image6").attr("src","../images/ordered.jpg")
         $("#Dumbbells6").attr("disabled","disabled")
         $("#image6").attr('onclick','null').unbind('click');
 		}
@@ -111,7 +115,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells7") 
 	
 	if(z){                                               
-        $("#image7").attr("src","images/ordered.jpg")
+        $("#image7").attr("src","../images/ordered.jpg")
         $("#Dumbbells7").attr("disabled","disabled")
         $("#image7").attr('onclick','null').unbind('click');
 		}
@@ -124,7 +128,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells8") 
 	
 	if(z){                                               
-        $("#image8").attr("src","images/ordered.jpg")
+        $("#image8").attr("src","../images/ordered.jpg")
         $("#Dumbbells8").attr("disabled","disabled")
         $("#image8").attr('onclick','null').unbind('click');
 		}
@@ -137,7 +141,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells9") 
 	
 	if(z){                                               
-        $("#image9").attr("src","images/ordered.jpg")
+        $("#image9").attr("src","../images/ordered.jpg")
         $("#Dumbbells9").attr("disabled","disabled")
         $("#image9").attr('onclick','null').unbind('click');
 		}
@@ -150,7 +154,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells10") 
 	
 	if(z){                                               
-        $("#image10").attr("src","images/ordered.jpg")
+        $("#image10").attr("src","../images/ordered.jpg")
         $("#Dumbbells10").attr("disabled","disabled")
         $("#image10").attr('onclick','null').unbind('click');
 		}
@@ -163,7 +167,7 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells11") 
 	
 	if(z){                                               
-        $("#image11").attr("src","images/ordered.jpg")
+        $("#image11").attr("src","../images/ordered.jpg")
         $("#Dumbbells11").attr("disabled","disabled")
         $("#image11").attr('onclick','null').unbind('click');
 		}
@@ -176,19 +180,21 @@ $(document).ready(function() {
 	var z=y.includes("Dumbbells12") 
 	
 	if(z){                                               
-        $("#image12").attr("src","images/ordered.jpg")
+        $("#image12").attr("src","../images/ordered.jpg")
         $("#Dumbbells12").attr("disabled","disabled")
         $("#image12").attr('onclick','null').unbind('click');
 		}
 	});
+	
+		
 	
 	
 
 	
 	
 	// $("#reset").click(function(){                                 //click事件 之後 重製所有圖片
-//             $("#image1").attr("src","images/star.gif");      
-//             $("#image2").attr("src","images/star.gif");      
-//             $("#image3").attr("src","images/star.gif");      
-//             $("#image4").attr("src","images/star.gif");      
+//             $("#image1").attr("src","../images/star.gif");      
+//             $("#image2").attr("src","../images/star.gif");      
+//             $("#image3").attr("src","../images/star.gif");      
+//             $("#image4").attr("src","../images/star.gif");      
 // });

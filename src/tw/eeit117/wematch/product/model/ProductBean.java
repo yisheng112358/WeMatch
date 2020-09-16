@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.product;
+package tw.eeit117.wematch.product.model;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "Product")
 @Component
-public class Product {
+public class ProductBean {
 	private Integer productID;
 	private String category;
 	private String productName;
@@ -24,10 +24,10 @@ public class Product {
 	private byte[] thumbnail;
 	private byte[] detailImg;
 
-	public Product() {
+	public ProductBean() {
 	}
 
-	public Product(String category, String productName, double price, Integer stock, String productDescription,
+	public ProductBean(String category, String productName, double price, Integer stock, String productDescription,
 			byte[] thumbnail, byte[] detailImg) {
 		this.category = category;
 		this.productName = productName;
