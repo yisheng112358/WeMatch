@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -84,18 +84,19 @@
 				<div class="col-md-9 ftco-animate pb-5 text-center">
 					<h1 class="mb-3 bread">Our Stories</h1>
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index.html">Home <i
-								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
-							href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog
-							Single <i class="ion-ios-arrow-forward"></i>
+						<li class="nav-item"><a href="<c:url value='/loginPage'/>"
+						class="nav-link"><span>Home</span></a></li></span> <span class="mr-2"><a href="blog.html">Blog <i
+								class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i
+							class="ion-ios-arrow-forward"></i>
 						</span>
 					</p>
+
 				</div>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-	alert('小日曆的圖');
+		alert('小日曆的圖');
 	</script>
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">

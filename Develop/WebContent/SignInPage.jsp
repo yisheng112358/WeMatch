@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,108 @@
 	text-align: right;
 	padding-right: 50px;
 }
+
+.v_code {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.v_code>input {
+	width: 60px;
+	height: 36px;
+	margin-top: 10px;
+}
+
+.code_show {
+	overflow: hidden;
+}
+
+.code_show span {
+	display: block;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.code_show a {
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.code {
+	font-style: italic;
+	background-color: #f5f5f5;
+	color: blue;
+	font-size: 30px;
+	letter-spacing: 3px;
+	font-weight: bolder;
+	float: left;
+	cursor: pointer;
+	padding: 0 5px;
+	text-align: center;
+}
+
+#inputCode {
+	width: 100px;
+	height: 30px;
+}
 </style>
+<script type="text/javascript">
+	var code;
+	function createCode() {
+		code = "";
+		var codeLength = 6; //驗證碼的長度
+		var checkCode = document.getElementById("checkCode");
+		var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c',
+				'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+				'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
+				'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+				'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+		for (var index = 0; index < codeLength; index++) {
+			var charNum = Math.floor(Math.random() * 52);
+			code += codeChars[charNum];
+		}
+		if (checkCode) {
+			checkCode.className = "code";
+			checkCode.innerHTML = code;
+		}
+	}
+	function validateCode() {
+		var inputCode = document.getElementById("inputCode").value;
+		var textShow = document.getElementById("text_show")
+		if (inputCode.length <= 0) {
+			textShow.innerHTML = "請輸入驗證碼";
+			textShow.style.color = "red";
+		} else if (inputCode.toUpperCase() != code.toUpperCase()) {
+			textShow.innerHTML = "您輸入的驗證碼有誤";
+			textShow.style.color = "red";
+			createCode();
+		} else {
+			textShow.innerHTML = "驗證碼正確";
+			textShow.style.color = "green";
+		}
+	}
+	function checkCode() {
+		var btn = document.getElementById("Button1");
+		btn.onclick = function() {
+			validateCode();
+		}
+	}
+	window.onload = function() {
+		checkCode();
+		createCode();
+		document.getElementById("checkCode").onclick = function() {
+			createCode()
+		}
+		linkbt.onclick = function() {
+			createCode()
+		}
+		inputCode.onclick = function() {
+			validateCode();
+		}
+	}
+</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -102,31 +203,39 @@
 				<h3 class="mb-5">會員登入</h3>
 				<form action="loginsystem.controller" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;" onsubmit="return submitFunc()">
+					style="position: relative; border: 1px solid;"
+					onsubmit="return submitFunc()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
-							class="notice"></span><br /> <a href="SignUpPage.jsp">忘記帳號？</a>
+							class="notice"></span><br />
 						<input type="text" id="account1" class="form-control"
 							name="memberAccount" required="required"
 							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
-							autocomplete="on" onblur="checkAccount()">
-							<span>${errors.name}</span>
+							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <a href="SignUpPage.jsp">忘記密碼？</a>
+							class="notice"></span><br /> <a href="MemberForgot">忘記密碼？</a>
 						<input type="password" id="pwd1" class="form-control"
 							name="memberPwd" required="required"
 							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
-							maxlength="20" onblur="checkPwd()">
-							<span>${errors.pwd}</span>
+							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
 
 					<div class="form-group">
-						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br /> <input type="submit"
-							value="登入" class="btn py-3 px-4 btn-primary">
-							<span>${errors.msg}</span>
+						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br />
+						<div class="v_code">
+							<div class="code_show">
+								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>
+							</div>
+							<div class="input_code">
+								<label for="inputCode">驗證碼：</label> <input type="text"
+									id="inputCode" name="inputCode" required="required" /> <span id="text_show">${errors.incode}</span>
+							</div>
+						</div>
+						<input  id="Button1" type="submit" value="登入" class="btn py-3 px-4 btn-primary">
+						<span>${errors.msg}</span>
 					</div>
 
 				</form>

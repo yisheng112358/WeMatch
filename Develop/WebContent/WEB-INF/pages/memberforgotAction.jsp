@@ -159,7 +159,7 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="MemberAdminPages"
 						class="nav-link"><span>Admin</span></a></li>
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -208,12 +208,11 @@
 					class="p-5 bg-light" style="position: relative; border: 1px solid;"
 					onsubmit="return submitFunc()">
 					<div class="form-group">
-						<label for="memberPwd">密碼</label> <span id="pwdsp"
-							class="notice"></span><br />
-							${newPwd}
+						<label for="memberPwd">密碼</label> <span id="pwdsp" class="notice"></span><br />
+						${newPwd}
 					</div>
 					<div class="form-group">
-						<a href='<c:url value="/loginPage"/>'>回到登入</a><br/>
+						<a href='<c:url value="/loginPage"/>'>回到登入</a><br />
 					</div>
 
 				</form>

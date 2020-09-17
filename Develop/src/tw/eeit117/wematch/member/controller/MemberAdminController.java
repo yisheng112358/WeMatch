@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.controller;
+package tw.eeit117.wematch.member.controller;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import tw.eeit117.wematch.model.Member;
-import tw.eeit117.wematch.model.MemberService;
+import tw.eeit117.wematch.member.model.Member;
+import tw.eeit117.wematch.member.model.MemberService;
 
-@Controller
+@Controller("MemberAdminController")
 public class MemberAdminController {
 	
 	@Autowired
@@ -74,7 +74,8 @@ public class MemberAdminController {
 	}
 	
 	@RequestMapping(path = "/UpdateSend", method = RequestMethod.POST)
-	public String UpdateSend(@ModelAttribute("Member")Member member, Model m, HttpSession session) {
+	public String UpdateSend(@ModelAttribute("Member")Member member, Model m, HttpSession session) {		
+		session.setAttribute("memberAccount", member.getMemberAccount());
 		session.setAttribute("name", member.getMemberName());
 		session.setAttribute("nickname", member.getNickname());
 		session.setAttribute("gender", member.getGender());
@@ -85,6 +86,7 @@ public class MemberAdminController {
 		session.setAttribute("booldtype", member.getBloodType());
 		session.setAttribute("hobbies", member.getHobbies());
 		session.setAttribute("selfinfo", member.getSelfIntro());
+		memberService.adminUpdateMember(member, session);
 		
 		return "MemberAdminPage_r";
 	}

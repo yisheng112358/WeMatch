@@ -6,8 +6,5 @@
  <definition name="Member" extends="template-def">  
         <put-attribute name="body"  value="/WEB-INF/pages/MemberPage_update.jsp" />  
     </definition>
- <definition name="MemberAdmin" extends="template-def">  
-        <put-attribute name="body"  value="/WEB-INF/pages/MemberAdminPage.jsp" />  
-    </definition>
     
 </tiles-definitions>

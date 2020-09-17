@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface IProductBeanDAO {
 	public List<ProductBean> selectAll();
+
+	public ProductBean insert(ProductBean productBean);
 }

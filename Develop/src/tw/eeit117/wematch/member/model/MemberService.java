@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.model;
+package tw.eeit117.wematch.member.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,6 +28,10 @@ public class MemberService {
 		mDAO.updateMember(member, HttpSession);
 	}
 	
+	public void adminUpdateMember(Member member, HttpSession HttpSession) {
+		mDAO.adminUpdateMember(member, HttpSession);
+	}
+	
 	public Member selectMember(String memberAccount, String memberPwd) {
 		return mDAO.selectMember(memberAccount, memberPwd);
 	}
@@ -46,5 +50,9 @@ public class MemberService {
 	
 	public void deleteMember(Integer memberId) {
 		mDAO.deleteMember(memberId);
+	}
+	
+	public String checkMemberAccount(String memberAccount) {
+		return mDAO.checkMemberAccount(memberAccount);
 	}
 }

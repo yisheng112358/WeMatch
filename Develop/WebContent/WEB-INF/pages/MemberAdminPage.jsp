@@ -56,7 +56,7 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="MemberAdminPages"
 						class="nav-link"><span>Admin</span></a></li>
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -121,11 +121,9 @@
 									<td>${status.count}</td>
 									<td>${result.memberId}</td>
 									<td>${result.memberAccount}</td>
-									<td>
-									<a
+									<td><a
 										href="<c:url value='/preUpdate?id=${result.memberId}' />">查詢</a>
-										<a
-										href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
+										<a href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
 									</td>
 								</tr>
 							</c:forEach>

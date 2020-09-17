@@ -57,7 +57,7 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="MemberAdminPages"
 						class="nav-link"><span>Admin</span></a></li>
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -119,8 +119,8 @@
 								<td><input type="password" id="memberPwd"
 									class="form-control" name="memberPwd" maxlength="20" /></td>
 								<td>${errors.msg}</td>
-								<td><input type="submit" value="更新" class="btn py-3 px-4 btn-primary">
-								</td>
+								<td><input type="submit" value="更新"
+									class="btn py-3 px-4 btn-primary"></td>
 							</tr>
 						</tbody>
 					</table>

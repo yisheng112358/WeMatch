@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.model;
+package tw.eeit117.wematch.member.model;
 
 import java.util.Date;
 

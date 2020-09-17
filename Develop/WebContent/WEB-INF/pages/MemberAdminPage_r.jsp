@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -135,8 +135,8 @@
 						<label for="selfIntro">關於我：</label> <label>${Member.selfIntro}</label>
 					</div>
 					<div class="form-group">
-						<a href="<c:url value='/MemberPage_Adminupdate'/>">修改</a>
-						<a href="<c:url value='/MemberAdminPage'/>">返回</a>
+						<a href="<c:url value='/MemberPage_Adminupdate'/>">修改</a> <a
+							href="<c:url value='/MemberAdminPage'/>">返回</a>
 					</div>
 				</form>
 			</div>

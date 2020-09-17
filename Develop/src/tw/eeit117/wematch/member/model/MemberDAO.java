@@ -1,8 +1,9 @@
-package tw.eeit117.wematch.model;
+package tw.eeit117.wematch.member.model;
 
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
@@ -111,6 +112,25 @@ public class MemberDAO {
 		query.setParameter("account", HttpSession.getAttribute("Account").toString());
 		query.executeUpdate();
 	}
+	
+	public void adminUpdateMember(Member member, HttpSession HttpSession) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlstr = "Update Member set memberName=:name, nickname=:nickname, gender=:gender, memberEmail=:mail, birthdayDate=:birthday, starSign=:starSign, city=:city, bloodType=:bloodType, hobbies=:hobbies, selfIntro=:selfIntro where memberAccount=:account";
+		Query<Member> query = (Query<Member>) session.createQuery(hqlstr);
+		query.setParameter("name", member.getMemberName());
+		query.setParameter("nickname", member.getNickname());
+		query.setParameter("gender", member.getGender());
+		query.setParameter("mail", member.getMemberEmail());
+		query.setParameter("birthday", member.getBirthdayDate());
+		query.setParameter("starSign", member.getStarSign());
+		query.setParameter("city", member.getCity());
+		query.setParameter("bloodType", member.getBloodType());
+		query.setParameter("hobbies", member.getHobbies());
+		query.setParameter("selfIntro", member.getSelfIntro());
+		query.setParameter("account", member.getMemberAccount());
+		query.executeUpdate();
+	}
 
 	public void deleteMember(Integer memberId) {
 		Session session = sessionFactory.getCurrentSession();
@@ -121,5 +141,22 @@ public class MemberDAO {
 
 		Member resultAccount = query.uniqueResult();
 		session.delete(resultAccount);
+	}
+	
+	public String checkMemberAccount(String memberAccount) {
+		Session session = sessionFactory.getCurrentSession();
+		String hqlstr = "FROM Member WHERE memberAccount=:account";
+		String mAccount = "";
+		try {
+			Member m = (Member)session.createQuery(hqlstr).setParameter("account", memberAccount).uniqueResult();
+			mAccount = m.getMemberAccount();
+		} catch (NoResultException ex) {
+			;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("ErrorMsg=" + ex.getMessage());
+			mAccount = "Error: 資料庫異常，請檢查資料庫";
+		}
+		return mAccount;
 	}
 }

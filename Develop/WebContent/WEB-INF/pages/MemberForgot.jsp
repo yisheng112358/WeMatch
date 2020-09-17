@@ -159,7 +159,7 @@
 				<ul class="navbar-nav nav ml-auto">
 					<li class="nav-item"><a href="MemberAdminPages"
 						class="nav-link"><span>Admin</span></a></li>
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -210,9 +210,8 @@
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
-							class="notice"></span><br />
-						<input type="text" id="account1" class="form-control"
-							name="memberAccount" required="required"
+							class="notice"></span><br /> <input type="text" id="account1"
+							class="form-control" name="memberAccount" required="required"
 							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
 							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
@@ -226,8 +225,8 @@
 									id="inputCode" name="inputCode" /> <span id="text_show">${errors.incode}</span>
 							</div>
 						</div>
-						<a href='<c:url value="/loginPage"/>'>回到登入</a><br/>
-						<input id="Button1" type="submit" value="送出"
+						<a href='<c:url value="/loginPage"/>'>回到登入</a><br /> <input
+							id="Button1" type="submit" value="送出"
 							class="btn py-3 px-4 btn-primary"> <span>${errors.msg}</span>
 					</div>
 

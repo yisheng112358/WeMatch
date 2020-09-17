@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.controller;
+package tw.eeit117.wematch.member.controller;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -11,10 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,38 +29,37 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import tw.eeit117.wematch.model.Member;
-import tw.eeit117.wematch.model.MemberDAO;
-import tw.eeit117.wematch.model.MemberService;
+import tw.eeit117.wematch.member.model.Member;
+import tw.eeit117.wematch.member.model.MemberDAO;
+import tw.eeit117.wematch.member.model.MemberService;
 
-@Controller
-@SessionAttributes(names = { "MemberAccount", "MemberPwd", "Member" })
+@Controller("MemberController")
+@SessionAttributes(names = { "MemberAccount", "MemberPwd", "Member", "MemberStatus" })
 public class MemberController {
 	@Autowired
 	private HttpServletRequest request;
 
 	@Autowired
 	private MemberService memberService;
-	
-	@RequestMapping(path = "/loginPage", method = RequestMethod.GET)
+
+	@GetMapping("/loginPage")
 	public String loginPage() {
 		return "SignInPage";
 	}
-	
-	@RequestMapping(path = "/register", method = RequestMethod.GET)
+
+	@GetMapping("/register")
 	public String register() {
 		return "registerPage";
 	}
 
-	@RequestMapping(path = "/loginsystem.controller", method = RequestMethod.POST)
+	@PostMapping("/loginsystem.controller")
 	public String checkLogin(HttpServletRequest request,
-			@RequestParam(name = "memberAccount", required = true ) String myUser,
-			@RequestParam(name = "memberPwd", required = true) String myPwd, Model m, HttpSession session) {
+			@PathVariable @RequestParam("memberAccount") String myUser,
+			@PathVariable @RequestParam("memberPwd") String myPwd,
+			Model m, HttpSession session) {
+		System.out.println(myUser);
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
-
-		ServletContext app = request.getServletContext();
-		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(app);
 
 		// MemberPage
 		if (myUser == null || myUser.length() == 0) {
@@ -66,10 +71,10 @@ public class MemberController {
 		if (errors != null && !errors.isEmpty()) {
 			return "SignInPage";
 		}
-
-		MemberDAO mDAO = (MemberDAO) context.getBean("MemberDAO");
+		System.out.println("ccc");
 		Boolean checkUser = memberService.checkLogin(new Member(myUser, myPwd));
 		Member users = memberService.selectMember(myUser, myPwd);
+		int id = users.getMemberId();
 
 		m.addAttribute("MemberAccount", myUser);
 		m.addAttribute("MemberPwd", myPwd);
@@ -79,10 +84,13 @@ public class MemberController {
 			// AdminPage
 			if (users.getMemberStatus() == 2) {
 				session.setAttribute("Account", myUser);
-				session.setAttribute("Password", myPwd);
+				session.setAttribute("Status", users.getMemberStatus());
+				session.setAttribute("id", id);
 				return "MemberAdminPage";
 			} else {
 				session.setAttribute("Account", myUser);
+				session.setAttribute("Status", users.getMemberStatus());
+				session.setAttribute("id", id);
 				return "MemberPage";
 			}
 		}
@@ -91,10 +99,24 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(path = "/register.controller", method = RequestMethod.POST)
-	public String memberCreate(HttpServletRequest request, @RequestParam(name = "memberAccount") String myUser,
-			@RequestParam(name = "memberPwd") String myPwd, Model m, HttpSession session) {
+	@GetMapping("/MemberForgot")
+	public String MemberForgot() {
+		return "MemberForgot";
+	}
 
+	@PostMapping("/memberforgot.controller")
+	public String memberforgotAction(@RequestParam("memberAccount") String memberAccount) {
+		Member member = memberService.selectMemberByAccount(memberAccount);
+		String pwd = member.getMemberPwd();
+		request.setAttribute("newPwd", pwd);
+		return "memberforgotAction";
+	}
+	
+	@PostMapping("/register.controller")
+	public String memberCreate(HttpServletRequest request, 
+			@PathVariable @RequestParam("memberAccount") String myUser,
+			@PathVariable @RequestParam("memberPwd") String myPwd,
+			Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
@@ -111,17 +133,24 @@ public class MemberController {
 		ServletContext app = request.getServletContext();
 		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(app);
 
-		Boolean check = memberService.insertMember(myUser, myPwd);
-
-		if (check) {
+		Member users = memberService.selectMember(myUser, myPwd);
+		if(users!=null) {
+			Boolean check = memberService.insertMember(myUser, myPwd);
+			
 			m.addAttribute("MemberAccount", myUser);
 			m.addAttribute("MemberPwd", myPwd);
 			session.setAttribute("Account", myUser);
 			session.setAttribute("Password", myPwd);
+			session.setAttribute("Status", users.getMemberStatus());
+			
+			int id = users.getMemberId();
+			
+			session.setAttribute("id", id);
 			return "MemberPage";
+		}else {
+			errors.put("msg", "帳號密碼重複");
+			return "registerPage";
 		}
-		errors.put("msg", "帳號密碼重複");
-		return "registerPage";
 	}
 
 	@RequestMapping(path = "/MemberPage_update", method = RequestMethod.GET)
@@ -130,28 +159,37 @@ public class MemberController {
 		m.addAttribute("Member", member);
 		return "MemberPage_update";
 	}
-	
+
 	@RequestMapping(path = "/MemberPage_DB", method = RequestMethod.POST)
-	public String updateMember(@ModelAttribute("Member")Member member, Model m, HttpSession session) {
+	public String updateMember(@ModelAttribute("Member") Member member, Model m, HttpSession session) {
 		session.setAttribute("name", member.getMemberName());
 		session.setAttribute("nickname", member.getNickname());
 		session.setAttribute("gender", member.getGender());
 		session.setAttribute("email", member.getMemberEmail());
 		session.setAttribute("birthday", member.getBirthdayDate());
-		Date bd = member.getBirthdayDate();
 		session.setAttribute("starSign", member.getStarSign());
 		session.setAttribute("city", member.getCity());
 		session.setAttribute("booldtype", member.getBloodType());
 		session.setAttribute("hobbies", member.getHobbies());
 		session.setAttribute("selfinfo", member.getSelfIntro());
-//		memberService.updateMember(member); 存不進去 目前有500的bug 待處理
-		
+		memberService.updateMember(member, session);
+
 		return "MemberPage";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(path = "/test", method = RequestMethod.GET)
-	public List<Member> test(){
+	public List<Member> test() {
 		return memberService.selectAllMember();
+	}
+
+	@Transactional
+	@PostMapping(value = "/CheckMemberAccount", produces = { "application/json" })
+	public @ResponseBody Map<String, String> checkMemberAccount(@RequestParam("account1") String memberAccount) {
+		System.out.println(memberAccount);
+		Map<String, String> map = new HashMap<>();
+		String mAccount = memberService.checkMemberAccount(memberAccount);
+		map.put("id", mAccount);
+		return map;
 	}
 }

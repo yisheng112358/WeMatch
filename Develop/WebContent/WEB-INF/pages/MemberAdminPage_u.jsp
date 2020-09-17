@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="index.html#home-section"
+					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
 						class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="index.html#programs-section"
 						class="nav-link"><span>Programs</span></a></li>
@@ -102,10 +102,9 @@
 				<h3 class="mb-5">後台更改會員資料</h3>
 				<form:form Action="UpdateSend" method="post" modelAttribute="Member">
 					<div class="form-group">
-						<label for="memberName">姓名：</label>
-						<input type="text" id="memberName" value="林小明"
-							class="form-control" name="memberName" maxlength="20"
-							autocomplete="on">
+						<label for="memberName">姓名：</label> <input type="text"
+							id="memberName" value="林小明" class="form-control"
+							name="memberName" maxlength="20" autocomplete="on">
 					</div>
 					<div class="form-group">
 						<label for="nickname">暱稱：</label><input type="text" id="nickname"
@@ -113,8 +112,7 @@
 							autocomplete="on">
 					</div>
 					<div class="form-group">
-						<label for="gender">性別：</label>
-						<select name="gender">
+						<label for="gender">性別：</label> <select name="gender">
 							<option value="M">男生</option>
 							<option value="F">女生</option>
 							<option value="O">其他</option>
@@ -123,7 +121,8 @@
 					<div class="form-group">
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
-							class="form-control" name="memberEmail" onblur="checkMail()" value="a1234@mail.com">
+							class="form-control" name="memberEmail" onblur="checkMail()"
+							value="a1234@mail.com">
 					</div>
 					<div class="form-group">
 						<label for="birthday">生日：</label> <input type="date"
@@ -190,7 +189,8 @@
 					</div>
 					<div class="form-group">
 						<label for="hobbies">興趣喜好：</label><br /> <label for="movie">
-							<input type="checkbox" name="hobbies" id="movie" value="movie" checked="checked">電影
+							<input type="checkbox" name="hobbies" id="movie" value="movie"
+							checked="checked">電影
 						</label> <label for="sport"> <input type="checkbox" name="hobbies"
 							id="sport" value="sport">運動
 						</label> <label for="reading"> <input type="checkbox"
@@ -205,7 +205,8 @@
 					</div>
 					<div class="form-group">
 						<label for="selfIntro">關於我：</label>
-						<textarea name="selfIntro" cols="30" rows="10" class="form-control">Hi</textarea>
+						<textarea name="selfIntro" cols="30" rows="10"
+							class="form-control">Hi</textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="更新" class="btn py-3 px-4 btn-primary">
