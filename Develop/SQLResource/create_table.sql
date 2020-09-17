@@ -40,3 +40,13 @@ detailImg image,
 addTime DATETIME DEFAULT CURRENT_TIMESTAMP,
 )
 GO
+
+-- (5)影片教學 Fitness Videoflix
+CREATE table Video(
+videoId int primary key not null identity(1,1),
+videoName nvarchar(50) not null,
+videoCategory nvarchar(50) not null,       --背部.胸部.腿部
+videoLink varchar(max) not null,           --Youtube wibsite
+videoDesc nvarchar(max),                   --Description
+)
+GO
