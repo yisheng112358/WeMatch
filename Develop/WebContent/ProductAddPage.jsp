@@ -111,68 +111,69 @@ h3:active {
 		</div>
 	</section>
 
-	<section class="ftco-section ftco-schedule" id="schedule-section">
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
+		id="about-section">
 		<div class="container">
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<span class="subheading">Product</span>
-					<h2 class="mb-4">Training Product</h2>
-					<p>You go far, we help you go further.</p>
+			<div class="row d-flex">
+				<div class="col-md-6 col-lg-5 d-flex">
+					<div class="img d-flex align-self-stretch align-items-center"
+						style="background-image: url(images/bg_1.jpg);"></div>
 				</div>
-			</div>
-			<div class="ftco-schedule">
-				<div class="row">
-					<div class="col-md-4 nav-link-wrap">
-						<div class="nav flex-column nav-pills" id="v-pills-tab"
-							role="tablist" aria-orientation="vertical">
-							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
-								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
-									Fascia gun...</span></a> <a class="nav-link ftco-animate"
-								id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9"
-								role="tab" aria-controls="v-pills-9" aria-selected="false">Yoga
-								<span>Mat, Roller...</span>
-							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
-								data-toggle="pill" href="#v-pills-10" role="tab"
-								aria-controls="v-pills-10" aria-selected="false">Supplement
-								<span>Protein, Vitamin...</span>
-							</a>
-
+				<div class="comment-form-wrap pt-5">
+					<h3 class="mb-5">新增產品</h3>
+					<form action="SignUpJdbcConnServlet.do" method="post"
+						enctype="multipart/form-data" class="p-5 bg-light"
+						style="position: relative; border: 1px solid;"
+						onsubmit="return checkBeforeSubmit();">
+						<div id="memo">*欄位為必填</div>
+						<div class="form-group">
+							<label for="categorySelect">產品類別 *</label><br /> <select
+								name="categorySelect" required="required">
+								<option value="Massage">Massage</option>
+								<option value="Yoga">Yoga</option>
+								<option value="Supplement">Supplement</option>
+							</select>
 						</div>
-					</div>
-					<div class="col-md-8 tab-wrap">
-
-						<div class="tab-content" id="v-pills-tabContent">
-
-							<div class="tab-pane fade show active" id="v-pills-8"
-								role="tabpanel" aria-labelledby="day-8-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentMassager" class="productTable"></table>
-								</div>
-								<div id="pageMassager" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-9" role="tabpanel"
-								aria-labelledby="v-pills-day-9-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentYoga" class="productTable"></table>
-								</div>
-								<div id="pageYoga" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-10" role="tabpanel"
-								aria-labelledby="v-pills-day-10-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentSupplement" class="productTable"></table>
-								</div>
-								<div id="pageSupplement" class="text-center"></div>
-							</div>
-
+						<div class="form-group">
+							<label for="productName">產品名稱 *</label> <span id="productSp"
+								class="notice"></span><br /> <input type="text"
+								id="productNameId" class="form-control" name="productName"
+								required="required" placeholder="最多20個字元" maxlength="20"
+								autocomplete="on" onblur="checkProductName()">
 						</div>
-					</div>
+						<div class="form-group">
+							<label for=productPrice>產品價格 *</label> <span id="productSp"
+								class="notice"></span><br /> <input type="text"
+								id="productPriceId" class="form-control" name="productPrice"
+								required="required" placeholder="最多6位數" maxlength="6"
+								onblur="checkProductPrice()">
+						</div>
+						<div class="form-group">
+							<label for="productStock">庫存 *</label> <span id="stockSp"
+								class="notice"></span><br /> <input type="text"
+								id="productStockId" class="form-control" name="productStock"
+								required="required" onblur="checkProductStock()">
+						</div>
+						<div class="form-group">
+							<label for="productDescription">產品介紹</label>
+							<textarea name="productDescription" cols="30" rows="10"
+								class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="thumbnail">產品縮圖</label> <input type="file"
+								name="thumbnail" multiple>
+						</div>
+						<div class="form-group">
+							<label for="detailImg">產品詳圖</label> <input type="file"
+								name="detailImg" multiple>
+						</div>
+						<div class="form-group">
+							<!-- 							<a href="ProductsManagePage.jsp"> -->
+							<input type="submit" value="新增" class="btn py-3 px-4 btn-primary">
+							<!-- 							</a> -->
+						</div>
+
+					</form>
 				</div>
 			</div>
 		</div>
@@ -270,6 +271,8 @@ h3:active {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
+	<script src="js/ProductAddPage.js" type="text/javascript"></script>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -286,9 +289,6 @@ h3:active {
 	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
 	<!-- 	<script src="js/google-map.js"></script> -->
 	<script src="js/main.js"></script>
-
-	<script src="js/ProductBrowserPage.js" type="text/javascript"></script>
-
 </body>
 
 </html>

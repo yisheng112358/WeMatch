@@ -12,12 +12,12 @@ import tw.eeit117.wematch.product.model.ProductBean;
 import tw.eeit117.wematch.product.model.ProductBeanService;
 
 @Controller
-@RequestMapping("/RetrieveProductServlet.co")
+@RequestMapping("/product")
 public class RetrieveProductController {
 	@Autowired
 	ProductBeanService productBeanService;
 
-	@GetMapping
+	@GetMapping("/retrieveProduct")
 	public @ResponseBody List<ProductBean> retrieveProduct() {
 		return productBeanService.selectAll();
 	}

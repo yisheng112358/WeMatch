@@ -116,11 +116,14 @@ h3:active {
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Product</span>
-					<h2 class="mb-4">Training Product</h2>
-					<p>You go far, we help you go further.</p>
+					<h2 class="mb-4">Product Management</h2>
+					<p>You can add, remove and edit product here.</p>
 				</div>
 			</div>
 			<div class="ftco-schedule">
+				<p style="text-align: right;">
+					<a href="ProductAddPage.jsp" class="btn btn-primary px-5 py-3 mt-3">新增</a>
+				</p>
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">
 						<div class="nav flex-column nav-pills" id="v-pills-tab"
@@ -137,11 +140,9 @@ h3:active {
 								aria-controls="v-pills-10" aria-selected="false">Supplement
 								<span>Protein, Vitamin...</span>
 							</a>
-
 						</div>
 					</div>
 					<div class="col-md-8 tab-wrap">
-
 						<div class="tab-content" id="v-pills-tabContent">
 
 							<div class="tab-pane fade show active" id="v-pills-8"
@@ -287,7 +288,7 @@ h3:active {
 	<!-- 	<script src="js/google-map.js"></script> -->
 	<script src="js/main.js"></script>
 
-	<script src="js/ProductBrowserPage.js" type="text/javascript"></script>
+	<script src="js/ProductManagePage.js" type="text/javascript"></script>
 
 </body>
 

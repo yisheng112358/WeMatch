@@ -27,8 +27,8 @@ $(document).ready(() => {
                             "<a href='searchProduct?productName=" + data[i].productName + "'><img src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
                             '</td><td class="pName" id="' + data[i].productID + '" style="width:200px;">' + data[i].productName +
                             '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
-                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='詳細資訊' style='width:100px;'></a>" +
-                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='加入購物車' style='width:100px;'></a>" +
+                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='修改資訊' style='width:100px;'></a>" +
+                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='刪除商品' style='width:100px;'></a>" +
                             '</td></tr>';
                         dataLength++;
                     }
