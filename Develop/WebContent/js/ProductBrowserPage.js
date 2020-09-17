@@ -5,9 +5,9 @@ $(document).ready(() => {
     var totalPage = 0; // 全部頁數
 
     $.ajax({
-        url: "RetrieveProductServlet.co",
+        url: "product/retrieveProduct",
         // url: "RetrieveProductServlet.do",
-        // url: "<c:url value='/RetrieveProductServlet.do' />",
+        // $url: "<c:url value='/product/retrieveProduct'/>",
         // data: {
         //     // action: "RetrieveProduct"
         //     action: "RetrieveProduct"
@@ -23,10 +23,13 @@ $(document).ready(() => {
                     if (data[i].category == productCategory) {
 
                         var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(data[i].thumbnail)));
-                        txt += "<tr><td>" + "<a href='searchGame?productName=" + data[i].productName + "'><img src='data:image/jpg;base64," + base64String + "' width='230px'></a>" +
-                            '</td><td class="pName" id="' + data[i].productID + '">' + data[i].productName + '</td><td>' + data[i].category + '</td><td>$' + data[i].price +
-                            '</td><td>' + "<a href='searchGame?productName=" + data[i].productName + "'><input class='infobutton' type='button' value='詳細資訊'></a>  <input class='cartbutton' type='button' value='加入購物車'>" +
-                            '</td></tr></a>';
+                        txt += "<tr><td>" +
+                            "<a href='searchProduct?productName=" + data[i].productName + "'><img src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
+                            '</td><td class="pName" id="' + data[i].productID + '" style="width:200px;">' + data[i].productName +
+                            '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
+                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='詳細資訊' style='width:100px;'></a>" +
+                            "<a style='display:block;' href='searchProduct?productName=" + data[i].productName + "'><input class='cartbutton' type='button' value='加入購物車' style='width:100px;'></a>" +
+                            '</td></tr>';
                         dataLength++;
                     }
                 }
