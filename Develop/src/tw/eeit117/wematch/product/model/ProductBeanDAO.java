@@ -50,4 +50,11 @@ public class ProductBeanDAO implements IProductBeanDAO {
 //		return insertState;
 	}
 
+	public String deleteById(Integer productId) {
+		Session session = sessionFactory.getCurrentSession();
+		ProductBean productBean = session.byId(ProductBean.class).load(productId);
+		session.delete(productBean);
+		return null;
+	}
+
 }

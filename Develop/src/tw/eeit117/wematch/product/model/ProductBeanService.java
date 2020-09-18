@@ -21,4 +21,9 @@ public class ProductBeanService implements IProductBeanService {
 		return productDao.insert(productBean);
 	}
 
+	@Override
+	public String deleteById(Integer productId) {
+		return productDao.deleteById(productId);
+	}
+
 }

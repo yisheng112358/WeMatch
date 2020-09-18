@@ -6,4 +6,6 @@ public interface IProductBeanService {
 	public List<ProductBean> selectAll();
 
 	public String insert(ProductBean productBean);
+
+	public String deleteById(Integer productId);
 }
