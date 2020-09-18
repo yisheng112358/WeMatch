@@ -12,16 +12,16 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="../css/flaticon.css">
+<link rel="stylesheet" href="../css/icomoon.css">
+<link rel="stylesheet" href="../css/style.css">
 <style>
 .notice {
 	color: #ff0000;
@@ -91,7 +91,7 @@ h3:active {
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_3.jpg');"
+		style="background-image: url('../images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -116,11 +116,15 @@ h3:active {
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Product</span>
-					<h2 class="mb-4">Training Product</h2>
-					<p>You go far, we help you go further.</p>
+					<h2 class="mb-4">Product Management</h2>
+					<p>You can add, remove and edit product here.</p>
 				</div>
 			</div>
 			<div class="ftco-schedule">
+				<p style="text-align: right;">
+					<a href="/WeMatch_dev/product/addProduct"
+						class="btn btn-primary px-5 py-3 mt-3">新增</a>
+				</p>
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">
 						<div class="nav flex-column nav-pills" id="v-pills-tab"
@@ -137,11 +141,13 @@ h3:active {
 								aria-controls="v-pills-10" aria-selected="false">Supplement
 								<span>Protein, Vitamin...</span>
 							</a>
-
 						</div>
+						<p style="text-align: center;">
+							<a href="/WeMatch_dev/product/browse"
+								class="btn btn-primary px-5 py-3 mt-3">Browse</a>
+						</p>
 					</div>
 					<div class="col-md-8 tab-wrap">
-
 						<div class="tab-content" id="v-pills-tabContent">
 
 							<div class="tab-pane fade show active" id="v-pills-8"
@@ -270,24 +276,24 @@ h3:active {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/aos.js"></script>
+	<script src="../js/jquery.animateNumber.min.js"></script>
+	<script src="../js/scrollax.min.js"></script>
 	<!-- 	<script -->
 	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<!-- 	<script src="js/google-map.js"></script> -->
-	<script src="js/main.js"></script>
+	<!-- 	<script src="../js/google-map.js"></script> -->
+	<script src="../js/main.js"></script>
 
-	<script src="js/ProductBrowserPage.js" type="text/javascript"></script>
+	<script src="../js/ProductManagePage.js" type="text/javascript"></script>
 
 </body>
 

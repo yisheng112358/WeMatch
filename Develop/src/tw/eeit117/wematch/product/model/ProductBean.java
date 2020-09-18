@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "Product")
@@ -20,6 +23,28 @@ public class ProductBean {
 	private String productDescription;
 	private byte[] thumbnail;
 	private byte[] detailImg;
+
+//	@Transient
+//	MultipartFile thumbnailPart;
+//
+//	@Transient
+//	MultipartFile detailImgPart;
+//
+//	public MultipartFile getThumbnailPart() {
+//		return thumbnailPart;
+//	}
+//
+//	public void setThumbnailPart(MultipartFile thumbnailPart) {
+//		this.thumbnailPart = thumbnailPart;
+//	}
+//
+//	public MultipartFile getDetailImgPart() {
+//		return detailImgPart;
+//	}
+//
+//	public void setDetailImgPart(MultipartFile detailImgPart) {
+//		this.detailImgPart = detailImgPart;
+//	}
 
 	public ProductBean() {
 	}
