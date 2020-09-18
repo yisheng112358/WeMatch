@@ -19,20 +19,35 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	@Value("${productTablePersistentClassName}")
 	private String productPersistentClass;
 
+	@Value("${CURE_STATE_SUCCESS}")
+	private String CURE_STATE_SUCCESS;
+
+	@Value("${CURE_STATE_REPEATED}")
+	private String CURE_STATE_REPEATED;
+
 	@Override
 	public List<ProductBean> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
 		return session.createQuery("FROM " + productPersistentClass, ProductBean.class).list();
 	}
 
-	public ProductBean insert(ProductBean productBean) {
+	@Override
+	public String insert(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
-		ProductBean product = session.get(ProductBean.class, productBean.getProductId());
-		if (product == null) {
-			session.save(product);
-			return product;
+//		ProductBean product = session.get(ProductBean.class, productBean.getProductId());
+//		ProductBean product = null;
+		String insertState = "";
+//		if (product == null) {
+		try {
+			session.save(productBean);
+			insertState = CURE_STATE_SUCCESS;
+		} catch (Exception e) {
+			insertState = e.getMessage();
 		}
-		return null;
+		return insertState;
+//		}
+//		insertState = CURE_STATE_REPEATED;
+//		return insertState;
 	}
 
 }

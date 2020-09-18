@@ -17,7 +17,7 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
-	public ProductBean insert(ProductBean productBean) {
+	public String insert(ProductBean productBean) {
 		return productDao.insert(productBean);
 	}
 
