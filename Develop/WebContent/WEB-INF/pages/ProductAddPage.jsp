@@ -12,16 +12,16 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="../css/flaticon.css">
+<link rel="stylesheet" href="../css/icomoon.css">
+<link rel="stylesheet" href="../css/style.css">
 <style>
 .notice {
 	color: #ff0000;
@@ -51,6 +51,7 @@ h3:active {
 }
 </style>
 <link rel="shortcut icon" href="favicon.ico" />
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -91,7 +92,7 @@ h3:active {
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_3.jpg');"
+		style="background-image: url('../images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -117,19 +118,19 @@ h3:active {
 			<div class="row d-flex">
 				<div class="col-md-6 col-lg-5 d-flex">
 					<div class="img d-flex align-self-stretch align-items-center"
-						style="background-image: url(images/bg_1.jpg);"></div>
+						style="background-image: url(../images/bg_1.jpg);"></div>
 				</div>
 				<div class="comment-form-wrap pt-5">
 					<h3 class="mb-5">新增產品</h3>
-					<form action="SignUpJdbcConnServlet.do" method="post"
+					<form action="<c:url value='/product/addProduct' />" method="post"
 						enctype="multipart/form-data" class="p-5 bg-light"
 						style="position: relative; border: 1px solid;"
 						onsubmit="return checkBeforeSubmit();">
 						<div id="memo">*欄位為必填</div>
 						<div class="form-group">
 							<label for="categorySelect">產品類別 *</label><br /> <select
-								name="categorySelect" required="required">
-								<option value="Massage">Massage</option>
+								name="categorySelect" id="categorySelectId" required="required">
+								<option value="Massager">Massager</option>
 								<option value="Yoga">Yoga</option>
 								<option value="Supplement">Supplement</option>
 							</select>
@@ -156,23 +157,23 @@ h3:active {
 						</div>
 						<div class="form-group">
 							<label for="productDescription">產品介紹</label>
-							<textarea name="productDescription" cols="30" rows="10"
-								class="form-control"></textarea>
+							<textarea name="productDescription" id="productDescriptionId"
+								cols="30" rows="10" class="form-control"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="thumbnail">產品縮圖</label> <input type="file"
-								name="thumbnail" multiple>
+								accept=".jpg, .jpeg, .png" name="thumbnail" id="thumbnailId">
 						</div>
+						<div id="thumbnailDisplay" style="width: 200px; height: 200px;"></div>
 						<div class="form-group">
 							<label for="detailImg">產品詳圖</label> <input type="file"
-								name="detailImg" multiple>
+								accept=".jpg, .jpeg, .png" name="detailImg" id="detailImgId">
 						</div>
+						<div id="detailImgDisplay" style="width: 200px; height: 200px;"></div>
 						<div class="form-group">
-							<!-- 							<a href="ProductsManagePage.jsp"> -->
-							<input type="submit" value="新增" class="btn py-3 px-4 btn-primary">
-							<!-- 							</a> -->
+							<input id='btn' type="submit" value="送出"
+								class="btn py-3 px-4 btn-primary">
 						</div>
-
 					</form>
 				</div>
 			</div>
@@ -271,24 +272,24 @@ h3:active {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<script src="js/ProductAddPage.js" type="text/javascript"></script>
+	<script src="../js/ProductAddPage.js" type="text/javascript"></script>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/aos.js"></script>
+	<script src="../js/jquery.animateNumber.min.js"></script>
+	<script src="../js/scrollax.min.js"></script>
 	<!-- 	<script -->
 	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<!-- 	<script src="js/google-map.js"></script> -->
-	<script src="js/main.js"></script>
+	<!-- 	<script src="../js/google-map.js"></script> -->
+	<script src="../js/main.js"></script>
 </body>
 
 </html>
