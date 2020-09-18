@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -68,5 +69,12 @@ public class ProductController {
 			return "ProductsManagePage";
 		}
 		return "ProductsManagePage";
+	}
+
+	@GetMapping("/deleteProduct/{productId}")
+	public String deleteProductData(@PathVariable String productId) {
+		System.out.println("目前正在刪除產品： " + productId);
+		productBeanService.deleteById(Integer.parseInt(productId));
+		return "redirect:/product/manage";
 	}
 }
