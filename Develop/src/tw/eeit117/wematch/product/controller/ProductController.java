@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,11 +54,15 @@ public class ProductController {
 	@PostMapping("/addProduct")
 	public String addProductData(String categorySelect, String productName, Double productPrice, Integer productStock,
 			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) {
+
 		Map<String, String> respInsertState = new HashMap<>();
+
 		try {
 			ProductBean productBean = new ProductBean(categorySelect, productName, productPrice, productStock,
 					productDescription, thumbnail.getBytes(), detailImg.getBytes());
+
 			String productInsertState = productBeanService.insert(productBean);
+
 			if (productInsertState == CURE_STATE_SUCCESS) {
 				respInsertState.put(CURE_STATE_SUCCESS, "新增成功");
 			} else if (productInsertState == CURE_STATE_REPEATED) {
@@ -71,8 +75,8 @@ public class ProductController {
 		return "ProductsManagePage";
 	}
 
-	@GetMapping("/deleteProduct/{productId}")
-	public String deleteProductData(@PathVariable String productId) {
+	@GetMapping(value = "/deleteProduct", params = { "productId" })
+	public String deleteProductData(@RequestParam String productId) {
 		System.out.println("目前正在刪除產品： " + productId);
 		productBeanService.deleteById(Integer.parseInt(productId));
 		return "redirect:/product/manage";
