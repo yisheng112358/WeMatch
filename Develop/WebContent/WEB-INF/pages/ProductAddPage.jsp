@@ -30,7 +30,7 @@
 						<div id="memo">*欄位為必填</div>
 						<div class="form-group">
 							<label for="categorySelect">產品類別 *</label><br /> <select
-								name="categorySelect" id="categorySelectId" required="required">
+								name="category" id="categorySelectId" required="required">
 								<option value="Massager">Massager</option>
 								<option value="Yoga">Yoga</option>
 								<option value="Supplement">Supplement</option>
@@ -46,14 +46,14 @@
 						<div class="form-group">
 							<label for=productPrice>產品價格 *</label> <span id="productSp"
 								class="notice"></span><br /> <input type="text"
-								id="productPriceId" class="form-control" name="productPrice"
+								id="productPriceId" class="form-control" name="price"
 								required="required" placeholder="最多6位數" maxlength="6"
 								onblur="checkProductPrice()">
 						</div>
 						<div class="form-group">
 							<label for="productStock">庫存 *</label> <span id="stockSp"
 								class="notice"></span><br /> <input type="text"
-								id="productStockId" class="form-control" name="productStock"
+								id="productStockId" class="form-control" name="stock"
 								required="required" onblur="checkProductStock()">
 						</div>
 						<div class="form-group">
