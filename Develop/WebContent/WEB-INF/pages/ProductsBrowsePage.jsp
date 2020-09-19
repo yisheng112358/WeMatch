@@ -49,10 +49,12 @@
 								<span>Protein, Vitamin...</span>
 							</a>
 						</div>
-						<p style="text-align: center;">
-							<a href="/WeMatch_dev/product/manage"
-								class="btn btn-primary px-5 py-3 mt-3">Manage</a>
-						</p>
+						<%
+							if (memberStatus.equals("bms")) {
+							out.write(
+							"<p style='text-align: center;'><a href='/WeMatch_dev/product/manage' class='btn btn-primary px-5 py-3 mt-3'>Manage</a></p>");
+						}
+						%>
 					</div>
 					<div class="col-md-8 tab-wrap">
 
@@ -90,11 +92,11 @@
 				</div>
 			</div>
 		</div>
-	</section>	
+	</section>
 
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
 	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
-	
-	</body>
+
+</body>
 </html>

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -31,6 +33,19 @@ public class ProductController {
 	@Value("${CURE_STATE_REPEATED}")
 	private String CURE_STATE_REPEATED;
 
+	// 以下productLogin()、productlogout()兩個方法為暫定，最終還是以會員系統為主。
+	@GetMapping("/login")
+	public String productLogin(HttpSession httpSession) {
+		httpSession.setAttribute("memberStatus", "bms");
+		return "ProductsBrowsePage";
+	}
+
+	@GetMapping("/logout")
+	public String productlogout(HttpSession httpSession) {
+		httpSession.setAttribute("memberStatus", "visitor");
+		return "ProductsBrowsePage";
+	}
+
 	@GetMapping("/retrieve")
 	public @ResponseBody List<ProductBean> retrieveProduct() {
 		return productBeanService.selectAll();
@@ -42,7 +57,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/manage")
-	public String goToProductsManagePage() {
+	public String goToProductsManagePage(HttpSession httpSession) {
 		return "ProductsManagePage";
 	}
 
@@ -52,14 +67,14 @@ public class ProductController {
 	}
 
 	@PostMapping("/addProduct")
-	public String addProductData(String categorySelect, String productName, Double productPrice, Integer productStock,
+	public String addProductData(String category, String productName, Double price, Integer stock,
 			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) {
 
 		Map<String, String> respInsertState = new HashMap<>();
 
 		try {
-			ProductBean productBean = new ProductBean(categorySelect, productName, productPrice, productStock,
-					productDescription, thumbnail.getBytes(), detailImg.getBytes());
+			ProductBean productBean = new ProductBean(category, productName, price, stock, productDescription,
+					thumbnail.getBytes(), detailImg.getBytes());
 
 			String productInsertState = productBeanService.insert(productBean);
 
