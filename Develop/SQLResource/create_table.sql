@@ -50,3 +50,24 @@ videoLink varchar(max) not null,           --Youtube wibsite
 videoDesc nvarchar(max),                   --Description
 )
 GO
+
+
+create  Table Booking(
+bookingiId int not null identity,
+bookingDate nvarchar(max) not null,
+bookingTime nvarchar(max) not null,
+ept1 nvarchar(max),
+ept2 nvarchar(max),
+ept3 nvarchar(max),
+ept4 nvarchar(max),
+ept5 nvarchar(max),
+ept6 nvarchar(max),
+ept7 nvarchar(max),
+ept8 nvarchar(max),
+ept9 nvarchar(max),
+ept10 nvarchar(max),
+ept11 nvarchar(max),
+ept12 nvarchar(max),
+)
+
+GO
