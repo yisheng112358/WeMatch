@@ -8,4 +8,6 @@ public interface IProductBeanService {
 	public String insert(ProductBean productBean);
 
 	public String deleteById(Integer productId);
+
+	public ProductBean findById(Integer productId);
 }

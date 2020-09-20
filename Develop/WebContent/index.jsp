@@ -13,9 +13,9 @@
 String memberStatus = (String) session.getAttribute("memberStatus");
 if (memberStatus.equals("member") || memberStatus.equals("bms")) {
 	out.write(
-	"<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Login1</span></a></li>");
+	"<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Login</span></a></li>");
 } else {
-	out.write("<li class='nav-item'><a href='/WeMatch_dev/product/login' class='nav-link'><span>Login2</span></a></li>");
+	out.write("<li class='nav-item'><a href='/WeMatch_dev/product/login' class='nav-link'><span>Login</span></a></li>");
 }
 %>
 </body>

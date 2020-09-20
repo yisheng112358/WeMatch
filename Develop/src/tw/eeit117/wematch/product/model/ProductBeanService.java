@@ -26,4 +26,9 @@ public class ProductBeanService implements IProductBeanService {
 		return productDao.deleteById(productId);
 	}
 
+	@Override
+	public ProductBean findById(Integer productId) {
+		return productDao.findById(productId);
+	}
+
 }
