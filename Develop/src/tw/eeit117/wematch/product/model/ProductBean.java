@@ -24,8 +24,9 @@ public class ProductBean {
 	public ProductBean() {
 	}
 
-	public ProductBean(String category, String productName, Double price, Integer stock, String productDescription,
-			byte[] thumbnail, byte[] detailImg) {
+	public ProductBean(Integer productId, String category, String productName, Double price, Integer stock,
+			String productDescription, byte[] thumbnail, byte[] detailImg) {
+		this.productId = productId;
 		this.category = category;
 		this.productName = productName;
 		this.price = price;

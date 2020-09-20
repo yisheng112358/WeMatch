@@ -65,17 +65,27 @@
 							<label for="thumbnail">產品縮圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="thumbnail" id="thumbnailId">
 						</div>
-						<div id="thumbnailDisplay" style="width: 200px; height: 200px;"></div>
+						<div id="thumbnailDisplay" style="width: 200px; height: 200px;">
+							<img src="" id="thumbnailPreview" height="200"
+								alt="Image preview...">
+						</div>
 						<div class="form-group">
 							<label for="detailImg">產品詳圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="detailImg" id="detailImgId">
 						</div>
-						<div id="detailImgDisplay" style="width: 200px; height: 200px;"></div>
+						<div id="detailImgDisplay" style="width: 200px; height: 200px;">
+							<img src="" id="detailImgPreview" height="200"
+								alt="Image preview...">
+						</div>
 						<div class="form-group">
 							<input id='btn' type="submit" value="送出"
 								class="btn py-3 px-4 btn-primary">
 						</div>
 					</form>
+					<div style="text-align: right;">
+						<a href="/WeMatch_dev/product/manage"
+							class="btn btn-primary px-5 py-3 mt-3">返回</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -83,6 +93,8 @@
 
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
+
+	<script src="../js/ProductAddPage.js" type="text/javascript"></script>
 
 </body>
 </html>
