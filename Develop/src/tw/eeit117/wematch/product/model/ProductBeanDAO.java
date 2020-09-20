@@ -50,11 +50,18 @@ public class ProductBeanDAO implements IProductBeanDAO {
 //		return insertState;
 	}
 
+	@Override
 	public String deleteById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBean = session.byId(ProductBean.class).load(productId);
 		session.delete(productBean);
 		return null;
+	}
+
+	@Override
+	public ProductBean findById(Integer productId) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.byId(ProductBean.class).load(productId);
 	}
 
 }
