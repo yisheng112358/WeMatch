@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MemberService {
@@ -24,8 +25,20 @@ public class MemberService {
 		return mDAO.insertMember(memberAccount, memberPwd);
 	}
 	
+	public void forgotPwd(String memberPwd, String memberAccount) {
+		mDAO.forgotPwd(memberPwd, memberAccount);
+	}
+	
 	public void updateMember(Member member,HttpSession HttpSession) {
 		mDAO.updateMember(member, HttpSession);
+	}
+	
+	public void updateMemberPic1(HttpSession HttpSession, byte[] p1) {
+		mDAO.updateMemberPic1(HttpSession, p1);
+	}
+	
+	public void updateMemberPic2(HttpSession HttpSession, byte[] p2) {
+		mDAO.updateMemberPic2(HttpSession, p2);
 	}
 	
 	public void adminUpdateMember(Member member, HttpSession HttpSession) {
@@ -42,6 +55,10 @@ public class MemberService {
 	
 	public Member selectMemberByAccount(String memberAccount) {
 		return mDAO.selectMemberByAccount(memberAccount);
+	}
+	
+	public Member selectMemberByAccountAndEmail(String memberAccount, String memberEmail) {
+		return mDAO.selectMemberByAccountAndEmail(memberAccount, memberEmail);
 	}
 	
 	public List<Member> selectAllMember() {

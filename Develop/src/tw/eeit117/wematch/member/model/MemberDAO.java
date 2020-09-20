@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 @Repository("MemberDAO")
 public class MemberDAO {
@@ -27,7 +28,7 @@ public class MemberDAO {
 	public boolean checkLogin(Member users) {
 		Session session = sessionFactory.getCurrentSession();
 		Member resultAccount = selectMember(users.getMemberAccount(), users.getMemberPwd());
-
+		System.out.println(resultAccount);
 		if (resultAccount != null) {
 			return true;
 		} else {
@@ -37,7 +38,11 @@ public class MemberDAO {
 
 	public boolean insertMember(String memberAccount, String memberPwd) {
 		Session session = sessionFactory.getCurrentSession();
-		Member resultAccount = selectMember(memberAccount, memberPwd);
+		
+		String hqlstr = "From Member where memberAccount=:user";
+		Query<Member> query = session.createQuery(hqlstr, Member.class);
+		query.setParameter("user", memberAccount);
+		Member resultAccount = query.uniqueResult();
 
 		if (resultAccount != null) {
 			return false;
@@ -60,21 +65,45 @@ public class MemberDAO {
 		query.setParameter("user", memberAccount);
 		query.setParameter("pwd", memberPwd);
 		Member resultAccount = query.uniqueResult();
-
+		
 		return resultAccount;
 	}
 
-	public Member selectMemberByAccount(String memberAccount) {
+	public Member selectMemberByAccountAndEmail(String memberAccount, String memberEmail) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String hqlstr = "From Member where memberAccount=:account";
+		String hqlstr = "From Member where memberAccount=:account and memberEmail:mail";
 		Query<Member> query = session.createQuery(hqlstr, Member.class);
 		query.setParameter("account", memberAccount);
+		query.setParameter("mail", memberEmail);
 		Member resultAccount = query.uniqueResult();
 
 		return resultAccount;
 	}
+	
+	public void forgotPwd(String memberPwd, String memberAccount) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		member = selectMemberByAccount(memberAccount);
+		member.setMemberPwd(memberPwd);
+//		String hqlstr = "Update Member set memberPwd=:pwd where memberAccount=:account";
+//		Query<Member> query = session.createQuery(hqlstr, Member.class);
+//		query.setParameter("pwd", memberPwd);
+//		query.setParameter("account", memberAccount);
+//		query.executeUpdate();
+	}
 
+	public Member selectMemberByAccount(String memberAccount) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlstr = "From Member where memberAccount=:account";
+		Query<Member> query = session.createQuery(hqlstr, Member.class);
+		query.setParameter("account", memberAccount);
+		Member resultAccount = query.uniqueResult();
+		
+		return resultAccount;
+	}
+	
 	public Member selectMemberById(int memberId) {
 		Session session = sessionFactory.getCurrentSession();
 
@@ -109,6 +138,28 @@ public class MemberDAO {
 		query.setParameter("bloodType", member.getBloodType());
 		query.setParameter("hobbies", member.getHobbies());
 		query.setParameter("selfIntro", member.getSelfIntro());
+		query.setParameter("account", HttpSession.getAttribute("Account").toString());
+		query.executeUpdate();
+	}
+	
+	public void updateMemberPic1(HttpSession HttpSession, byte[] p1) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlstr = "Update Member set picture_1=:p1 where memberAccount=:account";
+		Query<Member> query = (Query<Member>) session.createQuery(hqlstr);
+		
+		query.setParameter("p1", member.getPicture_1());
+		query.setParameter("account", HttpSession.getAttribute("Account").toString());
+		query.executeUpdate();
+	}
+
+	public void updateMemberPic2(HttpSession HttpSession, byte[] p2) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlstr = "Update Member set picture_2=:p2 where memberAccount=:account";
+		Query<Member> query = (Query<Member>) session.createQuery(hqlstr);
+		
+		query.setParameter("p2", member.getPicture_2());
 		query.setParameter("account", HttpSession.getAttribute("Account").toString());
 		query.executeUpdate();
 	}

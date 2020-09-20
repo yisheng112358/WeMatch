@@ -204,17 +204,28 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">忘記密碼</h3>
-				<form action="memberforgot.controller" method="post"
+				<form action="memberforgot.co" method="post"
 					class="p-5 bg-light" style="position: relative; border: 1px solid;"
 					onsubmit="return submitFunc()">
 					<div class="form-group">
-						<label for="memberPwd">密碼</label> <span id="pwdsp" class="notice"></span><br />
-						${newPwd}
+						<label for="memberPwd">新密碼 *</label> <span id="pwdsp"
+							class="notice"></span><br /> <input type="password" id="pwd1"
+							class="form-control" name="memberPwd" required="required"
+							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
+							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
+					</div>
+					<div class="form-group">
+						<label for="memberNewPwd">確認密碼 *</label> <span id="pwdsp"
+							class="notice"></span><br /> <input type="password" id="pwd1"
+							class="form-control" name="memberNewPwd" required="required"
+							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
+							maxlength="20" onblur="checkPwd()">
 					</div>
 					<div class="form-group">
 						<a href='<c:url value="/loginPage"/>'>回到登入</a><br />
+						<input id="Button1" type="submit" value="送出"
+							class="btn py-3 px-4 btn-primary"> <span>${error.msg}</span>
 					</div>
-
 				</form>
 				<div class="form-group"></div>
 			</div>

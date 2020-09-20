@@ -29,11 +29,12 @@
 
 #memo {
 	position: absolute;
-	right: 0;
+	left: center;
 	color: #ff0000;
 	font-size: small;
 	text-align: right;
 	padding-right: 50px;
+	width: 280px;
 }
 </style>
 </head>
@@ -101,7 +102,7 @@
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員資料</h3>
 				<form:form Action="MemberPage_DB" method="post"
-					modelAttribute="Member">
+					modelAttribute="Member" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="memberName">姓名：</label> <input type="text"
 							id="memberName" value="林小明" class="form-control"
@@ -120,6 +121,7 @@
 						</select>
 					</div>
 					<div class="form-group">
+						<div id="memo">*輸入Email擔任援備密碼</div>
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
 							class="form-control" name="memberEmail" onblur="checkMail()"

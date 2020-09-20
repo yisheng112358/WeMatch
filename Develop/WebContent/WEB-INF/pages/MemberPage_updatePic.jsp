@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,29 +29,14 @@
 
 #memo {
 	position: absolute;
-	right: 0;
+	left: center;
 	color: #ff0000;
 	font-size: small;
 	text-align: right;
 	padding-right: 50px;
+	width: 280px;
 }
 </style>
-<script>
-window.onload = function(){
-	 var xhr = new XMLHttpRequest();
-	 xhr.open("GET","<c:url value='/picture' />", true);
-	 xhr.send();
-	 xhr.onreadystatechange = function(){
-	  if(xhr.readyState == 4 && xhr.status == 200){
-		  var memberP = JSON.parse(xhr.responseText);
-		  var content += "<img src='data:image/jpg;base64," + memberP.picture_1 + "' width='80' height='80'></td>";
-	  }
-	  var divs = document.getElementById("picture_1");
-	  divs.innerHTML = content;
-	 }
-}
-	  
-</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -100,71 +85,42 @@ window.onload = function(){
 				<div class="col-md-9 ftco-animate pb-5 text-center">
 					<h1 class="mb-3 bread">Our Stories</h1>
 					<p class="breadcrumbs">
-					<li class="nav-item"><a href="<c:url value='/loginPage'/>"
-						class="nav-link"><span>Home</span></a></li><span class="mr-2"><a
-						href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog
-						Single <i class="ion-ios-arrow-forward"></i>
-					</span>
+						<span class="mr-2"><a href="index.html">Home <i
+								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+							href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog
+							Single <i class="ion-ios-arrow-forward"></i>
+						</span>
 					</p>
-
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員資料</h3>
-				<form class="p-5 bg-light"
-					style="position: relative; border: 1px solid;" method="post">
+				<h3 class="mb-5">會員照片上傳</h3>
+				<form Action="MemberPic" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
-						<img style="position: absolute; align-content: center;"
-							height="175" src="getPhoto/<c:out value='${id}'/>"> <img
-							style="position: absolute; right: 0" height="175"
-							src="getPhoto2/<c:out value='${id}'/>">
+						<label for="picture_1">Upload Your Beautiful Pictures1:</label> <input
+							type="file" name="picture_1">
 					</div>
 					<div class="form-group">
-						<label>姓名：</label> <label for="memberAccount">${name}</label>
+						<label for="picture_2">Upload Your Beautiful Pictures2:</label> <input
+							type="file" name="picture_2">
 					</div>
 					<div class="form-group">
-						<label for="nickname">綽號：</label> <label>${nickname}</label>
-					</div>
-					<div class="form-group">
-						<label for="gender">性別：</label> <label>${gender}</label>
-					</div>
-					<div class="form-group">
-						<label for="memberEmail">Email：</label> <label>${email}</label>
-					</div>
-					<div class="form-group">
-						<label for="birthdayDate">生日：</label> <label>${birthday}</label>
-					</div>
-					<div class="form-group">
-						<label for="starSign">星座：</label> <label>${starSign}</label>
-					</div>
-					<div class="form-group">
-						<label for="city">居住/生活城市：</label> <label>${city}</label>
-					</div>
-					<div class="form-group">
-						<label for="bloodType">血型：</label> <label>${bloodtype}</label>
-					</div>
-					<div class="form-group">
-						<label for="hobbies">興趣喜好：</label> <label>${hobbies}</label>
-					</div>
-					<div class="form-group">
-						<label for="selfIntro">關於我：</label> <label>${selfintro}</label>
-					</div>
-					<div class="form-group">
-						<a href="<c:url value='MemberPage_show'/>">顯示</a> <a
-							href="<c:url value='MemberPage_updatePic'/>">上傳照片</a> <a
-							href="<c:url value='MemberPage_update'/>">修改</a><span>${errors.msg}</span>
-						<br />
+						<a href='<c:url value="/MemberPage"/>'>回到會員頁面</a><br />
+						<input type="submit" value="上傳" class="btn py-3 px-4 btn-primary">
 					</div>
 				</form>
 			</div>
 		</div>
 	</section>
+
+
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">

@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.util;
+package tw.wematch.util;
 
 import java.io.IOException;
 
@@ -29,23 +29,25 @@ public class OpenSessionViewFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
-			System.out.println("Transaction Begin.");
+			System.out.println("Filter Transaction Begin.");
 			chain.doFilter(request, response);
 			sessionFactory.getCurrentSession().getTransaction().commit();
 		} catch (Exception e) {
 			sessionFactory.getCurrentSession().getTransaction().rollback();
-			System.out.println("Transaction RollBack.");
+			System.out.println("Filter Transaction RollBack.");
 			chain.doFilter(request, response);
 		} finally {
-			System.out.println("Transaction Closed.");
+			System.out.println("Filter Transaction Closed.");
 		}
 	}
 
 	@Override
 	public void destroy() {
-		((ConfigurableApplicationContext)context).close();
+		((ConfigurableApplicationContext) context).close();
 	}
+
 }

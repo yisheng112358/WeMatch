@@ -1,8 +1,9 @@
- package tw.eeit117.wematch.config;
+package tw.eeit117.wematch.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,15 +19,16 @@ public class WebAppMvcConfig implements WebMvcConfigurer {
 		configurer.enable();
 	}
 
-//	@Bean
-//	public CommonsMultipartResolver multipartResolver() {
-//		CommonsMultipartResolver mResolver = new CommonsMultipartResolver();
-//		mResolver.setDefaultEncoding("UTF-8");
-//		return mResolver;
-//	}
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver mResolver = new CommonsMultipartResolver();
+		mResolver.setDefaultEncoding("UTF-8");
+		mResolver.setMaxUploadSize(20848820);
+		return mResolver;
+	}
 
 	@Bean
-	public InternalResourceViewResolver viewResolver(){
+	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/pages/");
 		viewResolver.setSuffix(".jsp");

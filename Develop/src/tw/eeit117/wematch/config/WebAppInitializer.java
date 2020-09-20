@@ -12,7 +12,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import tw.eeit117.wematch.util.OpenSessionViewFilter;
+import tw.wematch.util.OpenSessionViewFilter;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

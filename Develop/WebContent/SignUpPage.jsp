@@ -106,7 +106,8 @@
 					<h3 class="mb-5">帳號註冊</h3>
 					<form action="SignUpJdbcConnServlet.do" method="post"
 						enctype="multipart/form-data" class="p-5 bg-light"
-						style="position: relative; border: 1px solid;" onsubmit="return submitFunc2();">
+						style="position: relative; border: 1px solid;"
+						onsubmit="return submitFunc2();">
 						<div id="memo">*欄位為必填</div>
 						<div class="form-group">
 							<label for="memberAccount">帳號 *</label> <span id="accountsp"

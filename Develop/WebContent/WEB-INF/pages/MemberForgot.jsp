@@ -216,6 +216,11 @@
 							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
+						<label for="memberEmail">電子郵件 *</label> <span id="mailsp"
+							class="notice"></span><br /> <input type="email" id="mail1"
+							class="form-control" name="memberEmail" onblur="checkMail()" required="required">
+					</div>
+					<div class="form-group">
 						<div class="v_code">
 							<div class="code_show">
 								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>

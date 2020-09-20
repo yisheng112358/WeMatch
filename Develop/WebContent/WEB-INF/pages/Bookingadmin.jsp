@@ -1,51 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Products</title>
+<title>BookingSystem</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="../css/flaticon.css">
+<link rel="stylesheet" href="../css/icomoon.css">
+<link rel="stylesheet" href="../css/style.css">
 <style>
-.notice {
-	color: #ff0000;
-	font-size: small;
-}
-
-#memo {
-	position: absolute;
-	right: 0;
-	color: #ff0000;
-	font-size: small;
-	text-align: right;
-	padding-right: 50px;
-}
-
-h3 {
-	display: inline;
-}
-
-h3:hover {
-	cursor: pointer;
-	background: rgba(255, 255, 255, .4);
-}
-
-h3:active {
-	background: rgba(255, 255, 255, .8);
+thead th {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 0px 2px 10px 2px;
+    color:#000000;
+    text-decoration: underline;
 }
 </style>
 </head>
@@ -76,6 +59,8 @@ h3:active {
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
+					<li class="nav-item"><a href="../VideoPage.jsp"
+						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="index.html#coaches-section"
 						class="nav-link"><span>Discussion</span></a></li>
 					<li class="nav-item"><a href="index.html#blog-section"
@@ -87,7 +72,7 @@ h3:active {
 		</div>
 	</nav>
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_3.jpg');"
+		style="background-image: url('../images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -98,8 +83,9 @@ h3:active {
 					<p class="breadcrumbs">
 						<span class="mr-2"><a href="index.html">Home <i
 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
-							href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog
-							Single <i class="ion-ios-arrow-forward"></i>
+							href="VideoPage.jsp">Videoflix <i
+								class="ion-ios-arrow-forward"></i></a></span> <span>Video Check-in <i
+							class="ion-ios-arrow-forward"></i>
 						</span>
 					</p>
 				</div>
@@ -111,70 +97,66 @@ h3:active {
 		<div class="container">
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<span class="subheading">Product</span>
-					<h2 class="mb-4">Training Product</h2>
-					<p>You go far, we help you go further.</p>
+					<span class="subheading">Videoflix List</span>
+					<h2 class="mb-4">BookingSystem</h2>
+					<p>More Sport, more powerful.</p>
 				</div>
 			</div>
 			<div class="ftco-schedule">
 				<div class="row">
-					<div class="col-md-4 nav-link-wrap">
-						<div class="nav flex-column nav-pills" id="v-pills-tab"
-							role="tablist" aria-orientation="vertical">
-							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
-								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
-									Fascia gun...</span></a> <a class="nav-link ftco-animate"
-								id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9"
-								role="tab" aria-controls="v-pills-9" aria-selected="false">Yoga
-								<span>Mat, Roller...</span>
-							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
-								data-toggle="pill" href="#v-pills-10" role="tab"
-								aria-controls="v-pills-10" aria-selected="false">Supplement
-								<span>Protein, Vitamin...</span>
-							</a>
 
-						</div>
+
+
+					<div class="tab-pane fade show active" id="v-pills-8"
+						role="tabpanel" aria-labelledby="day-8-tab">
+						<form action="<c:url value="/adminvideocontroller/admindelete"/>"
+							method="post" class="p-5 bg-light"
+							style="position: relative; border: 1px solid black; text-align: center">
+							<table>
+								<thead>
+									<tr>
+										<th>序號</th>
+<!-- 										<th>影片序號</th> -->
+										<th>影片主題</th>
+										<th>影片網址</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+									<c:forEach var="film" varStatus="status" items="${films}">
+										<tr>
+											<td>${status.count}</td>
+<%-- 											<td>${film.videoId}</td> --%>
+											<td>${film.bookingDate}</td>
+											<td>${film.bookingTime}點鐘</td>
+<%-- 											<td>${film.ept1}</td> --%>
+<%-- 											<td>${film.ept2}</td> --%>
+<%-- 											<td>${film.ept3}</td> --%>
+<%-- 											<td>${film.ept4}</td> --%>
+<%-- 											<td>${film.ept5}</td> --%>
+<%-- 											<td>${film.ept6}</td> --%>
+<%-- 											<td>${film.ept7}</td> --%>
+<%-- 											<td>${film.ept8}</td> --%>
+<%-- 											<td>${film.ept9}</td> --%>
+<%-- 											<td>${film.ept10}</td> --%>
+<%-- 											<td>${film.ept11}</td> --%>
+<%-- 											<td>${film.ept12}</td> --%>
+											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+											<td><a
+												href="<c:url value='/bookingcontroller/delete?id=${film.bookingId}' />">刪除</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</form>
 					</div>
-					<div class="col-md-8 tab-wrap">
 
-						<div class="tab-content" id="v-pills-tabContent">
-
-							<div class="tab-pane fade show active" id="v-pills-8"
-								role="tabpanel" aria-labelledby="day-8-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentMassager" class="productTable"></table>
-								</div>
-								<div id="pageMassager" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-9" role="tabpanel"
-								aria-labelledby="v-pills-day-9-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentYoga" class="productTable"></table>
-								</div>
-								<div id="pageYoga" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-10" role="tabpanel"
-								aria-labelledby="v-pills-day-10-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentSupplement" class="productTable"></table>
-								</div>
-								<div id="pageSupplement" class="text-center"></div>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
@@ -266,24 +248,25 @@ h3:active {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/aos.js"></script>
+	<script src="../js/jquery.animateNumber.min.js"></script>
+	<script src="../js/scrollax.min.js"></script>
+	<!-- 	<script -->
+	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+	<!-- 	<script src="js/google-map.js"></script> -->
+	<script src="../js/main.js"></script>
 
-	<script src="js/ProductBrowserPage.js" type="text/javascript"></script>
+
 
 </body>
+
 </html>

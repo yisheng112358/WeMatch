@@ -17,8 +17,18 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
-	public ProductBean insert(ProductBean productBean) {
+	public String insert(ProductBean productBean) {
 		return productDao.insert(productBean);
+	}
+
+	@Override
+	public String deleteById(Integer productId) {
+		return productDao.deleteById(productId);
+	}
+
+	@Override
+	public ProductBean findById(Integer productId) {
+		return productDao.findById(productId);
 	}
 
 }
