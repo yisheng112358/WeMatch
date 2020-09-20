@@ -221,11 +221,16 @@ h3:active {
 						<!-- 							style="float: right; margin-right: 5px;"> -->
 
 
-						<form action="/WeMatch_dev/video/admindelete" method="post">
-							<input type="submit" value="Admin"
-								class="btn py-3 px-4 btn-primary" style="float: right">
-						</form>
+<%-- 						<form action="/WeMatch_dev/video/admindelete" method="post"> --%>
+<!-- 							<input type="submit" value="Admin" -->
+<!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
+<%-- 						</form> --%>
 
+<% if (memberStatus.equals("bms")){
+	out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
+	out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
+	out.print("</form>");
+} %>
 
 					</div>
 					<div class="col-md-8 tab-wrap">
