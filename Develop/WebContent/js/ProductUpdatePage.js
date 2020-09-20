@@ -14,6 +14,10 @@ function checkBeforeSubmit() {
     return true;
 }
 
+function checkProductId() {
+    return true;
+}
+
 const fileInput1 = document.querySelector('#thumbnailId');
 const fileInput2 = document.querySelector('#detailImgId');
 const preview1 = document.querySelector('#thumbnailPreview');
