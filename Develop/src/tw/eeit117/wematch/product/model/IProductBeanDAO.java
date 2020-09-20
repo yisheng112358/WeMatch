@@ -5,9 +5,11 @@ import java.util.List;
 public interface IProductBeanDAO {
 	public List<ProductBean> selectAll();
 
-	public String insert(ProductBean productBean);
+	public void insert(ProductBean productBean);
 
 	public String deleteById(Integer productId);
 
 	public ProductBean findById(Integer productId);
+
+	public void update(ProductBean productBean);
 }
