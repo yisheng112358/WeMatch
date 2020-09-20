@@ -21,9 +21,9 @@
 				<div class="col-md-6 col-lg-5 d-flex">
 					<div class="img d-flex align-self-stretch align-items-center">
 						<%
-							ProductBean productBean = (ProductBean) session.getAttribute("product");
+							ProductBean productExam = (ProductBean) session.getAttribute("productExam");
 						out.write("<img style='width: 400px; height: 400px;' id='detailImg' src='examProduct/showDetailImg/"
-								+ productBean.getProductId() + "'>");
+								+ productExam.getProductId() + "'>");
 						%>
 					</div>
 				</div>
@@ -32,12 +32,12 @@
 						<div class="row justify-content-start pb-3">
 							<div class="col-md-12 heading-section ftco-animate">
 								<%
-									out.write("<span class='subheading' id='category'>" + productBean.getCategory() + "</span>");
+									out.write("<span class='subheading' id='category'>" + productExam.getCategory() + "</span>");
 								out.write("<h2 class='mb-4' id='productName' style='font-size: 34px; text-transform: capitalize;'>"
-										+ productBean.getProductName() + "</h2>");
-								out.write("<p id='price'>Price: " + productBean.getPrice() + "</p>");
-								out.write("<p id='stock'>Stock: " + productBean.getStock() + "</p>");
-								out.write("<p id='productDescription'>" + productBean.getProductDescription() + "</p>");
+										+ productExam.getProductName() + "</h2>");
+								out.write("<p id='price'>Price: " + productExam.getPrice() + "</p>");
+								out.write("<p id='stock'>Stock: " + productExam.getStock() + "</p>");
+								out.write("<p id='productDescription'>" + productExam.getProductDescription() + "</p>");
 								%>
 								<div style="text-align: left;">
 									<a href="/WeMatch_dev/product/browse"
