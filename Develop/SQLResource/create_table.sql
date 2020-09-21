@@ -54,7 +54,7 @@ videoDesc nvarchar(max),                   --Description
 )
 GO
 
-
+-- (6)
 create  Table Booking(
 bookingiId int not null identity,
 bookingDate nvarchar(max) not null,
@@ -73,4 +73,18 @@ ept11 nvarchar(max),
 ept12 nvarchar(max),
 )
 
+GO
+
+
+-- (7) 教練
+create Table Coach(
+coachId int primary key not null identity(1,1),
+coachPic varbinary(max),
+coachName nvarchar(50) not null,
+coachNickname nvarchar(50) not null,
+coachAge int not null,
+courseName nvarchar(50) not null,
+courseType nvarchar(50) not null,
+license nvarchar(50) not null,
+)
 GO
