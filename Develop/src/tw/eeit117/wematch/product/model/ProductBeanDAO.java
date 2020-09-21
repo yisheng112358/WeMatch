@@ -56,4 +56,13 @@ public class ProductBeanDAO implements IProductBeanDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProductBean> findByKeyword(String keyword) {
+		String hql = "From ProductBean where productName like '%" + keyword + "%' or productDescription like '%"
+				+ keyword + "%' or category like '%" + keyword + "%'";
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery(hql).list();
+	}
+
 }

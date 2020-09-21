@@ -36,4 +36,9 @@ public class ProductBeanService implements IProductBeanService {
 		productDao.update(productBean);
 	}
 
+	@Override
+	public List<ProductBean> findByKeyword(String keyword) {
+		return productDao.findByKeyword(keyword);
+	}
+
 }
