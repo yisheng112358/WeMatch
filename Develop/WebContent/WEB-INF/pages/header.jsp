@@ -16,13 +16,14 @@
 
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav nav ml-auto">
-<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
-<!-- 					class="nav-link"><span>Home</span></a></li> -->
-				<li class="nav-item"><a href="<c:url value='/product/browse' />"
-					class="nav-link"><span>Products</span></a></li>
+				<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
+				<!-- 					class="nav-link"><span>Home</span></a></li> -->
 				<li class="nav-item"><a
-					href="index.html#courses-section" class="nav-link"><span>Courses</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/bookingcontroller/booking' />"
+					href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
+				<li class="nav-item"><a href="index.html#courses-section"
+					class="nav-link"><span>Courses</span></a></li>
+				<li class="nav-item"><a
+					href="<c:url value='/bookingcontroller/booking' />"
 					class="nav-link"><span>Schedule</span></a></li>
 				<li class="nav-item"><a href="index.html#about-section"
 					class="nav-link"><span>Diet</span></a></li>
@@ -35,10 +36,9 @@
 				<li class="nav-item"><a href="index.html#contact-section"
 					class="nav-link"><span>Membership</span></a></li>
 				<%
-					String memberStatus = (String) session.getAttribute("memberStatus");
-				if (memberStatus.equals("member") || memberStatus.equals("bms")) {
-					out.write(
-					"<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Logout</span></a></li>");
+					String memberStatus = "" + (Integer) session.getAttribute("Status");
+				if (memberStatus.equals("1") || memberStatus.equals("2")) {
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
 				} else {
 					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 				}
@@ -56,13 +56,13 @@
 			class="row no-gutters slider-text align-items-end justify-content-center">
 			<div class="col-md-9 ftco-animate pb-5 text-center">
 				<h1 class="mb-3 bread">Our Stories</h1>
-<!-- 				<p class="breadcrumbs"> -->
-<!-- 					<span class="mr-2"><a href="index.html">Home <i -->
-<!-- 							class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
-<!-- 						href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog -->
-<!-- 						Single <i class="ion-ios-arrow-forward"></i> -->
-<!-- 					</span> -->
-<!-- 				</p> -->
+				<!-- 				<p class="breadcrumbs"> -->
+				<!-- 					<span class="mr-2"><a href="index.html">Home <i -->
+				<!-- 							class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
+				<!-- 						href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog -->
+				<!-- 						Single <i class="ion-ios-arrow-forward"></i> -->
+				<!-- 					</span> -->
+				<!-- 				</p> -->
 			</div>
 		</div>
 	</div>
