@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
-<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,39 +23,50 @@
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 <script>
-window.onload = function(){
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET","<c:url value='/coachData' />",true);
-	xhr.send();
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			var content = "<table border='1' class='coachTable'>";
-			content += 	"<tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='80'>暱稱</th><th width='80'>年齡</th><th width='100'>授課名稱</th><th width='100'>授課種類</th><th width='100'>相關證照</th></tr>";
-			var coach = JSON.parse(xhr.responseText);
-			for(var i=0; i < coach.length; i++){
-				var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(coach[i].coachPic)));
-				content += "<tr><td><img src='data:image/jpg;base64," + base64String + "' width='230px' height='230px'></td>" +
-						   "<td align='center'>" + coach[i].coachName + "</td>" +
-						   "<td align='center'>" + coach[i].coachNickname + "</td>" +
-						   "<td align='center'>" + coach[i].coachAge + "</td>" +
-						   "<td align='center'>" + coach[i].courseName + "</td>" +
-						   "<td align='center'>" + coach[i].courseType + "</td>" +
-						   "<td align='center'>" + coach[i].license + "</td>" +
-						   "</tr>";		   
+	window.onload = function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "<c:url value='/coachData' />", true);
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var content = "<table border='1' class='coachTable'>";
+				content += "<tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='80'>暱稱</th><th width='80'>年齡</th><th width='100'>授課名稱</th><th width='100'>授課種類</th><th width='100'>相關證照</th></tr>";
+				var coach = JSON.parse(xhr.responseText);
+				for (var i = 0; i < coach.length; i++) {
+					var base64String = btoa(String.fromCharCode.apply(null,
+							new Uint8Array(coach[i].coachPic)));
+					content += "<tr><td><img src='data:image/jpg;base64," + base64String + "' width='230px' height='230px'></td>"
+							+ "<td align='center'>"
+							+ coach[i].coachName
+							+ "</td>"
+							+ "<td align='center'>"
+							+ coach[i].coachNickname
+							+ "</td>"
+							+ "<td align='center'>"
+							+ coach[i].coachAge
+							+ "</td>"
+							+ "<td align='center'>"
+							+ coach[i].courseName
+							+ "</td>"
+							+ "<td align='center'>"
+							+ coach[i].courseType
+							+ "</td>"
+							+ "<td align='center'>"
+							+ coach[i].license + "</td>" + "</tr>";
+				}
+				content += "</table>";
+				var divs = document.getElementById("coachIntro");
+				divs.innerHTML = content;
 			}
-			content += "</table>";
-			var divs = document.getElementById("coachIntro");
-			divs.innerHTML = content;	
 		}
 	}
-}
-
 </script>
 <style>
 .notice {
 	color: #ff0000;
 	font-size: small;
 }
+
 #memo {
 	position: absolute;
 	right: 0;
@@ -64,28 +75,34 @@ window.onload = function(){
 	text-align: right;
 	padding-right: 50px;
 }
+
 h3 {
 	display: inline;
 }
+
 h3:hover {
 	cursor: pointer;
 	background: rgba(255, 255, 255, .4);
 }
+
 h3:active {
 	background: rgba(255, 255, 255, .8);
 }
-.coachTitle{
+
+.coachTitle {
 	text-align: center;
 }
-.coachTable{
+
+.coachTable {
 	text-align: center;
 	background: white;
 	border: 2px white solid;
-	margin:auto;
+	margin: auto;
 	width: 1000px;
-	length:200px;
+	length: 200px;
 }
-#return{
+
+#return {
 	display: inline-block;
 	padding: 8px 15px;
 	font-size: 24px;
@@ -116,70 +133,71 @@ h3:active {
 	data-offset="300">
 
 	<nav
-	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
-	id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="index.html">Fitness</a>
-		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-			type="button" data-toggle="collapse" data-target="#ftco-nav"
-			aria-controls="ftco-nav" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Fitness</a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+				type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 
-		<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav nav ml-auto">
-<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
-<!-- 					class="nav-link"><span>Home</span></a></li> -->
-				<li class="nav-item"><a href="<c:url value='/product/browse' />"
-					class="nav-link"><span>Products</span></a></li>
-				<li class="nav-item"><a
-					href="index.html#courses-section" class="nav-link"><span>Courses</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/bookingcontroller/booking' />"
-					class="nav-link"><span>Schedule</span></a></li>
-				<li class="nav-item"><a href="index.html#about-section"
-					class="nav-link"><span>Diet</span></a></li>
-				<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
-					class="nav-link"><span>Videoflix</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/coachPage' />"
-					class="nav-link"><span>Coach Intro.</span></a></li>
-				<li class="nav-item"><a href="index.html#blog-section"
-					class="nav-link"><span>Shopping Cart</span></a></li>
-				<li class="nav-item"><a href="index.html#contact-section"
-					class="nav-link"><span>Membership</span></a></li>
-				<%
-					String memberStatus = (String) session.getAttribute("memberStatus");
-				if (memberStatus.equals("member") || memberStatus.equals("bms")) {
-					out.write(
-					"<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Logout</span></a></li>");
-				} else {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-				}
-				%>
-			</ul>
-		</div>
-	</div>
-</nav>
-	<section class="hero-wrap hero-wrap-2"
-	style="background-image: url('images/bg_3.jpg');"
-	data-stellar-background-ratio="0.5">
-	<div class="overlay"></div>
-	<div class="container">
-		<div
-			class="row no-gutters slider-text align-items-end justify-content-center">
-			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-3 bread">Our Stories</h1>
-<!-- 				<p class="breadcrumbs"> -->
-<!-- 					<span class="mr-2"><a href="index.html">Home <i -->
-<!-- 							class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
-<!-- 						href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog -->
-<!-- 						Single <i class="ion-ios-arrow-forward"></i> -->
-<!-- 					</span> -->
-<!-- 				</p> -->
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
+					<!-- 					class="nav-link"><span>Home</span></a></li> -->
+					<li class="nav-item"><a
+						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
+					<li class="nav-item"><a href="index.html#courses-section"
+						class="nav-link"><span>Courses</span></a></li>
+					<li class="nav-item"><a
+						href="<c:url value='/bookingcontroller/booking' />"
+						class="nav-link"><span>Schedule</span></a></li>
+					<li class="nav-item"><a href="index.html#about-section"
+						class="nav-link"><span>Diet</span></a></li>
+					<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
+						class="nav-link"><span>Videoflix</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/coachPage' />"
+						class="nav-link"><span>Coach Intro.</span></a></li>
+					<li class="nav-item"><a href="index.html#blog-section"
+						class="nav-link"><span>Shopping Cart</span></a></li>
+					<li class="nav-item"><a href="index.html#contact-section"
+						class="nav-link"><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
+
+				</ul>
 			</div>
 		</div>
-	</div>
-</section>
+	</nav>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('images/bg_3.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
+					<h1 class="mb-3 bread">Our Stories</h1>
+					<!-- 				<p class="breadcrumbs"> -->
+					<!-- 					<span class="mr-2"><a href="index.html">Home <i -->
+					<!-- 							class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
+					<!-- 						href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog -->
+					<!-- 						Single <i class="ion-ios-arrow-forward"></i> -->
+					<!-- 					</span> -->
+					<!-- 				</p> -->
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<section class="ftco-section ftco-schedule" id="schedule-section">
 		<div class="container">
@@ -192,97 +210,100 @@ h3:active {
 			</div>
 			<div class="coachDiv">
 				<h2 class="coachTitle">教練介紹</h2>
-					<div class="coachDiv" id="coachIntro">
-					</div><br/>
-					<div>
-						<input type="button" id="return" value="Admin" onclick="location.href='/WeMatch_dev/coachAdminPage'">
-					</div>
+				<div class="coachDiv" id="coachIntro"></div>
+				<br />
+				<div>
+					<input type="button" id="return" value="Admin"
+						onclick="location.href='/WeMatch_dev/coachAdminPage'"
+						style="margin-left: 100px">
+				</div>
 			</div>
 		</div>
 	</section>
 
 
 	<footer class="ftco-footer ftco-section">
-	<div class="container">
-		<div class="row mb-5">
-			<div class="col-md">
-				<div class="ftco-footer-widget mb-4">
-					<h2 class="ftco-heading-2">
-						About <span><a href="index.html">Fitness Space.</a></span>
-					</h2>
-					<p>The gym will always provide the most important tool we need to get through life’s challenge – Perseverance.</p>
-					<p>~From Dwayne Johnson</p>
-					<ul
-						class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-						<li class="ftco-animate"><a href="#"><span
-								class="icon-twitter"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span
-								class="icon-facebook"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span
-								class="icon-instagram"></span></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md">
-				<div class="ftco-footer-widget mb-4 ml-md-4">
-					<h2 class="ftco-heading-2">Links</h2>
-					<ul class="list-unstyled">
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Cocahes</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Schedule</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md">
-				<div class="ftco-footer-widget mb-4">
-					<h2 class="ftco-heading-2">Services</h2>
-					<ul class="list-unstyled">
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Gym
-								Fitness</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Crossfit</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Yoa</a></li>
-						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Aerobics</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md">
-				<div class="ftco-footer-widget mb-4">
-					<h2 class="ftco-heading-2">Have a Questions?</h2>
-					<div class="block-23 mb-3">
-						<ul>
-							<li><span class="icon icon-map-marker"></span><span
-								class="text">203 Fake St. Mountain View, San Francisco,
-									California, USA</span></li>
-							<li><a href="#"><span class="icon icon-phone"></span><span
-									class="text">+2 392 3929 210</span></a></li>
-							<li><a href="#"><span class="icon icon-envelope"></span><span
-									class="text">info@yourdomain.com</span></a></li>
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">
+							About <span><a href="index.html">Fitness Space.</a></span>
+						</h2>
+						<p>The gym will always provide the most important tool we need
+							to get through life’s challenge – Perseverance.</p>
+						<p>~From Dwayne Johnson</p>
+						<ul
+							class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-instagram"></span></a></li>
 						</ul>
 					</div>
 				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Cocahes</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Schedule</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Gym
+									Fitness</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Crossfit</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Yoa</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Aerobics</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+										class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
+			<div class="row">
+				<div class="col-md-12 text-center">
 
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart color-danger" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="icon-heart color-danger" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
