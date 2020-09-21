@@ -26,9 +26,6 @@ picture_2 varbinary(MAX),
 selfIntro nvarchar(MAX)
 )
 GO
---  新增管理員帳號
-insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
-GO
 
 -- (4)
 CREATE table Product(
@@ -74,7 +71,6 @@ ept12 nvarchar(max),
 )
 
 GO
-
 
 -- (7) 教練
 create Table Coach(
