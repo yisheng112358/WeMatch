@@ -23,3 +23,6 @@ VALUES('背部肌群練習1', 'bodyback', 'https://www.youtube.com/watch?v=9pdk5
 ('測試', 'bodychest', 'https://www.youtube.com/watch?v=ZL3djxB_LqQ', '測試用。')
 GO
 
+--  (3) 新增管理員帳號
+insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
+GO
