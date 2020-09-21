@@ -133,4 +133,9 @@ public class ProductController {
 				thumbnailByteArray, detailImgByteArray);
 		return productBean;
 	}
+
+	@GetMapping(value = "/search", params = { "keyword" })
+	public @ResponseBody List<ProductBean> search(@RequestParam String keyword) {
+		return productBeanService.findByKeyword(keyword);
+	}
 }

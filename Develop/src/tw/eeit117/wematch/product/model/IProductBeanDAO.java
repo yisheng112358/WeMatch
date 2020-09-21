@@ -12,4 +12,6 @@ public interface IProductBeanDAO {
 	public ProductBean findById(Integer productId);
 
 	public void update(ProductBean productBean);
+
+	public List<ProductBean> findByKeyword(String keyword);
 }
