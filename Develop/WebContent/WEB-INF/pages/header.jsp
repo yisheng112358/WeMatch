@@ -33,8 +33,8 @@
 					class="nav-link"><span>Discussion</span></a></li>
 				<li class="nav-item"><a href="index.html#blog-section"
 					class="nav-link"><span>Shopping Cart</span></a></li>
-				<li class="nav-item"><a href="index.html#contact-section"
-					class="nav-link"><span>Membership</span></a></li>
+				<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+				class='nav-link'><span>Membership</span></a></li>
 				<%
 					String memberStatus = "" + (Integer) session.getAttribute("Status");
 				if (memberStatus.equals("1") || memberStatus.equals("2")) {
