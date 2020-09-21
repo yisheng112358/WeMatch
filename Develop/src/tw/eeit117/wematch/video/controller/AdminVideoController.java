@@ -37,13 +37,13 @@ public class AdminVideoController {
 
 		videoService.deleteVideo(id);
 
-		return "redirect:/VideoPage.jsp";
+		return "redirect:/video";
 	}
 	
-	@RequestMapping(value = "/adminadd", method = RequestMethod.GET)
-	public String adminadd() {
-		return "VideoListPage";
-	}
+//	@RequestMapping(value = "/adminadd", method = RequestMethod.GET)
+//	public String adminadd() {
+//		return "VideoListPage";
+//	}
 
 //	@RequestMapping(value = "/videopage", method = RequestMethod.GET)
 //	public String videoPage() {
