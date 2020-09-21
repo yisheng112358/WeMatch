@@ -81,7 +81,7 @@ h3:active {
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Fitness</a>
+			<a class="navbar-brand" href="/WeMatch_dev/index.jsp">Fitness</a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -109,15 +109,14 @@ h3:active {
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="index.html#contact-section"
 						class="nav-link"><span>Membership</span></a></li>
-					<%
-						String memberStatus = (String) session.getAttribute("memberStatus");
-					if (memberStatus.equals("member") || memberStatus.equals("bms")) {
-						out.write(
-						"<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Logout</span></a></li>");
-					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-					}
-					%>
+				<%
+					String memberStatus = "" + (Integer) session.getAttribute("Status");
+				if (memberStatus.equals("1") || memberStatus.equals("2")) {
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+				} else {
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+				}
+				%>
 				</ul>
 			</div>
 		</div>
@@ -226,7 +225,7 @@ h3:active {
 <!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
 <%-- 						</form> --%>
 
-<% if (memberStatus.equals("bms")){
+<% if (memberStatus.equals("2")) {
 	out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
 	out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
 	out.print("</form>");
