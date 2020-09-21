@@ -6,7 +6,7 @@
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 	id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="index.html">Fitness</a>
+		<a class="navbar-brand" href="/WeMatch_dev/index.jsp">Fitness</a>
 		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 			type="button" data-toggle="collapse" data-target="#ftco-nav"
 			aria-controls="ftco-nav" aria-expanded="false"
@@ -28,8 +28,8 @@
 					class="nav-link"><span>Diet</span></a></li>
 				<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
 					class="nav-link"><span>Videoflix</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/coachPage' />"
-					class="nav-link"><span>Coach Intro.</span></a></li>
+				<li class="nav-item"><a href="index.html#coaches-section"
+					class="nav-link"><span>Discussion</span></a></li>
 				<li class="nav-item"><a href="index.html#blog-section"
 					class="nav-link"><span>Shopping Cart</span></a></li>
 				<li class="nav-item"><a href="index.html#contact-section"
