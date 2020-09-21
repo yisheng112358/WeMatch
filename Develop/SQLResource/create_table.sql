@@ -69,7 +69,6 @@ ept10 nvarchar(max),
 ept11 nvarchar(max),
 ept12 nvarchar(max),
 )
-
 GO
 
 -- (7) 教練
