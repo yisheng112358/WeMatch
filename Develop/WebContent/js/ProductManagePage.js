@@ -79,11 +79,6 @@ $(document).ready(() => {
     // 網頁載入完把全部的產品撈出來。
     retrieveAll();
 
-    // 點擊搜尋返回按紐再把全部的產品撈出來。
-    $("#searchFinish").click(() => {
-        retrieveAll();
-    })
-
     // 搜尋列輸入完畢時把關鍵字帶到控制器中把相關產品撈出來。
     $("#searchInput").change(() => {
         var itemPerPage = 3; // 一頁幾個商品
