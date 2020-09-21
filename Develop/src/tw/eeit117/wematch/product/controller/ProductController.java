@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,29 +24,9 @@ import tw.eeit117.wematch.product.model.ProductBeanService;
 
 @Controller
 @RequestMapping("/product")
-@PropertySource("classpath:TableName.properties")
 public class ProductController {
 	@Autowired
 	ProductBeanService productBeanService;
-
-	@Value("${CURE_STATE_SUCCESS}")
-	private String CURE_STATE_SUCCESS;
-
-	@Value("${CURE_STATE_REPEATED}")
-	private String CURE_STATE_REPEATED;
-
-	// 以下login()、logout()兩個方法為暫定，最終還是以會員系統為主。
-	@GetMapping("/login")
-	public String login(HttpSession httpSession) {
-		httpSession.setAttribute("memberStatus", "bms");
-		return "ProductsBrowsePage";
-	}
-
-	@GetMapping("/logout")
-	public String logout(HttpSession httpSession) {
-		httpSession.setAttribute("memberStatus", "visitor");
-		return "ProductsBrowsePage";
-	}
 
 	@GetMapping("/retrieve")
 	public @ResponseBody List<ProductBean> retrieve() {
@@ -81,7 +59,6 @@ public class ProductController {
 
 	@GetMapping(value = "/deleteProduct", params = { "productId" })
 	public String deleteProduct(@RequestParam String productId) {
-		System.out.println("目前正在刪除產品： " + productId);
 		productBeanService.deleteById(Integer.parseInt(productId));
 		return "redirect:/product/manage";
 	}
@@ -137,7 +114,6 @@ public class ProductController {
 			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) throws IOException {
 		ProductBean productBean = newProductBeanCheck(productId, category, productName, price, stock,
 				productDescription, thumbnail, detailImg);
-		System.out.println("我是產品ID： " + productBean.getProductId());
 		productBeanService.update(productBean);
 		return "ProductsManagePage";
 	}

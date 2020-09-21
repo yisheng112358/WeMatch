@@ -47,8 +47,7 @@
 						</div>
 					</div>
 					<div style="text-align: right;">
-						<a href="/WeMatch_dev/product/browse"
-							class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">返回</a>
 					</div>
 				</div>
 			</div>

@@ -25,4 +25,7 @@ GO
 
 --  (3) 新增管理員帳號
 insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('admintest123', 'P@ssw0rd', 2)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('membertest123', 'P@ssw0rd', 1)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('visitortest123', 'P@ssw0rd', 0)
 GO
