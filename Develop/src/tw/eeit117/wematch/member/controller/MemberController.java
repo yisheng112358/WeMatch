@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,8 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -112,7 +109,7 @@ public class MemberController {
 		Member member = memberService.selectMemberByAccount(memberAccount);
 		if (member.getMemberEmail().equals(memberEmail)) {
 			session.setAttribute("memberForgotAccount", memberAccount);
-			return "MemberForgotAction";
+			return "MemberForgetAction";
 		} else {
 			errors.put("msg", "帳號與信箱不符合");
 			return "MemberForgot";
@@ -152,10 +149,6 @@ public class MemberController {
 		if (errors != null && !errors.isEmpty()) {
 			return "registerPage";
 		}
-
-		ServletContext app = request.getServletContext();
-		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(app);
-
 		Boolean check = memberService.insertMember(myUser, myPwd);
 
 		if (check) {
@@ -200,11 +193,6 @@ public class MemberController {
 		session.setAttribute("booldtype", member.getBloodType());
 		session.setAttribute("hobbies", member.getHobbies());
 		session.setAttribute("selfinfo", member.getSelfIntro());
-
-		
-//		byte[] np2 = encoder.encode(member.getPicture_2());
-//		System.out.println("base64 2:" + np2);
-//		session.setAttribute("p2", np2);
 
 		return "MemberPage";
 	}

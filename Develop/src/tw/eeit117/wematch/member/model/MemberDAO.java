@@ -12,7 +12,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 @Repository("MemberDAO")
 public class MemberDAO {
@@ -50,6 +49,7 @@ public class MemberDAO {
 			Member member = new Member();
 			member.setMemberAccount(memberAccount);
 			member.setMemberPwd(memberPwd);
+			member.setMemberStatus(1);
 			Serializable identifier = session.save(member);
 			System.out.println("identifier:" + identifier);
 

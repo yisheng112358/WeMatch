@@ -4,32 +4,19 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@PropertySource("classpath:TableName.properties")
 public class ProductBeanDAO implements IProductBeanDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Value("${productTablePersistentClassName}")
-	private String productPersistentClass;
-
-	@Value("${CURE_STATE_SUCCESS}")
-	private String CURE_STATE_SUCCESS;
-
-	@Value("${CURE_STATE_REPEATED}")
-	private String CURE_STATE_REPEATED;
-
 	@Override
 	public List<ProductBean> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("FROM " + productPersistentClass, ProductBean.class).list();
+		return session.createQuery("FROM ProductBean", ProductBean.class).list();
 	}
 
 	@Override

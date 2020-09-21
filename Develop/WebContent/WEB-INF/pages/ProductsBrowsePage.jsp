@@ -50,7 +50,7 @@
 							</a>
 						</div>
 						<%
-							if (memberStatus.equals("bms")) {
+							if (memberStatus.equals("2")) {
 							out.write(
 							"<p style='text-align: center;'><a href='/WeMatch_dev/product/manage' class='btn btn-primary px-5 py-3 mt-3'>Manage</a></p>");
 						}

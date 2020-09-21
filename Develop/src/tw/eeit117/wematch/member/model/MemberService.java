@@ -1,12 +1,10 @@
 package tw.eeit117.wematch.member.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MemberService {

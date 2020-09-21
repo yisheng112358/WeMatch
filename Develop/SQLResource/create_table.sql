@@ -11,7 +11,7 @@ create table Member(
 memberId int not null primary key identity(1,1),
 memberAccount varchar(50) not null unique,
 memberPwd varchar(50) not null,
-memberStatus int,
+memberStatus int DEFAULT 1,
 memberName nvarchar(20),
 memberEmail varchar(50),
 birthdayDate date,
@@ -25,9 +25,6 @@ picture_1 varbinary(MAX),
 picture_2 varbinary(MAX),
 selfIntro nvarchar(MAX)
 )
-GO
---  新增管理員帳號
-insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
 GO
 
 -- (4)
@@ -72,9 +69,7 @@ ept10 nvarchar(max),
 ept11 nvarchar(max),
 ept12 nvarchar(max),
 )
-
 GO
-
 
 -- (7) 教練
 create Table Coach(
