@@ -83,42 +83,6 @@
 	height: 30px;
 }
 </style>
-<script>
-	/* var hasError = false; */
-	window.onload = function() {
-		var alink = document.getElementById("accountCheck");
-		alink.innerHTML = "hahahah";
-		var div = document.getElementById('result0c');
-		alink.onclick = function() {
-			var idValue = document.getElementById("account1").value;
-			if (!idValue) {
-				div.innerHTML = "<font color='blue' size='-1'>請輸入帳號...</font>";
-				return;
-			}
-			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "<c:url value='/CheckMemberAccount' />", true);
-			xhr.setRequestHeader("Content-Type",
-					"application/x-www-form-urlencoded");
-			xhr.send("id=" + idValue);
-			var message = "";
-			xhr.onreadystatechange = function() {
-				// 伺服器請求完成
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					var result = JSON.parse(xhr.responseText);
-					if (result.id.length == 0) {
-						message = "<font color='green' size='-2'>帳號可用</font>";
-					} else if (result.id.startsWith("Error")) {
-						message = "<font color='red' size='-2'>發生錯誤: 代號"
-								+ result.id + "</font>";
-					} else {
-						message = "<font color='red' size='-2'>帳號重複，請重新輸入帳號</font>";
-					}
-					div.innerHTML = message;
-				}
-			}
-		}
-	}
-</script>
 <script type="text/javascript">
 	var code;
 	function createCode() {
@@ -248,10 +212,7 @@
 							class="notice"></span><br /> <input type="text" id="account1"
 							class="form-control" name="memberAccount" required="required"
 							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
-							autocomplete="on" onblur="checkAccount()"><br /> <a
-							href='#' id='accountCheck' style='font-size: 10pt;'> 檢查帳號</a> <span
-							id='result0c' style="height: 10px;"></span> <span id='result0s'
-							style="height: 10px;"></span> <span>${errors.name}</span><br />
+							autocomplete="on" onblur="checkAccount()"><br /><span>${errors.name}</span><br />
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"

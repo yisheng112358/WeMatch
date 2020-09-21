@@ -17,8 +17,8 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
-	public String insert(ProductBean productBean) {
-		return productDao.insert(productBean);
+	public void insert(ProductBean productBean) {
+		productDao.insert(productBean);
 	}
 
 	@Override
@@ -29,6 +29,11 @@ public class ProductBeanService implements IProductBeanService {
 	@Override
 	public ProductBean findById(Integer productId) {
 		return productDao.findById(productId);
+	}
+
+	@Override
+	public void update(ProductBean productBean) {
+		productDao.update(productBean);
 	}
 
 }

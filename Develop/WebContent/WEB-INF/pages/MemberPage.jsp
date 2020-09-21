@@ -36,22 +36,6 @@
 	padding-right: 50px;
 }
 </style>
-<script>
-window.onload = function(){
-	 var xhr = new XMLHttpRequest();
-	 xhr.open("GET","<c:url value='/picture' />", true);
-	 xhr.send();
-	 xhr.onreadystatechange = function(){
-	  if(xhr.readyState == 4 && xhr.status == 200){
-		  var memberP = JSON.parse(xhr.responseText);
-		  var content += "<img src='data:image/jpg;base64," + memberP.picture_1 + "' width='80' height='80'></td>";
-	  }
-	  var divs = document.getElementById("picture_1");
-	  divs.innerHTML = content;
-	 }
-}
-	  
-</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -120,9 +104,9 @@ window.onload = function(){
 					style="position: relative; border: 1px solid;" method="post">
 					<div class="form-group">
 						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
-						<img style="position: absolute; align-content: center;"
-							height="175" src="getPhoto/<c:out value='${id}'/>"> <img
-							style="position: absolute; right: 0" height="175"
+						<img style="position: absolute; right: 1"
+							height="175" src="getPhoto/<c:out value='${id}'/>">
+						<img style="position: absolute; right: 0" height="175"
 							src="getPhoto2/<c:out value='${id}'/>">
 					</div>
 					<div class="form-group">

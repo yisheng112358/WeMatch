@@ -3,11 +3,8 @@ package tw.eeit117.wematch.product.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -74,26 +71,11 @@ public class ProductController {
 	}
 
 	@PostMapping("/addProduct")
-	public String addProduct(String category, String productName, Double price, Integer stock,
-			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) {
-
-		Map<String, String> respInsertState = new HashMap<>();
-
-		try {
-			ProductBean productBean = new ProductBean(category, productName, price, stock, productDescription,
-					thumbnail.getBytes(), detailImg.getBytes());
-
-			String productInsertState = productBeanService.insert(productBean);
-
-			if (productInsertState == CURE_STATE_SUCCESS) {
-				respInsertState.put(CURE_STATE_SUCCESS, "新增成功");
-			} else if (productInsertState == CURE_STATE_REPEATED) {
-				respInsertState.put(CURE_STATE_REPEATED, "商品重複");
-			}
-		} catch (Exception e) {
-			respInsertState.put("fail", e.getMessage());
-			return "ProductsManagePage";
-		}
+	public String addProduct(Integer productId, String category, String productName, Double price, Integer stock,
+			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) throws IOException {
+		ProductBean productBean = newProductBeanCheck(productId, category, productName, price, stock,
+				productDescription, thumbnail, detailImg);
+		productBeanService.insert(productBean);
 		return "ProductsManagePage";
 	}
 
@@ -104,24 +86,75 @@ public class ProductController {
 		return "redirect:/product/manage";
 	}
 
-	@GetMapping("/examProduct")
-	public String examProduct(HttpSession httpSession) {
-		System.out.println(httpSession.getAttribute("product"));
+	@GetMapping("/examProductPage")
+	public String examProductPage(HttpSession httpSession) {
 		return "ProductExamPage";
 	}
 
 	@GetMapping(value = "/examProduct/{productId}")
 	public String examProduct(@PathVariable String productId, HttpSession httpSession) {
-		httpSession.setAttribute("product", productBeanService.findById(Integer.parseInt(productId)));
-		return "redirect:/product/examProduct";
+		httpSession.setAttribute("productExam", productBeanService.findById(Integer.parseInt(productId)));
+		return "redirect:/product/examProductPage";
 	}
 
 	@GetMapping("/examProduct/showDetailImg/{productId}")
 	public void showProductImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg");
-		System.out.println("目前正在檢視產品： " + productId);
 		ProductBean productBean = productBeanService.findById(Integer.parseInt(productId));
 		InputStream inputStream = new ByteArrayInputStream(productBean.getDetailImg());
 		IOUtils.copy(inputStream, response.getOutputStream());
+	}
+
+	@GetMapping("/updateProductPage")
+	public String updateProductPage(HttpSession httpSession) {
+		return "ProductUpdatePage";
+	}
+
+	@GetMapping(value = "/updateProduct/{productId}")
+	public String updateProduct(@PathVariable String productId, HttpSession httpSession) {
+		httpSession.setAttribute("productUpdate", productBeanService.findById(Integer.parseInt(productId)));
+		return "redirect:/product/updateProductPage";
+	}
+
+	@GetMapping("/updateProduct/showthumbnail/{productId}")
+	public void showthumbnailInUpdate(@PathVariable String productId, HttpServletResponse response) throws IOException {
+		response.setContentType("image/jpeg");
+		ProductBean productBean = productBeanService.findById(Integer.parseInt(productId));
+		InputStream inputStream = new ByteArrayInputStream(productBean.getThumbnail());
+		IOUtils.copy(inputStream, response.getOutputStream());
+	}
+
+	@GetMapping("/updateProduct/showDetailImg/{productId}")
+	public void showDetailImgInUpdate(@PathVariable String productId, HttpServletResponse response) throws IOException {
+		response.setContentType("image/jpeg");
+		ProductBean productBean = productBeanService.findById(Integer.parseInt(productId));
+		InputStream inputStream = new ByteArrayInputStream(productBean.getDetailImg());
+		IOUtils.copy(inputStream, response.getOutputStream());
+	}
+
+	@PostMapping("/updateProduct")
+	public String updateProduct(Integer productId, String category, String productName, Double price, Integer stock,
+			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) throws IOException {
+		ProductBean productBean = newProductBeanCheck(productId, category, productName, price, stock,
+				productDescription, thumbnail, detailImg);
+		System.out.println("我是產品ID： " + productBean.getProductId());
+		productBeanService.update(productBean);
+		return "ProductsManagePage";
+	}
+
+	private ProductBean newProductBeanCheck(Integer productId, String category, String productName, Double price,
+			Integer stock, String productDescription, MultipartFile thumbnail, MultipartFile detailImg)
+			throws IOException {
+		byte[] thumbnailByteArray = null;
+		byte[] detailImgByteArray = null;
+		if (thumbnail != null) {
+			thumbnailByteArray = thumbnail.getBytes();
+		}
+		if (detailImg != null) {
+			detailImgByteArray = detailImg.getBytes();
+		}
+		ProductBean productBean = new ProductBean(productId, category, productName, price, stock, productDescription,
+				thumbnailByteArray, detailImgByteArray);
+		return productBean;
 	}
 }
