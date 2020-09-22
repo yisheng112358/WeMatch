@@ -91,32 +91,33 @@ h3:active {
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<!-- 					<li class="nav-item"><a href="index.html#home-section" -->
-					<!-- 						class="nav-link"><span>Home</span></a></li> -->
+					<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
+					<!-- 					class="nav-link"><span>Home</span></a></li> -->
 					<li class="nav-item"><a
 						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-					<li class="nav-item"><a href="index.html#services-section"
+					<li class="nav-item"><a href="index.html#courses-section"
 						class="nav-link"><span>Courses</span></a></li>
-					<li class="nav-item"><a href="<c:url value='/bookingcontroller/booking' />"
+					<li class="nav-item"><a
+						href="<c:url value='/bookingcontroller/booking' />"
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
 					<li class="nav-item"><a href="/WeMatch_dev/video"
 						class="nav-link"><span>Videoflix</span></a></li>
-					<li class="nav-item"><a href="index.html#coaches-section"
-						class="nav-link"><span>Discussion</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/coachPage' />"
+						class="nav-link"><span>Coach Intro.</span></a></li>
 					<li class="nav-item"><a href="index.html#blog-section"
 						class="nav-link"><span>Shopping Cart</span></a></li>
-					<li class="nav-item"><a href="index.html#contact-section"
-						class="nav-link"><span>Membership</span></a></li>
-				<%
-					String memberStatus = "" + (Integer) session.getAttribute("Status");
-				if (memberStatus.equals("1") || memberStatus.equals("2")) {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
-				} else {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-				}
-				%>
+					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+						class='nav-link'><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
 				</ul>
 			</div>
 		</div>
@@ -220,16 +221,18 @@ h3:active {
 						<!-- 							style="float: right; margin-right: 5px;"> -->
 
 
-<%-- 						<form action="/WeMatch_dev/video/admindelete" method="post"> --%>
-<!-- 							<input type="submit" value="Admin" -->
-<!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
-<%-- 						</form> --%>
+						<%-- 						<form action="/WeMatch_dev/video/admindelete" method="post"> --%>
+						<!-- 							<input type="submit" value="Admin" -->
+						<!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
+						<%-- 						</form> --%>
 
-<% if (memberStatus.equals("2")) {
-	out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
-	out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
-	out.print("</form>");
-} %>
+						<%
+							if (memberStatus.equals("2")) {
+							out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
+							out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
+							out.print("</form>");
+						}
+						%>
 
 					</div>
 					<div class="col-md-8 tab-wrap">
