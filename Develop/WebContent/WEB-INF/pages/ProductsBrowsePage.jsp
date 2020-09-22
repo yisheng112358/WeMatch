@@ -39,18 +39,26 @@
 					<div class="col-md-4 nav-link-wrap">
 						<div class="nav flex-column nav-pills" id="v-pills-tab"
 							role="tablist" aria-orientation="vertical">
-							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
+							<a class="nav-link ftco-animate active" id="tabMassager"
 								data-toggle="pill" href="#v-pills-8" role="tab"
 								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
-									Fascia gun...</span></a> <a class="nav-link ftco-animate"
-								id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9"
-								role="tab" aria-controls="v-pills-9" aria-selected="false">Yoga
-								<span>Mat, Roller...</span>
-							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
+									Fascia gun...</span></a> <a class="nav-link ftco-animate" id="tabYoga"
+								data-toggle="pill" href="#v-pills-9" role="tab"
+								aria-controls="v-pills-9" aria-selected="false">Yoga <span>Mat,
+									Roller...</span>
+							</a> <a class="nav-link ftco-animate" id="tabSupplement"
 								data-toggle="pill" href="#v-pills-10" role="tab"
 								aria-controls="v-pills-10" aria-selected="false">Supplement
 								<span>Protein, Vitamin...</span>
 							</a>
+						</div>
+						<div class="form-group">
+							<label for="categorySelect">商品排序</label><br /> <select
+								name="category" id="sorttingSelect">
+								<option value="">請選擇</option>
+								<option value="HighPriceUp">價格由高到低</option>
+								<option value="HighPriceDown">價格由低到高</option>
+							</select>
 						</div>
 						<%
 							if (memberStatus.equals("2")) {
