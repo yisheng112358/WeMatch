@@ -141,7 +141,7 @@
  </div>
  
 
-
+<%@ include file="BookingBrowse1.jsp"%>
 
 
 

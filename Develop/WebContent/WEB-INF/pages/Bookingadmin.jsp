@@ -58,7 +58,7 @@
 
 
        <section class="ftco-section ftco-no-pb ftco-no-pt ftco-program bg-light" id="programs-section">
-      <div class="container">
+      <div class="container" style="background-color:white">
         <div class="row no-gutters">
           <div class="col-md-4 ftco-animate py-5 nav-link-wrap js-fullheight">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -119,8 +119,8 @@
 
 
 <div>
-	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 	
+	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 
       <input style="display:none" type="hidden"  name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
 	 
@@ -139,7 +139,7 @@
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="13"/>13:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="15"/>15:00</label>
 </div>
-<!--                       draggable="false" 不被拖動 -->
+
        </div>                            
 	    <br/><br/>
 	    
@@ -197,15 +197,14 @@
 		<br/><br/>
 		
 
-    </form>
+  
  </div>
- 
+   </form>
 
  <% if (memberStatus.equals("2")) {
  	response.sendRedirect("/WeMatch_dev/bookingcontroller/booking2"); 
  }
-
- %>
+%>
 
 
 
