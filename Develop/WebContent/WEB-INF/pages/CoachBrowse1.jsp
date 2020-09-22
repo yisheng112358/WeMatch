@@ -30,7 +30,7 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var content = "<table border='1' class='coachTable'>";
-				content += "<tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='80'>暱稱</th><th width='80'>年齡</th><th width='100'>授課名稱</th><th width='100'>授課種類</th><th width='100'>相關證照</th></tr>";
+				content += "<tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='100'>暱稱</th><th width='100'>年齡</th><th width='120'>授課名稱</th><th width='120'>授課種類</th><th width='150'>相關證照</th></tr>";
 				var coach = JSON.parse(xhr.responseText);
 				for (var i = 0; i < coach.length; i++) {
 					var base64String = btoa(String.fromCharCode.apply(null,
@@ -100,6 +100,12 @@ h3:active {
 	margin: auto;
 	width: 1000px;
 	length: 200px;
+	font-family: 微軟正黑體;
+	font-size: 20px;
+}
+
+tr{
+	border: 20px white solid;
 }
 
 #return {

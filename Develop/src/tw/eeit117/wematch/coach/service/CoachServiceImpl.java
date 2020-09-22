@@ -12,7 +12,7 @@ import tw.eeit117.wematch.coach.model.Coach;
 @Service
 @Transactional
 public class CoachServiceImpl implements CoachService {
-	
+
 	@Autowired
 	private CoachDAO coachDAO;
 
@@ -45,9 +45,14 @@ public class CoachServiceImpl implements CoachService {
 	public void delete(Integer coachId) {
 		coachDAO.delete(coachId);
 	}
-	
+
+	@Transactional
+	public List<Coach> findByKeyword(String keyword) {
+		return coachDAO.findByKeyword(keyword);
+	}
+
 	public void setCoachDAO(CoachDAO coachDAO) {
-		 this.coachDAO = coachDAO;
+		this.coachDAO = coachDAO;
 	}
 
 }
