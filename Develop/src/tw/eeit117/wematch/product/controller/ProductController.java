@@ -139,7 +139,6 @@ public class ProductController {
 	@GetMapping(value = "/search", params = { "keyword", "sortting" })
 	public @ResponseBody List<ProductBean> search(@RequestParam String keyword, @RequestParam String sortting) {
 		List<ProductBean> productBeans = productBeanService.findByKeyword(keyword);
-//		List<ProductBean> sortedproductBeans = new ArrayList<ProductBean>();
 		Comparator<ProductBean> compareByPrice = (ProductBean o1, ProductBean o2) -> Double.compare(o1.getPrice(),
 				o2.getPrice());
 		if (sortting.equals("HighPriceDown")) {
