@@ -100,7 +100,8 @@
 		if (checkCode) {
 			checkCode.className = "code";
 			checkCode.innerHTML = code;
-		}
+<%-- 		<% session.setAttribute("code", code); %> --%>
+	}
 	}
 	function validateCode() {
 		var inputCode = document.getElementById("inputCode").value;
@@ -127,10 +128,10 @@
 		checkCode();
 		createCode();
 		document.getElementById("checkCode").onclick = function() {
-			createCode()
+			createCode();
 		}
 		linkbt.onclick = function() {
-			createCode()
+			createCode();
 		}
 		inputCode.onclick = function() {
 			validateCode();
@@ -141,7 +142,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-<%@ include file="WEB-INF/pages/header.jsp" %>
+	<%@ include file="WEB-INF/pages/header.jsp"%>
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -178,7 +179,7 @@
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
 									id="inputCode" name="inputCode" required="required" /> <span
-									id="text_show">${errors.incode}</span>
+									id="text_show"></span>
 							</div>
 						</div>
 						<input id="Button1" type="submit" value="登入"
