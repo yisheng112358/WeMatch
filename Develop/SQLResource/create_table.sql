@@ -40,3 +40,34 @@ detailImg image,
 addTime DATETIME DEFAULT CURRENT_TIMESTAMP,
 )
 GO
+
+-- (5)影片教學 Fitness Videoflix
+CREATE table Video(
+videoId int primary key not null identity(1,1),
+videoName nvarchar(50) not null,
+videoCategory nvarchar(50) not null,       --背部.胸部.腿部
+videoLink varchar(max) not null,           --Youtube wibsite
+videoDesc nvarchar(max),                   --Description
+)
+GO
+
+
+create  Table Booking(
+bookingiId int not null identity,
+bookingDate nvarchar(max) not null,
+bookingTime nvarchar(max) not null,
+ept1 nvarchar(max),
+ept2 nvarchar(max),
+ept3 nvarchar(max),
+ept4 nvarchar(max),
+ept5 nvarchar(max),
+ept6 nvarchar(max),
+ept7 nvarchar(max),
+ept8 nvarchar(max),
+ept9 nvarchar(max),
+ept10 nvarchar(max),
+ept11 nvarchar(max),
+ept12 nvarchar(max),
+)
+
+GO

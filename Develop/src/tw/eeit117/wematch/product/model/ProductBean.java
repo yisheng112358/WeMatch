@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.product;
+package tw.eeit117.wematch.product.model;
 
 import java.util.Arrays;
 
@@ -9,26 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 @Entity
 @Table(name = "Product")
-@Component
-public class Product {
-	private Integer productID;
+public class ProductBean {
+	private Integer productId;
 	private String category;
 	private String productName;
-	private double price;
+	private Double price;
 	private Integer stock;
 	private String productDescription;
 	private byte[] thumbnail;
 	private byte[] detailImg;
 
-	public Product() {
+	public ProductBean() {
 	}
 
-	public Product(String category, String productName, double price, Integer stock, String productDescription,
-			byte[] thumbnail, byte[] detailImg) {
+	public ProductBean(Integer productId, String category, String productName, Double price, Integer stock,
+			String productDescription, byte[] thumbnail, byte[] detailImg) {
+		this.productId = productId;
 		this.category = category;
 		this.productName = productName;
 		this.price = price;
@@ -41,12 +39,12 @@ public class Product {
 	@Id
 	@Column(name = "productId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getProductID() {
-		return productID;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setProductID(Integer productID) {
-		this.productID = productID;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
 	@Column(name = "category")
@@ -72,7 +70,7 @@ public class Product {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -114,7 +112,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [productID=" + productID + ", category=" + category + ", productName=" + productName
+		return "Product [productId=" + productId + ", category=" + category + ", productName=" + productName
 				+ ", price=" + price + ", stock=" + stock + ", productDescription=" + productDescription
 				+ ", thumbnail=" + Arrays.toString(thumbnail) + ", detailImg=" + Arrays.toString(detailImg) + "]";
 	}

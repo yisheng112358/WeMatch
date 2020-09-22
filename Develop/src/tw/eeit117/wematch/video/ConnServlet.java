@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.jdbc;
+package tw.eeit117.wematch.video;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class JdbcConnServlet {
+public class ConnServlet {
 	private Connection conn;
 
-	public JdbcConnServlet() throws Exception {
+	public ConnServlet() throws Exception {
 		createConn();
 	}
 

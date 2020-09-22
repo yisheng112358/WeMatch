@@ -1,4 +1,4 @@
-package tw.eeit117.wematch.product;
+package tw.eeit117.wematch.video;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -14,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-@WebServlet("/BaseServlet.do")
+@WebServlet("/BaseServlet1.do")
 public abstract class BaseServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -63,3 +63,4 @@ public abstract class BaseServlet extends HttpServlet {
 	}
 
 }
+
