@@ -84,3 +84,30 @@ courseType nvarchar(50) not null,
 license nvarchar(50) not null,
 )
 GO
+
+--(8.1) 課程
+Create Table Courses(
+ coursesId int not null primary key  identity(1000,1),--代碼
+ coursesName nvarchar(50),--課程名稱
+ coursesWeek nvarchar(50),--星期
+ sectionNumber nvarchar(50), --課程節數(第幾堂)
+ classRoom nvarchar(50),--教室
+ numberPeople int, --人數
+ regNumber int,--已報名人數
+ coursesBalance int,--餘額(剩餘報名人數)
+)
+GO
+
+--(8.2) 課表
+ Create Table Curriculum(
+ curriculumId int not null primary Key identity(2000,1),--課表
+ memberId int,--會員
+ coursesId int unique,--課程
+ --coursesMany int  null, -- 關聯的欄位
+ coursesName nvarchar(50),--課程名稱
+ coursesWeek nvarchar(50),--星期
+ sectionNumber nvarchar(50), --課程節數(第幾堂)
+ classRoom nvarchar(50),--教室
+)
+GO
+
