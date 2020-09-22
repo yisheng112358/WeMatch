@@ -11,7 +11,7 @@ create table Member(
 memberId int not null primary key identity(1,1),
 memberAccount varchar(50) not null unique,
 memberPwd varchar(50) not null,
-memberStatus int,
+memberStatus int DEFAULT 1,
 memberName nvarchar(20),
 memberEmail varchar(50),
 birthdayDate date,
