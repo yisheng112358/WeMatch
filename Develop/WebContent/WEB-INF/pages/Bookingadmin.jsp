@@ -50,7 +50,12 @@
 <div>
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 	
-	
+
+      <input style="display:none" type="hidden"  name="bookingname"  value="${name}">${name}
+	 
+	 <br><br>	 
+	 
+	 
 	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-22"max="2020-09-30" step="1"> <br />
 
 	    <br/><br/>
