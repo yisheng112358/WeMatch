@@ -125,7 +125,18 @@
     </form>
  </div>
  
- <%@ include file="BookingBrowse1.jsp"%>
+<%@  include file="BookingBrowse1.jsp"%>
+
+
+
+
+
+
+
+
+
+
+
 
 <%@ include file="footer.jsp"%>
 <%@ include file="JSsetting.jsp"%>

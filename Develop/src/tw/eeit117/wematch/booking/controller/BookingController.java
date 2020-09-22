@@ -33,12 +33,12 @@ public class BookingController {
 
 	@GetMapping("/booking")
 	public String bookingPage() {
-		return "BookingBrowse2";
+		return "Bookingadmin";
 	}
 	
 	@GetMapping("/booking2")
 	public String bookingPage2() {
-		return "BookingBrowse1";
+		return "BookingBrowse2";
 	}
 
 	@RequestMapping(value = "/bookingCheck", method = RequestMethod.POST)
