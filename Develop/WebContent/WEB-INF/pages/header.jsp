@@ -27,10 +27,10 @@
 					class="nav-link"><span>Schedule</span></a></li>
 				<li class="nav-item"><a href="index.html#about-section"
 					class="nav-link"><span>Diet</span></a></li>
-				<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
+				<li class="nav-item"><a href="/WeMatch_dev/video"
 					class="nav-link"><span>Videoflix</span></a></li>
-				<li class="nav-item"><a href="index.html#coaches-section"
-					class="nav-link"><span>Discussion</span></a></li>
+				<li class="nav-item"><a href="<c:url value='/coachPage' />"
+					class="nav-link"><span>Coach Intro.</span></a></li>
 				<li class="nav-item"><a href="index.html#blog-section"
 					class="nav-link"><span>Shopping Cart</span></a></li>
 				<li class="nav-item"><a href="<c:url value='/MemberPage' />"

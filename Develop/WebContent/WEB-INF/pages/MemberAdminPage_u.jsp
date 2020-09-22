@@ -49,13 +49,18 @@
 				<h3 class="mb-5">後台更改會員資料</h3>
 				<form:form Action="UpdateSend" method="post" modelAttribute="Member">
 					<div class="form-group">
+						<label for="memberAccount">會員帳號：</label> <input type="text"
+							id="memberAccount" class="form-control" value="${memberAccount}"
+							name="memberAccount" maxlength="20" autocomplete="on">
+					</div>
+					<div class="form-group">
 						<label for="memberName">姓名：</label> <input type="text"
-							id="memberName" value="林小明" class="form-control"
+							id="memberName" class="form-control" value="${name}"
 							name="memberName" maxlength="20" autocomplete="on">
 					</div>
 					<div class="form-group">
 						<label for="nickname">暱稱：</label><input type="text" id="nickname"
-							class="form-control" name="nickname" maxlength="20" value="明明"
+							class="form-control" name="nickname" maxlength="20" value="${nickname}"
 							autocomplete="on">
 					</div>
 					<div class="form-group">
@@ -66,10 +71,11 @@
 						</select>
 					</div>
 					<div class="form-group">
+						<div id="memo">*輸入Email擔任援備密碼</div>
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
-							class="form-control" name="memberEmail" onblur="checkMail()"
-							value="a1234@mail.com">
+							value="${email}"
+							class="form-control" name="memberEmail" onblur="checkMail()">
 					</div>
 					<div class="form-group">
 						<label for="birthday">生日：</label> <input type="date"
@@ -153,7 +159,7 @@
 					<div class="form-group">
 						<label for="selfIntro">關於我：</label>
 						<textarea name="selfIntro" cols="30" rows="10"
-							class="form-control">Hi</textarea>
+							class="form-control">${selfInfo}</textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="更新" class="btn py-3 px-4 btn-primary">

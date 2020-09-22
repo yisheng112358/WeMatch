@@ -40,7 +40,7 @@ public class AdminVideoServlet extends HttpServlet {
 			
 			processInsert(videoName, videoCategory, videoLink, videoDesc);
 			
-			response.sendRedirect("VideoPage.jsp");
+			response.sendRedirect("video");
 			
 			out.close();
 			

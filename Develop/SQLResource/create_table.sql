@@ -53,7 +53,7 @@ GO
 
 -- (6)
 create  Table Booking(
-bookingiId int not null identity,
+bookingId int not null identity,
 bookingDate nvarchar(max) not null,
 bookingTime nvarchar(max) not null,
 ept1 nvarchar(max),

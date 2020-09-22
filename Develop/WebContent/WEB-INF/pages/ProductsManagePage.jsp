@@ -27,6 +27,17 @@
 					<a href="/WeMatch_dev/product/addProduct"
 						class="btn btn-primary px-5 py-3 mt-3">新增</a>
 				</p>
+				<div class="sidebar-box">
+					<div class="search-form" id="searchForm">
+						<div class="form-group">
+							<span class="icon icon-search"></span> <input type="text"
+								id="searchInput" class="form-control"
+								placeholder="Type a keyword to search">
+						</div>
+					</div>
+					<p id="searchNum">
+					<p>
+				</div>
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">
 						<div class="nav flex-column nav-pills" id="v-pills-tab"

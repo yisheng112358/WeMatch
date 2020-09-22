@@ -51,8 +51,11 @@ thead th {
 						<!-- 								style="float: right; margin-right: 5px"> -->
 						<!-- 						</form> -->
 
+<!-- 						<input type="button" value="Add" class="btn py-3 px-4 btn-primary" -->
+<!-- 							onclick="location.href='/WeMatch_dev/VideoListPage.jsp'" -->
+<!-- 							style="float: right; margin-right: 5px;" /> -->
 						<input type="button" value="Add" class="btn py-3 px-4 btn-primary"
-							onclick="location.href='/WeMatch_dev/VideoListPage.jsp'"
+							onclick="location.href='/WeMatch_dev/videolist'"
 							style="float: right; margin-right: 5px;" />
 
 					</div>

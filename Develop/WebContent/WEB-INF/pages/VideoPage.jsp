@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	response.addHeader("x-frame-options", "ALLOW-FROM https://www.youtube.com/");
+%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
-<title>Video Check In</title>
+<title>Video</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -58,6 +63,14 @@ h3:active {
 	font-weight: bold;
 	font-size: 18px;
 }
+
+.uptopic {
+	color: #A23400;
+	font-weight: bold;
+	font-size: 25px;
+	font-style: italic;
+	text-decoration: underline;
+}
 </style>
 </head>
 
@@ -68,7 +81,7 @@ h3:active {
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Fitness</a>
+			<a class="navbar-brand" href="/WeMatch_dev/index.jsp">Fitness</a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -78,8 +91,8 @@ h3:active {
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-<!-- 					<li class="nav-item"><a href="index.html#home-section" -->
-<!-- 						class="nav-link"><span>Home</span></a></li> -->
+					<!-- 					<li class="nav-item"><a href="index.html#home-section" -->
+					<!-- 						class="nav-link"><span>Home</span></a></li> -->
 					<li class="nav-item"><a
 						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
 					<li class="nav-item"><a href="index.html#services-section"
@@ -88,7 +101,7 @@ h3:active {
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
-					<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
+					<li class="nav-item"><a href="/WeMatch_dev/video"
 						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="index.html#coaches-section"
 						class="nav-link"><span>Discussion</span></a></li>
@@ -96,14 +109,14 @@ h3:active {
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="index.html#contact-section"
 						class="nav-link"><span>Membership</span></a></li>
-					<%
-						String memberStatus = (String) session.getAttribute("memberStatus");
-					if (memberStatus.equals("member") || memberStatus.equals("bms")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/product/logout' class='nav-link'><span>Logout</span></a></li>");
-					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-					}
-					%>
+				<%
+					String memberStatus = "" + (Integer) session.getAttribute("Status");
+				if (memberStatus.equals("1") || memberStatus.equals("2")) {
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+				} else {
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+				}
+				%>
 				</ul>
 			</div>
 		</div>
@@ -121,9 +134,7 @@ h3:active {
 					<!-- 						<span class="mr-2"><a href="index.html">Home <i -->
 					<!-- 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
 					<!-- 							href="VideoPage.jsp">Videoflix <i -->
-					<!-- 								class="ion-ios-arrow-forward"></i></a></span> <span>Video Check-in <i -->
-					<!-- 							class="ion-ios-arrow-forward"></i> -->
-					<!-- 						</span> -->
+					<!-- 								class="ion-ios-arrow-forward"></i></a></span> -->
 					<!-- 					</p> -->
 				</div>
 			</div>
@@ -134,11 +145,46 @@ h3:active {
 		<div class="container">
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<span class="subheading">Videoflix Check In</span>
-					<h2 class="mb-4">New Training Video</h2>
-					<p>More training, more video.</p>
+					<span class="subheading">Videoflix</span>
+					<h2 class="mb-4">Training Video</h2>
+					<p>No pain, no gain.</p>
 				</div>
 			</div>
+
+			<div>
+				<!-- 				<div class="coach-wrap ftco-animate d-sm-flex" -->
+				<!-- 					style="padding-top: 10px"> -->
+				<!-- 					<div>Last Update</div><br> -->
+
+				<!-- 					<div class="tab-pane fade show active" id="v-pills-6" -->
+				<!-- 						role="tabpanel" aria-labelledby="day-6-tab"> -->
+
+				<div class="coach-wrap ftco-animate d-sm-flex"
+					style="border-radius: 50px">
+
+					<table id=contentupdate class="updateTable"
+						style="margin-left: 35px"></table>
+				</div>
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+
+				<!-- 				<div> -->
+				<!-- 					<div class="coach-wrap ftco-animate d-sm-flex" -->
+				<!-- 						style="padding-top: 10px"> -->
+				<!-- 						<h4>Most View</h4> -->
+
+				<!-- 						<div class="tab-pane fade show active" id="v-pills-7" -->
+				<!-- 							role="tabpanel" aria-labelledby="day-7-tab"> -->
+				<!-- 							<div class="coach-wrap ftco-animate d-sm-flex"> -->
+				<!-- 								Show video most view -->
+				<!-- 								<table id=contentview class="viewTable"></table> -->
+				<!-- 							</div> -->
+				<!-- 						</div> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+			</div>
+
+
 			<div class="ftco-schedule">
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">
@@ -146,11 +192,45 @@ h3:active {
 							role="tablist" aria-orientation="vertical">
 							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
 								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Video
-								Check-in <span>Aloha, new training video!!</span>
+								aria-controls="v-pills-8" aria-selected="true">BodyBack <span>BodyBack,
+									Go go!!</span></a> <a class="nav-link ftco-animate" id="v-pills-9-tab"
+								data-toggle="pill" href="#v-pills-9" role="tab"
+								aria-controls="v-pills-9" aria-selected="false">BodyChest <span>Chest,
+									GJ Ha Ha...</span>
+							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
+								data-toggle="pill" href="#v-pills-10" role="tab"
+								aria-controls="v-pills-10" aria-selected="false">BodyLeg <span>Leg,
+									you're leg ker ker...</span>
 							</a>
 
 						</div>
+
+						<br>
+						<!-- 						<input type="button" value="Delete" -->
+						<!-- 							class="btn py-3 px-4 btn-primary" -->
+						<!-- 							onclick="location.href='/WeMatch_dev/VideoDeletePage.jsp'" -->
+						<!-- 							style="float: right; margin-right: 10px;"> <input -->
+						<!-- 							type="button" value="Add" class="btn py-3 px-4 btn-primary" -->
+						<!-- 							onclick="location.href='/WeMatch_dev/VideoListPage.jsp'" -->
+						<!-- 							style="float: right; margin-right: 5px;"> -->
+
+						<!-- 						<input type="button" value="Admin" -->
+						<!-- 							class="btn py-3 px-4 btn-primary" -->
+						<!-- 							onclick="location.href='/WeMatch_dev/VideoDeletePage.jsp'" -->
+						<!-- 							style="float: right; margin-right: 5px;"> -->
+
+
+<%-- 						<form action="/WeMatch_dev/video/admindelete" method="post"> --%>
+<!-- 							<input type="submit" value="Admin" -->
+<!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
+<%-- 						</form> --%>
+
+<% if (memberStatus.equals("2")) {
+	out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
+	out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
+	out.print("</form>");
+} %>
+
 					</div>
 					<div class="col-md-8 tab-wrap">
 
@@ -159,49 +239,29 @@ h3:active {
 							<div class="tab-pane fade show active" id="v-pills-8"
 								role="tabpanel" aria-labelledby="day-8-tab">
 								<div class="coach-wrap ftco-animate d-sm-flex">
-
-									<!--Video Check In Form -->
-									<form action="AdminVideoServlet.do" method="get"
-										enctype="multipart/form-data" class="p-5 bg-light"
-										style="position: relative; border: 1px solid black;">
-										<div class="form-group">
-											<label for="videoName">影片主題</label> <span id="namesp"
-												class="notice"></span><br /> <input type="text" id="name1"
-												class="form-control" name="videoName" required="required"
-												autocomplete="on">
-										</div>
-										<div class="form-group">
-											<label for="videoCategory">影片類別</label><br /> <select
-												name="videoCategory">
-												<option value="bodyback">背部肌群訓練</option>
-												<option value="bodychest">胸部肌群訓練</option>
-												<option value="bodyleg">腿部肌群訓練</option>
-											</select>
-										</div>
-										<div class="form-group">
-											<label for="videoLink">影片連結</label> <span id="linksp"
-												class="notice"></span><br /> <input type="text" id="link1"
-												class="form-control" name="videoLink" required="required"
-												autocomplete="on">
-										</div>
-										<div class="form-group">
-											<label for="videoDesc">影片簡述</label> <span id="linksp"
-												class="notice"></span><br />
-											<!-- 												<input type="text" id="desc1" class="form-control" name="videoDesc"  -->
-											<!-- 												required="required"	autocomplete="on"> -->
-											<textarea name="videoDesc" required="required"
-												style="width: 550px; height: 120px;"></textarea>
-										</div>
-
-										<div class="form-group">
-											<input type="submit" value="確認"
-												class="btn py-3 px-4 btn-primary">
-										</div>
-									</form>
+									<!--Show Products & Page-->
+									<table id=contentbodyback class="videoTable"></table>
 								</div>
-								<div></div>
+								<div id="pageback" class="text-center"></div>
 							</div>
 
+							<div class="tab-pane fade" id="v-pills-9" role="tabpanel"
+								aria-labelledby="v-pills-day-9-tab">
+								<div class="coach-wrap ftco-animate d-sm-flex">
+									<!--Show Products & Page-->
+									<table id="contentbodychest" class="videoTable"></table>
+								</div>
+								<div id="pagechest" class="text-center"></div>
+							</div>
+
+							<div class="tab-pane fade" id="v-pills-10" role="tabpanel"
+								aria-labelledby="v-pills-day-10-tab">
+								<div class="coach-wrap ftco-animate d-sm-flex">
+									<!--Show Products & Page-->
+									<table id="contentbodyleg" class="videoTable"></table>
+								</div>
+								<div id="pageleg" class="text-center"></div>
+							</div>
 
 						</div>
 					</div>
@@ -280,16 +340,15 @@ h3:active {
 				<div class="col-md-12 text-center">
 
 					<p>
-						Link back to Colorlib can't be removed. Template is licensed under
-						CC BY 3.0. Copyright &copy;
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
 						All rights reserved | This template is made with <i
 							class="icon-heart color-danger" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a> Link
-						back to Colorlib can't be removed. Template is licensed under CC
-						BY 3.0.
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
 			</div>
@@ -316,11 +375,10 @@ h3:active {
 	<script src="js/aos.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
+	<script src="js/VideoUpdate.js" type="text/javascript"></script>
+	<script src="js/VideoPage.js" type="text/javascript"></script>
 
 </body>
 

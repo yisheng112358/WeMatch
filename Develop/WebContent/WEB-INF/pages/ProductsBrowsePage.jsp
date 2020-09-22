@@ -23,14 +23,17 @@
 					<p>You go far, we help you go further.</p>
 				</div>
 			</div>
-			<div>
+			<div class="ftco-schedule">
 				<div class="sidebar-box">
-					<form action="#" class="search-form">
+					<div class="search-form" id="searchForm">
 						<div class="form-group">
 							<span class="icon icon-search"></span> <input type="text"
-								class="form-control" placeholder="Type a keyword and hit enter">
+								id="searchInput" class="form-control"
+								placeholder="Type a keyword to search">
 						</div>
-					</form>
+					</div>
+					<p id="searchNum">
+					<p>
 				</div>
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">

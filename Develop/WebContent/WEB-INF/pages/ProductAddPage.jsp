@@ -77,7 +77,7 @@
 							<img src="" id="detailImgPreview" height="200"
 								alt="Image preview...">
 						</div>
-						<div class="form-group">
+						<div class="form-group" style="text-align: right;">
 							<input id='btn' type="submit" value="送出"
 								class="btn py-3 px-4 btn-primary">
 						</div>

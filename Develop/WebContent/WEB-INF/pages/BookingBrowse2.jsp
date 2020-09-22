@@ -17,6 +17,8 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 	
+
+	
 <%@ include file="header.jsp"%>
 	
 	<section class="ftco-section ftco-schedule" id="schedule-section">
@@ -49,7 +51,7 @@
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 	
 	
-	<input type="date" id="date" name="date" required value="2020-09-17" min="2020-09-17"max="2020-09-30" step="1"> <br />
+	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-22"max="2020-09-30" step="1"> <br />
 
 	    <br/><br/>
 	    
@@ -123,11 +125,15 @@
     </form>
  </div>
  
- <%@ include file="BookingBrowse1.jsp"%>
- 
+<%@  include file="BookingBrowse1.jsp"%>
 
-	
-	
+
+
+
+
+
+
+
 
 
 
@@ -142,5 +148,16 @@
 
 <script src="../js/bookingcheck-web1.js"></script>
 <script src="../js/bookingcheck3.js"></script>
+<script src="../js/bookingcheck4.js"></script>
+
+	<script>
+
+     var Today=new Date();
+
+    var x= document.getElementById("date");
+
+ x.setAttribute("value", Today.getFullYear()+"-"+"0"+(Today.getMonth()+1)+"-"+Today.getDate());
+
+     </script>
 </body>
 </html>
