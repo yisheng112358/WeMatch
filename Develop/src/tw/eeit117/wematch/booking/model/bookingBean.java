@@ -29,6 +29,7 @@ public class bookingBean {
 	private String ept10;
 	private String ept11;
 	private String ept12;
+	private String bookingName;
 
 	public bookingBean() {
 	}
@@ -48,6 +49,7 @@ public class bookingBean {
 		this.ept10 = ept10;
 		this.ept11 = ept11;
 		this.ept12 = ept12;
+		this.bookingName=bookingName;
 
 	}
 
@@ -187,6 +189,16 @@ public class bookingBean {
 
 	public void setEpt12(String ept12) {
 		this.ept12 = ept12;
+	}
+	
+	
+	@Column(name = "bookingName")
+	public String getBookingName() {
+		return bookingName;
+	}
+
+	public void setBookingName(String bookingName) {
+		this.bookingName = bookingName;
 	}
 
 

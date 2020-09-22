@@ -11,7 +11,7 @@ create table Member(
 memberId int not null primary key identity(1,1),
 memberAccount varchar(50) not null unique,
 memberPwd varchar(50) not null,
-memberStatus int DEFAULT 1,
+memberStatus int,
 memberName nvarchar(20),
 memberEmail varchar(50),
 birthdayDate date,
@@ -68,6 +68,7 @@ ept9 nvarchar(max),
 ept10 nvarchar(max),
 ept11 nvarchar(max),
 ept12 nvarchar(max),
+bookingName nvarchar(max),
 )
 GO
 
