@@ -1,13 +1,15 @@
 $(document).ready(() => {
+    var productCategories = ["Massager", "Yoga", "Supplement"];
 
-    function searchProduct(keywordStr) {
+    function searchProduct(keywordStr, sorttingStr) {
         var itemPerPage = 3; // 一頁幾個商品
         var nowPage = 1; // 起始頁面
         var totalPage = 0; // 全部頁數
         $.ajax({
             url: "/WeMatch_dev/product/search",
             data: {
-                keyword: keywordStr
+                keyword: keywordStr,
+                sortting: sorttingStr,
             },
             type: "get",
             dataType: "json",
@@ -73,11 +75,13 @@ $(document).ready(() => {
                         })
                         // 初次建立
                     $("#page" + productCategory + " h3").eq(1).click();
-
                 }
-                uploadDataToTable("Massager");
-                uploadDataToTable("Yoga");
-                uploadDataToTable("Supplement");
+                for (cat of productCategories) {
+                    uploadDataToTable(cat);
+                }
+
+                // 優先顯示有搜尋結果的類別
+                showCategoryWithItem();
             }
         })
     }
@@ -119,7 +123,8 @@ $(document).ready(() => {
                         (or any other open lists of autocompleted values:*/
                         closeAllLists();
                         $("#searchInput").val(inp.value);
-                        searchProduct($("#searchInput").val());
+                        searchProduct($("#searchInput").val(), "");
+                        $("#sorttingSelect").val("")
                     });
                     a.appendChild(b);
                 }
@@ -260,9 +265,9 @@ $(document).ready(() => {
                     $("#page" + productCategory + " h3").eq(1).click();
 
                 }
-                uploadDataToTable("Massager");
-                uploadDataToTable("Yoga");
-                uploadDataToTable("Supplement");
+                for (cat of productCategories) {
+                    uploadDataToTable(cat);
+                }
 
                 // 網頁載入完把全部的產品撈出來。
                 var productNames = [];
@@ -273,11 +278,27 @@ $(document).ready(() => {
     }
     retrieveAll();
 
+    function showCategoryWithItem() {
+        // 優先顯示有搜尋結果的類別
+        for (cat of productCategories) {
+            if ($("td." + cat).length > 0) {
+                $("#tab" + cat)[0].click();
+                break;
+            }
+        }
+    }
+
     // 搜尋列輸入完畢時把關鍵字帶到控制器中把相關產品撈出來。
     $("#searchInput").bind("focus keyup", function(event) {
         if (event.keyCode === 13) {
-            searchProduct($("#searchInput").val());
+            searchProduct($("#searchInput").val(), "");
+            $("#sorttingSelect").val("")
         }
+    })
+
+    // 排序有值變化就跑搜尋，空白搜尋就是抓全部商品。
+    $("#sorttingSelect").change(() => {
+        searchProduct($("#searchInput").val(), $("#sorttingSelect").val());
     })
 
 })
