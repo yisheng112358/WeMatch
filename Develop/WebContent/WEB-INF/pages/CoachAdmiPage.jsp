@@ -175,31 +175,7 @@ tr, th, td {
 	background-color: #FF7575;
 	transform: translateY(4px);
 }
-#return {
-	display: inline-block;
-	padding: 8px 15px;
-	font-size: 24px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #46A3FF;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 0 5px #999;
-	font-family: 微軟正黑體;
-}
 
-#return:hover {
-	background-color: #FF7575
-}
-
-#return:active {
-	background-color: #FF7575;
-	box-shadow: 0 2px #666;
-	transform: translateY(4px);
-}
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -230,14 +206,14 @@ tr, th, td {
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
-					<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
+					<li class="nav-item"><a href="/WeMatch_dev/video"
 						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="<c:url value='/coachPage' />"
 						class="nav-link"><span>Coach Intro.</span></a></li>
 					<li class="nav-item"><a href="index.html#blog-section"
 						class="nav-link"><span>Shopping Cart</span></a></li>
-					<li class="nav-item"><a href="index.html#contact-section"
-						class="nav-link"><span>Membership</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+						class='nav-link'><span>Membership</span></a></li>
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
@@ -246,7 +222,6 @@ tr, th, td {
 						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
-
 				</ul>
 			</div>
 		</div>
@@ -292,10 +267,7 @@ tr, th, td {
 				<div>
 					<input type="button" id="createCoach" value="新增"
 						onclick="location.href='admin/newCoach'"
-						style="margin-left: 100px">
-					<input type="button" id="return" value="Browse"
-						onclick="location.href='coachPage'"
-						style="margin-left: 50px">
+						style="margin-left: 100px"> 
 				</div>
 			</div>
 		</div>
