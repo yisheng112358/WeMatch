@@ -86,11 +86,6 @@ public class MemberDAO {
 		
 		member = selectMemberByAccount(memberAccount);
 		member.setMemberPwd(memberPwd);
-//		String hqlstr = "Update Member set memberPwd=:pwd where memberAccount=:account";
-//		Query<Member> query = session.createQuery(hqlstr, Member.class);
-//		query.setParameter("pwd", memberPwd);
-//		query.setParameter("account", memberAccount);
-//		query.executeUpdate();
 	}
 
 	public Member selectMemberByAccount(String memberAccount) {

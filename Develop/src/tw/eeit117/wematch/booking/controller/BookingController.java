@@ -49,13 +49,17 @@ public class BookingController {
 			@RequestParam(name = "Dumbbells3",required = false) String Dumbbells3, @RequestParam(name = "Dumbbells4",required = false) String Dumbbells4,
 			@RequestParam(name = "Dumbbells5",required = false) String Dumbbells5, @RequestParam(name = "Dumbbells6",required = false) String Dumbbells6,
 			@RequestParam(name = "Dumbbells7",required = false) String Dumbbells7, @RequestParam(name = "Dumbbells8",required = false) String Dumbbells8,
-			@RequestParam(name = "Dumbbells9",required = false) String Dumbbells9,
+			@RequestParam(name = "Dumbbells9",required = false) String Dumbbells9, @RequestParam(name = "bookingname",required = false) String bookingname,
 			@RequestParam(name = "Dumbbells10",required = false) String Dumbbells10,
 			@RequestParam(name = "Dumbbells11",required = false) String Dumbbells11,
 			@RequestParam(name = "Dumbbells12",required = false) String Dumbbells12) {
 
 
 		bookingBean bookingBean = new bookingBean();
+		bookingBean.setBookingName(bookingname);
+
+		System.out.println("bookingname"+bookingname);
+		
 		bookingBean.setBookingDate(date);
 		bookingBean.setBookingTime(time);
 		bookingBean.setEpt1(Dumbbells1);
@@ -70,10 +74,11 @@ public class BookingController {
 		bookingBean.setEpt10(Dumbbells10);
 		bookingBean.setEpt11(Dumbbells11);
 		bookingBean.setEpt12(Dumbbells12);
+
 		
 		service.insert(bookingBean);
 
-		return "BookingBrowse2";
+		return "Bookingadmin";
 	}
 
 	

@@ -24,13 +24,17 @@
 								<thead>
 									<tr>
 										<th>序號</th>
+										<th>&nbsp;&nbsp;</th>
                                         <th>日期</th>
+                                        <th>&nbsp;&nbsp;</th>
 										<th>時間</th>
+										<th>&nbsp;&nbsp;</th>
+										<th>名字</th>
 										<th></th>
 
 
 					<th> <a href="<c:url value='/bookingcontroller/select'/>">查詢</a> </th> 
-<!-- 					<th> <input type="button"  value="查詢" id="checkDB"> </th> -->
+
 					
 					
 					
@@ -43,9 +47,12 @@
 									<c:forEach var="film" varStatus="status" items="${films}">
 										<tr>
 											<td>${status.count}</td>
-
+											<td>&nbsp;&nbsp;</td>
 											<td>${film.bookingDate}</td>
+											<td>&nbsp;&nbsp;</td>
 											<td>${film.bookingTime}點鐘</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>${film.bookingName}</td>
 
 											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 											<td><a

@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	response.addHeader("x-frame-options", "ALLOW-FROM https://www.youtube.com/");
-%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>Video</title>
+<title>Test</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -41,47 +37,62 @@
 	padding-right: 50px;
 }
 
-h3 {
-	display: inline;
+.v_code {
+	width: 600px;
+	margin: 0 auto;
 }
 
-h3:hover {
-	cursor: pointer;
-	background: rgba(255, 255, 255, .4);
+.v_code>input {
+	width: 60px;
+	height: 36px;
+	margin-top: 10px;
 }
 
-h3:active {
-	background: rgba(255, 255, 255, .8);
+.code_show {
+	overflow: hidden;
 }
 
-.videoTable {
-	color: #000000;
+.code_show span {
+	display: block;
+	float: left;
+	margin-bottom: 10px;
 }
 
-.filmtopic {
-	color: #0000E3;
-	font-weight: bold;
-	font-size: 18px;
+.code_show a {
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
-.uptopic {
-	color: #A23400;
-	font-weight: bold;
-	font-size: 25px;
+.code {
 	font-style: italic;
-	text-decoration: underline;
+	background-color: #f5f5f5;
+	color: blue;
+	font-size: 30px;
+	letter-spacing: 3px;
+	font-weight: bolder;
+	float: left;
+	cursor: pointer;
+	padding: 0 5px;
+	text-align: center;
 }
+
+#inputCode {
+	width: 100px;
+	height: 30px;
+}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
 </style>
 </head>
-
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	​​​​​​​
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="/WeMatch_dev/index.jsp">Fitness</a>
+			<a class="navbar-brand" href="index.html">Slim</a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
 				type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false"
@@ -91,37 +102,29 @@ h3:active {
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
-					<!-- 					class="nav-link"><span>Home</span></a></li> -->
+					<!--     <li class="nav-item"><a href="index.html#home-section" -->
+					<!--      class="nav-link"><span>Home</span></a></li> -->
 					<li class="nav-item"><a
 						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-					<li class="nav-item"><a href="index.html#courses-section"
+					<li class="nav-item"><a href="<c:url value='/newCourses' />"
 						class="nav-link"><span>Courses</span></a></li>
 					<li class="nav-item"><a
 						href="<c:url value='/bookingcontroller/booking' />"
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
-					<li class="nav-item"><a href="/WeMatch_dev/video"
+					<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
 						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="<c:url value='/coachPage' />"
 						class="nav-link"><span>Coach Intro.</span></a></li>
 					<li class="nav-item"><a href="index.html#blog-section"
 						class="nav-link"><span>Shopping Cart</span></a></li>
-					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
-						class='nav-link'><span>Membership</span></a></li>
-					<%
-						String memberStatus = "" + (Integer) session.getAttribute("Status");
-					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
-					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-					}
-					%>
+					<li class="nav-item"><a href="index.html#contact-section"
+						class="nav-link"><span>Membership</span></a></li>
 				</ul>
 			</div>
 		</div>
-	</nav>
+</nav>
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('images/bg_3.jpg');"
 		data-stellar-background-ratio="0.5">
@@ -131,147 +134,88 @@ h3:active {
 				class="row no-gutters slider-text align-items-end justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center">
 					<h1 class="mb-3 bread">Our Stories</h1>
-					<!-- 					<p class="breadcrumbs"> -->
-					<!-- 						<span class="mr-2"><a href="index.html">Home <i -->
-					<!-- 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
-					<!-- 							href="VideoPage.jsp">Videoflix <i -->
-					<!-- 								class="ion-ios-arrow-forward"></i></a></span> -->
-					<!-- 					</p> -->
+					<p class="breadcrumbs">
+						<span class="mr-2"><a href="index.html">Home <i
+								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+							href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog
+							Single <i class="ion-ios-arrow-forward"></i>
+						</span>
+					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="ftco-section ftco-schedule" id="schedule-section">
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
+		id="schedule-section">
 		<div class="container">
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<span class="subheading">Videoflix</span>
-					<h2 class="mb-4">Training Video</h2>
-					<p>No pain, no gain.</p>
-				</div>
-			</div>
-
-			<div>
-				<!-- 				<div class="coach-wrap ftco-animate d-sm-flex" -->
-				<!-- 					style="padding-top: 10px"> -->
-				<!-- 					<div>Last Update</div><br> -->
-
-				<!-- 					<div class="tab-pane fade show active" id="v-pills-6" -->
-				<!-- 						role="tabpanel" aria-labelledby="day-6-tab"> -->
-
-				<div class="coach-wrap ftco-animate d-sm-flex"
-					style="border-radius: 50px">
-
-					<table id=contentupdate class="updateTable"
-						style="margin-left: 35px"></table>
-				</div>
-				<!-- 					</div> -->
-				<!-- 				</div> -->
-
-				<!-- 				<div> -->
-				<!-- 					<div class="coach-wrap ftco-animate d-sm-flex" -->
-				<!-- 						style="padding-top: 10px"> -->
-				<!-- 						<h4>Most View</h4> -->
-
-				<!-- 						<div class="tab-pane fade show active" id="v-pills-7" -->
-				<!-- 							role="tabpanel" aria-labelledby="day-7-tab"> -->
-				<!-- 							<div class="coach-wrap ftco-animate d-sm-flex"> -->
-				<!-- 								Show video most view -->
-				<!-- 								<table id=contentview class="viewTable"></table> -->
-				<!-- 							</div> -->
-				<!-- 						</div> -->
-				<!-- 					</div> -->
-				<!-- 				</div> -->
-			</div>
-
-
-			<div class="ftco-schedule">
-				<div class="row">
-					<div class="col-md-4 nav-link-wrap">
-						<div class="nav flex-column nav-pills" id="v-pills-tab"
-							role="tablist" aria-orientation="vertical">
-							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
-								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">BodyBack <span>BodyBack,
-									Go go!!</span></a> <a class="nav-link ftco-animate" id="v-pills-9-tab"
-								data-toggle="pill" href="#v-pills-9" role="tab"
-								aria-controls="v-pills-9" aria-selected="false">BodyChest <span>Chest,
-									GJ Ha Ha...</span>
-							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
-								data-toggle="pill" href="#v-pills-10" role="tab"
-								aria-controls="v-pills-10" aria-selected="false">BodyLeg <span>Leg,
-									you're leg ker ker...</span>
-							</a>
-
-						</div>
-
-						<br>
-						<!-- 						<input type="button" value="Delete" -->
-						<!-- 							class="btn py-3 px-4 btn-primary" -->
-						<!-- 							onclick="location.href='/WeMatch_dev/VideoDeletePage.jsp'" -->
-						<!-- 							style="float: right; margin-right: 10px;"> <input -->
-						<!-- 							type="button" value="Add" class="btn py-3 px-4 btn-primary" -->
-						<!-- 							onclick="location.href='/WeMatch_dev/VideoListPage.jsp'" -->
-						<!-- 							style="float: right; margin-right: 5px;"> -->
-
-						<!-- 						<input type="button" value="Admin" -->
-						<!-- 							class="btn py-3 px-4 btn-primary" -->
-						<!-- 							onclick="location.href='/WeMatch_dev/VideoDeletePage.jsp'" -->
-						<!-- 							style="float: right; margin-right: 5px;"> -->
-
-
-						<%-- 						<form action="/WeMatch_dev/video/admindelete" method="post"> --%>
-						<!-- 							<input type="submit" value="Admin" -->
-						<!-- 								class="btn py-3 px-4 btn-primary" style="float: right"> -->
-						<%-- 						</form> --%>
-
-						<%
-							if (memberStatus.equals("2")) {
-							out.print("<form action='/WeMatch_dev/video/admindelete' method='post'>");
-							out.print("<input type='submit' value='Admin' class='btn py-3 px-4 btn-primary' style='float: right'>");
-							out.print("</form>");
-						}
-						%>
-
+			<div class="comment-form-wrap pt-5" style="padding: 20px;">
+				<h3 class="mb-5">新增/編輯 課程💬 & <a href ="CoursesHome" style="color:black";>🔎查詢</a></h3>
+				<form:form action="saveCourses" method="post" modelAttribute="courses"
+					enctype="multipart/form-data" class="p-5 bg-light"
+					style="position: relative; border: 1px solid;"
+					onsubmit="return submitFunc()">
+					<div id="memo">*為必填</div>
+					<form:hidden path="coursesId"/>
+					<div class="form-group">
+						<label for="coursesName">課程名稱 *</label> <span id="coursesName"
+							class="notice"></span><br />
+						<input type="text" id="coursesName" class="form-control"> 
+						<span></span>
 					</div>
-					<div class="col-md-8 tab-wrap">
-
-						<div class="tab-content" id="v-pills-tabContent">
-
-							<div class="tab-pane fade show active" id="v-pills-8"
-								role="tabpanel" aria-labelledby="day-8-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id=contentbodyback class="videoTable"></table>
-								</div>
-								<div id="pageback" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-9" role="tabpanel"
-								aria-labelledby="v-pills-day-9-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentbodychest" class="videoTable"></table>
-								</div>
-								<div id="pagechest" class="text-center"></div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-10" role="tabpanel"
-								aria-labelledby="v-pills-day-10-tab">
-								<div class="coach-wrap ftco-animate d-sm-flex">
-									<!--Show Products & Page-->
-									<table id="contentbodyleg" class="videoTable"></table>
-								</div>
-								<div id="pageleg" class="text-center"></div>
-							</div>
-
-						</div>
+					<div class="form-group">
+						<label for="coursesWeek">上課星期 *</label> <span id="coursesWeek"
+							class="notice"></span><br />
+						<input type="text" id="coursesWeek" class="form-control"
+							name="coursesWeek" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
 					</div>
-				</div>
+					<div class="form-group">
+						<label for="sectionNumber">課程節數 *</label> <span id="sectionNumber"
+							class="notice"></span><br />
+						<input type="text" id="sectionNumber" class="form-control"
+							name="sectionNumber" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
+					</div>
+					<div class="form-group">
+						<label for="classRoom">上課教室 *</label> <span id="classRoom"
+							class="notice"></span><br />
+						<input type="text" id="classRoom" class="form-control"
+							name="classRoom" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
+					</div>
+					<div class="form-group">
+						<label for="numberPeople">可報人數 *</label> <span id="numberPeople"
+							class="notice"></span><br />
+						<input type="text" id="numberPeople" class="form-control"
+							name="numberPeople" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
+					</div>
+					<div class="form-group">
+						<label for="regNumber">已報人數 *</label> <span id="regNumber"
+							class="notice"></span><br />
+						<input type="text" id="regNumber" class="form-control"
+							name="regNumber" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
+					</div>
+					<div class="form-group">
+						<label for="coursesBalance">剩餘可報人數 *</label> <span id="coursesBalance"
+							class="notice"></span><br />
+						<input type="text"" id="coursesBalance" class="form-control"
+							name="coursesBalance" required="required"
+							maxlength="20" onblur="checkPwd()"> <span></span>
+					</div>
+
+					<div class="form-group">
+						<input  id="Button1" type="submit" value="送出" class="btn py-3 px-4 btn-primary">
+						<span></span>
+					</div>
+
+				</form:form>
 			</div>
 		</div>
 	</section>
+
 
 
 
@@ -281,11 +225,10 @@ h3:active {
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">
-							About <span><a href="index.html">Fitness Space.</a></span>
+							About <span><a href="index.html">Slim.</a></span>
 						</h2>
-						<p>The gym will always provide the most important tool we need
-							to get through life’s challenge – Perseverance.</p>
-						<p>~From Dwayne Johnson</p>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
 						<ul
 							class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
 							<li class="ftco-animate"><a href="#"><span
@@ -366,6 +309,8 @@ h3:active {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
+	<script src="js/SignUpPage.js" type="text/javascript"></script>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -378,11 +323,10 @@ h3:active {
 	<script src="js/aos.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
-	<script src="js/VideoUpdate.js" type="text/javascript"></script>
-	<script src="js/VideoPage.js" type="text/javascript"></script>
-
 </body>
-
 </html>

@@ -157,14 +157,14 @@ h3:active {
 						class="nav-link"><span>Schedule</span></a></li>
 					<li class="nav-item"><a href="index.html#about-section"
 						class="nav-link"><span>Diet</span></a></li>
-					<li class="nav-item"><a href="/WeMatch_dev/VideoPage.jsp"
+					<li class="nav-item"><a href="/WeMatch_dev/video"
 						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="<c:url value='/coachPage' />"
 						class="nav-link"><span>Coach Intro.</span></a></li>
 					<li class="nav-item"><a href="index.html#blog-section"
 						class="nav-link"><span>Shopping Cart</span></a></li>
-					<li class="nav-item"><a href="index.html#contact-section"
-						class="nav-link"><span>Membership</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+						class='nav-link'><span>Membership</span></a></li>
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
@@ -173,7 +173,6 @@ h3:active {
 						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
-
 				</ul>
 			</div>
 		</div>
@@ -212,15 +211,14 @@ h3:active {
 				<h2 class="coachTitle">教練介紹</h2>
 				<div class="coachDiv" id="coachIntro"></div>
 				<br />
-				<div>
-					<input type="button" id="return" value="Admin"
-						onclick="location.href='/WeMatch_dev/coachAdminPage'"
-						style="margin-left: 100px">
-				</div>
 			</div>
 		</div>
 	</section>
-
+	<%
+		if (memberStatus.equals("2")) {
+		response.sendRedirect("/WeMatch_dev/coachAdminPage");
+	}
+	%>
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">

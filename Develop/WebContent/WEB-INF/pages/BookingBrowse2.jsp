@@ -13,6 +13,9 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
 
+
+
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -45,12 +48,25 @@
 				</table>
 				</div>
 			</div>
+			
+			<div class="col-md-12 heading-section ftco-animate">
+			          	<span class="subheading">A Few Words About Us</span>
+			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">We're Functioning for Almost <span class="number" data-number="20">0</span> Years</h2>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			          </div>
 
 <hr/>
 <div>
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 	
-	
+
+      <input style="display:none" type="hidden"  name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
+	 
+	 <br>	 
+	 
+	 
 	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-22"max="2020-09-30" step="1"> <br />
 
 	    <br/><br/>
@@ -58,7 +74,7 @@
 	  
         
 <div id="checkboxGroup" name="checkboxGroup">
-        <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="9"/>9:00</label>
+        <label class="timefont">預約時間:          <input name="time" type="checkbox" class="checkbox" value="9"/>9:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="11"/>11:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="13"/>13:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="15"/>15:00</label>
@@ -68,7 +84,7 @@
 	    <br/><br/>
 	    
 	    <div  id="loaction" style="text-align:center;" >
-	    
+	   
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells1" id="Dumbbells1" value="Dumbbells1"><img width="150" height="150" id="image1" src="../images/yet.jpg" onclick="myfunction()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells2" id="Dumbbells2" value="Dumbbells2"><img width="150" height="150" id="image2" src="../images/yet.jpg" onclick="myfunction2()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells3" id="Dumbbells3" value="Dumbbells3"><img width="150" height="150" id="image3" src="../images/yet.jpg" onclick="myfunction3()"></label></span>
@@ -86,8 +102,7 @@
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells11" id="Dumbbells11" value="Dumbbells11"><img width="150" height="150" id="image11" src="../images/yet.jpg" onclick="myfunction11()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells12" id="Dumbbells12" value="Dumbbells12"><img width="150" height="150" id="image12" src="../images/yet.jpg" onclick="myfunction12()"></label></span>
 		
-		
-		
+	
 		<input style="display:none" type="hidden" id="test1"  value="${D1}">
 
 		<input style="display:none" type="hidden" id="test2"  value="${D2}">
@@ -125,11 +140,6 @@
     </form>
  </div>
  
-<%@  include file="BookingBrowse1.jsp"%>
-
-
-
-
 
 
 

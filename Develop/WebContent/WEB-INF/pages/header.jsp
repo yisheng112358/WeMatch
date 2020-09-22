@@ -38,7 +38,7 @@
 				<%
 					String memberStatus = "" + (Integer) session.getAttribute("Status");
 				if (memberStatus.equals("1") || memberStatus.equals("2")) {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index' class='nav-link'><span>Logout</span></a></li>");
 				} else {
 					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 				}

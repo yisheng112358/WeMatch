@@ -40,6 +40,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@GetMapping("/index")
+	public String index(HttpSession session) {
+		session.invalidate();
+		return "SignInPage";
+	}
+	
 	@GetMapping("/loginPage")
 	public String loginPage() {
 		return "SignInPage";
@@ -51,8 +57,12 @@ public class MemberController {
 	}
 
 	@PostMapping("/loginsystem.controller")
-	public String checkLogin(HttpServletRequest request, @PathVariable @RequestParam("memberAccount") String myUser,
-			@PathVariable @RequestParam("memberPwd") String myPwd, Model m, HttpSession session) {
+	public String checkLogin(HttpServletRequest request,
+			@PathVariable @RequestParam("memberAccount") String myUser,
+			@PathVariable @RequestParam("memberPwd") String myPwd,
+//			@PathVariable @RequestParam("inputCode") String inputCode,
+//			@PathVariable @RequestParam("code") String code,
+			Model m, HttpSession session) {
 		System.out.println(myUser);
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
@@ -64,6 +74,9 @@ public class MemberController {
 		if (myPwd == null || myPwd.length() == 0) {
 			errors.put("pwd", "password is required");
 		}
+//		if (inputCode.toUpperCase() != code.toUpperCase()) {
+//			errors.put("msg", "您輸入的驗證碼有誤");
+//		}
 		if (errors != null && !errors.isEmpty()) {
 			return "SignInPage";
 		}
