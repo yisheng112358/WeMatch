@@ -71,6 +71,12 @@ h3:active {
 	font-style: italic;
 	text-decoration: underline;
 }
+
+#intro {
+  color:rgb(255, 255, 255);
+  font-weight: bolder;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
+}
 </style>
 </head>
 
@@ -141,16 +147,107 @@ h3:active {
 			</div>
 		</div>
 	</section>
+	
+		<section class="ftco-section ftco-schedule" id="schedule-section" style="padding-bottom: 60px">
+<!-- 		<div class="container"> -->
 
-	<section class="ftco-section ftco-schedule" id="schedule-section">
-		<div class="container">
-			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Videoflix</span>
 					<h2 class="mb-4">Training Video</h2>
 					<p>No pain, no gain.</p>
 				</div>
-			</div>
+
+<!-- 		</div> -->
+		</section>
+		
+		<section class="ftco-section bg-light" id="blog-section" style="padding-top:50px; padding-bottom: 10px;">
+      <div class="container">
+
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <img src="images/v001.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2" >
+              			<span class="day" id="intro">背部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">背部肌群組成與重要性</h3>
+                <p style="color: rgb(95, 92, 92);">核心肌群之一的背部，由多裂肌、豎脊肌、腰方肌等多項肌群組成，當我們站立、起身、前彎時這些肌群就會啟動進行動作，扮演著穩定軀幹的角色。強壯的背部核心肌群不僅能改善一些症狀外同時也能增進在運動上的表現。</p>
+                <div class="d-flex align-items-center mt-4 meta" >
+	                <p class="mb-0">
+                    <a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a>
+                  </p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <img src="images/v002.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2">
+              			<span class="day" id="intro">胸部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">胸部肌群訓練方式</h3>
+                <p style="color: rgb(95, 92, 92);">胸部肌肉可分為胸大肌、胸小肌和前鋸肌。相對其他部位的肌群而言，胸部肌群要簡單很多，其重點在於對於胸大肌的訓練，常用徒手方法為伏地挺身以及各種變式，負重訓練可採用飛鳥和臥推的方式刺激。</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <img src="images/v003.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2">
+              			<span class="day" id="intro">腿部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">強化腿部肌群好處</h3>
+                <p style="color: rgb(95, 92, 92);">大腿主要分為前外側、後側和內側三個肌群。勤練腿部肌群好處相當的多，主要能強化腿部肌群、增強核心肌力、消耗更多的熱量、促進生長激素與睪固酮的濃度、提高新陳代謝等等，因此，腿部肌肉沒練好，幾乎是等於健身無效。</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<section class="ftco-section ftco-schedule" id="schedule-section" style="padding-top: 60px">
+		<div class="container">
+<!-- 			<div class="row justify-content-center pb-5"> -->
+<!-- 				<div class="col-md-12 heading-section text-center ftco-animate"> -->
+<!-- 					<span class="subheading">Videoflix</span> -->
+<!-- 					<h2 class="mb-4">Training Video</h2> -->
+<!-- 					<p>No pain, no gain.</p> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 			<div>
 				<!-- 				<div class="coach-wrap ftco-animate d-sm-flex" -->
@@ -185,7 +282,7 @@ h3:active {
 				<!-- 				</div> -->
 			</div>
 
-
+			<div id="down"></div>
 			<div class="ftco-schedule">
 				<div class="row">
 					<div class="col-md-4 nav-link-wrap">

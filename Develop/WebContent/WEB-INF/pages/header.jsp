@@ -20,7 +20,7 @@
 				<!-- 					class="nav-link"><span>Home</span></a></li> -->
 				<li class="nav-item"><a
 					href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-				<li class="nav-item"><a href="index.html#courses-section"
+				<li class="nav-item"><a href="<c:url value='/addCourses' />"
 					class="nav-link"><span>Courses</span></a></li>
 				<li class="nav-item"><a
 					href="<c:url value='/bookingcontroller/booking' />"

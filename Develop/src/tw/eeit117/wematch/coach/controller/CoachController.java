@@ -181,4 +181,9 @@ public class CoachController {
 
 		coachService.update(coach);
 	}
+	
+	@GetMapping(value = "/search", params = { "keyword" })
+	public @ResponseBody List<Coach> search(@RequestParam String keyword) {
+		return coachService.findByKeyword(keyword);
+	}
 }
