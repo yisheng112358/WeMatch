@@ -10,7 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import tw.eeit117.wematch.member.model.Member;
@@ -54,32 +56,60 @@ public class MemberAdminController {
 			return "MemberAdminPage_c";
 		}
 	}
-	@RequestMapping(path = "/MemberPage_Adminupdate", method = RequestMethod.GET)
-	public String Update() {
+	@GetMapping("/MemberPage_Adminupdate")
+	public String Update(String account, Model m) {
+		m.addAttribute("memberAccount", account);
+		Member member = memberService.selectMemberByAccount(account);
+		
+		m.addAttribute("memberAccount", member.getMemberAccount());
+		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("nickname", member.getNickname());
+		m.addAttribute("gender", member.getGender());
+		m.addAttribute("email", member.getMemberEmail());
+		m.addAttribute("birthday", member.getBirthdayDate());
+		m.addAttribute("starSign", member.getStarSign());
+		m.addAttribute("city", member.getCity());
+		m.addAttribute("booldtype", member.getBloodType());
+		m.addAttribute("hobbies", member.getHobbies());
+		m.addAttribute("selfinfo", member.getSelfIntro());
 		return "MemberAdminPage_u";
 	}
 	
 	@RequestMapping(value = "/preUpdate", method = RequestMethod.GET)
 	public String preUpdate(Integer id, Model m) {
+		System.out.println(id);
 		Member member = memberService.selectMemberById(id);
-		m.addAttribute("Member", member);
+//		m.addAttribute("Member", member);
+		
+		m.addAttribute("memberAccount", member.getMemberAccount());
+		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("nickname", member.getNickname());
+		m.addAttribute("gender", member.getGender());
+		m.addAttribute("email", member.getMemberEmail());
+		m.addAttribute("birthday", member.getBirthdayDate());
+		m.addAttribute("starSign", member.getStarSign());
+		m.addAttribute("city", member.getCity());
+		m.addAttribute("booldtype", member.getBloodType());
+		m.addAttribute("hobbies", member.getHobbies());
+		m.addAttribute("selfinfo", member.getSelfIntro());
 		return "MemberAdminPage_r";
 	}
 	
-	@RequestMapping(path = "/UpdateSend", method = RequestMethod.POST)
+	@PostMapping("/UpdateSend")
 	public String UpdateSend(@ModelAttribute("Member")Member member, Model m, HttpSession session) {		
-		session.setAttribute("memberAccount", member.getMemberAccount());
-		session.setAttribute("name", member.getMemberName());
-		session.setAttribute("nickname", member.getNickname());
-		session.setAttribute("gender", member.getGender());
-		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
-		session.setAttribute("starSign", member.getStarSign());
-		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
-		session.setAttribute("hobbies", member.getHobbies());
-		session.setAttribute("selfinfo", member.getSelfIntro());
+		m.addAttribute("memberAccount", member.getMemberAccount());
+		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("nickname", member.getNickname());
+		m.addAttribute("gender", member.getGender());
+		m.addAttribute("email", member.getMemberEmail());
+		m.addAttribute("birthday", member.getBirthdayDate());
+		m.addAttribute("starSign", member.getStarSign());
+		m.addAttribute("city", member.getCity());
+		m.addAttribute("booldtype", member.getBloodType());
+		m.addAttribute("hobbies", member.getHobbies());
+		m.addAttribute("selfinfo", member.getSelfIntro());
 		memberService.adminUpdateMember(member, session);
+		
 		
 		return "MemberAdminPage_r";
 	}
