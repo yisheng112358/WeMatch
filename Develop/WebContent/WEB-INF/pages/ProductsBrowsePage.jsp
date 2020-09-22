@@ -29,7 +29,7 @@
 						<div class="form-group">
 							<span class="icon icon-search"></span> <input type="text"
 								id="searchInput" class="form-control"
-								placeholder="Type a keyword to search">
+								placeholder="Type a keyword and enter or select the suggestions">
 						</div>
 					</div>
 					<p id="searchNum">
