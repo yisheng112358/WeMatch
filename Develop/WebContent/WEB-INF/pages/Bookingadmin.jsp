@@ -53,14 +53,15 @@
 			            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
 			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 			          </div>
-
+</div>
+</section>
 <hr/>
 
 
-       <section class="ftco-section ftco-no-pb ftco-no-pt ftco-program bg-light" id="programs-section">
-      <div class="container" style="background-color:white">
-        <div class="row no-gutters">
-          <div class="col-md-4 ftco-animate py-5 nav-link-wrap js-fullheight">
+      <section class="ftco-section ftco-no-pb ftco-no-pt ftco-program bg-light" id="programs-section">
+      <div class="container"  >
+        <div class="row no-gutters" >
+          <div class="col-md-4 ftco-animate py-5 nav-link-wrap js-fullheight" >
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link px-4 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-gym"></span> 巨巨之路</a>
 
@@ -68,7 +69,7 @@
 
               <a class="nav-link px-4" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-woman"></span> 健美之路</a>
 
-              <a class="nav-link px-4" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-abs"></span> Bikini &amp; Body</a>
+              <a class="nav-link px-4" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-abs"></span> 造肌之路</a>
 
 
             </div>
@@ -118,10 +119,10 @@
 <br><br>
 
 
-<div>
 	
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 
+<div>
       <input style="display:none" type="hidden"  name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
 	 
 	 <br>	 
@@ -140,7 +141,7 @@
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="15"/>15:00</label>
 </div>
 
-       </div>                            
+</div>                            
 	    <br/><br/>
 	    
 	    <div  id="loaction" style="text-align:center;" >
@@ -198,7 +199,7 @@
 		
 
   
- </div>
+
    </form>
 
  <% if (memberStatus.equals("2")) {

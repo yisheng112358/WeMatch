@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
-<title>Test</title>
+<title>Courses</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -184,7 +184,7 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<div align="center">
-					<h3 class="mb-5">退選課程區</h3>
+					<h1 class="mb-5">退選課程區</h1>
 					<table class="table table-striped">
 						<tr align="center" color="brack">
 							<th>課表代號</th>

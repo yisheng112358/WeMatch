@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
-<title>Test</title>
+<title>Courses</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -129,7 +129,7 @@
 					<!--      class="nav-link"><span>Home</span></a></li> -->
 					<li class="nav-item"><a
 						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-					<li class="nav-item"><a href="<c:url value='/newCourses' />"
+					<li class="nav-item"><a href="<c:url value='/addCourses' />"
 						class="nav-link"><span>Courses</span></a></li>
 					<li class="nav-item"><a
 						href="<c:url value='/bookingcontroller/booking' />"
@@ -144,6 +144,14 @@
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="index.html#contact-section"
 						class="nav-link"><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
 				</ul>
 			</div>
 		</div>
