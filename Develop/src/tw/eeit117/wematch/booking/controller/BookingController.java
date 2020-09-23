@@ -40,6 +40,12 @@ public class BookingController {
 	public String bookingPage2() {
 		return "BookingBrowse2";
 	}
+	
+	@GetMapping("/booking3")
+	public String bookingPage3() {
+		return "BookingBrowse3";
+	}
+	
 
 	@RequestMapping(value = "/bookingCheck", method = RequestMethod.POST)
 	public String insert
@@ -81,7 +87,7 @@ public class BookingController {
 		return "Bookingadmin";
 	}
 
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/bookingCheck2", method = RequestMethod.GET)
 	public  HashMap<String, ArrayList<String>> select(
@@ -171,11 +177,27 @@ public class BookingController {
 		 List<bookingBean> m1 = service.selectAll();
 		 		
 			m.addAttribute("films", m1);
-
-
-		
-		    return "BookingBrowse2";
+			
+            return "BookingBrowse2";
 		    }
+	
+	@RequestMapping(value = "/selectbooking", method = RequestMethod.GET)
+	public String select(Model m,@RequestParam("bookingname") String name
+			) {
+		
+		System.out.println("Name:"+name);
+			
+        List<bookingBean> m1 = service.selectbooking(name);
+        
+        System.out.println("m1"+m1);
+        
+			m.addAttribute("films", m1);
+			
+            return "Bookingadmin";
+		    }
+	
+	
+	
 	
 //	@ResponseBody
 //	@RequestMapping(value = "/select", method = RequestMethod.GET)
@@ -215,6 +237,14 @@ public class BookingController {
 		service.delete(id);
 
 		return "BookingBrowse2";
+	}
+	
+	@RequestMapping(value = "/deletebooking", method = RequestMethod.GET)
+	public String deletebooking(Integer id) {
+
+		service.delete(id);
+
+		return "Bookingadmin";
 	}
 
 }

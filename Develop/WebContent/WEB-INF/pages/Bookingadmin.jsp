@@ -13,6 +13,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
 
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -80,33 +81,33 @@
 
               <div class="tab-pane fade show active py-0" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                 <span class="icon mb-3 d-block flaticon-gym"></span>
-                <h2 class="mb-4">巨巨之路</h2>
-                <p>前往巨巨之路,都是孤獨的</p>
-                <p>我不是不練,我只是不想練太壯</p>
+                <h2 class="mb-4">巨巨之路</h2>    <img src="../images/bigh.jpg">
+                <p style="font-size:30px;">前往巨巨之路,都是孤獨的</p>
+                <p style="font-size:30px">我不是不練,我只是不想練太壯</p>
                 
               </div>
 
               <div class="tab-pane fade py-0" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                 <span class="icon mb-3 d-block flaticon-body"></span>
-                <h2 class="mb-4">苗條一路</h2>
-                <p>苗條一路,有我沒你</p>
-                <p>只有非常努力,才能看起來毫不費力</p>
+                <h2 class="mb-4">苗條一路</h2>    <img src="../images/biga.jpg">
+                <p style="font-size:30px;">苗條一路,有我沒你</p>
+                <p style="font-size:30px;">只有非常努力,才能看起來毫不費力</p>
                
               </div>
 
               <div class="tab-pane fade py-0" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                 <span class="icon mb-3 d-block flaticon-woman"></span>
-                <h2 class="mb-4">健美之路</h2>
-                <p>健身到了一定境界，何需再看臉,當你不要臉時,你就贏了</p>
-                <p>既然沒有俊美的外表,那就去擁有野獸的身體吧</p>
+                <h2 class="mb-4">健美之路</h2>   <img src="../images/bigb.jpg">
+                <p style="font-size:30px;">健身到了一定境界，何需再看臉,當你不要臉時,你就贏了</p>
+                <p style="font-size:30px;">既然沒有俊美的外表,那就去擁有野獸的身體吧</p>
                
               </div>
 
               <div class="tab-pane fade py-0" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
                 <span class="icon mb-3 d-block flaticon-abs"></span>
-                <h2 class="mb-4">造肌之路</h2>
-                <p>再一下,再一下就好,到底再三小</p>
-                <p>每個胖子身體裡,都有一個肌肉男</p>
+                <h2 class="mb-4">造肌之路</h2>   <img src="../images/bigc.jpg">
+                <p style="font-size:30px;">再一下,再一下就好,到底再三小</p>
+                <p style="font-size:30px;">我不是在深蹲,就是在深蹲的路上</p>
                
               </div>
 
@@ -123,12 +124,12 @@
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 
 <div>
-      <input style="display:none" type="hidden"  name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
+      <input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
 	 
 	 <br>	 
 	 
 	 
-	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-22"max="2020-09-30" step="1"> <br />
+	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-24"max="2020-10-01" step="1"> <br />
 
 	    <br/><br/>
 	    
@@ -190,22 +191,24 @@
 
                                                                      
         <br/><br/>                                                                        
-		<input type="submit" name="button" id="button" value="預約" >
+		<input type="submit" name="button" id="button" value="預約" style="margin: 80px" >
 		<input type="reset" name="button" id="reset" value="重製" >
-		
+<!-- 		<input type="button" class="checkbooking" name="button" id="checkbooking" value="查詢" > -->
+
 		</div>
-		
-		<br/><br/>
-		
-
-  
-
-   </form>
-
+ </form>
+ 
+ 
  <% if (memberStatus.equals("2")) {
  	response.sendRedirect("/WeMatch_dev/bookingcontroller/booking2"); 
  }
 %>
+ 
+   
+<%@ include file="BookingBrowse3.jsp"%>
+   
+   
+
 
 
 
@@ -233,5 +236,37 @@
  x.setAttribute("value", Today.getFullYear()+"-"+"0"+(Today.getMonth()+1)+"-"+Today.getDate());
 
      </script>
+     <script>
+
+ $('.checkbooking').click(function(){
+		var dateA=document.getElementById("date");
+		var date=dateA.value;
+		var time=$('input[name=time]:checked').val();
+		var nameA=document.getElementById("bookingname");
+		var name=nameA.value;
+
+		$.ajax({
+type:"GET",
+url:"/WeMatch_dev/bookingcontroller/selectbooking",
+data:{
+	'date':date,
+	'time':time,
+	'name':name,
+},
+
+success:function(data){
+console.log("success");
+	
+}
+})
+			
+})
+	   
+	   
+
+
+     </script>
+     
+     
 </body>
 </html>
