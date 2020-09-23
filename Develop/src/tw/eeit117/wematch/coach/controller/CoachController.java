@@ -30,7 +30,7 @@ public class CoachController {
 	private static final Logger logger = Logger.getLogger(CoachController.class);
 
 	public CoachController() {
-		System.out.println("using controller...");
+		
 	}
 
 	@Autowired
