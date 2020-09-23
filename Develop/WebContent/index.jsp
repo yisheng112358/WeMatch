@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>會員登入</title>
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -138,7 +138,7 @@
 		}
 		inputCode.onclick = function() {
 			validateCode();
-		}
+		};
 	}
 	function checkAccount() {
 		let theAccountObj = document.getElementById("account1");
@@ -233,7 +233,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-	<%@ include file="WEB-INF/pages/header.jsp"%>
+	<%@ include file="WEB-INF/pages/headerout.jsp"%>
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -281,9 +281,8 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="WEB-INF/pages/footer.jsp"%>
-	<%-- 	<%@ include file="WEB-INF/pages/JSsetting.jsp"%> --%>
-	<script src="/js/ProductBrowserPage.js" type="text/javascript"></script>
+	<%@ include file="WEB-INF/pages/footerout.jsp"%>
+	<%@ include file="WEB-INF/pages/JSsettingout.jsp"%>
 
 </body>
 </html>
