@@ -8,17 +8,19 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import tw.eeit117.wematch.product.model.ProductBean;
@@ -26,6 +28,7 @@ import tw.eeit117.wematch.product.model.ProductBeanService;
 
 @Controller
 @RequestMapping("/product")
+@SessionAttributes({ "productExam", "productUpdate" })
 public class ProductController {
 	@Autowired
 	ProductBeanService productBeanService;
@@ -36,12 +39,13 @@ public class ProductController {
 	}
 
 	@GetMapping("/browse")
-	public String browse() {
+	public String browse(SessionStatus status) {
+		status.setComplete();
 		return "ProductsBrowsePage";
 	}
 
 	@GetMapping("/manage")
-	public String manage(HttpSession httpSession) {
+	public String manage() {
 		return "ProductsManagePage";
 	}
 
@@ -66,13 +70,13 @@ public class ProductController {
 	}
 
 	@GetMapping("/examProductPage")
-	public String examProductPage(HttpSession httpSession) {
+	public String examProductPage() {
 		return "ProductExamPage";
 	}
 
 	@GetMapping(value = "/examProduct/{productId}")
-	public String examProduct(@PathVariable String productId, HttpSession httpSession) {
-		httpSession.setAttribute("productExam", productBeanService.findById(Integer.parseInt(productId)));
+	public String examProduct(@PathVariable String productId, Model model) {
+		model.addAttribute("productExam", productBeanService.findById(Integer.parseInt(productId)));
 		return "redirect:/product/examProductPage";
 	}
 
@@ -85,13 +89,13 @@ public class ProductController {
 	}
 
 	@GetMapping("/updateProductPage")
-	public String updateProductPage(HttpSession httpSession) {
+	public String updateProductPage() {
 		return "ProductUpdatePage";
 	}
 
 	@GetMapping(value = "/updateProduct/{productId}")
-	public String updateProduct(@PathVariable String productId, HttpSession httpSession) {
-		httpSession.setAttribute("productUpdate", productBeanService.findById(Integer.parseInt(productId)));
+	public String updateProduct(@PathVariable String productId, Model model) {
+		model.addAttribute("productUpdate", productBeanService.findById(Integer.parseInt(productId)));
 		return "redirect:/product/updateProductPage";
 	}
 
@@ -139,6 +143,7 @@ public class ProductController {
 	@GetMapping(value = "/search", params = { "keyword", "sortting" })
 	public @ResponseBody List<ProductBean> search(@RequestParam String keyword, @RequestParam String sortting) {
 		List<ProductBean> productBeans = productBeanService.findByKeyword(keyword);
+
 		Comparator<ProductBean> compareByPrice = (ProductBean o1, ProductBean o2) -> Double.compare(o1.getPrice(),
 				o2.getPrice());
 		if (sortting.equals("HighPriceDown")) {
@@ -146,6 +151,15 @@ public class ProductController {
 		}
 		if (sortting.equals("HighPriceUp")) {
 			Collections.sort(productBeans, compareByPrice.reversed());
+		}
+
+		Comparator<ProductBean> compareByDate = (ProductBean o1, ProductBean o2) -> o1.getUpdateDate()
+				.compareTo(o2.getUpdateDate());
+		if (sortting.equals("LatestDown")) {
+			Collections.sort(productBeans, compareByDate);
+		}
+		if (sortting.equals("LatestUp")) {
+			Collections.sort(productBeans, compareByDate.reversed());
 		}
 		return productBeans;
 	}
