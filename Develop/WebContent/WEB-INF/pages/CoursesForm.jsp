@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Test</title>
+<title>Courses</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
@@ -106,7 +106,7 @@ a:hover{text-decoration:underline;}
 					<!--      class="nav-link"><span>Home</span></a></li> -->
 					<li class="nav-item"><a
 						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-					<li class="nav-item"><a href="<c:url value='/newCourses' />"
+					<li class="nav-item"><a href="<c:url value='/addCourses' />"
 						class="nav-link"><span>Courses</span></a></li>
 					<li class="nav-item"><a
 						href="<c:url value='/bookingcontroller/booking' />"
@@ -121,6 +121,14 @@ a:hover{text-decoration:underline;}
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="index.html#contact-section"
 						class="nav-link"><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
 				</ul>
 			</div>
 		</div>
@@ -160,50 +168,51 @@ a:hover{text-decoration:underline;}
 					<div class="form-group">
 						<label for="coursesName">課程名稱 *</label> <span id="coursesName"
 							class="notice"></span><br />
-						<input type="text" id="coursesName" class="form-control"> 
-						<span></span>
+						<form:input type="text" id="coursesWeek" class="form-control" path="coursesName"
+							name="coursesWeek" required="required"
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="coursesWeek">上課星期 *</label> <span id="coursesWeek"
 							class="notice"></span><br />
-						<input type="text" id="coursesWeek" class="form-control"
+						<form:input type="text" id="coursesWeek" class="form-control" path="coursesWeek"
 							name="coursesWeek" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="sectionNumber">課程節數 *</label> <span id="sectionNumber"
 							class="notice"></span><br />
-						<input type="text" id="sectionNumber" class="form-control"
+						<form:input type="text" id="sectionNumber" class="form-control" path="sectionNumber"
 							name="sectionNumber" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="classRoom">上課教室 *</label> <span id="classRoom"
 							class="notice"></span><br />
-						<input type="text" id="classRoom" class="form-control"
+						<form:input type="text" id="classRoom" class="form-control" path="classRoom"
 							name="classRoom" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="numberPeople">可報人數 *</label> <span id="numberPeople"
 							class="notice"></span><br />
-						<input type="text" id="numberPeople" class="form-control"
+						<form:input type="text" id="numberPeople" class="form-control" path="numberPeople"
 							name="numberPeople" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="regNumber">已報人數 *</label> <span id="regNumber"
 							class="notice"></span><br />
-						<input type="text" id="regNumber" class="form-control"
+						<form:input type="text" id="regNumber" class="form-control" path="regNumber"
 							name="regNumber" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 					<div class="form-group">
 						<label for="coursesBalance">剩餘可報人數 *</label> <span id="coursesBalance"
 							class="notice"></span><br />
-						<input type="text"" id="coursesBalance" class="form-control"
+						<form:input type="text" id="coursesBalance" class="form-control" path="coursesBalance"
 							name="coursesBalance" required="required"
-							maxlength="20" onblur="checkPwd()"> <span></span>
+							maxlength="20" onblur="checkPwd()"></form:input>
 					</div>
 
 					<div class="form-group">

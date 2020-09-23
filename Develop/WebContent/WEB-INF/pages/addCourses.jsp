@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Test</title>
+<title>Courses</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -159,6 +159,20 @@ table-->.table {
 						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
+					
+					<!-- 重複加選的錯誤提示 -->
+				<div align="center">
+					<%
+						String errorInfo = (String) request.getAttribute("errorMessage");
+					if (errorInfo != null) {
+					%>
+					<script type="text/javascript" language="javascript">
+		   					alert("<%=errorInfo%>");
+						window.location = 'addCourses';
+					</script>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</div>
@@ -189,22 +203,7 @@ table-->.table {
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<!-- 重複加選的錯誤提示 -->
-				<div align="center">
-					<%
-						String errorInfo = (String) request.getAttribute("errorMessage");
-					if (errorInfo != null) {
-					%>
-					<script type="text/javascript" language="javascript">
-		   alert("<%=errorInfo%>
-						");
-						window.location = 'addCourses';
-					</script>
-					<%
-						}
-					%>
-
-					<h1>待選課程區</h1>
+					<h1 align="center">待選課程區</h1>
 					<table class="table table-striped">
 						<tr align="center" color="brack">
 							<th>課程名稱</th>
@@ -233,10 +232,7 @@ table-->.table {
 					</table>
 
 
-					<h2>
-						課表已選所有課程
-						<td>
-					</h2>
+					<h2 align="center">課表已選所有課程</h2>
 					<table class="table table-striped">
 						<tr align="center" color="brack">
 							<th>課表代號</th>
@@ -259,8 +255,8 @@ table-->.table {
 							</tr>
 						</c:forEach>
 					</table>
-					<div style="background-color: #ffffff">
-						<a href="ListCourses"> <input width="10px" padding="100px"
+					<div style="background-color: #ffffff" align="center">
+						<a href="ListCourses"> <input width="10px"
 							class="btn py-3 px-4 btn-primary" type="submit" value="退選" /></a>
 					</div>
 				</div>

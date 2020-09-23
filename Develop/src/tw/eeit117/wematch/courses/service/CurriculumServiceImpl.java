@@ -38,14 +38,14 @@ public class CurriculumServiceImpl implements CurriculumService {
 //
 	@Override
 	@Transactional
-	public List<Curriculum> getAllCurriculum() {
-		return curriculumDao.getAllCurriculum();
+	public List<Curriculum> getAllCurriculum(int memberId) {
+		return curriculumDao.getAllCurriculum(memberId);
 	}
 
 	@Override
 	@Transactional
-	public boolean checkCourses(int coursesId) {
-		return curriculumDao.checkCourses(coursesId);
+	public boolean checkCourses(int coursesId,int memberId) {
+		return curriculumDao.checkCourses(coursesId,memberId);
 	}
 
 	@Override

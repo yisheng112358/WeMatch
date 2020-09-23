@@ -103,7 +103,6 @@ GO
  curriculumId int not null primary Key identity(2000,1),--課表
  memberId int,--會員
  coursesId int unique,--課程
- --coursesMany int  null, -- 關聯的欄位
  coursesName nvarchar(50),--課程名稱
  coursesWeek nvarchar(50),--星期
  sectionNumber nvarchar(50), --課程節數(第幾堂)
