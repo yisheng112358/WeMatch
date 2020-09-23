@@ -125,8 +125,8 @@ h3:active {
 						<input class="whitecolor" type="text" name="license" value="${license}" />
 					</div><br />
 					<div class="inputDiv">
-						<label>ID:</label><br /> 
-						<input class="whitecolor" type="text" name="coachId" value="${coachId}" />
+<!-- 						<label>ID:</label><br />  -->
+						<input class="whitecolor" type="hidden" name="coachId" value="${coachId}" />
 					</div><br />
 					<div class="retrunDiv">
 						<input type="submit" id="return" value="確認修改">

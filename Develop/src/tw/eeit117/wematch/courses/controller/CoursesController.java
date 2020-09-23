@@ -42,6 +42,15 @@ public class CoursesController {
 		return model;
 	}
 	
+	//列出所有課程
+		@RequestMapping(value = "/CoursesBrowse")
+		public ModelAndView CoursesBrowse(ModelAndView model) {	
+			List<Courses> listCourses = coursesService.getAllCourses();
+			model.addObject("listCourses",listCourses);
+			model.setViewName("CoursesBrowse");		
+			return model;
+		}
+	
 	//新增課程
 	@RequestMapping(value = "/newCourses", method = RequestMethod.GET)
 	public ModelAndView newContact(ModelAndView model) {

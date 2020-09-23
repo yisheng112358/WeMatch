@@ -4,42 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>會員資料</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
-	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
-<style>
-.notice {
-	color: #ff0000;
-	font-size: small;
-}
-
-#memo {
-	position: absolute;
-	right: 0;
-	color: #ff0000;
-	font-size: small;
-	text-align: right;
-	padding-right: 50px;
-}
-</style>
+<%@ include file="CSSsettingout.jsp"%>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-<%@ include file="header.jsp" %>
+<%@ include file="headerout.jsp" %>
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
@@ -49,9 +19,9 @@
 					style="position: relative; border: 1px solid;" method="post">
 					<div class="form-group">
 						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
-						<img style="position: absolute; right: 1" height="175"
+						<img style="position: absolute; right: 260px" height="175"
 							src="getPhoto/<c:out value='${id}'/>"> <img
-							style="position: absolute; right: 0" height="175"
+							style="position: absolute; right: 100px" height="175"
 							src="getPhoto2/<c:out value='${id}'/>">
 					</div>
 					<div class="form-group">
@@ -85,8 +55,8 @@
 						<label for="selfIntro">關於我：</label> <label>${selfinfo}</label>
 					</div>
 					<div class="form-group">
-						<a href="<c:url value='MemberPage_show'/>">顯示</a> <a
-							href="<c:url value='MemberPage_updatePic'/>">上傳照片</a> <a
+<%-- 						<a href="<c:url value='MemberPage_show'/>">顯示</a>  --%>
+						<a	href="<c:url value='MemberPage_updatePic'/>">上傳照片</a> <a
 							href="<c:url value='MemberPage_update'/>">修改</a><span>${errors.msg}</span>
 						<br />
 					</div>
@@ -94,7 +64,9 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="footer.jsp"%>
-	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	
+	<%@ include file="footerout.jsp"%>
+	<%@ include file="JSsettingout.jsp"%>
+
 </body>
 </html>

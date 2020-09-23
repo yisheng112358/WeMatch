@@ -55,6 +55,14 @@
 								<span>Protein, Vitamin...</span>
 							</a>
 						</div>
+						<div class="form-group">
+							<label for="categorySelect">商品排序</label><br /> <select
+								name="category" id="sorttingSelect">
+								<option value="">請選擇</option>
+								<option value="HighPriceUp">價格由高到低</option>
+								<option value="HighPriceDown">價格由低到高</option>
+							</select>
+						</div>
 						<p style="text-align: center;">
 							<a href="/WeMatch_dev/product/browse"
 								class="btn btn-primary px-5 py-3 mt-3">Browse</a>

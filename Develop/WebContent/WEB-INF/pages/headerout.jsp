@@ -35,23 +35,20 @@
 					class="nav-link"><span>Shopping Cart</span></a></li>
 				<li class="nav-item"><a href="<c:url value='/MemberPage' />"
 				class='nav-link'><span>Membership</span></a></li>
-				
 				<%
-				
 					String memberStatus = "" + (Integer) session.getAttribute("Status");
 				if (memberStatus.equals("1") || memberStatus.equals("2")) {
 					out.write("<li class='nav-item'><a href='/WeMatch_dev/index' class='nav-link'><span>Logout</span></a></li>");
 				} else {
 					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 				}
-				
 				%>
 			</ul>
 		</div>
 	</div>
 </nav>
 <section class="hero-wrap hero-wrap-2"
-	style="background-image: url('../images/bg_3.jpg');"
+	style="background-image: url('images/bg_3.jpg');"
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">

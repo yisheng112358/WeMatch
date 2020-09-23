@@ -30,7 +30,7 @@ public class CoachController {
 	private static final Logger logger = Logger.getLogger(CoachController.class);
 
 	public CoachController() {
-		System.out.println("using controller...");
+		
 	}
 
 	@Autowired
@@ -180,5 +180,11 @@ public class CoachController {
 		coach.setCoachPic(data);
 
 		coachService.update(coach);
+	}
+	
+	@GetMapping(value = "/search", params = { "keyword" })
+	public @ResponseBody List<Coach> search(@RequestParam String keyword) {
+		List<Coach> coach = coachService.findByKeyword(keyword);
+		return coach;
 	}
 }

@@ -57,9 +57,6 @@ public class Curriculum {
 		this.coursesWeek = coursesWeek;
 		this.sectionNumber = sectionNumber;
 		this.classRoom = classRoom;
-//		this.numberPeople = numberPeople;
-//		this.regNumber = regNumber;
-//		this.coursesBalance = coursesBalance;
 	}
 	
 	//空建構子

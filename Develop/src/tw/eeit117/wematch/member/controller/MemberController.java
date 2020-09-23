@@ -39,7 +39,36 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@GetMapping("/homepage")
+	public String homepage() {
+		return "HomePage";
+	}
 
+	@GetMapping("/index")
+	public String index(HttpSession session) {
+		session.invalidate();
+		return "SignInPage";
+	}
+	
+	@GetMapping("/memberPage")
+	public String memberPage(HttpSession session) {
+		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
+		session.setAttribute("Account", member.getMemberAccount());
+		session.setAttribute("name", member.getMemberName());
+		session.setAttribute("nickname", member.getNickname());
+		session.setAttribute("gender", member.getGender());
+		session.setAttribute("email", member.getMemberEmail());
+		session.setAttribute("birthday", member.getBirthdayDate());
+		session.setAttribute("starSign", member.getStarSign());
+		session.setAttribute("city", member.getCity());
+		session.setAttribute("booldtype", member.getBloodType());
+		session.setAttribute("hobbies", member.getHobbies());
+		session.setAttribute("selfinfo", member.getSelfIntro());
+
+		return "MemberPage";
+	}
+	
 	@GetMapping("/loginPage")
 	public String loginPage() {
 		return "SignInPage";
@@ -51,9 +80,10 @@ public class MemberController {
 	}
 
 	@PostMapping("/loginsystem.controller")
-	public String checkLogin(HttpServletRequest request, @PathVariable @RequestParam("memberAccount") String myUser,
-			@PathVariable @RequestParam("memberPwd") String myPwd, Model m, HttpSession session) {
-		System.out.println(myUser);
+	public String checkLogin(HttpServletRequest request,
+			@PathVariable @RequestParam("memberAccount") String myUser,
+			@PathVariable @RequestParam("memberPwd") String myPwd,
+			Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
@@ -69,7 +99,6 @@ public class MemberController {
 		}
 
 		Boolean checkUser = memberService.checkLogin(new Member(myUser, myPwd));
-		System.out.println("checkUser:" + checkUser);
 		if (checkUser) {
 			Member users = memberService.selectMember(myUser, myPwd);
 			int id = users.getMemberId();
@@ -78,6 +107,9 @@ public class MemberController {
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
+				
+				List<Member> m1 = memberService.selectAllMember();		
+				m.addAttribute("results", m1);
 				return "MemberAdminPage";
 			} else {
 				m.addAttribute("MemberAccount", myUser);
@@ -87,12 +119,11 @@ public class MemberController {
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
-				return "MemberPage";
+				return "HomePage";
 			}
 		}
 		errors.put("msg", "please input correct useraccount or password");
 		return "SignInPage";
-
 	}
 
 	@GetMapping("/MemberForgot")
@@ -130,7 +161,7 @@ public class MemberController {
 			return "SignInPage";
 		} else {
 			error.put("msg", "輸入密碼不符");
-			return "MemberForgotAction";
+			return "MemberForgetAction";
 		}
 	}
 
@@ -161,14 +192,27 @@ public class MemberController {
 			session.setAttribute("Password", myPwd);
 			session.setAttribute("Status", users.getMemberStatus());
 			session.setAttribute("id", id);
-			return "MemberPage";
+			return "HomePage";
 		}
 		errors.put("msg", "帳號密碼重複");
 		return "registerPage";
 	}
 
 	@GetMapping("/MemberPage")
-	public String MemberPage(HttpSession HttpSession) {
+	public String MemberPage(HttpSession session) {
+		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
+		session.setAttribute("Account", member.getMemberAccount());
+		session.setAttribute("name", member.getMemberName());
+		session.setAttribute("nickname", member.getNickname());
+		session.setAttribute("gender", member.getGender());
+		session.setAttribute("email", member.getMemberEmail());
+		session.setAttribute("birthday", member.getBirthdayDate());
+		session.setAttribute("starSign", member.getStarSign());
+		session.setAttribute("city", member.getCity());
+		session.setAttribute("booldtype", member.getBloodType());
+		session.setAttribute("hobbies", member.getHobbies());
+		session.setAttribute("selfinfo", member.getSelfIntro());
+
 		return "MemberPage";
 	}
 

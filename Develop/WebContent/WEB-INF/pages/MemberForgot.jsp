@@ -7,21 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>忘記密碼</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
-	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<%@ include file="CSSsettingout.jsp"%>
 <style>
 .notice {
 	color: #ff0000;
@@ -110,13 +96,16 @@
 		if (inputCode.length <= 0) {
 			textShow.innerHTML = "請輸入驗證碼";
 			textShow.style.color = "red";
+			return false;
 		} else if (inputCode.toUpperCase() != code.toUpperCase()) {
 			textShow.innerHTML = "您輸入的驗證碼有誤";
 			textShow.style.color = "red";
 			createCode();
+			return false;
 		} else {
 			textShow.innerHTML = "驗證碼正確";
 			textShow.style.color = "green";
+			return true;
 		}
 	}
 	function checkCode() {
@@ -138,12 +127,67 @@
 			validateCode();
 		}
 	}
+	function checkAccount() {
+		let theAccountObj = document.getElementById("account1");
+		let theAccountObjVal = theAccountObj.value;
+		let theAccountObjValLen = theAccountObjVal.length;
+		let flag1 = false, flag2 = false;
+		let accountObj = document.getElementById("accountsp");
+
+		if (theAccountObjVal == "") {
+			accountObj.innerHTML = "帳號不可空白";
+			return false;
+		} else if (theAccountObjValLen < 8) {
+			accountObj.innerHTML = "帳號至少8個字";
+			return false;
+		} else {
+			for (let i = 0; i < theAccountObjValLen; i++) {
+				let ch = theAccountObjVal.charAt(i).toUpperCase();
+				if (ch >= "A" && ch <= "Z") {
+					flag1 = true;
+				} else if (ch >= "0" && ch <= "9") {
+					flag2 = true;
+				}
+				if (flag1 && flag2) {
+					break;
+				}
+			}
+			if (flag1 && flag2) {
+				accountObj.innerHTML = "帳號正確";
+				return true;
+			} else {
+				accountObj.innerHTML = "帳號格式錯誤";
+				return false;
+			}
+		}
+	}
+	function checkMail() {
+		let theMailObj = document.getElementById("mail1");
+		let theMailObjVal = theMailObj.value;
+		let mailObj = document.getElementById("mailsp");
+
+		if (theMailObjVal == "") {
+			mailObj.innerHTML = "電子郵件不可空白";
+			return false;
+		} else {
+			mailObj.innerHTML = " ";
+			return true;
+		}
+	}
+	function submitFunc2(){
+		if(checkAccount() && checkMail() && validateCode()){
+			return true;
+		}else{
+			alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
+			return false;
+		}
+	}
 </script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-<%@ include file="header.jsp" %>
+<%@ include file="headerout.jsp"%>
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -152,7 +196,7 @@
 				<h3 class="mb-5">忘記密碼</h3>
 				<form action="memberforgot.controller" method="post"
 					class="p-5 bg-light" style="position: relative; border: 1px solid;"
-					onsubmit="return submitFunc()">
+					onsubmit="return submitFunc2()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
@@ -187,7 +231,7 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="footer.jsp"%>
-	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	<%@ include file="footerout.jsp"%>
+	<%@ include file="JSsettingout.jsp"%>
 </body>
 </html>

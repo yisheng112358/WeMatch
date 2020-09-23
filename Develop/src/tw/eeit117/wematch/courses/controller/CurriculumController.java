@@ -44,7 +44,15 @@ public class CurriculumController {
 		System.out.println("CurriculumController()");
 	}
 	
-	
+		// 前台選課介紹
+		@GetMapping("/addCourses")
+		public String coachPage(HttpSession session) {
+			  if(session.getAttribute("Account")==null) {
+				  return "SignInPage";
+		}else
+			return "addCourses";
+		}
+
 	@Autowired
 	private CurriculumService curriculumService;
 	
@@ -53,21 +61,24 @@ public class CurriculumController {
 	
 //		//列出所有"已選"課表
 		@RequestMapping(value = "/ListCourses")
-		public ModelAndView listCurriculum2(ModelAndView model) {	
-			List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum();
+		public ModelAndView listCurriculum2(ModelAndView model,HttpSession session) {	
+			int memberId = (Integer)session.getAttribute("id");
+			List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum(memberId);
 			model.addObject("listCurriculum2",listCurriculum2);
-			model.setViewName("ListCourses");		
+			model.setViewName("ListCourses");	
 			return model;
 		}
 	
 		//列出所有課程
 		@RequestMapping(value = "/addCourses")
-		public ModelAndView listCurriculum(ModelAndView model) {	
+		public ModelAndView listCurriculum(ModelAndView model,HttpSession session) {	
+			 if(session.getAttribute("Account")==null) {
+			 }
 			List<Courses> listCurriculum = coursesService.getAllCourses();
 			model.addObject("listCurriculum",listCurriculum);
-			//model.setViewName("addCourses");
-			
-			List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum();
+			model.setViewName("addCourses");
+			int memberId = (Integer)session.getAttribute("id");
+			List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum(memberId);
 			model.addObject("listCurriculum2",listCurriculum2);
 			model.setViewName("addCourses");
 			return model;
@@ -77,11 +88,9 @@ public class CurriculumController {
 		//加選課程
 		@RequestMapping(value = "/addCurriculumBtn", method = RequestMethod.GET)
 		public ModelAndView addCurriculumBtn(HttpServletRequest request,ModelAndView model,
-				HttpSession session) {				
-				//int memberId = 1;
-				int memberId = (Integer)session.getAttribute("id");//Nara
+				HttpSession session) {	
+				int memberId = (Integer)session.getAttribute("id");
 				int coursesId = Integer.parseInt(request.getParameter("coursesId"));
-			//	int memberId = Integer.parseInt(request.getParameter("memberId"));
 				//select * from Courses where coursesId =:coursesId 
 				Courses course = coursesService.getCourses(coursesId);
 			
@@ -95,15 +104,14 @@ public class CurriculumController {
 				
 				
 				//呼叫課程防呆
-		    	boolean checkCurriculum = curriculumService.checkCourses(curriculum.getCoursesId());
+		    	boolean checkCurriculum = curriculumService.checkCourses(curriculum.getCoursesId()
+		    			,memberId);
  		    	
 		   		if(checkCurriculum) {
 		   			popAlert(request);
-		   		}
-		   		else {
-		   			
-		   			if(course.getNumberPeople()==0) {
-						request.setAttribute("errorMessage", "課程已滿，請選擇別的課程謝謝🙏");
+		   		}else {
+		   			if(course.getNumberPeople()<=0) {
+		   				request.setAttribute("errorMessage", "課程已滿，請選擇別堂課程謝謝🙇");		   				
 					}else {
 						curriculumService.addCurriculum(curriculum);
 			   			
@@ -113,16 +121,17 @@ public class CurriculumController {
 			   			coursesService.updateCourses(course);
 		   			}
 		   		}
+
 		   		
 				//listCurriculum(model);
 				List<Courses> listCurriculum = coursesService.getAllCourses();
 				model.addObject("listCurriculum",listCurriculum);
 				
 				//listCurriculum2(model);
-				List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum();
+				List<Curriculum> listCurriculum2 = curriculumService.getAllCurriculum(memberId);
 				model.addObject("listCurriculum2",listCurriculum2);
 				model.setViewName("addCourses");	
-				
+
 				return model;
 	
 				//return new ModelAndView("redirect:/addCourses");
