@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>會員登入</title>
+<title>Fitness Space</title>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,6 +82,7 @@
 	height: 30px;
 }
 </style>
+<link rel="shortcut icon" href="favicon.ico" />
 <script type="text/javascript">
 	var code;
 	function createCode() {
@@ -231,25 +232,24 @@
 </script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
-
-	<%@ include file="WEB-INF/pages/headerout.jsp"%>
+	data-offset="300" style="background-image: url('images/ind_1.jpg'); background-size: 100%;">
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
-		<div class="container">
-			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員登入</h3>
+		<div class="container"  style="margin-left: 5px; padding-right: 450px;">
+			<div class="comment-form-wrap pt-5"
+				style="padding: 20px; ">
+				<h2 class="mb-5" style="margin-left:120px; margin-bottom: 20px;">Welcome to FITNESS SPACE </h2>
 				<form action="loginsystem.controller" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;"
+					style="position: relative; border: 1px solid; margin-left:10px;"
 					onsubmit="return submitFunc2()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
 							class="notice"></span><br /> <input type="text" id="account1"
 							class="form-control" name="memberAccount" required="required"
-							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
+							 maxlength="20"
 							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
@@ -257,7 +257,7 @@
 							class="notice"></span><br /> <a href="MemberForgot">忘記密碼？</a> <input
 							type="password" id="pwd1" class="form-control" name="memberPwd"
 							required="required"
-							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
+							
 							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
 
@@ -265,7 +265,9 @@
 						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br />
 						<div class="v_code">
 							<div class="code_show">
-								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>
+								<span class="code" id="checkCode"
+									style="-webkit-user-select: none;" unselectable="on"></span> <a
+									id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
@@ -281,7 +283,7 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="WEB-INF/pages/footerout.jsp"%>
+	<%-- 	<%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
 	<%@ include file="WEB-INF/pages/JSsettingout.jsp"%>
 
 </body>

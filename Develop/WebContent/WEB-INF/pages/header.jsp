@@ -20,7 +20,7 @@
 				<!-- 					class="nav-link"><span>Home</span></a></li> -->
 				<li class="nav-item"><a
 					href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/addCourses' />"
+				<li class="nav-item"><a href="<c:url value='/CoursesHome' />"
 					class="nav-link"><span>Courses</span></a></li>
 				<li class="nav-item"><a
 					href="<c:url value='/bookingcontroller/booking' />"
@@ -40,7 +40,7 @@
 				
 					String memberStatus = "" + (Integer) session.getAttribute("Status");
 				if (memberStatus.equals("1") || memberStatus.equals("2")) {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index' class='nav-link'><span>Logout</span></a></li>");
+					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
 				} else {
 					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 				}
