@@ -73,20 +73,7 @@
 							style=" border: 1px solid black; text-align: center;margin:10px 900px 10px 10px;">
 							<table style="font-size:20px" >
 								<thead>
-									<tr>
-										<th>序號</th>
-										<th>&nbsp;&nbsp;</th>
-                                        <th>日期</th>
-                                        <th>&nbsp;&nbsp;</th>
-										<th>時間</th>
-										<th>&nbsp;&nbsp;</th>
-										<th>名字</th>
-										<th></th>
 
-
-					<th> <a href="<c:url value='/bookingcontroller/select'/>">查詢</a> </th> 
-
-									</tr>
 								</thead>
 								<tbody>
 										<tr>
