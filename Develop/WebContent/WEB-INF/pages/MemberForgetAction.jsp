@@ -7,21 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>忘記密碼</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
-	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<%@ include file="CSSsettingout.jsp"%>
 <style>
 .notice {
 	color: #ff0000;
@@ -85,57 +71,84 @@
 }
 </style>
 <script type="text/javascript">
-	var code;
-	function createCode() {
-		code = "";
-		var codeLength = 6; //驗證碼的長度
-		var checkCode = document.getElementById("checkCode");
-		var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c',
-				'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-				'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
-				'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-				'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
-		for (var index = 0; index < codeLength; index++) {
-			var charNum = Math.floor(Math.random() * 52);
-			code += codeChars[charNum];
-		}
-		if (checkCode) {
-			checkCode.className = "code";
-			checkCode.innerHTML = code;
-		}
-	}
-	function validateCode() {
-		var inputCode = document.getElementById("inputCode").value;
-		var textShow = document.getElementById("text_show")
-		if (inputCode.length <= 0) {
-			textShow.innerHTML = "請輸入驗證碼";
-			textShow.style.color = "red";
-		} else if (inputCode.toUpperCase() != code.toUpperCase()) {
-			textShow.innerHTML = "您輸入的驗證碼有誤";
-			textShow.style.color = "red";
-			createCode();
+	function checkPwd1() {
+		let thePwdObj = document.getElementById("pwd1");
+		let thePwdObjVal = thePwdObj.value;
+		let thePwdObjValLen = thePwdObjVal.length;
+		let flag3 = false, flag4 = false, flag5 = false;
+		let pwdObj = document.getElementById("pwdsp");
+
+		if (thePwdObjVal == "") {
+			pwdObj.innerHTML = "密碼不可空白";
+			return false;
+		} else if (thePwdObjValLen < 8) {
+			pwdObj.innerHTML = "密碼至少8個字";
+			return false;
 		} else {
-			textShow.innerHTML = "驗證碼正確";
-			textShow.style.color = "green";
+			for (let i = 0; i < thePwdObjValLen; i++) {
+				let ch = thePwdObjVal.charAt(i).toUpperCase();
+				if (ch >= "A" && ch <= "Z") {
+					flag3 = true;
+				} else if (ch >= "0" && ch <= "9") {
+					flag4 = true;
+				} else if (ch >= "\u0021" && ch <= "\u0040") {
+					flag5 = true;
+				}
+				if (flag3 && flag4 && flag5) {
+					break;
+				}
+			}
+			if (flag3 && flag4 && flag5) {
+				pwdObj.innerHTML = "密碼正確";
+				return true;
+			} else {
+				pwdObj.innerHTML = "密碼格式錯誤";
+				return false;
+			}
 		}
 	}
-	function checkCode() {
-		var btn = document.getElementById("Button1");
-		btn.onclick = function() {
-			validateCode();
+	function checkPwd2() {
+		let thePwdObj = document.getElementById("pwd2");
+		let thePwdObjVal = thePwdObj.value;
+		let thePwdObjValLen = thePwdObjVal.length;
+		let flag3 = false, flag4 = false, flag5 = false;
+		let pwdObj = document.getElementById("pwdsp2");
+
+		if (thePwdObjVal == "") {
+			pwdObj.innerHTML = "密碼不可空白";
+			return false;
+		} else if (thePwdObjValLen < 8) {
+			pwdObj.innerHTML = "密碼至少8個字";
+			return false;
+		} else {
+			for (let i = 0; i < thePwdObjValLen; i++) {
+				let ch = thePwdObjVal.charAt(i).toUpperCase();
+				if (ch >= "A" && ch <= "Z") {
+					flag3 = true;
+				} else if (ch >= "0" && ch <= "9") {
+					flag4 = true;
+				} else if (ch >= "\u0021" && ch <= "\u0040") {
+					flag5 = true;
+				}
+				if (flag3 && flag4 && flag5) {
+					break;
+				}
+			}
+			if (flag3 && flag4 && flag5) {
+				pwdObj.innerHTML = "密碼正確";
+				return true;
+			} else {
+				pwdObj.innerHTML = "密碼格式錯誤";
+				return false;
+			}
 		}
 	}
-	window.onload = function() {
-		checkCode();
-		createCode();
-		document.getElementById("checkCode").onclick = function() {
-			createCode()
-		}
-		linkbt.onclick = function() {
-			createCode()
-		}
-		inputCode.onclick = function() {
-			validateCode();
+	function submitFunc(){
+		if(checkPwd1() && checkPwd2()){
+			return true;
+		}else{
+			alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
+			return false;
 		}
 	}
 </script>
@@ -143,7 +156,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-<%@ include file="header.jsp" %>
+	<%@ include file="headerout.jsp" %>
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
 		<div class="container">
@@ -157,14 +170,14 @@
 							class="notice"></span><br /> <input type="password" id="pwd1"
 							class="form-control" name="memberPwd" required="required"
 							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
-							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
+							maxlength="20" onblur="checkPwd1()"> <span>${errors.pwd}</span>
 					</div>
 					<div class="form-group">
-						<label for="memberNewPwd">確認密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <input type="password" id="pwd1"
+						<label for="memberNewPwd">確認密碼 *</label> <span id="pwdsp2"
+							class="notice"></span><br /> <input type="password" id="pwd2"
 							class="form-control" name="memberNewPwd" required="required"
 							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
-							maxlength="20" onblur="checkPwd()">
+							maxlength="20" onblur="checkPwd2()">
 					</div>
 					<div class="form-group">
 						<a href='<c:url value="/loginPage"/>'>回到登入</a><br /> <input
@@ -176,7 +189,7 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="footer.jsp"%>
-	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	<%@ include file="footerout.jsp"%>
+	<%@ include file="JSsettingout.jsp"%>
 </body>
 </html>
