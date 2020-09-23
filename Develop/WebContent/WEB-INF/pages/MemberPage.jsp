@@ -55,8 +55,8 @@
 						<label for="selfIntro">關於我：</label> <label>${selfinfo}</label>
 					</div>
 					<div class="form-group">
-						<a href="<c:url value='MemberPage_show'/>">顯示</a> <a
-							href="<c:url value='MemberPage_updatePic'/>">上傳照片</a> <a
+<%-- 						<a href="<c:url value='MemberPage_show'/>">顯示</a>  --%>
+						<a	href="<c:url value='MemberPage_updatePic'/>">上傳照片</a> <a
 							href="<c:url value='MemberPage_update'/>">修改</a><span>${errors.msg}</span>
 						<br />
 					</div>
