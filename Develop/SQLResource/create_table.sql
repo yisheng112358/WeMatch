@@ -35,9 +35,10 @@ productName nvarchar(50)  NOT NULL,
 price money DEFAULT 0,
 stock int NOT NULL DEFAULT 0,
 productDescription nvarchar(MAX),
-thumbnail image,
-detailImg image,
-addTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+thumbnail varbinary(max),
+detailImg varbinary(max),
+addDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updateDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 )
 GO
 
