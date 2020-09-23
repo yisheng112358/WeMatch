@@ -30,7 +30,7 @@
 #memo {
 	position: absolute;
 	right: 0;
-	color: #ff0000;
+	color: #fe9191;
 	font-size: small;
 	text-align: right;
 	padding-right: 50px;
@@ -39,6 +39,7 @@
 .v_code {
 	width: 600px;
 	margin: 0 auto;
+	padding-left:140px;
 }
 
 .v_code>input {
@@ -239,7 +240,7 @@
 		<div class="container"  style="margin-left: 5px; padding-right: 450px;">
 			<div class="comment-form-wrap pt-5"
 				style="padding: 20px; ">
-				<h2 class="mb-5" style="margin-left:120px; margin-bottom: 20px;">Welcome to FITNESS SPACE </h2>
+				<h2 class="mb-5" style="margin-left:90px;">Welcome to <span class="navbar-brand" style="font-size:38px;">FITNESS SPACE</span> </h2>
 				<form action="loginsystem.controller" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
 					style="position: relative; border: 1px solid; margin-left:10px;"
@@ -254,15 +255,16 @@
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <a href="MemberForgot">忘記密碼？</a> <input
+							class="notice"></span><br />  <input
 							type="password" id="pwd1" class="form-control" name="memberPwd"
 							required="required"
 							
 							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
+					<a href="MemberForgot">忘記密碼？</a> <a href='<c:url value="/register"/>' style="position: absolute; right:0;padding-right: 50px;">尚未註冊？</a>
 
 					<div class="form-group">
-						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br />
+						 <br />
 						<div class="v_code">
 							<div class="code_show">
 								<span class="code" id="checkCode"
@@ -276,13 +278,28 @@
 							</div>
 						</div>
 						<input id="Button1" type="submit" value="登入"
-							class="btn py-3 px-4 btn-primary"> <span>${errors.msg}</span>
+							class="btn py-3 px-4 btn-primary" style="margin-top: 20px;">  <span>${errors.msg}</span>
 					</div>
 
 				</form>
 			</div>
 		</div>
 	</section>
+	
+			<div class="col-md-12 text-center">
+				<p>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					All rights reserved | This template is made with <i
+						class="icon-heart color-danger" aria-hidden="true"></i> by <a
+						href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
+	
 	<%-- 	<%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
 	<%@ include file="WEB-INF/pages/JSsettingout.jsp"%>
 
