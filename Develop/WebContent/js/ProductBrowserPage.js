@@ -27,7 +27,7 @@ $(document).ready(() => {
                             var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(data[i].thumbnail)));
                             txt += "<tr><td>" +
                                 "<a href='examProduct/" + data[i].productId + "'><img alt='No image' src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
-                                '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].productName +
+                                '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
                                 "<a style='display:block;' href='examProduct/" + data[i].productId + "'><input class='cartbutton' type='button' value='詳細資訊' style='width:100px;'></a>" +
                                 "<a style='display:block;' href='ShoppingCart?productId=" + data[i].productId + "'><input class='cartbutton' type='button' value='加入購物車' style='width:100px;'></a>" +

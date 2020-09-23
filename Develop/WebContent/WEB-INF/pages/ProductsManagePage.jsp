@@ -61,6 +61,8 @@
 								<option value="">請選擇</option>
 								<option value="HighPriceUp">價格由高到低</option>
 								<option value="HighPriceDown">價格由低到高</option>
+								<option value="LatestUp">日期由新到舊</option>
+								<option value="LatestDown">日期由舊到新</option>
 							</select>
 						</div>
 						<p style="text-align: center;">

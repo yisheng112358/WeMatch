@@ -7,7 +7,7 @@ public interface IProductBeanService {
 
 	public void insert(ProductBean productBean);
 
-	public String deleteById(Integer productId);
+	public void deleteById(Integer productId);
 
 	public ProductBean findById(Integer productId);
 
