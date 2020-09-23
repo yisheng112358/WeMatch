@@ -11,7 +11,7 @@ create table Member(
 memberId int not null primary key identity(1,1),
 memberAccount varchar(50) not null unique,
 memberPwd varchar(50) not null,
-memberStatus int,
+memberStatus int default 1,
 memberName nvarchar(20),
 memberEmail varchar(50),
 birthdayDate date,
@@ -103,7 +103,6 @@ GO
  curriculumId int not null primary Key identity(2000,1),--課表
  memberId int,--會員
  coursesId int unique,--課程
- --coursesMany int  null, -- 關聯的欄位
  coursesName nvarchar(50),--課程名稱
  coursesWeek nvarchar(50),--星期
  sectionNumber nvarchar(50), --課程節數(第幾堂)

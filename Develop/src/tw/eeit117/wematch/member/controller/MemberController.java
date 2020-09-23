@@ -53,20 +53,25 @@ public class MemberController {
 	
 	@GetMapping("/memberPage")
 	public String memberPage(HttpSession session) {
-		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		session.setAttribute("Account", member.getMemberAccount());
-		session.setAttribute("name", member.getMemberName());
-		session.setAttribute("nickname", member.getNickname());
-		session.setAttribute("gender", member.getGender());
-		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
-		session.setAttribute("starSign", member.getStarSign());
-		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
-		session.setAttribute("hobbies", member.getHobbies());
-		session.setAttribute("selfinfo", member.getSelfIntro());
-
-		return "MemberPage";
+		if (session.getAttribute("Account")==null) {
+			return "SingInPage";
+		}else {
+			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
+			session.setAttribute("Account", member.getMemberAccount());
+			session.setAttribute("name", member.getMemberName());
+			session.setAttribute("nickname", member.getNickname());
+			session.setAttribute("gender", member.getGender());
+			session.setAttribute("email", member.getMemberEmail());
+			session.setAttribute("birthday", member.getBirthdayDate());
+			session.setAttribute("starSign", member.getStarSign());
+			session.setAttribute("city", member.getCity());
+			session.setAttribute("booldtype", member.getBloodType());
+			session.setAttribute("hobbies", member.getHobbies());
+			session.setAttribute("selfinfo", member.getSelfIntro());
+			
+			return "MemberPage";
+		}
+		
 	}
 	
 	@GetMapping("/loginPage")
@@ -200,20 +205,24 @@ public class MemberController {
 
 	@GetMapping("/MemberPage")
 	public String MemberPage(HttpSession session) {
-		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		session.setAttribute("Account", member.getMemberAccount());
-		session.setAttribute("name", member.getMemberName());
-		session.setAttribute("nickname", member.getNickname());
-		session.setAttribute("gender", member.getGender());
-		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
-		session.setAttribute("starSign", member.getStarSign());
-		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
-		session.setAttribute("hobbies", member.getHobbies());
-		session.setAttribute("selfinfo", member.getSelfIntro());
-
-		return "MemberPage";
+		if(session.getAttribute("Account")!=null) {
+			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
+			session.setAttribute("Account", member.getMemberAccount());
+			session.setAttribute("name", member.getMemberName());
+			session.setAttribute("nickname", member.getNickname());
+			session.setAttribute("gender", member.getGender());
+			session.setAttribute("email", member.getMemberEmail());
+			session.setAttribute("birthday", member.getBirthdayDate());
+			session.setAttribute("starSign", member.getStarSign());
+			session.setAttribute("city", member.getCity());
+			session.setAttribute("booldtype", member.getBloodType());
+			session.setAttribute("hobbies", member.getHobbies());
+			session.setAttribute("selfinfo", member.getSelfIntro());
+	
+			return "MemberPage";
+		}else {
+			return "SignInPage";
+		}
 	}
 
 	@RequestMapping(path = "/MemberPage_update", method = RequestMethod.GET)

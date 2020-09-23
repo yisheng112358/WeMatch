@@ -44,15 +44,6 @@ public class CurriculumController {
 		System.out.println("CurriculumController()");
 	}
 	
-		// 前台選課介紹
-		@GetMapping("/addCourses")
-		public String coachPage(HttpSession session) {
-			  if(session.getAttribute("Account")==null) {
-				  return "SignInPage";
-		}else
-			return "addCourses";
-		}
-
 	@Autowired
 	private CurriculumService curriculumService;
 	
@@ -72,8 +63,6 @@ public class CurriculumController {
 		//列出所有課程
 		@RequestMapping(value = "/addCourses")
 		public ModelAndView listCurriculum(ModelAndView model,HttpSession session) {	
-			 if(session.getAttribute("Account")==null) {
-			 }
 			List<Courses> listCurriculum = coursesService.getAllCourses();
 			model.addObject("listCurriculum",listCurriculum);
 			model.setViewName("addCourses");
