@@ -39,34 +39,11 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	@GetMapping("/homepage")
-	public String homepage() {
-		return "HomePage";
-	}
 
 	@GetMapping("/index")
 	public String index(HttpSession session) {
 		session.invalidate();
 		return "SignInPage";
-	}
-	
-	@GetMapping("/memberPage")
-	public String memberPage(HttpSession session) {
-		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		session.setAttribute("Account", member.getMemberAccount());
-		session.setAttribute("name", member.getMemberName());
-		session.setAttribute("nickname", member.getNickname());
-		session.setAttribute("gender", member.getGender());
-		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
-		session.setAttribute("starSign", member.getStarSign());
-		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
-		session.setAttribute("hobbies", member.getHobbies());
-		session.setAttribute("selfinfo", member.getSelfIntro());
-
-		return "MemberPage";
 	}
 	
 	@GetMapping("/loginPage")
@@ -83,7 +60,10 @@ public class MemberController {
 	public String checkLogin(HttpServletRequest request,
 			@PathVariable @RequestParam("memberAccount") String myUser,
 			@PathVariable @RequestParam("memberPwd") String myPwd,
+//			@PathVariable @RequestParam("inputCode") String inputCode,
+//			@PathVariable @RequestParam("code") String code,
 			Model m, HttpSession session) {
+		System.out.println(myUser);
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
@@ -94,11 +74,15 @@ public class MemberController {
 		if (myPwd == null || myPwd.length() == 0) {
 			errors.put("pwd", "password is required");
 		}
+//		if (inputCode.toUpperCase() != code.toUpperCase()) {
+//			errors.put("msg", "您輸入的驗證碼有誤");
+//		}
 		if (errors != null && !errors.isEmpty()) {
 			return "SignInPage";
 		}
 
 		Boolean checkUser = memberService.checkLogin(new Member(myUser, myPwd));
+		System.out.println("checkUser:" + checkUser);
 		if (checkUser) {
 			Member users = memberService.selectMember(myUser, myPwd);
 			int id = users.getMemberId();
@@ -107,9 +91,6 @@ public class MemberController {
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
-				
-				List<Member> m1 = memberService.selectAllMember();		
-				m.addAttribute("results", m1);
 				return "MemberAdminPage";
 			} else {
 				m.addAttribute("MemberAccount", myUser);
@@ -119,11 +100,12 @@ public class MemberController {
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
-				return "HomePage";
+				return "MemberPage";
 			}
 		}
 		errors.put("msg", "please input correct useraccount or password");
 		return "SignInPage";
+
 	}
 
 	@GetMapping("/MemberForgot")
@@ -161,7 +143,7 @@ public class MemberController {
 			return "SignInPage";
 		} else {
 			error.put("msg", "輸入密碼不符");
-			return "MemberForgetAction";
+			return "MemberForgotAction";
 		}
 	}
 
@@ -192,7 +174,7 @@ public class MemberController {
 			session.setAttribute("Password", myPwd);
 			session.setAttribute("Status", users.getMemberStatus());
 			session.setAttribute("id", id);
-			return "HomePage";
+			return "MemberPage";
 		}
 		errors.put("msg", "帳號密碼重複");
 		return "registerPage";

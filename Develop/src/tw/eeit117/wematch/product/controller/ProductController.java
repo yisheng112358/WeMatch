@@ -3,8 +3,6 @@ package tw.eeit117.wematch.product.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -136,17 +134,8 @@ public class ProductController {
 		return productBean;
 	}
 
-	@GetMapping(value = "/search", params = { "keyword", "sortting" })
-	public @ResponseBody List<ProductBean> search(@RequestParam String keyword, @RequestParam String sortting) {
-		List<ProductBean> productBeans = productBeanService.findByKeyword(keyword);
-		Comparator<ProductBean> compareByPrice = (ProductBean o1, ProductBean o2) -> Double.compare(o1.getPrice(),
-				o2.getPrice());
-		if (sortting.equals("HighPriceDown")) {
-			Collections.sort(productBeans, compareByPrice);
-		}
-		if (sortting.equals("HighPriceUp")) {
-			Collections.sort(productBeans, compareByPrice.reversed());
-		}
-		return productBeans;
+	@GetMapping(value = "/search", params = { "keyword" })
+	public @ResponseBody List<ProductBean> search(@RequestParam String keyword) {
+		return productBeanService.findByKeyword(keyword);
 	}
 }
