@@ -1,7 +1,6 @@
 package tw.eeit117.wematch.courses.controller;
 
 import java.util.List;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,46 +8,44 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import tw.eeit117.wematch.courses.model.Courses;
-import tw.eeit117.wematch.courses.model.Curriculum;
 import tw.eeit117.wematch.courses.service.CoursesService;
 
 @Controller
 public class CoursesController {
 
+	private static final Logger logger = Logger.getLogger(CoursesController.class);
 
+	public CoursesController() {
+	}
 
-	private static final Logger logger = 
-			Logger.getLogger(CoursesController.class);
- 
 	@Autowired
 	private CoursesService coursesService;
 
-	//列出所有課程
+	// 列出所有課程
 	@RequestMapping(value = "/CoursesHome")
-	public ModelAndView listCourses(ModelAndView model) {	
+	public ModelAndView listCourses(ModelAndView model) {
 		List<Courses> listCourses = coursesService.getAllCourses();
-		model.addObject("listCourses",listCourses);
-		model.setViewName("CoursesHome");		
+		model.addObject("listCourses", listCourses);
+		model.setViewName("CoursesHome");
 		return model;
 	}
-	
-	//列出所有課程
-		@RequestMapping(value = "/CoursesBrowse")
-		public ModelAndView CoursesBrowse(ModelAndView model) {	
-			List<Courses> listCourses = coursesService.getAllCourses();
-			model.addObject("listCourses",listCourses);
-			model.setViewName("CoursesBrowse");		
-			return model;
-		}
-	
-	//新增課程
+
+	// 列出所有課程
+	@RequestMapping(value = "/CoursesBrowse")
+	public ModelAndView CoursesBrowse(ModelAndView model) {
+		List<Courses> listCourses = coursesService.getAllCourses();
+		model.addObject("listCourses", listCourses);
+		model.setViewName("CoursesBrowse");
+		return model;
+	}
+
+	// 新增課程
 	@RequestMapping(value = "/newCourses", method = RequestMethod.GET)
 	public ModelAndView newContact(ModelAndView model) {
 		Courses courses = new Courses();
@@ -57,13 +54,12 @@ public class CoursesController {
 		return model;
 	}
 
-	//新增或更新完會回到首頁
+	// 新增或更新完會回到首頁
 	@RequestMapping(value = "/saveCourses", method = RequestMethod.POST)
-	public ModelAndView saveCourses(@ModelAttribute Courses courses,
-			Model m) {
-		
-		if (courses.getCoursesId() == 0) { 		
-			courses.setCoursesTime(new Date());
+	public ModelAndView saveCourses(@ModelAttribute Courses courses, Model m) {
+//		Curriculum curriculum = new Curriculum();
+//		model.addAttribute("curriculum", curriculum);
+		if (courses.getCoursesId() == 0) {
 			coursesService.addCourses(courses);
 		} else {
 			coursesService.updateCourses(courses);
@@ -71,7 +67,7 @@ public class CoursesController {
 		return new ModelAndView("redirect:/CoursesHome");
 	}
 
-	//刪除
+	// 刪除
 	@RequestMapping(value = "/deleteCourses", method = RequestMethod.GET)
 	public ModelAndView deleteCourses(HttpServletRequest request) {
 		int coursesId = Integer.parseInt(request.getParameter("coursesId"));
@@ -79,7 +75,7 @@ public class CoursesController {
 		return new ModelAndView("redirect:/CoursesHome");
 	}
 
-	//編輯
+	// 編輯
 	@RequestMapping(value = "/editCourses", method = RequestMethod.GET)
 	public ModelAndView editContact(HttpServletRequest request) {
 		int coursesId = Integer.parseInt(request.getParameter("coursesId"));
