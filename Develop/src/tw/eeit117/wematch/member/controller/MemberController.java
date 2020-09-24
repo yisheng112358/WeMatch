@@ -39,6 +39,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping("/homepage")
+	public String homepage() {
+		return "HomePage";
+	}
+	
 	@GetMapping("/loginPage")	//?
 	public String loginPage() {
 		return "SignInPage";
