@@ -12,6 +12,20 @@
 <title>Video</title>
 <%@ include file="CSSsettingout.jsp"%>
 <style>
+.notice {
+	color: #ff0000;
+	font-size: small;
+}
+
+#memo {
+	position: absolute;
+	right: 0;
+	color: #ff0000;
+	font-size: small;
+	text-align: right;
+	padding-right: 50px;
+}
+
 h3 {
 	display: inline;
 }
@@ -44,134 +58,213 @@ h3:active {
 }
 
 #intro {
-	color: rgb(255, 255, 255);
-	font-weight: bolder;
-	text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  color:rgb(255, 255, 255);
+  font-weight: bolder;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-
-	<%@ include file="headerout.jsp"%>​​​​​​​
-
-	<section class="ftco-section ftco-schedule" id="schedule-section"
-		style="padding-bottom: 60px">
-		<!-- <div class="container"> -->
-		<div class="col-md-12 heading-section text-center ftco-animate">
-			<span class="subheading">Videoflix</span>
-			<h2 class="mb-4">Training Video</h2>
-			<p>No pain, no gain.</p>
-		</div>
-		<!-- </div> -->
-	</section>
-
-	<section class="ftco-section bg-light" id="blog-section"
-		style="padding-top: 50px; padding-bottom: 10px;">
+	​​​​​​​
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
 		<div class="container">
+			<a class="navbar-brand" href="/WeMatch_dev/homepage">Fitness</a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+				type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<img src="images/v001.jpg" class="block-20" style="height: 45%;">
-						<div class="text float-right d-block"
-							style="border: grey solid 2px; border-bottom-right-radius: 60px;">
-							<div class="d-flex align-items-center pt-2 mb-4 topp">
-								<div class="one mr-2">
-									<span class="day" id="intro">背部</span>
-								</div>
-								<div class="two">
-									<span class="yr">&nbsp;</span> <span class="mos"
-										style="font-weight: bolder;">肌群</span>
-								</div>
-							</div>
-							<h3 class="heading" style="font-weight: bolder; color: orange">背部肌群組成與重要性</h3>
-							<p style="color: rgb(95, 92, 92);">核心肌群之一的背部，由多裂肌、豎脊肌、腰方肌等多項肌群組成，當我們站立、起身、前彎時這些肌群就會啟動進行動作，扮演著穩定軀幹的角色。強壯的背部核心肌群不僅能改善一些症狀外同時也能增進在運動上的表現。</p>
-							<div class="d-flex align-items-center mt-4 meta">
-								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
-										class="ion-ios-arrow-round-forward"></span></a>
-								</p>
-								<p class="ml-auto mb-0"></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<img src="images/v002.jpg" class="block-20" style="height: 45%;">
-						<div class="text float-right d-block"
-							style="border: grey solid 2px; border-bottom-right-radius: 60px;">
-							<div class="d-flex align-items-center pt-2 mb-4 topp">
-								<div class="one mr-2">
-									<span class="day" id="intro">胸部</span>
-								</div>
-								<div class="two">
-									<span class="yr">&nbsp;</span> <span class="mos"
-										style="font-weight: bolder;">肌群</span>
-								</div>
-							</div>
-							<h3 class="heading" style="font-weight: bolder; color: orange">胸部肌群訓練方式</h3>
-							<p style="color: rgb(95, 92, 92);">胸部肌肉可分為胸大肌、胸小肌和前鋸肌。相對其他部位的肌群而言，胸部肌群要簡單很多，其重點在於對於胸大肌的訓練，常用徒手方法為伏地挺身以及各種變式，負重訓練可採用飛鳥和臥推的方式刺激。</p>
-							<div class="d-flex align-items-center mt-4 meta">
-								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
-										class="ion-ios-arrow-round-forward"></span></a>
-								</p>
-								<p class="ml-auto mb-0"></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry">
-						<img src="images/v003.jpg" class="block-20" style="height: 45%;">
-						<div class="text float-right d-block"
-							style="border: grey solid 2px; border-bottom-right-radius: 60px;">
-							<div class="d-flex align-items-center pt-2 mb-4 topp">
-								<div class="one mr-2">
-									<span class="day" id="intro">腿部</span>
-								</div>
-								<div class="two">
-									<span class="yr">&nbsp;</span> <span class="mos"
-										style="font-weight: bolder;">肌群</span>
-								</div>
-							</div>
-							<h3 class="heading" style="font-weight: bolder; color: orange">強化腿部肌群好處</h3>
-							<p style="color: rgb(95, 92, 92);">大腿主要分為前外側、後側和內側三個肌群。勤練腿部肌群好處相當的多，主要能強化腿部肌群、增強核心肌力、消耗更多的熱量、促進生長激素與睪固酮的濃度、提高新陳代謝等等，因此，腿部肌肉沒練好，幾乎是等於健身無效。</p>
-							<div class="d-flex align-items-center mt-4 meta">
-								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
-										class="ion-ios-arrow-round-forward"></span></a>
-								</p>
-								<p class="ml-auto mb-0"></p>
-							</div>
-						</div>
-					</div>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<!-- 				<li class="nav-item"><a href="index.html#home-section" -->
+					<!-- 					class="nav-link"><span>Home</span></a></li> -->
+					<li class="nav-item"><a
+						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/CoursesHome' />"
+						class="nav-link"><span>Courses</span></a></li>
+					<li class="nav-item"><a
+						href="<c:url value='/bookingcontroller/booking' />"
+						class="nav-link"><span>Schedule</span></a></li>
+					<li class="nav-item"><a href="index.html#about-section"
+						class="nav-link"><span>Diet</span></a></li>
+					<li class="nav-item"><a href="/WeMatch_dev/video"
+						class="nav-link"><span>Videoflix</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/coachPage' />"
+						class="nav-link"><span>Coach Intro.</span></a></li>
+					<li class="nav-item"><a href="index.html#blog-section"
+						class="nav-link"><span>Shopping Cart</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+						class='nav-link'><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('images/bg_3.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
+					<h1 class="mb-3 bread">Our Stories</h1>
+					<!-- 					<p class="breadcrumbs"> -->
+					<!-- 						<span class="mr-2"><a href="index.html">Home <i -->
+					<!-- 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a -->
+					<!-- 							href="VideoPage.jsp">Videoflix <i -->
+					<!-- 								class="ion-ios-arrow-forward"></i></a></span> -->
+					<!-- 					</p> -->
 				</div>
 			</div>
 		</div>
 	</section>
+	
+		<section class="ftco-section ftco-schedule" id="schedule-section" style="padding-bottom: 60px">
+<!-- 		<div class="container"> -->
 
-	<section class="ftco-section ftco-schedule" id="schedule-section"
-		style="padding-top: 60px">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Videoflix</span>
+					<h2 class="mb-4">Training Video</h2>
+					<p>No pain, no gain.</p>
+				</div>
+
+<!-- 		</div> -->
+		</section>
+		
+		<section class="ftco-section bg-light" id="blog-section" style="padding-top:50px; padding-bottom: 10px;">
+      <div class="container">
+
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <img src="images/v001.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2" >
+              			<span class="day" id="intro">背部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">背部肌群組成與重要性</h3>
+                <p style="color: rgb(95, 92, 92);">核心肌群之一的背部，由多裂肌、豎脊肌、腰方肌等多項肌群組成，當我們站立、起身、前彎時這些肌群就會啟動進行動作，扮演著穩定軀幹的角色。強壯的背部核心肌群不僅能改善一些症狀外同時也能增進在運動上的表現。</p>
+                <div class="d-flex align-items-center mt-4 meta" >
+	                <p class="mb-0">
+                    <a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a>
+                  </p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <img src="images/v002.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2">
+              			<span class="day" id="intro">胸部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">胸部肌群訓練方式</h3>
+                <p style="color: rgb(95, 92, 92);">胸部肌肉可分為胸大肌、胸小肌和前鋸肌。相對其他部位的肌群而言，胸部肌群要簡單很多，其重點在於對於胸大肌的訓練，常用徒手方法為伏地挺身以及各種變式，負重訓練可採用飛鳥和臥推的方式刺激。</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <img src="images/v003.jpg" class="block-20" style="height: 45%;">
+              <div class="text float-right d-block" style="border: grey solid 2px; border-bottom-right-radius:60px;">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-2">
+              			<span class="day" id="intro">腿部</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">&nbsp;</span>
+              			<span class="mos" style="font-weight: bolder;">肌群</span>
+              		</div>
+              	</div>
+                <h3 class="heading" style="font-weight: bolder; color:orange">強化腿部肌群好處</h3>
+                <p style="color: rgb(95, 92, 92);">大腿主要分為前外側、後側和內側三個肌群。勤練腿部肌群好處相當的多，主要能強化腿部肌群、增強核心肌力、消耗更多的熱量、促進生長激素與睪固酮的濃度、提高新陳代謝等等，因此，腿部肌肉沒練好，幾乎是等於健身無效。</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#contentupdate" class="btn btn-primary">Go <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<section class="ftco-section ftco-schedule" id="schedule-section" style="padding-top: 60px">
 		<div class="container">
-			<!-- 			<div class="row justify-content-center pb-5"> -->
-			<!-- 				<div class="col-md-12 heading-section text-center ftco-animate"> -->
-			<!-- 					<span class="subheading">Videoflix</span> -->
-			<!-- 					<h2 class="mb-4">Training Video</h2> -->
-			<!-- 					<p>No pain, no gain.</p> -->
-			<!-- 				</div> -->
-			<!-- 			</div> -->
+<!-- 			<div class="row justify-content-center pb-5"> -->
+<!-- 				<div class="col-md-12 heading-section text-center ftco-animate"> -->
+<!-- 					<span class="subheading">Videoflix</span> -->
+<!-- 					<h2 class="mb-4">Training Video</h2> -->
+<!-- 					<p>No pain, no gain.</p> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 			<div>
+				<!-- 				<div class="coach-wrap ftco-animate d-sm-flex" -->
+				<!-- 					style="padding-top: 10px"> -->
+				<!-- 					<div>Last Update</div><br> -->
+
+				<!-- 					<div class="tab-pane fade show active" id="v-pills-6" -->
+				<!-- 						role="tabpanel" aria-labelledby="day-6-tab"> -->
 
 				<div class="coach-wrap ftco-animate d-sm-flex"
 					style="border-radius: 50px">
+
 					<table id=contentupdate class="updateTable"
 						style="margin-left: 35px"></table>
 				</div>
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+
+				<!-- 				<div> -->
+				<!-- 					<div class="coach-wrap ftco-animate d-sm-flex" -->
+				<!-- 						style="padding-top: 10px"> -->
+				<!-- 						<h4>Most View</h4> -->
+
+				<!-- 						<div class="tab-pane fade show active" id="v-pills-7" -->
+				<!-- 							role="tabpanel" aria-labelledby="day-7-tab"> -->
+				<!-- 							<div class="coach-wrap ftco-animate d-sm-flex"> -->
+				<!-- 								Show video most view -->
+				<!-- 								<table id=contentview class="viewTable"></table> -->
+				<!-- 							</div> -->
+				<!-- 						</div> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 			</div>
 
 			<div id="down"></div>
@@ -182,14 +275,14 @@ h3:active {
 							role="tablist" aria-orientation="vertical">
 							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
 								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">背部核心肌群 <span>BodyBack,
+								aria-controls="v-pills-8" aria-selected="true">BodyBack <span>BodyBack,
 									Go go!!</span></a> <a class="nav-link ftco-animate" id="v-pills-9-tab"
 								data-toggle="pill" href="#v-pills-9" role="tab"
-								aria-controls="v-pills-9" aria-selected="false">胸部核心肌群 <span>Chest,
-									Ha Ha...</span>
+								aria-controls="v-pills-9" aria-selected="false">BodyChest <span>Chest,
+									GJ Ha Ha...</span>
 							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
 								data-toggle="pill" href="#v-pills-10" role="tab"
-								aria-controls="v-pills-10" aria-selected="false">腿部核心肌群 <span>Leg,
+								aria-controls="v-pills-10" aria-selected="false">BodyLeg <span>Leg,
 									you're leg ker ker...</span>
 							</a>
 
@@ -269,4 +362,5 @@ h3:active {
 	<script src="js/VideoPage.js" type="text/javascript"></script>
 
 </body>
+
 </html>
