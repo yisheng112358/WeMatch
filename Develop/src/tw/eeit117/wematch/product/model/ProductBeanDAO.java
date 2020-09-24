@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,7 +36,10 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	@Override
 	public ProductBean findById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(ProductBean.class, productId);
+		Transaction tx = session.beginTransaction();
+		ProductBean productBean = session.get(ProductBean.class, productId);
+		tx.commit();
+		return productBean;
 	}
 
 	@Override

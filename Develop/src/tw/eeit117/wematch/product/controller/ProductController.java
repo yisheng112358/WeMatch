@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,4 +166,23 @@ public class ProductController {
 		}
 		return productBeans;
 	}
+
+	@GetMapping(value = "/shoppingCart/{productId}")
+	public String shoppingCart(@PathVariable String productId, HttpSession httpSession) {
+		ProductBean productBean = productBeanService.findById(Integer.parseInt(productId));
+		@SuppressWarnings("unchecked")
+		Set<ProductBean> carts = (Set<ProductBean>) httpSession.getAttribute("shoppingCarts");
+		if (carts == null) {
+			Set<ProductBean> newCarts = new HashSet<ProductBean>();
+			newCarts.add(productBean);
+			httpSession.setAttribute("shoppingCarts", newCarts);
+			System.out.println("創造新的購物車");
+		} else {
+			carts.add(productBean);
+			httpSession.setAttribute("shoppingCarts", carts);
+			System.out.println("加入商品到購物車");
+		}
+		return "redirect:/product/browse";
+	}
+
 }
