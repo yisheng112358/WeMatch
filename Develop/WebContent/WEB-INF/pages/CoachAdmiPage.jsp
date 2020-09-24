@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Coach Introduction</title>
 <%@ include file="CSSsettingout.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	window.onload = function() {
 		var xhr = new XMLHttpRequest();
@@ -16,7 +17,7 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var content = "<table border='1' class='coachTable'>";
-				content += "<tr><th width='50'>序號</th><th width='150'>教練照片</th><th width='100'>姓名</th><th width='80'>暱稱</th><th width='80'>年齡</th><th width='100'>授課名稱</th><th width='100'>授課種類</th><th width='100'>相關證照</th><th>修改</th><th>刪除</th></tr>";
+				content += "<thead><tr><th width='50'>序號</th><th width='150'>教練照片</th><th width='100'>姓名</th><th width='80'>暱稱</th><th width='80'>年齡</th><th width='100'>授課名稱</th><th width='100'>授課種類</th><th width='100'>相關證照</th><th>修改</th><th>刪除</th></tr></thead><tbody id='myTable'>";
 				var coach = JSON.parse(xhr.responseText);
 				for (var i = 0; i < coach.length; i++) {
 					var base64String = btoa(String.fromCharCode.apply(null,
@@ -49,12 +50,22 @@
 							+ "<input type='button' id='deleteCoach' value='刪除'></a></td>"
 							+ "</tr>";
 				}
-				content += "</table>";
+				content += "</tbody></table>";
 				var divs = document.getElementById("coachIntro");
 				divs.innerHTML = content;
 			}
 		}
 	}
+</script>
+<script>
+$(document).ready(function(){
+  $("#searchInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
 <style>
 .notice {
@@ -86,6 +97,12 @@ h3:active {
 
 .coachTitle {
 	text-align: center;
+}
+
+#searchForm {
+	margin-left: 750px;
+	font-family: 微軟正黑體;
+	width: 300px;
 }
 
 .coachTable {
@@ -161,7 +178,6 @@ tr, th, td {
 	background-color: #FF7575;
 	transform: translateY(4px);
 }
-
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -180,16 +196,22 @@ tr, th, td {
 			</div>
 			<div class="coachDiv">
 				<h2 class="coachTitle">教練管理系統</h2>
+				<p></p>
 				<div>
-					<label style="margin-left: 800px">Search:</label> <input
-						type="text">
+					<div class="search-form" id="searchForm">
+						<div class="form-group">
+							<span class="icon icon-search"></span> <input type="text"
+								id="searchInput" class="form-control" placeholder="請輸入教練姓名或課程">
+						</div>
+					</div>
+					<p></p>
 				</div>
 				<div class="coachDiv" id="coachIntro"></div>
 				<br />
 				<div>
 					<input type="button" id="createCoach" value="新增✒️"
 						onclick="location.href='admin/newCoach'"
-						style="margin-left: 100px"> 
+						style="margin-left: 100px">
 				</div>
 			</div>
 		</div>
@@ -199,7 +221,7 @@ tr, th, td {
 
 	<%@ include file="footerout.jsp"%>
 	<%@ include file="JSsettingout.jsp"%>
-	
+
 
 
 </body>

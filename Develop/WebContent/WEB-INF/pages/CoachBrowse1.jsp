@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Coach Introduction</title>
 <%@ include file="CSSsettingout.jsp"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	window.onload = function() {
 		var xhr = new XMLHttpRequest();
@@ -16,7 +18,7 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var content = "<table border='1' class='coachTable'>";
-				content += "<tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='100'>暱稱</th><th width='100'>年齡</th><th width='120'>授課名稱</th><th width='120'>授課種類</th><th width='150'>相關證照</th></tr>";
+				content += "<thead><tr><th width='150'>教練照片</th><th width='100'>姓名</th><th width='100'>暱稱</th><th width='100'>年齡</th><th width='120'>授課名稱</th><th width='120'>授課種類</th><th width='150'>相關證照</th></tr></thead><tbody id='myTable'>";
 				var coach = JSON.parse(xhr.responseText);
 				for (var i = 0; i < coach.length; i++) {
 					var base64String = btoa(String.fromCharCode.apply(null,
@@ -40,12 +42,28 @@
 							+ "<td align='center'>"
 							+ coach[i].license + "</td>" + "</tr>";
 				}
-				content += "</table>";
+				content += "</tbody></table>";
 				var divs = document.getElementById("coachIntro");
 				divs.innerHTML = content;
 			}
 		}
 	}
+</script>
+<script>
+	$(document).ready(
+			function() {
+				$("#searchInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
 </script>
 <style>
 .notice {
@@ -77,6 +95,12 @@ h3:active {
 
 .coachTitle {
 	text-align: center;
+}
+
+#searchForm {
+	margin-left: 750px;
+	font-family: 微軟正黑體;
+	width: 300px;
 }
 
 .coachTable {
@@ -137,6 +161,16 @@ tr {
 			</div>
 			<div class="coachDiv">
 				<h2 class="coachTitle">教練介紹</h2>
+				<p></p>
+				<div>
+					<div class="search-form" id="searchForm">
+						<div class="form-group">
+							<span class="icon icon-search"></span> <input type="text"
+								id="searchInput" class="form-control" placeholder="Search...">
+						</div>
+					</div>
+					<p></p>
+				</div>
 				<div class="coachDiv" id="coachIntro"></div>
 				<br />
 			</div>
