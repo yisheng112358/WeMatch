@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Courses</title>
+<title>Test</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,36 +83,31 @@
 	width: 100px;
 	height: 30px;
 }
-
-<!--
-table-->.table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 20px;
+<!--table-->
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 8px;  //設定單元格內邊距
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;  //每條記錄的頂部都有一條1畫素的細線
+}
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd; //thead有1條2畫素寬的橫線
+}
+.table > tbody + tbody {
+  border-top: 2px solid #ddd;  //如果表格有2個tbody，兩者指間會有1條2畫素寬的橫線
 }
 
-.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
-	.table>tbody>tr>td, .table>tfoot>tr>td {
-	padding: 8px; //
-	設定單元格內邊距 line-height: 1.42857143;
-	vertical-align: top;
-	border-top: 1px solid #ddd;
-	//
-	每條記錄的頂部都有一條1畫素的細線
-}
-
-.table>thead>tr>th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #ddd;
-	//
-	thead有1條2畫素寬的橫線
-}
-
-.table>tbody+tbody {
-	border-top: 2px solid #ddd;
-	//
-	如果表格有2個tbody，兩者指間會有1條2畫素寬的橫線
-}
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -150,29 +145,6 @@ table-->.table {
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="index.html#contact-section"
 						class="nav-link"><span>Membership</span></a></li>
-
-					<%
-						String memberStatus = "" + (Integer) session.getAttribute("Status");
-					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
-					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-					}
-					%>
-					
-					<!-- 重複加選的錯誤提示 -->
-				<div align="center">
-					<%
-						String errorInfo = (String) request.getAttribute("errorMessage");
-					if (errorInfo != null) {
-					%>
-					<script type="text/javascript" language="javascript">
-		   					alert("<%=errorInfo%>");
-						window.location = 'addCourses';
-					</script>
-					<%
-						}
-					%>
 				</ul>
 			</div>
 		</div>
@@ -191,8 +163,9 @@ table-->.table {
 						<span class="mr-2"><a href="index.html">Home <i
 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
 							href="addCourses">addCourses <i class="ion-ios-arrow-forward"></i></a></span>
-						<span class="mr-2"><a href="ListCourses">ListCourses<i
-								class="ion-ios-arrow-forward"></i></a></span> </span>
+							<span class="mr-2"><a
+							href="ListCourses">ListCourses<i class="ion-ios-arrow-forward"></i></a></span>
+						</span>
 					</p>
 				</div>
 			</div>
@@ -203,70 +176,79 @@ table-->.table {
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-					<h1 align="center">待選課程區</h1>
-					<table class="table table-striped">
-						<tr align="center" color="brack">
-							<th>課程名稱</th>
-							<th>上課星期</th>
-							<th>課程節數</th>
-							<th>上課教室</th>
-							<th>可報人數</th>
-							<th>已報人數</th>
-							<th>剩餘可報人數</th>
-							<th>操作</th>
-						</tr>
-						<c:forEach var="courses" items="${listCurriculum}">
-							<tr align="center">
-								<td align="center">${courses.coursesName}</td>
-								<td align="center">${courses.coursesWeek}</td>
-								<td align="center">${courses.sectionNumber}</td>
-								<td align="center">${courses.classRoom}</td>
-								<td align="center">${courses.numberPeople}</td>
-								<td align="center">${courses.regNumber}</td>
-								<td align="center">${courses.coursesBalance}</td>
-								<td><a
-									href="addCurriculumBtn?coursesId=${courses.coursesId}"> <input
-										type="submit" value="➕"></a></td>
-							</tr>
-						</c:forEach>
-					</table>
+				<!-- 重複加選的錯誤提示 -->
+ 	<div align="center">
+		<%
+		   String errorInfo = (String)request.getAttribute("errorMessage");
+		   if(errorInfo != null) {
+	   %>
+	   <script type="text/javascript" language="javascript">
+		   alert("<%=errorInfo%>");
+	   window.location='addCourses' ;
+   </script> 
+   <%
+   }
+   %>
 
-
-					<h2 align="center">課表已選所有課程</h2>
-					<table class="table table-striped">
-						<tr align="center" color="brack">
-							<th>課表代號</th>
-							<th>會員代號</th>
-							<th>課程代號</th>
-							<th>課程名稱</th>
-							<th>上課星期</th>
-							<th>課程節數</th>
-							<th>上課教室</th>
-						</tr>
-						<c:forEach var="curriculum" items="${listCurriculum2}">
-							<tr align="center">
-								<td align="center">${curriculum.curriculumId}</td>
-								<td align="center">${curriculum.memberId}</td>
-								<td align="center">${curriculum.coursesId}</td>
-								<td align="center">${curriculum.coursesName}</td>
-								<td align="center">${curriculum.coursesWeek}</td>
-								<td align="center">${curriculum.sectionNumber}</td>
-								<td align="center">${curriculum.classRoom}</td>
-							</tr>
-						</c:forEach>
-					</table>
-					<div style="background-color: #ffffff" align="center">
-						<a href="ListCourses"> <input width="10px"
-							class="btn py-3 px-4 btn-primary" type="submit" value="退選" /></a>
-					</div>
-				</div>
+	   <h1>待選課程區</h1>
+	   <table class="table table-striped">
+			<tr align="center" color="brack">
+			   <th>課程名稱</th>
+			   <th>上課星期</th>
+			   <th>課程節數</th>
+			   <th>上課教室</th>
+			   <th>可報人數</th>
+			   <th>已報人數</th>
+			   <th>剩餘可報人數</th>
+			   <th>操作</th>
+			</tr>   
+		   <c:forEach var="courses" items="${listCurriculum}">
+				<tr align="center">
+				   <td align="center">${courses.coursesName}</td>
+				   <td align="center">${courses.coursesWeek}</td>
+				   <td align="center">${courses.sectionNumber}</td>
+				   <td align="center">${courses.classRoom}</td>
+				   <td align="center">${courses.numberPeople}</td>
+				   <td align="center">${courses.regNumber}</td>
+				   <td align="center">${courses.coursesBalance}</td>						
+				   <td><a href="addCurriculumBtn?coursesId=${courses.coursesId}">
+					   <input type="submit" value="➕"></a>
+				   </td>	
+			   </tr>	
+		   </c:forEach>
+	   </table>
+	   
+	   
+	   <h2>課表已選所有課程<td></h2>
+	   <table class="table table-striped">
+			<tr align="center" color="brack">
+			   <th>課表代號</th>
+			   <th>會員代號</th>
+			   <th>課程代號</th>
+			   <th>課程名稱</th>
+			   <th>上課星期</th>
+			   <th>課程節數</th>
+			   <th>上課教室</th>
+			</tr>   
+		   <c:forEach var="curriculum" items="${listCurriculum2}">
+				<tr align="center">
+				   <td align="center">${curriculum.curriculumId}</td>
+				   <td align="center">${curriculum.memberId}</td>
+				   <td align="center">${curriculum.coursesId}</td>
+				   <td align="center">${curriculum.coursesName}</td>
+				   <td align="center">${curriculum.coursesWeek}</td>
+				   <td align="center">${curriculum.sectionNumber}</td>
+				   <td align="center">${curriculum.classRoom}</td>
+			   </tr>
+		   </c:forEach>
+	   </table>
+  		 <div style="background-color: #ffffff">
+				 <a href="ListCourses">
+				 <input width="10px" padding="100px" 
+				 class="btn py-3 px-4 btn-primary" type="submit" value="退選" /></a>
+		</div>
+	</div>
 	</section>
-
-	<%
-		if (memberStatus.equals("2")) {
-		response.sendRedirect("/WeMatch_dev/newCourses");
-	}
-	%>
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
