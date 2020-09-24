@@ -187,7 +187,7 @@ tr, th, td {
 				<div class="coachDiv" id="coachIntro"></div>
 				<br />
 				<div>
-					<input type="button" id="createCoach" value="新增"
+					<input type="button" id="createCoach" value="新增✒️"
 						onclick="location.href='admin/newCoach'"
 						style="margin-left: 100px"> 
 				</div>

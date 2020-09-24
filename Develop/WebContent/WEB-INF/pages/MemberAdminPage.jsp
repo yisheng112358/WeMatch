@@ -18,12 +18,11 @@
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
 				<h3 class="mb-5">會員管理資料</h3>
-				<form class="p-5 bg-light" action="preInsert"
+				<form class="p-5 bg-light" action="preInsert.do"
 					style="position: relative; border: 1px solid;" method="post">
 					<table class="form-group">
 						<div class="form-group">
-							<input type="submit" value="查詢" class="btn py-3 px-4 btn-primary">
-							<a href="<c:url value='/preInsert.do' />">新增</a>
+							<input type="submit" value="新增" class="btn py-3 px-4 btn-primary">
 						</div>
 						<thead>
 							<tr>
@@ -46,8 +45,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="form-group"></div>
-
 				</form>
 			</div>
 		</div>

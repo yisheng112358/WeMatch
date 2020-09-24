@@ -28,6 +28,12 @@ public class BookingService {
 
 		return bookingDAO.select(date, time);
 	}
+	
+	@Transactional
+	public List<bookingBean> selectbooking(String name) {
+
+		return bookingDAO.selectbooking(name);
+	}
 
 	@Transactional
 	public List<bookingBean> selectAll() {
@@ -39,5 +45,7 @@ public class BookingService {
 	public void delete(Integer bookingId) {
 		bookingDAO.delete(bookingId);
 	}
+	
+	
 
 }

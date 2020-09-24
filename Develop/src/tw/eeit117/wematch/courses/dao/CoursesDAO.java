@@ -22,5 +22,5 @@ public interface CoursesDAO {
 	//刪除
 	@Transactional
 	public void deleteCourses(int coursesId);
-	
+		
 }

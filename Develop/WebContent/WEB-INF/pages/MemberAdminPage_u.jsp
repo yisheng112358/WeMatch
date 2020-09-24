@@ -6,41 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>後台會員更改資料</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
-	rel="stylesheet">
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
-<style>
-.notice {
-	color: #ff0000;
-	font-size: small;
-}
-
-#memo {
-	position: absolute;
-	right: 0;
-	color: #ff0000;
-	font-size: small;
-	text-align: right;
-	padding-right: 50px;
-}
-</style>
+<%@ include file="CSSsettingout.jsp"%>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-	<%@ include file="header.jsp"%>
+	<%@ include file="headerout.jsp"%>
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -71,16 +42,16 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<div id="memo">*輸入Email擔任援備密碼</div>
+						<div id="memo" style="color: red">*輸入Email擔任援備密碼</div>
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
 							value="${email}"
 							class="form-control" name="memberEmail" onblur="checkMail()">
 					</div>
-					<div class="form-group">
-						<label for="birthday">生日：</label> <input type="date"
-							name="birthday">
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="birthdayDate">生日：</label> <input type="date" -->
+<!-- 							name="birthdayDate"> -->
+<!-- 					</div> -->
 					<div class="form-group">
 						<label for="starSign">星座：</label><br /> <select name="starSign">
 							<option value="ARI">白羊座</option>
@@ -159,7 +130,7 @@
 					<div class="form-group">
 						<label for="selfIntro">關於我：</label>
 						<textarea name="selfIntro" cols="30" rows="10"
-							class="form-control">${selfInfo}</textarea>
+							class="form-control">${selfinfo}</textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="更新" class="btn py-3 px-4 btn-primary">
@@ -168,8 +139,7 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="footer.jsp"%>
-<%-- 	<%@ include file="JSsetting.jsp"%> --%>
-	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	<%@ include file="footerout.jsp"%>
+	<%@ include file="JSsettingout.jsp"%>
 </body>
 </html>

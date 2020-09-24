@@ -42,6 +42,17 @@ public  class BookingDAO {
 		return (List <bookingBean>) query.list();
 }
 	
+	
+	public List<bookingBean> selectbooking(String name) {
+		Session session = sessionFactory.getCurrentSession();	
+		 Query query = session.createQuery("from bookingBean where bookingName=:name",bookingBean.class);
+		
+
+		query.setParameter("name", name);
+		
+		return (List <bookingBean>) query.list();
+}
+	
 	public List<bookingBean> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
 		 Query query = session.createQuery("from bookingBean", bookingBean.class);

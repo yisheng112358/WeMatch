@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>會員登入</title>
+<title>Fitness Space</title>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +30,7 @@
 #memo {
 	position: absolute;
 	right: 0;
-	color: #ff0000;
+	color: #fe9191;
 	font-size: small;
 	text-align: right;
 	padding-right: 50px;
@@ -39,6 +39,7 @@
 .v_code {
 	width: 600px;
 	margin: 0 auto;
+	padding-left:10px;
 }
 
 .v_code>input {
@@ -82,6 +83,7 @@
 	height: 30px;
 }
 </style>
+<link rel="shortcut icon" href="favicon.ico" />
 <script type="text/javascript">
 	var code;
 	function createCode() {
@@ -166,7 +168,7 @@
 				}
 			}
 			if (flag1 && flag2) {
-				accountObj.innerHTML = "帳號正確";
+				accountObj.innerHTML = "帳號格式正確";
 				return true;
 			} else {
 				accountObj.innerHTML = "帳號格式錯誤";
@@ -203,7 +205,7 @@
 				}
 			}
 			if (flag3 && flag4 && flag5) {
-				pwdObj.innerHTML = "密碼正確";
+				pwdObj.innerHTML = "密碼格式正確";
 				return true;
 			} else {
 				pwdObj.innerHTML = "密碼格式錯誤";
@@ -231,41 +233,45 @@
 </script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
-
-	<%@ include file="WEB-INF/pages/headerout.jsp"%>
+	data-offset="300" style="background-image: url('images/ind_1.jpg'); background-size: 100%;">
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
-		<div class="container">
-			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">會員登入</h3>
+		<div class="container"  style="margin-left: 5px; padding-right: 450px;">
+			<div class="comment-form-wrap pt-5"
+				style="padding: 20px; ">
+				<h2 class="mb-5" style="margin-left:90px;">Welcome to <span class="navbar-brand" style="font-size:38px;">FITNESS SPACE</span> </h2>
 				<form action="loginsystem.controller" method="post"
 					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid;"
+					style="position: relative; border: 1px solid; margin-left:10px;"
 					onsubmit="return submitFunc2()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
 							class="notice"></span><br /> <input type="text" id="account1"
 							class="form-control" name="memberAccount" required="required"
-							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
+							 maxlength="20"
 							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br /> <a href="MemberForgot">忘記密碼？</a> <input
+							class="notice"></span><br />  <input
 							type="password" id="pwd1" class="form-control" name="memberPwd"
 							required="required"
-							placeholder="請輸入至少8個字且須包含字母、數字、特殊符號混合字元及不可空白(至多20個)"
+							
 							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
+					<a href="MemberForgot">忘記密碼？</a> <a
+						href='<c:url value="/register"/>'
+						style="position: absolute; right: 0; padding-right: 50px;">尚未註冊？</a>
 
 					<div class="form-group">
-						<a href='<c:url value="/register"/>'>尚未註冊？</a> <br />
+						 <br />
 						<div class="v_code">
 							<div class="code_show">
-								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>
+								<span class="code" id="checkCode"
+									style="-webkit-user-select: none;" unselectable="on"></span> <a
+									id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
@@ -274,14 +280,29 @@
 							</div>
 						</div>
 						<input id="Button1" type="submit" value="登入"
-							class="btn py-3 px-4 btn-primary"> <span>${errors.msg}</span>
+							class="btn py-3 px-4 btn-primary" style="margin-top: 20px;">  <span>${errors.msg}</span>
 					</div>
 
 				</form>
 			</div>
 		</div>
 	</section>
-	<%@ include file="WEB-INF/pages/footerout.jsp"%>
+	
+			<div class="col-md-12 text-center">
+				<p>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					All rights reserved | This template is made with <i
+						class="icon-heart color-danger" aria-hidden="true"></i> by <a
+						href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
+	
+	<%-- 	<%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
 	<%@ include file="WEB-INF/pages/JSsettingout.jsp"%>
 
 </body>

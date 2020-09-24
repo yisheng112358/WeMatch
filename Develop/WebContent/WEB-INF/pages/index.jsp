@@ -1,13 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
+<title>Fitness Space</title>
 <meta charset="UTF-8">
-<title>忘記密碼</title>
-<%@ include file="CSSsettingout.jsp"%>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
 .notice {
 	color: #ff0000;
@@ -17,7 +30,7 @@
 #memo {
 	position: absolute;
 	right: 0;
-	color: #ff0000;
+	color: #fe9191;
 	font-size: small;
 	text-align: right;
 	padding-right: 50px;
@@ -26,6 +39,7 @@
 .v_code {
 	width: 600px;
 	margin: 0 auto;
+	padding-left:10px;
 }
 
 .v_code>input {
@@ -68,8 +82,8 @@
 	width: 100px;
 	height: 30px;
 }
-}
 </style>
+<link rel="shortcut icon" href="favicon.ico" />
 <script type="text/javascript">
 	var code;
 	function createCode() {
@@ -88,7 +102,8 @@
 		if (checkCode) {
 			checkCode.className = "code";
 			checkCode.innerHTML = code;
-		}
+<%-- 		<% session.setAttribute("code", code); %> --%>
+	}
 	}
 	function validateCode() {
 		var inputCode = document.getElementById("inputCode").value;
@@ -118,14 +133,14 @@
 		checkCode();
 		createCode();
 		document.getElementById("checkCode").onclick = function() {
-			createCode()
+			createCode();
 		}
 		linkbt.onclick = function() {
-			createCode()
+			createCode();
 		}
 		inputCode.onclick = function() {
 			validateCode();
-		}
+		};
 	}
 	function checkAccount() {
 		let theAccountObj = document.getElementById("account1");
@@ -153,7 +168,7 @@
 				}
 			}
 			if (flag1 && flag2) {
-				accountObj.innerHTML = "帳號正確";
+				accountObj.innerHTML = "帳號格式正確";
 				return true;
 			} else {
 				accountObj.innerHTML = "帳號格式錯誤";
@@ -161,21 +176,54 @@
 			}
 		}
 	}
-	function checkMail() {
-		let theMailObj = document.getElementById("mail1");
-		let theMailObjVal = theMailObj.value;
-		let mailObj = document.getElementById("mailsp");
 
-		if (theMailObjVal == "") {
-			mailObj.innerHTML = "電子郵件不可空白";
+	function checkPwd() {
+		let thePwdObj = document.getElementById("pwd1");
+		let thePwdObjVal = thePwdObj.value;
+		let thePwdObjValLen = thePwdObjVal.length;
+		let flag3 = false, flag4 = false, flag5 = false;
+		let pwdObj = document.getElementById("pwdsp");
+
+		if (thePwdObjVal == "") {
+			pwdObj.innerHTML = "密碼不可空白";
+			return false;
+		} else if (thePwdObjValLen < 8) {
+			pwdObj.innerHTML = "密碼至少8個字";
 			return false;
 		} else {
-			mailObj.innerHTML = " ";
-			return true;
+			for (let i = 0; i < thePwdObjValLen; i++) {
+				let ch = thePwdObjVal.charAt(i).toUpperCase();
+				if (ch >= "A" && ch <= "Z") {
+					flag3 = true;
+				} else if (ch >= "0" && ch <= "9") {
+					flag4 = true;
+				} else if (ch >= "\u0021" && ch <= "\u0040") {
+					flag5 = true;
+				}
+				if (flag3 && flag4 && flag5) {
+					break;
+				}
+			}
+			if (flag3 && flag4 && flag5) {
+				pwdObj.innerHTML = "密碼格式正確";
+				return true;
+			} else {
+				pwdObj.innerHTML = "密碼格式錯誤";
+				return false;
+			}
 		}
 	}
+	function submitFunc(){
+		if(checkAccount() && checkPwd()){
+			return true;
+		}else{
+			alert("帳號或密碼格式錯誤, 請再確認輸入內容");
+			return false;
+		}
+	}
+
 	function submitFunc2(){
-		if(checkAccount() && checkMail() && validateCode()){
+		if(checkAccount() && checkPwd() && validateCode()){
 			return true;
 		}else{
 			alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
@@ -185,93 +233,77 @@
 </script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
-
-<nav
-	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
-	id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="#">Fitness</a>
-		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-			type="button" data-toggle="collapse" data-target="#ftco-nav"
-			aria-controls="ftco-nav" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
-
-		<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav nav ml-auto">
-
-				<%
-					String memberStatus = "" + (Integer) session.getAttribute("Status");
-				if (memberStatus.equals("1") || memberStatus.equals("2")) {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
-				} else {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-				}
-				%>
-			</ul>
-		</div>
-	</div>
-</nav>
-<section class="hero-wrap hero-wrap-2"
-	style="background-image: url('images/bg_3.jpg');"
-	data-stellar-background-ratio="0.5">
-	<div class="overlay"></div>
-	<div class="container">
-		<div
-			class="row no-gutters slider-text align-items-end justify-content-center">
-			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-3 bread">Our Stories</h1>
-			</div>
-		</div>
-	</div>
-</section>
+	data-offset="300" style="background-image: url('images/ind_1.jpg'); background-size: 100%;">
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
-		<div class="container">
-			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-				<h3 class="mb-5">忘記密碼</h3>
-				<form action="memberforgot.controller" method="post"
-					class="p-5 bg-light" style="position: relative; border: 1px solid;"
+		<div class="container"  style="margin-left: 5px; padding-right: 450px;">
+			<div class="comment-form-wrap pt-5"
+				style="padding: 20px; ">
+				<h2 class="mb-5" style="margin-left:90px;">Welcome to <span class="navbar-brand" style="font-size:38px;">FITNESS SPACE</span> </h2>
+				<form action="loginsystem.controller" method="post"
+					enctype="multipart/form-data" class="p-5 bg-light"
+					style="position: relative; border: 1px solid; margin-left:10px;"
 					onsubmit="return submitFunc2()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
 						<label for="memberAccount">帳號 *</label> <span id="accountsp"
 							class="notice"></span><br /> <input type="text" id="account1"
 							class="form-control" name="memberAccount" required="required"
-							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
+							 maxlength="20"
 							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
-						<label for="memberEmail">電子郵件 *</label> <span id="mailsp"
-							class="notice"></span><br /> <input type="email" id="mail1"
-							class="form-control" name="memberEmail" onblur="checkMail()"
-							required="required">
+						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
+							class="notice"></span><br />  <input
+							type="password" id="pwd1" class="form-control" name="memberPwd"
+							required="required"
+							
+							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
+					<a href="MemberForgot">忘記密碼？</a> <a
+						href='<c:url value="/register"/>'
+						style="position: absolute; right: 0; padding-right: 50px;">尚未註冊？</a>
+
 					<div class="form-group">
+						 <br />
 						<div class="v_code">
 							<div class="code_show">
 								<span class="code" id="checkCode"
-								style="-webkit-user-select: none;" unselectable="on"></span> <a id="linkbt">看不清換一張</a>
+									style="-webkit-user-select: none;" unselectable="on"></span> <a
+									id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
-									id="inputCode" name="inputCode" /> <span id="text_show">${errors.incode}</span>
+									id="inputCode" name="inputCode" required="required" /> <span
+									id="text_show"></span>
 							</div>
 						</div>
-						<a href='/WeMatch_dev/index.jsp'>回到登入</a><br /> <input
-							id="Button1" type="submit" value="送出"
-							class="btn py-3 px-4 btn-primary"> <span>${errors.msg}</span>
+						<input id="Button1" type="submit" value="登入"
+							class="btn py-3 px-4 btn-primary" style="margin-top: 20px;">  <span>${errors.msg}</span>
 					</div>
 
 				</form>
-				<div class="form-group"></div>
 			</div>
 		</div>
 	</section>
-	<%@ include file="footerout.jsp"%>
+	
+			<div class="col-md-12 text-center">
+				<p>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					All rights reserved | This template is made with <i
+						class="icon-heart color-danger" aria-hidden="true"></i> by <a
+						href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
+	
+	<%-- 	<%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
 	<%@ include file="JSsettingout.jsp"%>
+
 </body>
 </html>

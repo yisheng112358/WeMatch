@@ -38,16 +38,16 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<div id="memo">*輸入Email擔任援備密碼</div>
+						<div id="memo" style="color: red">*輸入Email擔任援備密碼</div>
 						<label for="memberEmail">電子郵件：</label> <span id="mailsp"
 							class="notice"></span><br /> <input type="email" id="mail1"
 							class="form-control" name="memberEmail" onblur="checkMail()"
 							value="a1234@mail.com">
 					</div>
-					<div class="form-group">
-						<label for="birthday">生日：</label> <input type="date"
-							name="birthday">
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="birthdayDate">生日：</label> <input type="date" -->
+<!-- 							name="birthdayDate"> -->
+<!-- 					</div> -->
 					<div class="form-group">
 						<label for="starSign">星座：</label><br /> <select name="starSign">
 							<option value="ARI">白羊座</option>
