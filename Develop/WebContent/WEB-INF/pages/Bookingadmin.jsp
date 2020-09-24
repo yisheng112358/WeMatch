@@ -81,7 +81,7 @@
 
               <div class="tab-pane fade show active py-0" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                 <span class="icon mb-3 d-block flaticon-gym"></span>
-                <h2 class="mb-4">巨巨之路</h2>    <img src="../images/bigh.jpg">
+                <h2 class="mb-4">巨巨之路</h2>    <img width="400" height="400" src="../images/bigh.jpg">
                 <p style="font-size:30px;">前往巨巨之路,都是孤獨的</p>
                 <p style="font-size:30px">我不是不練,我只是不想練太壯</p>
                 
@@ -89,7 +89,7 @@
 
               <div class="tab-pane fade py-0" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                 <span class="icon mb-3 d-block flaticon-body"></span>
-                <h2 class="mb-4">苗條一路</h2>    <img src="../images/biga.jpg">
+                <h2 class="mb-4">苗條一路</h2>    <img width="400" height="400" src="../images/biga.jpg">
                 <p style="font-size:30px;">苗條一路,有我沒你</p>
                 <p style="font-size:30px;">只有非常努力,才能看起來毫不費力</p>
                
@@ -97,7 +97,7 @@
 
               <div class="tab-pane fade py-0" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                 <span class="icon mb-3 d-block flaticon-woman"></span>
-                <h2 class="mb-4">健美之路</h2>   <img src="../images/bigb.jpg">
+                <h2 class="mb-4">健美之路</h2>   <img width="400" height="400" src="../images/bigb.jpg">
                 <p style="font-size:30px;">健身到了一定境界，何需再看臉,當你不要臉時,你就贏了</p>
                 <p style="font-size:30px;">既然沒有俊美的外表,那就去擁有野獸的身體吧</p>
                
@@ -105,7 +105,7 @@
 
               <div class="tab-pane fade py-0" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
                 <span class="icon mb-3 d-block flaticon-abs"></span>
-                <h2 class="mb-4">造肌之路</h2>   <img src="../images/bigc.jpg">
+                <h2 class="mb-4">造肌之路</h2>   <img width="400" height="400" src="../images/bigc.jpg">
                 <p style="font-size:30px;">再一下,再一下就好,到底再三小</p>
                 <p style="font-size:30px;">我不是在深蹲,就是在深蹲的路上</p>
                
