@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,39 +38,6 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	@GetMapping("/homepage")	//?
-	public String homepage() {
-		return "HomePage";
-	}
-
-	@GetMapping("/index")	//?
-	public String index(HttpSession session) {
-		session.invalidate();
-		return "SignInPage";
-	}
-	
-	@GetMapping("/memberPage")	//?
-	public String memberPage(HttpSession session) {
-		if (session.getAttribute("Account")==null) {
-			return "SingInPage";
-		}else {
-			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-			session.setAttribute("Account", member.getMemberAccount());
-			session.setAttribute("name", member.getMemberName());
-			session.setAttribute("nickname", member.getNickname());
-			session.setAttribute("gender", member.getGender());
-			session.setAttribute("email", member.getMemberEmail());
-			session.setAttribute("birthday", member.getBirthdayDate());
-			session.setAttribute("starSign", member.getStarSign());
-			session.setAttribute("city", member.getCity());
-			session.setAttribute("booldtype", member.getBloodType());
-			session.setAttribute("hobbies", member.getHobbies());
-			session.setAttribute("selfinfo", member.getSelfIntro());
-			
-			return "MemberPage";
-		}
-	}
 	
 	@GetMapping("/loginPage")	//?
 	public String loginPage() {
@@ -142,11 +108,16 @@ public class MemberController {
 		request.setAttribute("errors", errors);
 
 		Member member = memberService.selectMemberByAccount(memberAccount);
-		if (member.getMemberEmail().equals(memberEmail)) {
-			session.setAttribute("memberForgotAccount", memberAccount);
-			return "MemberForgetAction";
-		} else {
-			errors.put("msg", "帳號與信箱不符合");
+		if(member != null) {
+			if (member.getMemberEmail().equals(memberEmail)) {
+				session.setAttribute("memberForgotAccount", memberAccount);
+				return "MemberForgetAction";
+			} else {
+				errors.put("msg", "帳號與信箱不符合");
+				return "MemberForgot";
+			}
+		}else {
+			errors.put("msg", "資料輸入錯誤");
 			return "MemberForgot";
 		}
 	}

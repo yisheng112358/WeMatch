@@ -111,3 +111,11 @@ GO
 )
 GO
 
+--(9)飲食
+Create Table Food(
+Id int not null primary key identity(1,1),--ID
+addDate nvarchar(50) not null , --日期
+listType nvarchar(50) not null, --食物類別
+listName nvarchar(50) not null, --食物名稱
+calories nvarchar(50) not null, --熱量
+)
