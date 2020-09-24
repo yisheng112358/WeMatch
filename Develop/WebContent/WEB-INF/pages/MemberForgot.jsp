@@ -153,7 +153,7 @@
 				}
 			}
 			if (flag1 && flag2) {
-				accountObj.innerHTML = "帳號正確";
+				accountObj.innerHTML = "帳號格式正確";
 				return true;
 			} else {
 				accountObj.innerHTML = "帳號格式錯誤";
