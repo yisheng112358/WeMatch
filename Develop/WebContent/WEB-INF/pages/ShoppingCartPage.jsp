@@ -46,8 +46,9 @@
 			} else {
 				out.write("<h1>目前購物車是空的喔~~趕快去選購吧！！！</h1>");
 			}
+			out.write("<p>總金額： <input id='totalAmount'/></P>");
 			%>
-			<p>總金額： <input id="totalAmount"/></P>
+
 		</div>
 		<hr>
 		<div style="text-align: center;">
