@@ -21,7 +21,7 @@
 						<label for="memberAccount">會員帳號：</label> <label>${Account}</label>
 						<img style="position: absolute; right: 260px" height="175"
 							src="getPhoto/<c:out value='${id}'/>"> <img
-							style="position: absolute; right: 100px" height="175"
+							style="position: absolute; right: 10px" height="175"
 							src="getPhoto2/<c:out value='${id}'/>">
 					</div>
 					<div class="form-group">
