@@ -91,7 +91,7 @@ h3:active {
 					<li class="nav-item"><a
 						href="<c:url value='/bookingcontroller/booking' />"
 						class="nav-link"><span>Schedule</span></a></li>
-					<li class="nav-item"><a href="index.html#about-section"
+					<li class="nav-item"><a href="<c:url value='/diet' />"
 						class="nav-link"><span>Diet</span></a></li>
 					<li class="nav-item"><a href="/WeMatch_dev/video"
 						class="nav-link"><span>Videoflix</span></a></li>

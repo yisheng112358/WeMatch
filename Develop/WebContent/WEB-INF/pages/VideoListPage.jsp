@@ -13,6 +13,14 @@
 	font-size: small;
 }
 </style>
+<script type="text/javascript">
+	function videokey() {
+		document.getElementById("name1").value = "胸部基礎訓練1";
+		document.getElementById("category1").value = "bodychest";
+		document.getElementById("link1").value = "https://www.youtube.com/watch?v=lD0dDIa20DI";
+		document.getElementById("desc1").value = "胸部基礎訓練-伏地挺身主要鍛鍊的部位為胸大肌，肱三頭肌，以及核心肌群，而肩部與背部其實也會受惠。準備動作可分兩動：第一動是蹲下使兩手觸地，而第二動為兩手撐地且兩腳向後一瞪。準備動作完成時兩手掌約略在胸口位置。";
+	}
+</script>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -56,13 +64,13 @@
 										style="position: relative; border: 1px solid black;">
 										<div class="form-group">
 											<label for="videoName">影片主題</label> <span id="namesp"
-												class="notice"></span><br /> <input type="text" id="name1"
-												class="form-control" name="videoName" required="required"
-												autocomplete="on">
+												class="notice"></span><br />
+											<input type="text" id="name1" class="form-control"
+												name="videoName" required="required" autocomplete="on">
 										</div>
 										<div class="form-group">
 											<label for="videoCategory">影片類別</label><br /> <select
-												name="videoCategory">
+												name="videoCategory" id="category1">
 												<option value="bodyback">背部肌群訓練</option>
 												<option value="bodychest">胸部肌群訓練</option>
 												<option value="bodyleg">腿部肌群訓練</option>
@@ -79,13 +87,16 @@
 												class="notice"></span><br />
 											<!-- 												<input type="text" id="desc1" class="form-control" name="videoDesc"  -->
 											<!-- 												required="required"	autocomplete="on"> -->
-											<textarea name="videoDesc" required="required"
+											<textarea name="videoDesc" id="desc1" required="required"
 												style="width: 550px; height: 120px;"></textarea>
 										</div>
 
 										<div class="form-group">
 											<input type="submit" value="確認"
-												class="btn py-3 px-4 btn-primary">
+												class="btn py-3 px-4 btn-primary"> <span><input
+												style="position: absolute; right: 0; margin-right: 50px;"
+												class="btn py-3 px-4 btn-primary" type="button"
+												value="Key-in-one" onclick="videokey()"></span>
 										</div>
 									</form>
 								</div>
