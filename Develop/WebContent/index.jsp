@@ -39,7 +39,7 @@
 .v_code {
 	width: 600px;
 	margin: 0 auto;
-	padding-left:140px;
+	padding-left:10px;
 }
 
 .v_code>input {
@@ -168,7 +168,7 @@
 				}
 			}
 			if (flag1 && flag2) {
-				accountObj.innerHTML = "帳號正確";
+				accountObj.innerHTML = "帳號格式正確";
 				return true;
 			} else {
 				accountObj.innerHTML = "帳號格式錯誤";
@@ -205,7 +205,7 @@
 				}
 			}
 			if (flag3 && flag4 && flag5) {
-				pwdObj.innerHTML = "密碼正確";
+				pwdObj.innerHTML = "密碼格式正確";
 				return true;
 			} else {
 				pwdObj.innerHTML = "密碼格式錯誤";
@@ -261,7 +261,9 @@
 							
 							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
-					<a href="MemberForgot">忘記密碼？</a> <a href='<c:url value="/register"/>' style="position: absolute; right:0;padding-right: 50px;">尚未註冊？</a>
+					<a href="MemberForgot">忘記密碼？</a> <a
+						href='<c:url value="/register"/>'
+						style="position: absolute; right: 0; padding-right: 50px;">尚未註冊？</a>
 
 					<div class="form-group">
 						 <br />
