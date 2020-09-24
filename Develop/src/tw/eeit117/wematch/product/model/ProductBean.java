@@ -1,5 +1,6 @@
 package tw.eeit117.wematch.product.model;
 
+import java.sql.Date;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -8,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "Product")
@@ -20,6 +24,8 @@ public class ProductBean {
 	private String productDescription;
 	private byte[] thumbnail;
 	private byte[] detailImg;
+	private Date addDate;
+	private Date updateDate;
 
 	public ProductBean() {
 	}
@@ -108,6 +114,24 @@ public class ProductBean {
 
 	public void setDetailImg(byte[] detailImg) {
 		this.detailImg = detailImg;
+	}
+
+	@CreationTimestamp
+	public Date getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
+	@UpdateTimestamp
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	@Override

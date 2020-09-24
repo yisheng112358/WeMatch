@@ -38,15 +38,10 @@ public class CoachController {
 	@Autowired
 	private CoachService coachService;
 
-	// 前端教練介紹  
-	//未登入會導至會員登入
+	// 前端教練介紹
 	@GetMapping("/coachPage")
-	public String coachPage(HttpSession session) {
-		if (session.getAttribute("Account") == null) {
-			return "SignInPage";
-		} else {
-			return "CoachBrowse1";
-		}
+	public String coachPage() {
+		return "CoachBrowse1";
 	}
 
 	// 後台教練管理系統

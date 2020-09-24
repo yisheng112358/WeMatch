@@ -26,23 +26,22 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	}
 
 	@Override
-	public String deleteById(Integer productId) {
+	public void deleteById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
-		ProductBean productBean = session.byId(ProductBean.class).load(productId);
+		ProductBean productBean = session.get(ProductBean.class, productId);
 		session.delete(productBean);
-		return null;
 	}
 
 	@Override
 	public ProductBean findById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.byId(ProductBean.class).load(productId);
+		return session.get(ProductBean.class, productId);
 	}
 
 	@Override
 	public void update(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
-		ProductBean productBeanActive = session.byId(ProductBean.class).load(productBean.getProductId());
+		ProductBean productBeanActive = session.get(ProductBean.class, productBean.getProductId());
 		if (productBeanActive != null) {
 			productBeanActive.setCategory(productBean.getCategory());
 			productBeanActive.setDetailImg(productBean.getDetailImg());
