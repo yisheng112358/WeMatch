@@ -2,28 +2,32 @@ package tw.eeit117.wematch.courses.dao;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import tw.eeit117.wematch.courses.model.Courses;
 import tw.eeit117.wematch.courses.model.Curriculum;
 
 public interface CurriculumDAO {
 	
 	//加選
+	@Transactional
 	public void addCurriculum(Curriculum curriculum);
 	
 	//退選
+	@Transactional
 	public void deleteCurriculum(int curriculumId);
-	
-//	//單筆查詢會員
-//	public Member getMember(int memberId);
 
 	//查詢會員的課程
-	public List<Curriculum> getAllCurriculum();
+	@Transactional
+	public List<Curriculum> getAllCurriculum(int memberId);
 	
 	//單筆查詢課表
+	@Transactional
 	public Curriculum getCurriculum(int curriculumId);
 	
 	//確認有無複選
-	public boolean checkCourses(int coursesId);
+	@Transactional
+	public boolean checkCourses(int coursesId,int memberId);
 	
 	
 }

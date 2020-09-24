@@ -1,6 +1,7 @@
 package tw.eeit117.wematch.courses.controller;
 
 import java.util.List;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,10 +27,6 @@ public class CoursesController {
 	private static final Logger logger = 
 			Logger.getLogger(CoursesController.class);
  
-	public CoursesController() {
-		System.out.println("CoursesController()");
-	}
-	
 	@Autowired
 	private CoursesService coursesService;
 
@@ -41,6 +38,15 @@ public class CoursesController {
 		model.setViewName("CoursesHome");		
 		return model;
 	}
+	
+	//列出所有課程
+		@RequestMapping(value = "/CoursesBrowse")
+		public ModelAndView CoursesBrowse(ModelAndView model) {	
+			List<Courses> listCourses = coursesService.getAllCourses();
+			model.addObject("listCourses",listCourses);
+			model.setViewName("CoursesBrowse");		
+			return model;
+		}
 	
 	//新增課程
 	@RequestMapping(value = "/newCourses", method = RequestMethod.GET)
@@ -55,9 +61,9 @@ public class CoursesController {
 	@RequestMapping(value = "/saveCourses", method = RequestMethod.POST)
 	public ModelAndView saveCourses(@ModelAttribute Courses courses,
 			Model m) {
-//		Curriculum curriculum = new Curriculum();
-//		model.addAttribute("curriculum", curriculum);
-		if (courses.getCoursesId() == 0) { 
+		
+		if (courses.getCoursesId() == 0) { 		
+			courses.setCoursesTime(new Date());
 			coursesService.addCourses(courses);
 		} else {
 			coursesService.updateCourses(courses);
@@ -83,5 +89,5 @@ public class CoursesController {
 
 		return model;
 	}
-   
+
 }

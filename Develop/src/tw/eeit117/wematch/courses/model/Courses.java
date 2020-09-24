@@ -1,11 +1,17 @@
 package tw.eeit117.wematch.courses.model;
 
+import java.util.Date;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -41,12 +47,16 @@ public class Courses {
 	@Column(name = "coursesBalance")
 	private int coursesBalance;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "coursesTime")
+	private Date coursesTime;
+	
 	public Courses() {
 		
 	}//空建構子
 	
 	public Courses(String coursesName,String coursesWeek,String sectionNumber,
-			String classRoom,int numberPeople,int regNumber,int coursesBalance) {
+			String classRoom,int numberPeople,int regNumber,int coursesBalance,Date coursesTime) {
 		
 		this.coursesName = coursesName;
 		this.coursesWeek = coursesWeek;
@@ -54,7 +64,8 @@ public class Courses {
 		this.classRoom = classRoom;
 		this.numberPeople = numberPeople;
 		this.regNumber = regNumber;
-		this.coursesBalance = coursesBalance;		
+		this.coursesBalance = coursesBalance;	
+		this.coursesTime = coursesTime;
 	}
 
 	public int getCoursesId() {
@@ -120,8 +131,13 @@ public class Courses {
 	public void setCoursesBalance(int coursesBalance) {
 		this.coursesBalance = coursesBalance;
 	}
-	
 
-	
+	public Date getCoursesTime() {
+		return coursesTime;
+	}
+
+	public void setCoursesTime(Date coursesTime) {
+		this.coursesTime = coursesTime;
+	}
 	
 }

@@ -2,6 +2,8 @@ package tw.eeit117.wematch.courses.dao;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import tw.eeit117.wematch.courses.model.Courses;
 
 public interface CoursesDAO {
@@ -15,5 +17,5 @@ public interface CoursesDAO {
 	public Courses updateCourses(Courses courses);
 	//刪除
 	public void deleteCourses(int coursesId);
-	
+		
 }
