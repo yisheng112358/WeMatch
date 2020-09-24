@@ -19,8 +19,7 @@ VALUES('背部肌群練習1', 'bodyback', 'https://www.youtube.com/watch?v=9pdk5
 ('小腿肌肉訓練', 'bodyleg', 'https://www.youtube.com/watch?v=peyW1_C7AjA', '強化小腿肌肉訓練可防止腿肌抽筋, 避免腳踝受傷, 使肌肉線條勻稱修長。'),
 ('大腿後側訓練', 'bodyleg', 'https://www.youtube.com/watch?v=MVzlCDnS7L0', '訓練平常不易運動到的大腿後側，藉此讓身體完全開展，順著氣息穩定身體，大腿才能有效的收緊。'),
 ('7分鐘練背肌', 'bodyback', 'https://www.youtube.com/watch?v=6pY_Jn9y5rI', '隨著年紀越來越大，背部的脂肪會慢慢增厚，更容易導致駝背；擁有了背肌，就等於擁有了漂亮的倒三角形身材，穠纖合度，怡然自得。'),
-('四招訓練胸部核心肌群', 'bodychest', 'https://www.youtube.com/watch?v=5UCpNGrFnMU', '利用abdolly訓練核心肌群，同時強化上肢肌力；其中，使用滑行PUSH UP來訓練胸部肌群強化與核心肌群穩定。'),
-('測試', 'bodychest', 'https://www.youtube.com/watch?v=ZL3djxB_LqQ', '測試用。')
+('四招訓練胸部核心肌群', 'bodychest', 'https://www.youtube.com/watch?v=5UCpNGrFnMU', '利用abdolly訓練核心肌群，同時強化上肢肌力；其中，使用滑行PUSH UP來訓練胸部肌群強化與核心肌群穩定。')
 GO
 
 --  (3) 新增管理員帳號
@@ -28,4 +27,26 @@ insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 
 insert into Member(memberAccount, memberPwd, memberStatus) values ('admintest123', 'P@ssw0rd', 2)
 insert into Member(memberAccount, memberPwd, memberStatus) values ('membertest123', 'P@ssw0rd', 1)
 insert into Member(memberAccount, memberPwd, memberStatus) values ('visitortest123', 'P@ssw0rd', 1)
+GO
+
+-- (4) 新增課程
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('瑜珈','星期一','第一節','B200',20,10,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('國標舞','星期二','第二節','B205',10,5,5)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('花式有氧','星期三','第三節','B300',30,20,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('流行街舞','星期四','第四節','B305',20,0,20)
+GO
+
+-- (4) 新增課程
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('瑜珈','星期一','第一節','B200',20,10,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('國標舞','星期二','第二節','B205',10,5,5)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('花式有氧','星期三','第三節','B300',30,20,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('流行街舞','星期四','第四節','B305',20,0,20)
 GO

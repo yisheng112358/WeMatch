@@ -28,4 +28,12 @@ public interface CurriculumService {
 		//確認有無複選
 		@Transactional
 		public boolean checkCourses(int coursesId,int memberId);
+		
+		//確認有無複選
+		@Transactional
+		public boolean checkCourses(int coursesId);
+		
+		//課表退選
+		@Transactional
+		public void deleteCurriculumCourses(int coursesId);
 }

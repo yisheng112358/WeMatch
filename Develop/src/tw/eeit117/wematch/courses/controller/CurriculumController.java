@@ -25,12 +25,6 @@ public class CurriculumController {
 	public CurriculumController() {
 	}
 
-	// 前台選課介紹
-//		@GetMapping("/Courses")
-//		public String coachPage() {
-//			return "addCourses";
-//		}
-
 	@Autowired
 	private CurriculumService curriculumService;
 
@@ -73,7 +67,6 @@ public class CurriculumController {
 		curriculum.setCoursesId(coursesId);
 		curriculum.setMemberId(memberId);
 		curriculum.setCoursesName(course.getCoursesName());
-		;
 		curriculum.setCoursesWeek(course.getCoursesWeek());
 		curriculum.setSectionNumber(course.getSectionNumber());
 		curriculum.setClassRoom(course.getClassRoom());
