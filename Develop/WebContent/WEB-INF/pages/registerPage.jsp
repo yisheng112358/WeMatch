@@ -151,7 +151,7 @@
 				}
 			}
 			if (flag1 && flag2) {
-				accountObj.innerHTML = "帳號正確";
+				accountObj.innerHTML = "帳號格式正確";
 				return true;
 			} else {
 				accountObj.innerHTML = "帳號格式錯誤";
@@ -188,7 +188,7 @@
 				}
 			}
 			if (flag3 && flag4 && flag5) {
-				pwdObj.innerHTML = "密碼正確";
+				pwdObj.innerHTML = "密碼格式正確";
 				return true;
 			} else {
 				pwdObj.innerHTML = "密碼格式錯誤";
@@ -274,7 +274,7 @@
 							class="notice"></span><br /> <input type="text" id="account1"
 							class="form-control" name="memberAccount" required="required"
 							placeholder="請輸入少8個字字母、數字混合字元以內且不可空白(至多20個)" maxlength="20"
-							autocomplete="on" onblur="checkAccount()"><br /> <span>${errors.name}</span><br />
+							autocomplete="on" onblur="checkAccount()"><br /> <span>${errors.name}</span>
 					</div>
 					<div class="form-group">
 						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
@@ -287,7 +287,8 @@
 						<a href='/WeMatch_dev/index.jsp'>回到登入</a><br />
 						<div class="v_code">
 							<div class="code_show">
-								<span class="code" id="checkCode"></span> <a id="linkbt">看不清換一張</a>
+								<span class="code" id="checkCode"
+								style="-webkit-user-select: none;" unselectable="on"></span> <a id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
