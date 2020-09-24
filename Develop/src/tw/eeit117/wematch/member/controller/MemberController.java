@@ -39,39 +39,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-//	@GetMapping("/homepage")	//?
-//	public String homepage() {
-//		return "HomePage";
-//	}
-
-//	@GetMapping("/index")	//?
-//	public String index(HttpSession session) {
-//		session.invalidate();
-//		return "SignInPage";
-//	}
-//	
-//	@GetMapping("/memberPage")	//?
-//	public String memberPage(HttpSession session) {
-//		if (session.getAttribute("Account")==null) {
-//			return "SingInPage";
-//		}else {
-//			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-//			session.setAttribute("Account", member.getMemberAccount());
-//			session.setAttribute("name", member.getMemberName());
-//			session.setAttribute("nickname", member.getNickname());
-//			session.setAttribute("gender", member.getGender());
-//			session.setAttribute("email", member.getMemberEmail());
-//			session.setAttribute("birthday", member.getBirthdayDate());
-//			session.setAttribute("starSign", member.getStarSign());
-//			session.setAttribute("city", member.getCity());
-//			session.setAttribute("booldtype", member.getBloodType());
-//			session.setAttribute("hobbies", member.getHobbies());
-//			session.setAttribute("selfinfo", member.getSelfIntro());
-//			
-//			return "MemberPage";
-//		}
-//	}
-	
 	@GetMapping("/loginPage")	//?
 	public String loginPage() {
 		return "SignInPage";
