@@ -36,9 +36,9 @@
 					<div class="form-group">
 						<label for="memberEmail">Email：</label> <label>${email}</label>
 					</div>
-					<div class="form-group">
-						<label for="birthdayDate">生日：</label> <label>${birthday}</label>
-					</div>
+<!-- 					<div class="form-group"> -->
+<%-- 						<label for="birthdayDate">生日：</label> <label>${birthdayDate}</label> --%>
+<!-- 					</div> -->
 					<div class="form-group">
 						<label for="starSign">星座：</label> <label>${starSign}</label>
 					</div>

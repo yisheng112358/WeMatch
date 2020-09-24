@@ -40,18 +40,18 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("/homepage")
+	@GetMapping("/homepage")	//?
 	public String homepage() {
 		return "HomePage";
 	}
 
-	@GetMapping("/index")
+	@GetMapping("/index")	//?
 	public String index(HttpSession session) {
 		session.invalidate();
 		return "SignInPage";
 	}
 	
-	@GetMapping("/memberPage")
+	@GetMapping("/memberPage")	//?
 	public String memberPage(HttpSession session) {
 		if (session.getAttribute("Account")==null) {
 			return "SingInPage";
@@ -71,20 +71,19 @@ public class MemberController {
 			
 			return "MemberPage";
 		}
-		
 	}
 	
-	@GetMapping("/loginPage")
+	@GetMapping("/loginPage")	//?
 	public String loginPage() {
 		return "SignInPage";
 	}
 
-	@GetMapping("/register")
+	@GetMapping("/register")	//在登入頁按尚未登入倒進註冊頁面
 	public String register() {
 		return "registerPage";
 	}
 
-	@PostMapping("/loginsystem.controller")
+	@PostMapping("/loginsystem.controller")		//登入action
 	public String checkLogin(HttpServletRequest request,
 			@PathVariable @RequestParam("memberAccount") String myUser,
 			@PathVariable @RequestParam("memberPwd") String myPwd,
@@ -100,7 +99,7 @@ public class MemberController {
 			errors.put("pwd", "password is required");
 		}
 		if (errors != null && !errors.isEmpty()) {
-			return "SignInPage";
+			return "index";
 		}
 
 		Boolean checkUser = memberService.checkLogin(new Member(myUser, myPwd));
@@ -127,11 +126,11 @@ public class MemberController {
 				return "HomePage";
 			}
 		}
-		errors.put("msg", "please input correct useraccount or password");
-		return "SignInPage";
+		errors.put("msg", "useraccount or password Uncorrect");
+		return "index";
 	}
 
-	@GetMapping("/MemberForgot")
+	@GetMapping("/MemberForgot")	///在登入頁按忘記密碼導入忘記密碼頁
 	public String MemberForgot() {
 		return "MemberForgot";
 	}
@@ -170,7 +169,7 @@ public class MemberController {
 		}
 	}
 
-	@PostMapping("/register.controller")
+	@PostMapping("/register.controller")	//註冊action
 	public String memberCreate(HttpServletRequest request, @PathVariable @RequestParam("memberAccount") String myUser,
 			@PathVariable @RequestParam("memberPwd") String myPwd, Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
@@ -203,7 +202,7 @@ public class MemberController {
 		return "registerPage";
 	}
 
-	@GetMapping("/MemberPage")
+	@GetMapping("/MemberPage")	//導覽列的Member Ship
 	public String MemberPage(HttpSession session) {
 		if(session.getAttribute("Account")!=null) {
 			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
@@ -221,33 +220,15 @@ public class MemberController {
 	
 			return "MemberPage";
 		}else {
-			return "SignInPage";
+			return "index";
 		}
 	}
 
-	@RequestMapping(path = "/MemberPage_update", method = RequestMethod.GET)
+	@GetMapping("/MemberPage_update")	//會員資訊頁按修改
 	public String MemberPage_update(Model m) {
 		Member member = new Member();
 		m.addAttribute("Member", member);
 		return "MemberPage_update";
-	}
-
-	@GetMapping("/MemberPage_show")
-	public String MemberShow(HttpSession session) {
-		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		session.setAttribute("Account", member.getMemberAccount());
-		session.setAttribute("name", member.getMemberName());
-		session.setAttribute("nickname", member.getNickname());
-		session.setAttribute("gender", member.getGender());
-		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
-		session.setAttribute("starSign", member.getStarSign());
-		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
-		session.setAttribute("hobbies", member.getHobbies());
-		session.setAttribute("selfinfo", member.getSelfIntro());
-
-		return "MemberPage";
 	}
 	
 	@RequestMapping("/getPhoto/{id}")
@@ -332,16 +313,16 @@ public class MemberController {
 		memberService.selectMemberByAccount(session.getAttribute("Account").toString());
 	}
 
-	@PostMapping("/MemberPage_DB")
+	@PostMapping("/MemberPage_DB")	//會員頁資料更新action
 	public String updateMember(@ModelAttribute("Member") Member member, Model m, HttpSession session) {
 		session.setAttribute("name", member.getMemberName());
 		session.setAttribute("nickname", member.getNickname());
 		session.setAttribute("gender", member.getGender());
 		session.setAttribute("email", member.getMemberEmail());
-		session.setAttribute("birthday", member.getBirthdayDate());
+		session.setAttribute("birthdayDate", member.getBirthdayDate());
 		session.setAttribute("starSign", member.getStarSign());
 		session.setAttribute("city", member.getCity());
-		session.setAttribute("booldtype", member.getBloodType());
+		session.setAttribute("bloodtype", member.getBloodType());
 		session.setAttribute("hobbies", member.getHobbies());
 		session.setAttribute("selfinfo", member.getSelfIntro());
 		memberService.updateMember(member, session);
@@ -353,15 +334,5 @@ public class MemberController {
 	@RequestMapping(path = "/test", method = RequestMethod.GET)
 	public List<Member> test() {
 		return memberService.selectAllMember();
-	}
-
-	@Transactional
-	@PostMapping(value = "/CheckMemberAccount", produces = { "application/json" })
-	public @ResponseBody Map<String, String> checkMemberAccount(@RequestParam("account1") String memberAccount) {
-		System.out.println(memberAccount);
-		Map<String, String> map = new HashMap<>();
-		String mAccount = memberService.checkMemberAccount(memberAccount);
-		map.put("id", mAccount);
-		return map;
 	}
 }
