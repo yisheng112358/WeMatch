@@ -24,7 +24,7 @@ public class TestProductsGenerator {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		ProductBean product1 = new ProductBean(null, "Massager", "3D massager 鑽石按摩儀", 299., 1, "微雕按摩儀/體雕棒(按摩儀)",
+		ProductBean product1 = new ProductBean(null, "Massager", "3D massager 鑽石按摩儀", 299., 2, "微雕按摩儀/體雕棒(按摩儀)",
 				imageToByteArray("resource\\massager\\massager1_t.jpg"),
 				imageToByteArray("resource\\massager\\massager1_d.jpg"));
 		session.save(product1);

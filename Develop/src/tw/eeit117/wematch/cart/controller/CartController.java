@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tw.eeit117.wematch.cart.model.Receiver;
 import tw.eeit117.wematch.cart.model.ReceiverService;
@@ -29,6 +28,7 @@ import tw.eeit117.wematch.product.model.ProductBeanService;
 
 @Controller
 @RequestMapping("/shoppingCart")
+@SessionAttributes({ "transportInformation" })
 public class CartController {
 	@Autowired
 	ReceiverService receiverService;
@@ -41,6 +41,11 @@ public class CartController {
 		return "ShoppingCartPage";
 	}
 
+	@GetMapping("/transportInf")
+	public String transportInf() {
+		return "TransportInf";
+	}
+
 	@GetMapping("/cart/showThumbnail/{productId}")
 	public void showProductImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg");
@@ -49,38 +54,33 @@ public class CartController {
 		IOUtils.copy(inputStream, response.getOutputStream());
 	}
 
-	@GetMapping("/retrieve")
-	public @ResponseBody List<ProductBean> retrieve() {
-		return productBeanService.selectAll();
-	}
-
 	// 跳轉頁面到填寫收件人資訊
 	@RequestMapping(path = "/confirm", method = RequestMethod.GET)
-	public String gogo(Model m) {
+	public String confirm(Model m) {
 		Receiver receiver = new Receiver();
-		m.addAttribute("TransportInformation", receiver);
-		return "TransportInf"; // 顯示"填收件人資料"頁面
+		m.addAttribute("transportInformation", receiver);
+		return "redirect:/shoppingCart/transportInf"; // 顯示"填收件人資料"頁面
 	}
 
 	// 表單輸入資訊且將資料存入資料庫名為Receiver的table (注意三角鎖定!!!缺一就error)
 	@RequestMapping(path = "/addTransportInformation", method = RequestMethod.POST)
-	public String processAction(@ModelAttribute("TransportInformation") Receiver TransportInformation,
+	public String processAction(@ModelAttribute("transportInformation") Receiver transportInformation,
 			BindingResult result, Model m) {
 		if (result.hasErrors()) {
 			return "receiverError";
 		}
-		m.addAttribute("receiverName", TransportInformation.getReceiverName());
-		m.addAttribute("receiverPhone", TransportInformation.getReceiverPhone());
-		m.addAttribute("receiverAddress", TransportInformation.getReceiverAddress());
-		m.addAttribute("receiverEmail", TransportInformation.getReceiverEmail());
-		m.addAttribute("receiverNotes", TransportInformation.getReceiverNote());
+		m.addAttribute("receiverName", transportInformation.getReceiverName());
+		m.addAttribute("receiverPhone", transportInformation.getReceiverPhone());
+		m.addAttribute("receiverAddress", transportInformation.getReceiverAddress());
+		m.addAttribute("receiverEmail", transportInformation.getReceiverEmail());
+		m.addAttribute("receiverNotes", transportInformation.getReceiverNote());
 		m.addAttribute("receiverGoods1", "鑽石按摩儀");
 		m.addAttribute("GoodsAmount1", "2");
 		m.addAttribute("receiverGoods2", " Melon low-frequency electric therapy");
 		m.addAttribute("GoodsAmount2", "1");
 		m.addAttribute("totalPrice", "3087");
 
-		receiverService.insert(TransportInformation);
+		receiverService.insert(transportInformation);
 
 		return "ReceiverResult"; // 顯示"謝謝購買及購物清單"頁面
 
