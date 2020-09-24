@@ -27,5 +27,5 @@ GO
 insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
 insert into Member(memberAccount, memberPwd, memberStatus) values ('admintest123', 'P@ssw0rd', 2)
 insert into Member(memberAccount, memberPwd, memberStatus) values ('membertest123', 'P@ssw0rd', 1)
-insert into Member(memberAccount, memberPwd, memberStatus) values ('visitortest123', 'P@ssw0rd', 0)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('visitortest123', 'P@ssw0rd', 1)
 GO
