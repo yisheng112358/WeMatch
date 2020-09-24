@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import tw.eeit117.wematch.courses.model.Courses;
+import tw.eeit117.wematch.courses.model.Curriculum;
 import tw.eeit117.wematch.courses.service.CoursesService;
+import tw.eeit117.wematch.courses.service.CurriculumService;
 
 @Controller
 public class CoursesController {
@@ -26,6 +28,9 @@ public class CoursesController {
 
 	@Autowired
 	private CoursesService coursesService;
+	
+	@Autowired
+	private CurriculumService curriculumService;
 
 	// 列出所有課程
 	@RequestMapping(value = "/CoursesHome")
@@ -57,8 +62,6 @@ public class CoursesController {
 	// 新增或更新完會回到首頁
 	@RequestMapping(value = "/saveCourses", method = RequestMethod.POST)
 	public ModelAndView saveCourses(@ModelAttribute Courses courses, Model m) {
-//		Curriculum curriculum = new Curriculum();
-//		model.addAttribute("curriculum", curriculum);
 		if (courses.getCoursesId() == 0) {
 			coursesService.addCourses(courses);
 		} else {
@@ -72,6 +75,10 @@ public class CoursesController {
 	public ModelAndView deleteCourses(HttpServletRequest request) {
 		int coursesId = Integer.parseInt(request.getParameter("coursesId"));
 		coursesService.deleteCourses(coursesId);
+		
+		if(curriculumService.checkCourses(coursesId)) {
+			curriculumService.deleteCurriculumCourses(coursesId);
+	     }
 		return new ModelAndView("redirect:/CoursesHome");
 	}
 

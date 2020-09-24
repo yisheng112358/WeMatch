@@ -26,9 +26,7 @@ public class Courses {
 	
 	@Column(name = "coursesName")
 	private String coursesName;
-	
-//	private String coursesTeaher;
-	
+
 	@Column(name = "coursesWeek")
 	private String coursesWeek;
 	
@@ -46,17 +44,13 @@ public class Courses {
 	
 	@Column(name = "coursesBalance")
 	private int coursesBalance;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "coursesTime")
-	private Date coursesTime;
-	
+
 	public Courses() {
 		
 	}//空建構子
 	
 	public Courses(String coursesName,String coursesWeek,String sectionNumber,
-			String classRoom,int numberPeople,int regNumber,int coursesBalance,Date coursesTime) {
+			String classRoom,int numberPeople,int regNumber,int coursesBalance) {
 		
 		this.coursesName = coursesName;
 		this.coursesWeek = coursesWeek;
@@ -65,7 +59,6 @@ public class Courses {
 		this.numberPeople = numberPeople;
 		this.regNumber = regNumber;
 		this.coursesBalance = coursesBalance;	
-		this.coursesTime = coursesTime;
 	}
 
 	public int getCoursesId() {
@@ -132,12 +125,4 @@ public class Courses {
 		this.coursesBalance = coursesBalance;
 	}
 
-	public Date getCoursesTime() {
-		return coursesTime;
-	}
-
-	public void setCoursesTime(Date coursesTime) {
-		this.coursesTime = coursesTime;
-	}
-	
 }

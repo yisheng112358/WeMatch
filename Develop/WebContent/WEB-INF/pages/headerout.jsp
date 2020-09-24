@@ -20,7 +20,7 @@
 				<!-- 					class="nav-link"><span>Home</span></a></li> -->
 				<li class="nav-item"><a
 					href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
-				<li class="nav-item"><a href="<c:url value='/CoursesHome' />"
+				<li class="nav-item"><a href="<c:url value='/addCourses' />"
 					class="nav-link"><span>Courses</span></a></li>
 				<li class="nav-item"><a
 					href="<c:url value='/bookingcontroller/booking' />"
@@ -31,7 +31,7 @@
 					class="nav-link"><span>Videoflix</span></a></li>
 				<li class="nav-item"><a href="<c:url value='/coachPage' />"
 					class="nav-link"><span>Coach Intro.</span></a></li>
-				<li class="nav-item"><a href="index.html#blog-section"
+				<li class="nav-item"><a href="<c:url value='/shoppingCart/cart' />"
 					class="nav-link"><span>Shopping Cart</span></a></li>
 				<li class="nav-item"><a href="<c:url value='/MemberPage' />"
 				class='nav-link'><span>Membership</span></a></li>

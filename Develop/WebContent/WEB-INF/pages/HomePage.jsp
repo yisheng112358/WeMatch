@@ -39,14 +39,14 @@
 						class="nav-link"><span>Videoflix</span></a></li>
 					<li class="nav-item"><a href="<c:url value='/coachPage' />"
 						class="nav-link"><span>Coach Intro.</span></a></li>
-					<li class="nav-item"><a href="index.html#blog-section"
+					<li class="nav-item"><a href="<c:url value='/shoppingCart/cart' />"
 						class="nav-link"><span>Shopping Cart</span></a></li>
 					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
 						class='nav-link'><span>Membership</span></a></li>
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index' class='nav-link'><span>Logout</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
 					} else {
 						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
 					}

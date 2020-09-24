@@ -37,17 +37,7 @@ public class Curriculum {
 	
 	@Column(name = "classRoom")
 	private String classRoom;
-	
-	//@Column(name = "numberPeople")
-	//private int numberPeople;
-	
-	//@Column(name = "regNumber")
-	//private int regNumber;
-	
-	//@Column(name = "coursesBalance")
-	//private int coursesBalance;
 		
-	
 	public Curriculum(int curriculumId,int memberId,int coursesId,String coursesName,String coursesWeek,
 						String sectionNumber,String classRoom) {
 		this.curriculumId =  curriculumId;
@@ -119,32 +109,5 @@ public class Curriculum {
 	public void setClassRoom(String classRoom) {
 		this.classRoom = classRoom;
 	}
-
-//	public int getNumberPeople() {
-//		return numberPeople;
-//	}
-//
-//	public void setNumberPeople(int numberPeople) {
-//		this.numberPeople = numberPeople;
-//	}
-//
-//	public int getRegNumber() {
-//		return regNumber;
-//	}
-//
-//	public void setRegNumber(int regNumber) {
-//		this.regNumber = regNumber;
-//	}
-//
-//	public int getCoursesBalance() {
-//		return coursesBalance;
-//	}
-//
-//	public void setCoursesBalance(int coursesBalance) {
-//		this.coursesBalance = coursesBalance;
-//	}
-
-	
-	
 
 }
