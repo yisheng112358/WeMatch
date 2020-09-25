@@ -51,5 +51,5 @@ $(document).ready(() => {
         }
         $("#totalAmount").val(totalAmount);
     }
-
+    toltalAmountMoney()
 })
