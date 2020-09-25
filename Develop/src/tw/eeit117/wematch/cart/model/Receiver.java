@@ -28,19 +28,22 @@ public class Receiver {
 	private String receiverEmail;
 	@Column(name = "receiverNote")
 	private String receiverNote;
+	@Column(name = "totalAmount")
+	private Double totalAmount;
 
 	public Receiver() {
 
 	}
 
-	public Receiver(String receiverName, String receiverPhone, String receiverAddress, String receiverEmail,
-			String receiverNote) {
+	public Receiver(int receiverId, String receiverName, String receiverPhone, String receiverAddress,
+			String receiverEmail, String receiverNote, Double totalAmount) {
+		this.receiverId = receiverId;
 		this.receiverName = receiverName;
 		this.receiverPhone = receiverPhone;
 		this.receiverAddress = receiverAddress;
 		this.receiverEmail = receiverEmail;
 		this.receiverNote = receiverNote;
-
+		this.totalAmount = totalAmount;
 	}
 
 	public int getReceiverId() {
@@ -90,6 +93,14 @@ public class Receiver {
 
 	public void setReceiverNote(String receiverNote) {
 		this.receiverNote = receiverNote;
+	}
+
+	public Double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(Double totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
 }
