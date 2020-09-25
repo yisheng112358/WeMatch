@@ -64,18 +64,22 @@
 						<div class="form-group">
 							<label for="thumbnail">產品縮圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="thumbnail" id="thumbnailId">
-						</div>
-						<div id="thumbnailDisplay" style="width: 200px; height: 200px;">
-							<img src="" id="thumbnailPreview" height="200"
-								alt="Image preview...">
+							<div id="thumbnailDisplay" style="width: 200px; height: 200px;">
+								<p>
+									<img src="" id="thumbnailPreview" height="200"
+										alt="Image preview...">
+								</p>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="detailImg">產品詳圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="detailImg" id="detailImgId">
-						</div>
-						<div id="detailImgDisplay" style="width: 200px; height: 200px;">
-							<img src="" id="detailImgPreview" height="200"
-								alt="Image preview...">
+							<div id="detailImgDisplay" style="width: 200px; height: 200px;">
+								<p>
+									<img src="" id="detailImgPreview" height="200"
+										alt="Image preview...">
+								</p>
+							</div>
 						</div>
 						<div class="form-group" style="text-align: right;">
 							<input id='btn' type="submit" value="送出"
@@ -83,7 +87,10 @@
 						</div>
 					</form>
 					<div style="text-align: right;">
-						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						<p>
+							<a onclick="history.back()"
+								class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						</p>
 					</div>
 				</div>
 			</div>

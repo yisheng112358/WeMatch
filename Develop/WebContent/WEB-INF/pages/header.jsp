@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="tw.eeit117.wematch.product.model.ProductBean"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
 <!DOCTYPE html>
 
 <nav
@@ -31,9 +34,17 @@
 					class="nav-link"><span>Videoflix</span></a></li>
 				<li class="nav-item"><a href="<c:url value='/coachPage' />"
 					class="nav-link"><span>Coach Intro.</span></a></li>
-				<li class="nav-item"><a
-					href="<c:url value='/shoppingCart/cart' />" class="nav-link"><span>Shopping
-							Cart</span></a></li>
+				<%
+					if ((Set<ProductBean>) session.getAttribute("shoppingCarts") == null) {
+					Set<ProductBean> carts = new HashSet<ProductBean>();
+					session.setAttribute("shoppingCarts", carts);
+				}
+				Set<ProductBean> oldCarts = (Set<ProductBean>) session.getAttribute("shoppingCarts");
+				out.write("<li class='nav-item'><a href='/WeMatch_dev/shoppingCart/cart' class='nav-link'><span>Shopping Cart(" + oldCarts.size() + ")</span></a></li>");
+				%>
+				<!-- 				<li class="nav-item"><a -->
+				<%-- 					href="<c:url value='/shoppingCart/cart' />" class="nav-link"><span>Shopping --%>
+				<%-- 							Cart(${cartsSize})</span></a></li> --%>
 				<li class="nav-item"><a href="<c:url value='/MemberPage' />"
 					class='nav-link'><span>Membership</span></a></li>
 

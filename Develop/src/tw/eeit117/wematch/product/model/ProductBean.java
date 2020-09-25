@@ -1,7 +1,6 @@
 package tw.eeit117.wematch.product.model;
 
 import java.sql.Date;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -137,8 +136,7 @@ public class ProductBean {
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", category=" + category + ", productName=" + productName
-				+ ", price=" + price + ", stock=" + stock + ", productDescription=" + productDescription
-				+ ", thumbnail=" + Arrays.toString(thumbnail) + ", detailImg=" + Arrays.toString(detailImg) + "]";
+				+ ", price=" + price + ", stock=" + stock + ", productDescription=" + productDescription + "]";
 	}
 
 }

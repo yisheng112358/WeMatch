@@ -169,19 +169,17 @@ public class ProductController {
 
 	@GetMapping(value = "/shoppingCart/{productId}")
 	public String shoppingCart(@PathVariable String productId, HttpSession httpSession) {
-		ProductBean productBean = productBeanService.findById(Integer.parseInt(productId));
 		@SuppressWarnings("unchecked")
 		Set<ProductBean> carts = (Set<ProductBean>) httpSession.getAttribute("shoppingCarts");
-		if (carts == null) {
-			Set<ProductBean> newCarts = new HashSet<ProductBean>();
-			newCarts.add(productBean);
-			httpSession.setAttribute("shoppingCarts", newCarts);
-			System.out.println("創造新的購物車");
-		} else {
-			carts.add(productBean);
-			httpSession.setAttribute("shoppingCarts", carts);
-			System.out.println("加入商品到購物車");
+		Set<Integer> checkIds = new HashSet<Integer>();
+		for (ProductBean testProduct : carts) {
+			checkIds.add(testProduct.getProductId());
 		}
+		if (!checkIds.contains(Integer.parseInt(productId))) {
+			carts.add(productBeanService.findById(Integer.parseInt(productId)));
+		}
+		httpSession.setAttribute("shoppingCarts", carts);
+
 		return "redirect:/product/browse";
 	}
 

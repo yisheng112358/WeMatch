@@ -41,11 +41,6 @@ public class CartController {
 		return "ShoppingCartPage";
 	}
 
-	@GetMapping("/transportInf")
-	public String transportInf() {
-		return "TransportInf";
-	}
-
 	@GetMapping("/cart/showThumbnail/{productId}")
 	public void showProductImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg");
@@ -54,18 +49,16 @@ public class CartController {
 		IOUtils.copy(inputStream, response.getOutputStream());
 	}
 
-	// 跳轉頁面到填寫收件人資訊
-	@RequestMapping(path = "/confirm", method = RequestMethod.GET)
+	@RequestMapping(path = "/transportInf", method = RequestMethod.GET)
 	public String confirm(Model m) {
 		Receiver receiver = new Receiver();
 		m.addAttribute("transportInformation", receiver);
-		return "redirect:/shoppingCart/transportInf"; // 顯示"填收件人資料"頁面
+		return "TransportInf";
 	}
 
 	// 表單輸入資訊且將資料存入資料庫名為Receiver的table (注意三角鎖定!!!缺一就error)
 	@RequestMapping(path = "/addTransportInformation", method = RequestMethod.POST)
-	public String processAction(@ModelAttribute("transportInformation") Receiver transportInformation,
-			BindingResult result, Model m) {
+	public String processAction(@ModelAttribute Receiver transportInformation, BindingResult result, Model m) {
 		if (result.hasErrors()) {
 			return "receiverError";
 		}
