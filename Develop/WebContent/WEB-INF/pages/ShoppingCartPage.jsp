@@ -32,23 +32,24 @@
 		<div style="text-align: center;">
 			<%
 				Set<ProductBean> carts = (Set<ProductBean>) session.getAttribute("shoppingCarts");
-			if (carts.size() != 0) {
-				for (ProductBean product : carts) {
-					out.write("<h4 id=" + product.getProductId() + ">" + product.getProductName() + "</h4>");
-					out.write("<img style='width: 200px; height: 200px;' id='detailImg' src='cart/showThumbnail/"
-					+ product.getProductId() + "'>");
-					out.write("<br /> 價錢：" + (int) product.getPrice() + " <br />");
-					out.write("<br /> 庫存：<label id='stock" + product.getProductId() + "'>" + product.getStock() + "</label><br />");
-					out.write("<input id='minus" + product.getProductId() + "' type='button' value='-' />");
-					out.write("<input id='quantity" + product.getProductId() + "' type='text' value='1' />");
-					out.write("<input id='add" + product.getProductId() + "' type='button' value='+' />");
-					out.write("<p>金額：<label name='" + product.getPrice() + "' id='itemTotal" + product.getProductId() + "'>"
-					+ (int) product.getPrice() + "</label></p>");
+				if (carts.size() != 0) {
+					for (ProductBean product : carts) {
+						out.write("<h4 id=" + product.getProductId() + ">" + product.getProductName() + "</h4>");
+						out.write("<img style='width: 200px; height: 200px;' id='detailImg' src='cart/showOrderThumbnail/"
+								+ product.getProductId() + "'>");
+						out.write("<br /> 價錢：" + (int) product.getPrice() + " <br />");
+						out.write("<br /> 庫存：<label id='stock" + product.getProductId() + "'>" + product.getStock()
+								+ "</label><br />");
+						out.write("<input id='minus" + product.getProductId() + "' type='button' value='-' />");
+						out.write("<input id='quantity" + product.getProductId() + "' type='text' value='1' />");
+						out.write("<input id='add" + product.getProductId() + "' type='button' value='+' />");
+						out.write("<p>金額：<label name='" + product.getPrice() + "' id='itemTotal" + product.getProductId()
+								+ "'>" + (int) product.getPrice() + "</label></p>");
+					}
+				} else {
+					out.write("<h1>目前購物車是空的喔~~趕快去選購吧！！！</h1>");
+					out.write("<a href='/WeMatch_dev/product/browse' class='btn btn-primary px-5 py-3 mt-3'>繼續購物</a>");
 				}
-			} else {
-				out.write("<h1>目前購物車是空的喔~~趕快去選購吧！！！</h1>");
-				out.write("<a href='/WeMatch_dev/product/browse' class='btn btn-primary px-5 py-3 mt-3'>繼續購物</a>");
-			}
 			%>
 		</div>
 	</section>
