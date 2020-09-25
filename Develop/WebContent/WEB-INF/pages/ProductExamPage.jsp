@@ -42,7 +42,7 @@
 								<p id='stock'>Stock: ${productExam.getStock()}</p>
 								<p id='productDescription'>${productExam.getProductDescription()}</p>
 								<div style="text-align: left;">
-									<a href="/WeMatch_dev/product/browse"
+									<a href="shoppingCart/${productExam.getProductId()}"
 										class="btn btn-primary px-5 py-3 mt-3">加入購物車</a>
 								</div>
 							</div>

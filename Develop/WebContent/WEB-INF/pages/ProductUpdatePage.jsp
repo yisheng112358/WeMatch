@@ -89,20 +89,24 @@
 								accept=".jpg, .jpeg, .png" name="thumbnail" id="thumbnailId">
 						</div>
 						<div id="thumbnailDisplay" style="width: 200px; height: 200px;">
-							<%
-								out.write("<img style='width: 200px; height: 200px;' id='thumbnailPreview' src='updateProduct/showthumbnail/"
-									+ productUpdate.getProductId() + "'>");
-							%>
+							<p>
+								<%
+									out.write("<img style='width: 200px; height: 200px;' id='thumbnailPreview' src='updateProduct/showthumbnail/"
+										+ productUpdate.getProductId() + "'>");
+								%>
+							</p>
 						</div>
 						<div class="form-group">
 							<label for="detailImg">產品詳圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="detailImg" id="detailImgId">
 						</div>
 						<div id="detailImgDisplay" style="width: 200px; height: 200px;">
-							<%
-								out.write("<img style='width: 200px; height: 200px;' id='detailImgPreview' src='updateProduct/showDetailImg/"
-									+ productUpdate.getProductId() + "'>");
-							%>
+							<p>
+								<%
+									out.write("<img style='width: 200px; height: 200px;' id='detailImgPreview' src='updateProduct/showDetailImg/"
+										+ productUpdate.getProductId() + "'>");
+								%>
+							</p>
 						</div>
 						<div class="form-group" style="text-align: right;">
 							<input id='btn' type="submit" value="送出"
@@ -110,7 +114,10 @@
 						</div>
 					</form>
 					<div style="text-align: right;">
-						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						<p>
+							<a onclick="history.back()"
+								class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						</p>
 					</div>
 				</div>
 			</div>
