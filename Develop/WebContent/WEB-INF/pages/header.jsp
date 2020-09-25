@@ -40,11 +40,10 @@
 					session.setAttribute("shoppingCarts", carts);
 				}
 				Set<ProductBean> oldCarts = (Set<ProductBean>) session.getAttribute("shoppingCarts");
-				out.write("<li class='nav-item'><a href='/WeMatch_dev/shoppingCart/cart' class='nav-link'><span>Shopping Cart(" + oldCarts.size() + ")</span></a></li>");
+				out.write("<li class='nav-item'><a href='/WeMatch_dev/shoppingCart/cart' class='nav-link'><span>Shopping Cart("
+						+ oldCarts.size() + ")</span></a></li>");
 				%>
-				<!-- 				<li class="nav-item"><a -->
-				<%-- 					href="<c:url value='/shoppingCart/cart' />" class="nav-link"><span>Shopping --%>
-				<%-- 							Cart(${cartsSize})</span></a></li> --%>
+
 				<li class="nav-item"><a href="<c:url value='/MemberPage' />"
 					class='nav-link'><span>Membership</span></a></li>
 
