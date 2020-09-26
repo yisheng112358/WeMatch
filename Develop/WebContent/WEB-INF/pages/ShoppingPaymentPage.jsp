@@ -9,13 +9,14 @@
 
 <title>選擇付款方式</title>
 </head>
-<body data-spy="scroll" data-target=".site-navbar-target"
+<body data-spy="scroll" data-target=".site-navbar-target "
 	data-offset="300">
-	<div style="text-align: center;">
+
+
 
 		<%@ include file="header.jsp"%>
-
-		<h1>選擇付款方式</h1>
+	<div class="ftco-section ftco-schedule" style="text-align: center;">
+		<h1>綠界付款</h1>
 		<p>
 			<a href='/WeMatch_dev/shoppingCart/greenPay' target="_blank"
 				class='btn btn-primary px-5 py-3 mt-3'
@@ -23,6 +24,7 @@
 		</p>
 	</div>
 
+</section>
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
 
