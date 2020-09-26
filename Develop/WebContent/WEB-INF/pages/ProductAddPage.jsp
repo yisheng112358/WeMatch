@@ -25,8 +25,7 @@
 					<h3 class="mb-5">新增產品</h3>
 					<form action="<c:url value='/product/addProduct' />" method="post"
 						enctype="multipart/form-data" class="p-5 bg-light"
-						style="position: relative; border: 1px solid;"
-						onsubmit="return checkBeforeSubmit();">
+						style="position: relative; border: 1px solid;" id="productAddForm">
 						<div id="memo">*欄位為必填</div>
 						<div class="form-group">
 							<label for="categorySelect">產品類別 *</label><br /> <select
@@ -41,33 +40,33 @@
 								class="notice"></span><br /> <input type="text"
 								id="productNameId" class="form-control" name="productName"
 								required="required" placeholder="最多20個字元" maxlength="20"
-								autocomplete="on" onblur="checkProductName()">
+								autocomplete="on">
 						</div>
 						<div class="form-group">
-							<label for=productPrice>產品價格 *</label> <span id="productSp"
+							<label for=productPrice>產品價格 *</label> <span id="priceSp"
 								class="notice"></span><br /> <input type="text"
 								id="productPriceId" class="form-control" name="price"
-								required="required" placeholder="最多6位數" maxlength="6"
-								onblur="checkProductPrice()">
+								required="required" placeholder="最多6位數" maxlength="6">
 						</div>
 						<div class="form-group">
 							<label for="productStock">庫存 *</label> <span id="stockSp"
 								class="notice"></span><br /> <input type="text"
 								id="productStockId" class="form-control" name="stock"
-								required="required" onblur="checkProductStock()">
+								required="required" placeholder="最多不超過99個" maxlength="2">
 						</div>
 						<div class="form-group">
-							<label for="productDescription">產品介紹</label>
+							<label for="productDescription">產品介紹</label><span
+								id="descriptionSp" class="notice">checked!</span><br />
 							<textarea name="productDescription" id="productDescriptionId"
-								cols="30" rows="10" class="form-control"></textarea>
+								cols="30" rows="10" class="form-control" maxlength="200"
+								placeholder="最多200個字元"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="thumbnail">產品縮圖</label> <input type="file"
 								accept=".jpg, .jpeg, .png" name="thumbnail" id="thumbnailId">
 							<div id="thumbnailDisplay" style="width: 200px; height: 200px;">
 								<p>
-									<img src="" id="thumbnailPreview" height="200"
-										alt="Image preview...">
+									<img src="" id="thumbnailPreview" height="200" alt="產品縮圖預覽">
 								</p>
 							</div>
 						</div>
@@ -76,13 +75,12 @@
 								accept=".jpg, .jpeg, .png" name="detailImg" id="detailImgId">
 							<div id="detailImgDisplay" style="width: 200px; height: 200px;">
 								<p>
-									<img src="" id="detailImgPreview" height="200"
-										alt="Image preview...">
+									<img src="" id="detailImgPreview" height="200" alt="產品詳圖預覽">
 								</p>
 							</div>
 						</div>
 						<div class="form-group" style="text-align: right;">
-							<input id='btn' type="submit" value="送出"
+							<input id='productAddBtn' type="button" value="送出"
 								class="btn py-3 px-4 btn-primary">
 						</div>
 					</form>
