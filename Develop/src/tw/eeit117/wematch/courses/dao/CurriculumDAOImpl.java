@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tw.eeit117.wematch.courses.model.Courses;
 import tw.eeit117.wematch.courses.model.Curriculum;
+import tw.eeit117.wematch.member.model.Member;
 
 @Repository
 @Transactional
@@ -73,6 +75,27 @@ public class CurriculumDAOImpl implements CurriculumDAO{
 				return false;
 			}
 		}
+		
+		//確認有無複選
+		@Override
+		@Transactional
+		public boolean checkCourses(int coursesId) {
+			Session session = sessionFactory.getCurrentSession();
+			
+			String hqlStr = "from Curriculum where coursesId=:coursesId";
+			Query<Curriculum> query = session.createQuery(hqlStr,Curriculum.class);
+			
+			query.setParameter("coursesId", coursesId);
+			
+			Curriculum resultCurriculum = query.uniqueResult();
+			//当确定返回的实例只有一个或者null时 用uniqueResult()方法
+			
+			if(resultCurriculum != null) {				
+				return true;
+			}else {
+				return false;
+			}
+		}
 
 		//單筆查詢課表ID
 		@Override
@@ -80,6 +103,21 @@ public class CurriculumDAOImpl implements CurriculumDAO{
 		public Curriculum getCurriculum(int curriculumId) {
 			return (Curriculum) sessionFactory.getCurrentSession()
 					.get(Curriculum.class, curriculumId);
+		}
+		
+		//課表退選
+		@Override
+		@Transactional
+		public void deleteCurriculumCourses(int coursesId) {
+			Session session = sessionFactory.getCurrentSession();
+			
+			String hqlstr = "From Curriculum where coursesId=:coursesId";
+			Query<Curriculum> query = session.createQuery(hqlstr, Curriculum.class);
+			query.setParameter("coursesId", coursesId);
+
+			Curriculum resultCurr = query.uniqueResult();
+			session.delete(resultCurr);
+			
 		}
 	
 }

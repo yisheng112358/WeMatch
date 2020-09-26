@@ -30,12 +30,6 @@ public class CurriculumServiceImpl implements CurriculumService {
 		
 	}
 
-//	@Override
-//	public Member getMember(int memberId) {
-//		return curriculumDao.getMember(memberId);
-//	}
-//
-//
 	@Override
 	@Transactional
 	public List<Curriculum> getAllCurriculum(int memberId) {
@@ -47,13 +41,24 @@ public class CurriculumServiceImpl implements CurriculumService {
 	public boolean checkCourses(int coursesId,int memberId) {
 		return curriculumDao.checkCourses(coursesId,memberId);
 	}
+	
+	
+	@Transactional
+	public boolean checkCourses(int coursesId) {
+		return curriculumDao.checkCourses(coursesId);
+	}
 
 	@Override
 	@Transactional
 	public Curriculum getCurriculum(int curriculumId) {
 		return curriculumDao.getCurriculum(curriculumId);
 	}
+	
+	@Override
+	@Transactional
+	public void deleteCurriculumCourses(int coursesId) {
+		curriculumDao.deleteCurriculumCourses(coursesId);
+		
+	}
 
-	
-	
 }
