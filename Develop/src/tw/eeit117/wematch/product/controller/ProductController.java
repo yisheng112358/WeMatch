@@ -48,7 +48,8 @@ public class ProductController {
 	}
 
 	@GetMapping("/manage")
-	public String manage() {
+	public String manage(SessionStatus status) {
+		status.setComplete();
 		return "ProductsManagePage";
 	}
 
