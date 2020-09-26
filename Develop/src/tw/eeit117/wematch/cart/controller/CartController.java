@@ -82,6 +82,9 @@ public class CartController {
 		try {
 			Double shoppingCartTotal = (Double) m.getAttribute("totalAmount");
 			Integer shoppingCartTotalInt = shoppingCartTotal.intValue();
+			if (shoppingCartTotalInt <= 0) {
+				shoppingCartTotalInt = 1;
+			}
 			status.setComplete();
 
 			Date date = new Date();
