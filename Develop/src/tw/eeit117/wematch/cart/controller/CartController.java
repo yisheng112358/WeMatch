@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -85,6 +86,7 @@ public class CartController {
 			if (shoppingCartTotalInt <= 0) {
 				shoppingCartTotalInt = 1;
 			}
+
 			status.setComplete();
 
 			Date date = new Date();
@@ -112,6 +114,20 @@ public class CartController {
 		}
 
 		return "GreenTest";
+	}
+
+	@GetMapping(value = "/updateStock", params = { "productId", "stock" })
+	public void updateStock(@RequestParam Integer productId, @RequestParam Integer stock) {
+		ProductBean productBean = productBeanService.findById(productId);
+		if (stock <= 0) {
+			stock = 0;
+		}
+		Integer newStock = productBean.getStock() - stock;
+		if (newStock <= 0) {
+			productBean.setPrice(999999.);
+		}
+		productBean.setStock(newStock);
+		productBeanService.update(productBean);
 	}
 
 }

@@ -1,3 +1,20 @@
+function retrievePerchaseAmount() {
+    var allQuantities = document.querySelectorAll(".quantity");
+
+    for (let i = 0; i < allQuantities.length; i++) {
+        $.ajax({
+            url: "/WeMatch_dev/shoppingCart/updateStock",
+            data: {
+                productId: allQuantities[i].getAttribute("name"),
+                stock: allQuantities[i].value,
+            },
+            type: "get",
+            dataType: "json",
+
+        })
+    }
+}
+
 $(document).ready(() => {
     var allItemsInCart = document.querySelectorAll("h4");
     var allItemsInCartLength = allItemsInCart.length;
@@ -32,6 +49,19 @@ $(document).ready(() => {
 
             toltalAmountMoney()
 
+        });
+
+        $("#quantity" + allItemsInCart[i].getAttribute("id")).blur(() => {
+            var quantityVal = parseInt($("#quantity" + allItemsInCart[i].getAttribute("id")).val());
+            if (quantityVal >= parseInt($("#stock" + allItemsInCart[i].getAttribute("id")).html())) {
+                $("#quantity" + allItemsInCart[i].getAttribute("id")).val($("#stock" + allItemsInCart[i].getAttribute("id")).html());
+            }
+            if (quantityVal <= 1) {
+                $("#quantity" + allItemsInCart[i].getAttribute("id")).val("1");
+            }
+            quantityVal = parseInt($("#quantity" + allItemsInCart[i].getAttribute("id")).val());
+            $("#itemTotal" + allItemsInCart[i].getAttribute("id")).html(parseInt($("#itemTotal" + allItemsInCart[i].getAttribute("id")).attr("name")) * quantityVal);
+            toltalAmountMoney()
         });
 
     }
