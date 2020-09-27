@@ -55,11 +55,10 @@
 						<div class="form-group">
 							<label for="categorySelect">Sort by:</label><br /> <select
 								name="category" id="sorttingSelect">
-								<option value="">Select</option>
 								<option value="HighPriceUp">High Price Up</option>
 								<option value="HighPriceDown">High Price Down</option>
 								<option value="LatestUp">Latest Up</option>
-								<option value="LatestDown">Latest Down</option>
+								<option value="LatestDown" selected>Latest Down</option>
 							</select>
 						</div>
 						<%

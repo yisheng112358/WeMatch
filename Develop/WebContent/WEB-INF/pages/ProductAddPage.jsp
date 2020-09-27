@@ -80,8 +80,8 @@
 							</div>
 						</div>
 						<div class="form-group" style="text-align: right;">
-							<input id='productAddBtn' type="button" value="送出"
-								class="btn py-3 px-4 btn-primary">
+							<a id='productAddBtn'
+								class="btn py-3 px-4 btn-primary">送出</a>
 						</div>
 					</form>
 					<div style="text-align: right;">

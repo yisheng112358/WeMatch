@@ -21,7 +21,7 @@ $(document).ready(() => {
             dataType: "json",
             success: function(data) {
                 $("#searchNum").empty();
-                $("#searchNum").html("Currently we have " + data.length + " search results. ");
+                $("#searchNum").html("Currently we have " + data.length + " search results: ");
                 // 上傳檔案
                 function uploadDataToTable(productCategory) {
                     $("#content" + productCategory).empty();
@@ -41,7 +41,7 @@ $(document).ready(() => {
                         }
                     }
                     $("#content" + productCategory).append(txt);
-                    $("#searchNum").append(productCategory + ": " + $("td." + productCategory).length + " ");
+                    $("#searchNum").append($("td." + productCategory).length + " " + productCategory + " ");
                     // 計算總頁數
                     totalPage = Math.ceil(dataLength / itemPerPage);
                     // 建立頁面數字連結
@@ -206,7 +206,7 @@ $(document).ready(() => {
             success: function(data) {
                 Array.prototype.push.apply(allProducts, data); // 收集全部的商品物件給其他方法使用，data直接塞。
                 $("#searchNum").empty();
-                $("#searchNum").html("Currently we have " + data.length + " products. ");
+                $("#searchNum").html("Currently we have " + data.length + " products: ");
                 // 上傳檔案
                 function uploadDataToTable(productCategory) {
                     $("#content" + productCategory).empty();
@@ -226,7 +226,7 @@ $(document).ready(() => {
                         }
                     }
                     $("#content" + productCategory).append(txt);
-                    $("#searchNum").append(productCategory + ": " + $("td." + productCategory).length + " ");
+                    $("#searchNum").append($("td." + productCategory).length + " " + productCategory + " ");
                     // 計算總頁數
                     totalPage = Math.ceil(dataLength / itemPerPage);
                     // 建立頁面數字連結
