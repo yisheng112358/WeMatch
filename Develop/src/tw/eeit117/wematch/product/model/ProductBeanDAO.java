@@ -4,29 +4,34 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 public class ProductBeanDAO implements IProductBeanDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public List<ProductBean> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("FROM ProductBean", ProductBean.class).list();
+		List<ProductBean> productBeanList = session.createQuery("FROM ProductBean", ProductBean.class).list();
+		return productBeanList;
 	}
 
 	@Override
+	@Transactional
 	public void insert(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(productBean);
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBean = session.get(ProductBean.class, productId);
@@ -34,15 +39,15 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	}
 
 	@Override
+	@Transactional
 	public ProductBean findById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
 		ProductBean productBean = session.get(ProductBean.class, productId);
-		tx.commit();
 		return productBean;
 	}
 
 	@Override
+	@Transactional
 	public void update(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBeanActive = session.get(ProductBean.class, productBean.getProductId());
