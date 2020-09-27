@@ -39,7 +39,7 @@ $(() => {
         }
     })
 
-    $("#productAddBtn").click(() => {
+    $("#productUpdateBtn").click(() => {
         if ($("#productSp").html() == "checked!" && $("#priceSp").html() == "checked!" && $("#stockSp").html() == "checked!" && $("#descriptionSp").html() == "checked!") {
             $("#productAddForm").submit();
         } else {
