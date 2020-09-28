@@ -108,6 +108,7 @@ h3:active {
 }
 
 .coachTable {
+	color:black;
 	text-align: center;
 	background: white;
 	border: 2px white solid;
