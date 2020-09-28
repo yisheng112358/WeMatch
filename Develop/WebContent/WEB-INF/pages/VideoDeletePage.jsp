@@ -88,7 +88,7 @@ thead th {
 											<td>${film.videoLink}</td>
 											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 											<td><a
-												href="<c:url value='/video/delete?id=${film.videoId}' />">刪除</a></td>
+												href="<c:url value='/video/delete?id=${film.videoId}' />" onclick="delConfirm()">刪除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -111,6 +111,7 @@ thead th {
 
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
+	<script src="../js/VideoDelete.js" type="text/javascript"></script>
 
 </body>
 
