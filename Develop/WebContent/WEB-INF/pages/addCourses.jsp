@@ -118,6 +118,7 @@ table-->.table {
 					<%
 						}
 					%>
+				</div>
 	
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -132,7 +133,7 @@ table-->.table {
 							<th>上課教室</th>
 							<th>可報人數</th>
 							<th>已報人數</th>
-							<th>剩餘可報人數</th>
+							<th>剩餘人數</th>
 							<th>操作</th>
 						</tr>
 						<c:forEach var="courses" items="${listCurriculum}">
@@ -152,7 +153,7 @@ table-->.table {
 					</table>
 
 
-					<h2 align="center">已選所有課程（課表）</h2>
+					<h2 align="center">已選所有課程（課表）👁‍🗨</h2>
 					<table class="table table-striped">
 						<tr align="center" color="brack">
 							<th>課表代號</th>
