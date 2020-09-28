@@ -1,6 +1,8 @@
 package tw.eeit117.wematch.courses.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +10,7 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,15 +64,31 @@ public class CoursesController {
 
 	// 新增或更新完會回到首頁
 	@RequestMapping(value = "/saveCourses", method = RequestMethod.POST)
-	public ModelAndView saveCourses(@ModelAttribute Courses courses, Model m) {
-		if (courses.getCoursesId() == 0) {
-			coursesService.addCourses(courses);
-		} else {
-			coursesService.updateCourses(courses);
+	public ModelAndView saveCourses(@ModelAttribute Courses courses, Model m,HttpServletRequest request) {
+		
+		Map<String, String> errors = new HashMap<String, String>();
+    	request.setAttribute("errors", errors);
+
+		
+		int a = courses.getRegNumber();
+		int b = courses.getCoursesBalance();
+		int c = courses.getNumberPeople();
+		int d = a+b;
+		
+		if(c == d) {
+			if (courses.getCoursesId() == 0) {
+				coursesService.addCourses(courses);
+			} else {
+				coursesService.updateCourses(courses);
+			}			
+		}else {  
+			errors.put("regNumber", "人數條件不符，請重新輸入");
+			errors.put("coursesBalance", "人數條件不符，請重新輸入");
+			return new ModelAndView("CoursesForm");
 		}
 		return new ModelAndView("redirect:/CoursesHome");
 	}
-
+	
 	// 刪除
 	@RequestMapping(value = "/deleteCourses", method = RequestMethod.GET)
 	public ModelAndView deleteCourses(HttpServletRequest request) {

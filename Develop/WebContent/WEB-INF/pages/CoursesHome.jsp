@@ -114,7 +114,7 @@
 							<th>上課教室</th>
 							<th>可報人數</th>
 							<th>已報人數</th>
-							<th>剩餘可報人數</th>
+							<th>剩餘人數</th>
 							<th>操作</th>
 						</tr>	
 						<c:forEach var="courses" items="${listCourses}">
