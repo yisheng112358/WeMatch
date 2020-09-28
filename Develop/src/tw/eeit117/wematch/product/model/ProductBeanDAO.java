@@ -16,7 +16,6 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	@Transactional
 	public List<ProductBean> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
 		List<ProductBean> productBeanList = session.createQuery("FROM ProductBean", ProductBean.class).list();
@@ -24,14 +23,12 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	}
 
 	@Override
-	@Transactional
 	public void insert(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(productBean);
 	}
 
 	@Override
-	@Transactional
 	public void deleteById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBean = session.get(ProductBean.class, productId);
@@ -39,7 +36,6 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	}
 
 	@Override
-	@Transactional
 	public ProductBean findById(Integer productId) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBean = session.get(ProductBean.class, productId);
@@ -47,7 +43,6 @@ public class ProductBeanDAO implements IProductBeanDAO {
 	}
 
 	@Override
-	@Transactional
 	public void update(ProductBean productBean) {
 		Session session = sessionFactory.getCurrentSession();
 		ProductBean productBeanActive = session.get(ProductBean.class, productBean.getProductId());

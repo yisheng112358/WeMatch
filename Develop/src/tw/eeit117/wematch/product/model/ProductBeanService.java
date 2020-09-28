@@ -14,7 +14,6 @@ public class ProductBeanService implements IProductBeanService {
 	private ProductBeanDAO productDao;
 
 	@Override
-	@Transactional
 	public List<ProductBean> selectAll() {
 		return productDao.selectAll();
 	}
@@ -26,13 +25,11 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
-	@Transactional
 	public void deleteById(Integer productId) {
 		productDao.deleteById(productId);
 	}
 
 	@Override
-	@Transactional
 	public ProductBean findById(Integer productId) {
 		return productDao.findById(productId);
 	}
@@ -44,7 +41,6 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
-	@Transactional
 	public List<ProductBean> findByKeyword(String keyword) {
 		return productDao.findByKeyword(keyword);
 	}

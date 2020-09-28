@@ -3,6 +3,10 @@
 <%@page import="tw.eeit117.wematch.product.model.ProductBean"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 
 <nav
@@ -35,7 +39,11 @@
 				<li class="nav-item"><a href="<c:url value='/coachPage' />"
 					class="nav-link"><span>Coach Intro.</span></a></li>
 				<%
-					if ((Set<ProductBean>) session.getAttribute("shoppingCarts") == null) {
+					if ((Map<Integer, List<String>>) session.getAttribute("productArrival") == null) {
+					Map<Integer, List<String>> productArrival = new HashMap<Integer, List<String>>();
+					session.setAttribute("productArrival", productArrival);
+				}
+				if ((Set<ProductBean>) session.getAttribute("shoppingCarts") == null) {
 					Set<ProductBean> carts = new HashSet<ProductBean>();
 					session.setAttribute("shoppingCarts", carts);
 				}
