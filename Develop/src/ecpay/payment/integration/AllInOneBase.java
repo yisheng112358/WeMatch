@@ -32,8 +32,7 @@ public class AllInOneBase {
 	public AllInOneBase() {
 		Document doc;
 
-		String paymentConfPath = "../workspace_final/WeMatch_dev/src/payment_conf.xml";
-		doc = EcpayFunction.xmlParser(paymentConfPath);
+		doc = EcpayFunction.xmlParser(AllInOneBase.class.getResource("/payment_conf.xml").toString());
 
 		doc.getDocumentElement().normalize();
 		// OperatingMode

@@ -35,7 +35,7 @@ import tw.wematch.util.Sender;
 
 @Controller
 @RequestMapping("/product")
-@SessionAttributes({ "productExam", "productUpdate" })
+@SessionAttributes({ "productExam", "productUpdate", "productArrival", "Member" })
 public class ProductController {
 	@Autowired
 	ProductBeanService productBeanService;
@@ -46,14 +46,12 @@ public class ProductController {
 	}
 
 	@GetMapping("/browse")
-	public String browse(SessionStatus status) {
-		status.setComplete();
+	public String browse() {
 		return "ProductsBrowsePage";
 	}
 
 	@GetMapping("/manage")
-	public String manage(SessionStatus status) {
-		status.setComplete();
+	public String manage() {
 		return "ProductsManagePage";
 	}
 
@@ -124,26 +122,29 @@ public class ProductController {
 	}
 
 	@PostMapping("/updateProduct")
-	public String updateProduct(Integer productId, String category, String productName, Double price, Integer stock,
-			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) throws IOException {
+	public String updateProduct(Model model, Integer productId, String category, String productName, Double price,
+			Integer stock, String productDescription, MultipartFile thumbnail, MultipartFile detailImg)
+			throws IOException {
 		ProductBean newProductBean = newProductBeanCheck(productId, category, productName, price, stock,
 				productDescription, thumbnail, detailImg);
-		ProductBean oldProductBean = productBeanService.findById(productId);
-		if (oldProductBean.getStock() <= 0 && newProductBean.getStock() > 0) {
+		ProductBean oldProductBean = (ProductBean) model.getAttribute("productUpdate");
+		Integer oldProductBeanStock = oldProductBean.getStock();
+		productBeanService.update(newProductBean);
+		if (oldProductBeanStock <= 0 && newProductBean.getStock() > 0) {
 			String emailTitle = "[WeMatch Product Arrive]" + newProductBean.getProductName();
 			String emailContent = "The product " + newProductBean.getProductName() + " is available now!";
-//			Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) httpSession
-//					.getAttribute("productArrival");
-			// 目前只有一個測試的email，所以下面先備註起來。
-//			if (productArrival != null) {
-//				for (String subscribeEmail : productArrival.get(productId)) {
-//				(new Sender(subscribeEmail, emailTitle, emailContent)).start();					
-//				}
-//			}
-			System.out.println("通知：subscribeEmail (其實還是寄到jmtforg@gmail.com)");
-			(new Sender("jmtforg@gmail.com", emailTitle, emailContent)).start();
+			@SuppressWarnings("unchecked")
+			Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) model
+					.getAttribute("productArrival");
+			if (productArrival != null && productArrival.containsKey(productId)) {
+				List<String> subscribeEmailList = productArrival.get(productId);
+				for (String subscribeEmail : subscribeEmailList) {
+					(new Sender(subscribeEmail, emailTitle, emailContent)).start();
+				}
+			} else {
+				System.out.println("目前會員沒有訂閱此商品之到貨通知或找不到映射關係");
+			}
 		}
-		productBeanService.update(newProductBean);
 		return "ProductsManagePage";
 	}
 
@@ -204,17 +205,22 @@ public class ProductController {
 	}
 
 	@GetMapping(value = "/productArrival/{productId}")
-	public String productArrival(@PathVariable String productId, HttpSession httpSession) {
-		Member member = (Member) httpSession.getAttribute("Account");
-		Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) httpSession
-				.getAttribute("productArrival");
+	public String productArrival(@PathVariable String productId, Model model) {
+		@SuppressWarnings("unused")
+		Member member = (Member) model.getAttribute("Member");
+		@SuppressWarnings("unchecked")
+		Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) model.getAttribute("productArrival");
 		List<String> subscribeList = productArrival.get(Integer.parseInt(productId));
 		if (subscribeList != null) {
-			subscribeList.add(member.getMemberEmail());
+//			subscribeList.add(member.getMemberEmail());
+			// 由於只有一個測試Email，除非未來有要多個會員多個Email，不然就是寫死在這邊。
+			subscribeList.add("jmtforg@gmail.com");
 			productArrival.put(Integer.parseInt(productId), subscribeList);
 		} else {
 			List<String> newSubscribeList = new ArrayList<String>();
-			newSubscribeList.add(member.getMemberEmail());
+//			newSubscribeList.add(member.getMemberEmail());
+			// 由於只有一個測試Email，除非未來有要多個會員多個Email，不然就是寫死在這邊。
+			newSubscribeList.add("jmtforg@gmail.com");
 			productArrival.put(Integer.parseInt(productId), newSubscribeList);
 		}
 
