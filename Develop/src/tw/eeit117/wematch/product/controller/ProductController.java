@@ -3,10 +3,12 @@ package tw.eeit117.wematch.product.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +28,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import tw.eeit117.wematch.member.model.Member;
 import tw.eeit117.wematch.product.model.ProductBean;
 import tw.eeit117.wematch.product.model.ProductBeanService;
+import tw.wematch.util.Sender;
 
 @Controller
 @RequestMapping("/product")
@@ -122,9 +126,24 @@ public class ProductController {
 	@PostMapping("/updateProduct")
 	public String updateProduct(Integer productId, String category, String productName, Double price, Integer stock,
 			String productDescription, MultipartFile thumbnail, MultipartFile detailImg) throws IOException {
-		ProductBean productBean = newProductBeanCheck(productId, category, productName, price, stock,
+		ProductBean newProductBean = newProductBeanCheck(productId, category, productName, price, stock,
 				productDescription, thumbnail, detailImg);
-		productBeanService.update(productBean);
+		ProductBean oldProductBean = productBeanService.findById(productId);
+		if (oldProductBean.getStock() <= 0 && newProductBean.getStock() > 0) {
+			String emailTitle = "[WeMatch Product Arrive]" + newProductBean.getProductName();
+			String emailContent = "The product " + newProductBean.getProductName() + " is available now!";
+//			Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) httpSession
+//					.getAttribute("productArrival");
+			// 目前只有一個測試的email，所以下面先備註起來。
+//			if (productArrival != null) {
+//				for (String subscribeEmail : productArrival.get(productId)) {
+//				(new Sender(subscribeEmail, emailTitle, emailContent)).start();					
+//				}
+//			}
+			System.out.println("通知：subscribeEmail (其實還是寄到jmtforg@gmail.com)");
+			(new Sender("jmtforg@gmail.com", emailTitle, emailContent)).start();
+		}
+		productBeanService.update(newProductBean);
 		return "ProductsManagePage";
 	}
 
@@ -180,6 +199,24 @@ public class ProductController {
 			carts.add(productBeanService.findById(Integer.parseInt(productId)));
 		}
 		httpSession.setAttribute("shoppingCarts", carts);
+
+		return "redirect:/product/browse";
+	}
+
+	@GetMapping(value = "/productArrival/{productId}")
+	public String productArrival(@PathVariable String productId, HttpSession httpSession) {
+		Member member = (Member) httpSession.getAttribute("Account");
+		Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) httpSession
+				.getAttribute("productArrival");
+		List<String> subscribeList = productArrival.get(Integer.parseInt(productId));
+		if (subscribeList != null) {
+			subscribeList.add(member.getMemberEmail());
+			productArrival.put(Integer.parseInt(productId), subscribeList);
+		} else {
+			List<String> newSubscribeList = new ArrayList<String>();
+			newSubscribeList.add(member.getMemberEmail());
+			productArrival.put(Integer.parseInt(productId), newSubscribeList);
+		}
 
 		return "redirect:/product/browse";
 	}

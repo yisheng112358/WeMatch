@@ -4,6 +4,13 @@ function addCart(productId, productName) {
     }
 }
 
+function addArrivalNotice(productId, productName) {
+    if (confirm(`Notice you when ${productName} arrive?`)) {
+        // 把productId傳到控制器和抓會員的Email
+        location = `productArrival/${productId}`;
+    }
+}
+
 $(document).ready(() => {
     var productCategories = ["Massager", "Yoga", "Supplement"];
 
@@ -36,6 +43,7 @@ $(document).ready(() => {
                                 '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
                                 `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Cart'></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Arrival Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }
@@ -221,6 +229,7 @@ $(document).ready(() => {
                                 '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
                                 `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Cart'></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Arrival Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }
