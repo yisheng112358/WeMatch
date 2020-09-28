@@ -23,8 +23,8 @@ $(document).ready(() => {
 
         $("#minus" + allItemsInCart[i].getAttribute("id")).click(() => {
             var quantityVal = parseInt($("#quantity" + allItemsInCart[i].getAttribute("id")).val());
-            if (quantityVal <= 1) {
-                $("#quantity" + allItemsInCart[i].getAttribute("id")).val("1");
+            if (quantityVal <= 0) {
+                $("#quantity" + allItemsInCart[i].getAttribute("id")).val("0");
             } else {
                 $("#quantity" + allItemsInCart[i].getAttribute("id")).val(quantityVal - 1);
             }
@@ -56,8 +56,8 @@ $(document).ready(() => {
             if (quantityVal >= parseInt($("#stock" + allItemsInCart[i].getAttribute("id")).html())) {
                 $("#quantity" + allItemsInCart[i].getAttribute("id")).val($("#stock" + allItemsInCart[i].getAttribute("id")).html());
             }
-            if (quantityVal <= 1) {
-                $("#quantity" + allItemsInCart[i].getAttribute("id")).val("1");
+            if (quantityVal <= 0) {
+                $("#quantity" + allItemsInCart[i].getAttribute("id")).val("0");
             }
             quantityVal = parseInt($("#quantity" + allItemsInCart[i].getAttribute("id")).val());
             $("#itemTotal" + allItemsInCart[i].getAttribute("id")).html(parseInt($("#itemTotal" + allItemsInCart[i].getAttribute("id")).attr("name")) * quantityVal);

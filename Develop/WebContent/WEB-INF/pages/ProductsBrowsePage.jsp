@@ -41,7 +41,7 @@
 							role="tablist" aria-orientation="vertical">
 							<a class="nav-link ftco-animate active" id="tabMassager"
 								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
+								aria-controls="v-pills-8" aria-selected="true">Massager <span>Massager,
 									Fascia gun...</span></a> <a class="nav-link ftco-animate" id="tabYoga"
 								data-toggle="pill" href="#v-pills-9" role="tab"
 								aria-controls="v-pills-9" aria-selected="false">Yoga <span>Mat,
