@@ -98,13 +98,11 @@
 							class="one-forth d-flex js-fullheight align-items-center ftco-animate"
 							data-scrollax=" properties: { translateY: '70%' }">
 							<div class="text">
-								<span class="subheading">Welcome to the Club</span>
+								<span class="subheading">Fitness Space Can be</span>
 								<h1 class="mb-4 mt-3">
 									Get A <span>Perfect</span> Body <span>Figure</span>
 								</h1>
-								<p>A small river named Duden flows by their place and
-									supplies it with the necessary regelialia. It is a
-									paradisematic country.</p>
+								<p>良好的健康狀況和高度的身體訓練，是有效的腦力<br>勞動的重要條件。</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join
@@ -130,13 +128,11 @@
 							class="one-forth d-flex js-fullheight align-items-center ftco-animate"
 							data-scrollax=" properties: { translateY: '70%' }">
 							<div class="text">
-								<span class="subheading">Welcome to Club</span>
+								<span class="subheading">Fitness Space Can be</span>
 								<h1 class="mb-4 mt-3">
 									Pain is <span>Temporary</span> But Glory is <span>Forever</span>
 								</h1>
-								<p>A small river named Duden flows by their place and
-									supplies it with the necessary regelialia. It is a
-									paradisematic country.</p>
+								<p>人人都想有健美身材，但是沒人想舉重死人的器材。<br>日復一日的堅持練下去吧，只有活動適量才能保持<br>訓練的熱情和提高運動的技能。</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join
@@ -161,9 +157,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3 ftco-animate">
-					<a href="images/gallery-1.jpg"
+					<a href="images/gallery-5.jpg"
 						class="gallery image-popup img d-flex align-items-center"
-						style="background-image: url(images/gallery-1.jpg);">
+						style="background-image: url(images/gallery-5.jpg);">
 						<div
 							class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-instagram"></span>
@@ -171,9 +167,9 @@
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="images/gallery-2.jpg"
+					<a href="images/gallery-6.jpg"
 						class="gallery image-popup img d-flex align-items-center"
-						style="background-image: url(images/gallery-2.jpg);">
+						style="background-image: url(images/gallery-6.jpg);">
 						<div
 							class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-instagram"></span>
@@ -181,9 +177,9 @@
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="images/gallery-3.jpg"
+					<a href="images/gallery-7.jpg"
 						class="gallery image-popup img d-flex align-items-center"
-						style="background-image: url(images/gallery-3.jpg);">
+						style="background-image: url(images/gallery-7.jpg);">
 						<div
 							class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-instagram"></span>
@@ -191,9 +187,9 @@
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="images/gallery-4.jpg"
+					<a href="images/gallery-8.jpg"
 						class="gallery image-popup img d-flex align-items-center"
-						style="background-image: url(images/gallery-4.jpg);">
+						style="background-image: url(images/gallery-8.jpg);">
 						<div
 							class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-instagram"></span>
@@ -211,8 +207,7 @@
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Happy &amp; Healthy</span>
 					<h2 class="mb-4">Main feature &amp; Site map</h2>
-					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia</p>
+					<p>有健康的身體，才有健康的精神。</p>
 				</div>
 			</div>
 			<div class="row">
