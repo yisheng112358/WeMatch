@@ -22,7 +22,7 @@
 						<label for="memberAccount">會員帳號：</label> <label>${memberAccount}</label>
 					</div>
 					<div class="form-group">
-						<label>姓名：</label> <label for="memberAccount">${name}</label>
+						<label>姓名：</label> <label for="memberAccount">${memberName}</label>
 					</div>
 					<div class="form-group">
 						<label for="nickname">綽號：</label> <label>${nickname}</label>

@@ -33,7 +33,7 @@
    
 	<form  action="<c:url  value="/bookingcontroller/selectbooking"/>" method="get" style=" border: 1px solid black; text-align: center; margin:10px auto;float:none">
 	
-	<input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
+	<input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${memberName}"><p style="font-size:30px;">預約者:${memberName}</p>
 	<input type="submit" name="button" id="button" value="查詢" >
 	<br/>
 	<br/>
