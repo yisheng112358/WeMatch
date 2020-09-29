@@ -108,7 +108,7 @@ h3:active {
 }
 
 .coachTable {
-	color:black;
+	color: black;
 	text-align: center;
 	background: white;
 	border: 2px white solid;
@@ -179,7 +179,6 @@ tr {
 	margin-left: 1100px;
 	font-size: 24px;
 }
-
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"

@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>Coach Introduction</title>
 <%@ include file="CSSsettingout.jsp"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	window.onload = function() {
 		var xhr = new XMLHttpRequest();
@@ -58,14 +59,20 @@
 	}
 </script>
 <script>
-$(document).ready(function(){
-  $("#searchInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+	$(document).ready(
+			function() {
+				$("#searchInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
 </script>
 <style>
 .notice {
@@ -106,7 +113,7 @@ h3:active {
 }
 
 .coachTable {
-	color:black;
+	color: black;
 	text-align: center;
 	background: white;
 	border: 2px black solid;
@@ -119,6 +126,19 @@ h3:active {
 tr, th, td {
 	border: 2px black solid;
 	font-family: 微軟正黑體;
+}
+
+tbody tr:nth-child(2n) {
+	background-color: white;
+}
+
+tbody tr:nth-child(2n+1) {
+	background-color: #EBD6D6;
+}
+
+tbody tr:hover {
+	background-color:	#D2E9FF;
+	color: black;
 }
 
 #createCoach {
