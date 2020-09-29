@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -128,6 +130,20 @@ public class CartController {
 		}
 		productBean.setStock(newStock);
 		productBeanService.update(productBean);
+	}
+
+	@GetMapping(value = "/deleteCartItem/{productId}")
+	public String deleteCartItem(@PathVariable String productId, Model model) {
+		@SuppressWarnings("unchecked")
+		Set<ProductBean> carts = (Set<ProductBean>) model.getAttribute("shoppingCarts");
+		Set<ProductBean> newCarts = new HashSet<ProductBean>();
+		for (ProductBean productBean : carts) {
+			if (productBean.getProductId() != Integer.parseInt(productId)) {
+				newCarts.add(productBean);
+			}
+		}
+		model.addAttribute("shoppingCarts", newCarts);
+		return "redirect:/shoppingCart/cart";
 	}
 
 }
