@@ -50,6 +50,10 @@
 								data-toggle="pill" href="#v-pills-10" role="tab"
 								aria-controls="v-pills-10" aria-selected="false">Supplement
 								<span>Protein, Vitamin...</span>
+							</a> <a class="nav-link ftco-animate" id="tabHelper"
+								data-toggle="pill" href="#v-pills-11" role="tab"
+								aria-controls="v-pills-11" aria-selected="false">Helper <span>You
+									can ask me</span>
 							</a>
 						</div>
 						<div class="form-group">
@@ -99,6 +103,32 @@
 								<div id="pageSupplement" class="text-center"></div>
 							</div>
 
+							<div class="tab-pane fade" id="v-pills-11" role="tabpanel"
+								aria-labelledby="v-pills-day-11-tab">
+								<div class="coach-wrap ftco-animate d-sm-flex">
+
+									<!-- 購物小幫手Start -->
+									<div class="fixed1" id="tt">
+										<h5 class="text-center"
+											style="font-weight: bold; color: blue; padding-top: 8px;">Helper</h5>
+										<span id='status'></span>
+										<textarea cols='45' rows='14' id='serverResponseArea'
+											style="margin-left: 15px;"></textarea>
+										<br> <span
+											style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${memberName}：</span><br>
+										<input type='text' size="45" id='message'
+											style="margin-left: 15px; margin-bottom: 10px;"><br>
+
+										<button id='btnSend' class="btn btn-primary"
+											style="margin-left: 15px; margin-bottom: 10px; float: right; margin-right: 15px;">送出</button>
+										<button id='btnClose' class="btn btn-primary"
+											style="margin-left: 10px; margin-bottom: 10px; float: right;">離開</button>
+									</div>
+									<!-- 購物小幫手End -->
+
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -109,6 +139,7 @@
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
 	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	<script src="../js/ProductChat.js" type="text/javascript"></script>
 
 </body>
 </html>
