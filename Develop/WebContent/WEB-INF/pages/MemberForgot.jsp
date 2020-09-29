@@ -174,10 +174,10 @@
 			return true;
 		}
 	}
-	function submitFunc2(){
-		if(checkAccount() && checkMail() && validateCode()){
+	function submitFunc2() {
+		if (checkAccount() && checkMail() && validateCode()) {
 			return true;
-		}else{
+		} else {
 			alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
 			return false;
 		}
@@ -187,46 +187,46 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-<nav
-	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
-	id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="#">Fitness</a>
-		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-			type="button" data-toggle="collapse" data-target="#ftco-nav"
-			aria-controls="ftco-nav" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="#">Fitness</a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+				type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 
-		<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav nav ml-auto">
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
 
-				<%
-					String memberStatus = "" + (Integer) session.getAttribute("Status");
-				if (memberStatus.equals("1") || memberStatus.equals("2")) {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
-				} else {
-					out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
-				}
-				%>
-			</ul>
-		</div>
-	</div>
-</nav>
-<section class="hero-wrap hero-wrap-2"
-	style="background-image: url('images/bg_3.jpg');"
-	data-stellar-background-ratio="0.5">
-	<div class="overlay"></div>
-	<div class="container">
-		<div
-			class="row no-gutters slider-text align-items-end justify-content-center">
-			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-3 bread">Our Stories</h1>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
+				</ul>
 			</div>
 		</div>
-	</div>
-</section>
+	</nav>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('images/bg_3.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
+					<h1 class="mb-3 bread">Our Stories</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
 		id="schedule-section">
@@ -254,16 +254,17 @@
 						<div class="v_code">
 							<div class="code_show">
 								<span class="code" id="checkCode"
-								style="-webkit-user-select: none;" unselectable="on"></span> <a id="linkbt">看不清換一張</a>
+									style="-webkit-user-select: none;" unselectable="on"></span> <a
+									id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"
 									id="inputCode" name="inputCode" /> <span id="text_show">${errors.incode}</span>
 							</div>
 						</div>
-						<a href='/WeMatch_dev/index.jsp'>回到登入</a><br /> <input
-							id="Button1" type="submit" value="送出"
-							class="btn py-3 px-4 btn-primary"> <span>${errors.msg}</span>
+						<a href='/WeMatch_dev'>回到登入</a><br /> <input id="Button1"
+							type="submit" value="送出" class="btn py-3 px-4 btn-primary">
+						<span>${errors.msg}</span>
 					</div>
 
 				</form>

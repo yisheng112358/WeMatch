@@ -134,14 +134,14 @@ h3:active {
 
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
-					String memberName = (String) session.getAttribute("name");
+					String memberName = (String) session.getAttribute("memberName");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						//out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+						//out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Logout</span></a></li>");
 						out.write(
-						"<li class='nav-item' style='line-height:16px; margin-top: 0px;'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span style='text-align:center;'><span style='font-style:italic; font-size: 14px; font-weight:bold;'>Welcome,&nbsp;"
+						"<li class='nav-item' style='line-height:16px; margin-top: 0px;'><a href='/WeMatch_dev' class='nav-link'><span style='text-align:center;'><span style='font-style:italic; font-size: 14px; font-weight:bold;'>Welcome,&nbsp;"
 								+ memberName + "</span><span>Logout</span></span></a></li>");
 					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
 				</ul>

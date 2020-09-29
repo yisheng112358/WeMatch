@@ -235,9 +235,9 @@
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Logout</span></a></li>");
 					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
 				</ul>
@@ -284,11 +284,12 @@
 							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
 					</div>
 					<div class="form-group">
-						<a href='/WeMatch_dev/index.jsp'>回到登入</a><br />
+						<a href='/WeMatch_dev'>回到登入</a><br />
 						<div class="v_code">
 							<div class="code_show">
 								<span class="code" id="checkCode"
-								style="-webkit-user-select: none;" unselectable="on"></span> <a id="linkbt">看不清換一張</a>
+									style="-webkit-user-select: none;" unselectable="on"></span> <a
+									id="linkbt">看不清換一張</a>
 							</div>
 							<div class="input_code">
 								<label for="inputCode">驗證碼：</label> <input type="text"

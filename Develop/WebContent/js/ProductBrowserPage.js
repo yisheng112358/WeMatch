@@ -42,8 +42,8 @@ $(document).ready(() => {
                                 "<a href='examProduct/" + data[i].productId + "'><img alt='No image' src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
                                 '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
-                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Cart'></p>` +
-                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Notice'></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value=' Cart '></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }
@@ -228,8 +228,8 @@ $(document).ready(() => {
                                 "<a href='examProduct/" + data[i].productId + "'><img alt='No image' src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
                                 '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
-                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Cart'></p>` +
-                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Add Notice'></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value=' Cart '></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }

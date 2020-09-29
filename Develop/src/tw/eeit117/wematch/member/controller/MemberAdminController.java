@@ -67,7 +67,7 @@ public class MemberAdminController {
 		Member member = memberService.selectMemberByAccount(account);
 		
 		m.addAttribute("memberAccount", member.getMemberAccount());
-		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("memberName", member.getMemberName());
 		m.addAttribute("nickname", member.getNickname());
 		m.addAttribute("gender", member.getGender());
 		m.addAttribute("email", member.getMemberEmail());
@@ -85,7 +85,7 @@ public class MemberAdminController {
 		Member member = memberService.selectMemberById(id);
 		
 		m.addAttribute("memberAccount", member.getMemberAccount());
-		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("memberName", member.getMemberName());
 		m.addAttribute("nickname", member.getNickname());
 		m.addAttribute("gender", member.getGender());
 		m.addAttribute("email", member.getMemberEmail());
@@ -101,7 +101,7 @@ public class MemberAdminController {
 	@PostMapping("/UpdateSend")
 	public String UpdateSend(@ModelAttribute("Member")Member member, Model m, HttpSession session) {		
 		m.addAttribute("memberAccount", member.getMemberAccount());
-		m.addAttribute("name", member.getMemberName());
+		m.addAttribute("memberName", member.getMemberName());
 		m.addAttribute("nickname", member.getNickname());
 		m.addAttribute("gender", member.getGender());
 		m.addAttribute("email", member.getMemberEmail());
