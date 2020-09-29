@@ -416,7 +416,7 @@ h3:active {
 		<!-- 		<button id='btnConn'>開始諮詢</button> -->
 		<!-- 		<span id='status'></span> -->
 		<textarea cols='45' rows='14' id='serverResponseArea'
-			style="margin-left: 15px;"></textarea>
+			style="margin-left: 15px;" autofocus></textarea>
 		<br> <span
 			style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${name}：</span><br>
 		<input type='text' size="45" id='message'

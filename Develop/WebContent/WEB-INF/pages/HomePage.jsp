@@ -102,7 +102,9 @@
 								<h1 class="mb-4 mt-3">
 									Get A <span>Perfect</span> Body <span>Figure</span>
 								</h1>
-								<p>良好的健康狀況和高度的身體訓練，是有效的腦力<br>勞動的重要條件。</p>
+								<p>
+									良好的健康狀況和高度的身體訓練，是有效的腦力<br>勞動的重要條件。
+								</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join
@@ -132,7 +134,9 @@
 								<h1 class="mb-4 mt-3">
 									Pain is <span>Temporary</span> But Glory is <span>Forever</span>
 								</h1>
-								<p>人人都想有健美身材，但是沒人想舉重死人的器材。<br>日復一日的堅持練下去吧，只有活動適量才能保持<br>訓練的熱情和提高運動的技能。</p>
+								<p>
+									人人都想有健美身材，但是沒人想舉重死人的器材。<br>日復一日的堅持練下去吧，只有活動適量才能保持<br>訓練的熱情和提高運動的技能。
+								</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join
@@ -207,7 +211,7 @@
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Happy &amp; Healthy</span>
 					<h2 class="mb-4">Main feature &amp; Site map</h2>
-					<p>有健康的身體，才有健康的精神。</p>
+					<p>有健康的身體，才有健康的精神。想要持續健康，僅需要持之以恆的耐心，只要把健身這件事持續不斷的做下去，必然能前往健康的人生道路！</p>
 				</div>
 			</div>
 			<div class="row">
@@ -219,57 +223,87 @@
 							<span class="flaticon-abs"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Make Your Body Harmonic</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
+							<h3 class="heading mb-3">健身產品</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「I
+								don’t eat for taste, I eat for function.」</p><div style="text-align: right;">
+							<br><br><br>Jay Cutler
+						</div></div>
 					</div>
 				</div>
-				<div class="col-md d-flex align-self-stretch ftco-animate">
+				<div class="col-md d-flex align-self-stretch ftco-animate"
+					onclick="location.href='/WeMatch_dev/addCourses';"
+					style="cursor: pointer;">
 					<div class="media block-6 services text-center d-block">
 						<div class="icon">
-							<span class="flaticon-scale"></span>
+							<span class="flaticon-woman"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Weight Loss Program</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
+							<h3 class="heading mb-3">健身課程</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「Dream
+								more than others think practical. Expect more than others think
+								is possible.」
+							<div style="text-align: right;">Frank Zane</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services text-center d-block">
-						<div class="icon">
-							<span class="flaticon-check-list"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Group Personal Trainings</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services text-center d-block">
-						<div class="icon">
-							<span class="flaticon-diet"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Optimal Diet Selection</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex align-self-stretch ftco-animate">
+				<div class="col-md d-flex align-self-stretch ftco-animate"
+					onclick="location.href='/WeMatch_dev/bookingcontroller/booking';"
+					style="cursor: pointer;">
 					<div class="media block-6 services text-center d-block">
 						<div class="icon">
 							<span class="flaticon-treadmill-machine-with-timer"></span>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Individual Training Programs</h3>
-							<p>A small river named Duden flows by their place and
-								supplies it with the necessary regelialia.</p>
+							<h3 class="heading mb-3">器材預約</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「The
+								hardest things in life are done the least and provide the most.」</p>
+							<div style="text-align: right;"><br>Greg Plitt</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md d-flex align-self-stretch ftco-animate"
+					onclick="location.href='/WeMatch_dev/diet';"
+					style="cursor: pointer;">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon">
+							<span class="flaticon-diet"></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3">飲食管理</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「To
+								be a champion you must act like one, act like a champion.」</p>
+							<div style="text-align: right;"><br><br>Lou Ferrigno</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md d-flex align-self-stretch ftco-animate"
+					onclick="location.href='/WeMatch_dev/video';"
+					style="cursor: pointer;">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon">
+							<span class="flaticon-gym"></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3">影片教學</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「If
+								you spend too much time thinking about a thing, you’ll never get
+								it done.」</p>
+							<div style="text-align: right;"><br>Bruce Lee</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md d-flex align-self-stretch ftco-animate"
+					onclick="location.href='/WeMatch_dev/coachPage';"
+					style="cursor: pointer;">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon">
+							<span class="flaticon-aerobic"></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3">教練資格</h3>
+							<p style="text-align: justify; text-justify: inter-ideograph;">「If
+								you don’t learn from your mistakes, then they become regrets.」</p>
+							<div style="text-align: right;"><br>John Cena</div>
 						</div>
 					</div>
 				</div>
