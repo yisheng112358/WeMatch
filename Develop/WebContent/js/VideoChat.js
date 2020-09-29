@@ -28,12 +28,12 @@
 
 			btnSend.onclick = function() {
 				if (socket == null) {
-					status.innerHTML = "必須先連到主機才能送訊息";
+//					status.innerHTML = "必須先連到主機才能送訊息";
 					return;
 				}
 
 				if (message.value.length == 0) {
-					status.innerHTML = "尚未輸入資料，無法送出";
+//					status.innerHTML = "尚未輸入資料，無法送出";
 					return;
 				}
 				appendMsg("會員: " + message.value);
@@ -55,7 +55,7 @@
 				socket.onclose = function(event) {
 					if (event.wasClean) {
 //						status.innerHTML = "[close] 連線正常關閉, code=" + event.code
-								+ ", reason= " + event.reason;
+//								+ ", reason= " + event.reason;
 					} else {
 //						status.innerHTML = "[close] 連線不正常結束";
 					}
@@ -84,6 +84,14 @@
 				btnClose.disabled = true;
 				btnSend.disabled = true;
 			}
+			
+		$("#message").keydown(function(event) {
+		    if(event.keyCode === 13){
+//				alert(event.keyCode);
+		    	$("#btnSend").click();
+		    };
+		});
+				
 		}
 		
 		function appendMsg(message) {
@@ -91,10 +99,3 @@
 			serverResponseArea.value += message + "\n";
 		}
 		
-
-//		$("#message").keydown(function(event) {
-//		    if(event.keyCode == 13){
-//		    	
-//		    	return;
-//		    };
-//		});
