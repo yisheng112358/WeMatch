@@ -44,13 +44,13 @@
 								<div style="text-align: left;">
 									<input type='button'
 										onclick='addCart("${productExam.getProductId()}", "${productExam.getProductName()}")'
-										class='btn btn-primary px-5 py-3 mt-3' value='Add Cart'>
+										class='btn btn-primary px-5 py-3 mt-3' value='Cart'>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div style="text-align: right;">
-						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">Return</a>
 					</div>
 				</div>
 			</div>

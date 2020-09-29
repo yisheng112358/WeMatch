@@ -103,7 +103,7 @@ public class CartController {
 			aioCheckOutOneTime.setTradeDesc("WeMatch測試商品");
 			aioCheckOutOneTime.setItemName("WeMatch測試商品");
 			aioCheckOutOneTime.setReturnURL("http://211.23.128.214:5000");
-			aioCheckOutOneTime.setClientBackURL("http://localhost:8080/WeMatch_dev/index.jsp");
+			aioCheckOutOneTime.setClientBackURL("http://localhost:8080/WeMatch_dev");
 			aioCheckOutOneTime.setNeedExtraPaidInfo("N");
 			m.addAttribute("CreditCardInput", all.aioCheckOut(aioCheckOutOneTime, null));
 

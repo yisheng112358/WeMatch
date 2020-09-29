@@ -66,14 +66,14 @@
 
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
-					String memberName = (String) session.getAttribute("name");
+					String memberName = (String) session.getAttribute("memberName");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						//out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+						//out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Logout</span></a></li>");
 						out.write(
-						"<li class='nav-item' style='line-height:16px; margin-top: 0px;'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span style='text-align:center;'><span style='font-style:italic; font-size: 14px; font-weight:bold;'>Welcome,&nbsp;"
+						"<li class='nav-item' style='line-height:16px; margin-top: 0px;'><a href='/WeMatch_dev' class='nav-link'><span style='text-align:center;'><span style='font-style:italic; font-size: 14px; font-weight:bold;'>Welcome,&nbsp;"
 								+ memberName + "</span><span>Logout</span></span></a></li>");
 					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
 				</ul>
@@ -102,7 +102,9 @@
 								<h1 class="mb-4 mt-3">
 									Get A <span>Perfect</span> Body <span>Figure</span>
 								</h1>
-								<p>良好的健康狀況和高度的身體訓練，是有效的腦力<br>勞動的重要條件。</p>
+								<p>
+									良好的健康狀況和高度的身體訓練，是有效的腦力<br>勞動的重要條件。
+								</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join
@@ -132,7 +134,9 @@
 								<h1 class="mb-4 mt-3">
 									Pain is <span>Temporary</span> But Glory is <span>Forever</span>
 								</h1>
-								<p>人人都想有健美身材，但是沒人想舉重死人的器材。<br>日復一日的堅持練下去吧，只有活動適量才能保持<br>訓練的熱情和提高運動的技能。</p>
+								<p>
+									人人都想有健美身材，但是沒人想舉重死人的器材。<br>日復一日的堅持練下去吧，只有活動適量才能保持<br>訓練的熱情和提高運動的技能。
+								</p>
 
 								<p>
 									<a href="register" class="btn btn-primary px-5 py-3 mt-3">Join

@@ -174,9 +174,9 @@
 					<%
 						String memberStatus = "" + (Integer) session.getAttribute("Status");
 					if (memberStatus.equals("1") || memberStatus.equals("2")) {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Logout</span></a></li>");
 					} else {
-						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+						out.write("<li class='nav-item'><a href='/WeMatch_dev' class='nav-link'><span>Login</span></a></li>");
 					}
 					%>
 				</ul>
@@ -219,9 +219,9 @@
 							maxlength="20" onblur="checkPwd2()">
 					</div>
 					<div class="form-group">
-						<a href='/WeMatch_dev/index.jsp'>回到登入</a><br /> <input
-							id="Button1" type="submit" value="送出"
-							class="btn py-3 px-4 btn-primary"> <span>${error.msg}</span>
+						<a href='/WeMatch_dev'>回到登入</a><br /> <input id="Button1"
+							type="submit" value="送出" class="btn py-3 px-4 btn-primary">
+						<span>${error.msg}</span>
 					</div>
 				</form>
 				<div class="form-group"></div>

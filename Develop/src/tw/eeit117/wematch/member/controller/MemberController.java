@@ -38,27 +38,30 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+
 	@GetMapping("/homepage")
 	public String homepage() {
 		return "HomePage";
 	}
-	
-	@GetMapping("/loginPage")	//?
+
+	@GetMapping("/loginPage") // ?
 	public String loginPage() {
 		return "SignInPage";
 	}
 
-	@GetMapping("/register")	//在登入頁按尚未登入倒進註冊頁面
+	@GetMapping("/register") // 在登入頁按尚未登入倒進註冊頁面
 	public String register() {
 		return "registerPage";
 	}
 
-	@PostMapping("/loginsystem.controller")		//登入action
-	public String checkLogin(HttpServletRequest request,
-			@PathVariable @RequestParam("memberAccount") String myUser,
-			@PathVariable @RequestParam("memberPwd") String myPwd,
-			Model m, HttpSession session) {
+	@PostMapping("/loginsystem.controller") // 登入action
+	public String checkLogin(HttpServletRequest request, @PathVariable @RequestParam("memberAccount") String myUser,
+			@PathVariable @RequestParam("memberPwd") String myPwd, Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 
@@ -82,15 +85,15 @@ public class MemberController {
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
-				
-				List<Member> m1 = memberService.selectAllMember();		
+				session.setAttribute("memberName", users.getMemberName());
+				List<Member> m1 = memberService.selectAllMember();
 				m.addAttribute("results", m1);
 				return "MemberAdminPage";
 			} else {
 				m.addAttribute("MemberAccount", myUser);
 				m.addAttribute("MemberPwd", myPwd);
 				m.addAttribute("checkUser", checkUser);
-
+				session.setAttribute("memberName", users.getMemberName());
 				session.setAttribute("Account", myUser);
 				session.setAttribute("Status", users.getMemberStatus());
 				session.setAttribute("id", id);
@@ -101,7 +104,7 @@ public class MemberController {
 		return "index";
 	}
 
-	@GetMapping("/MemberForgot")	///在登入頁按忘記密碼導入忘記密碼頁
+	@GetMapping("/MemberForgot") /// 在登入頁按忘記密碼導入忘記密碼頁
 	public String MemberForgot() {
 		return "MemberForgot";
 	}
@@ -113,7 +116,7 @@ public class MemberController {
 		request.setAttribute("errors", errors);
 
 		Member member = memberService.selectMemberByAccount(memberAccount);
-		if(member != null) {
+		if (member != null) {
 			if (member.getMemberEmail().equals(memberEmail)) {
 				session.setAttribute("memberForgotAccount", memberAccount);
 				return "MemberForgetAction";
@@ -121,7 +124,7 @@ public class MemberController {
 				errors.put("msg", "帳號與信箱不符合");
 				return "MemberForgot";
 			}
-		}else {
+		} else {
 			errors.put("msg", "資料輸入錯誤");
 			return "MemberForgot";
 		}
@@ -145,7 +148,7 @@ public class MemberController {
 		}
 	}
 
-	@PostMapping("/register.controller")	//註冊action
+	@PostMapping("/register.controller") // 註冊action
 	public String memberCreate(HttpServletRequest request, @PathVariable @RequestParam("memberAccount") String myUser,
 			@PathVariable @RequestParam("memberPwd") String myPwd, Model m, HttpSession session) {
 		Map<String, String> errors = new HashMap<String, String>();
@@ -178,12 +181,12 @@ public class MemberController {
 		return "registerPage";
 	}
 
-	@GetMapping("/MemberPage")	//導覽列的Member Ship
+	@GetMapping("/MemberPage") // 導覽列的Member Ship
 	public String MemberPage(HttpSession session) {
-		if(session.getAttribute("Account")!=null) {
+		if (session.getAttribute("Account") != null) {
 			Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
 			session.setAttribute("Account", member.getMemberAccount());
-			session.setAttribute("name", member.getMemberName());
+			session.setAttribute("memberName", member.getMemberName());
 			session.setAttribute("nickname", member.getNickname());
 			session.setAttribute("gender", member.getGender());
 			session.setAttribute("email", member.getMemberEmail());
@@ -193,26 +196,26 @@ public class MemberController {
 			session.setAttribute("booldtype", member.getBloodType());
 			session.setAttribute("hobbies", member.getHobbies());
 			session.setAttribute("selfinfo", member.getSelfIntro());
-	
+
 			return "MemberPage";
-		}else {
+		} else {
 			return "index";
 		}
 	}
 
-	@GetMapping("/MemberPage_update")	//會員資訊頁按修改
+	@GetMapping("/MemberPage_update") // 會員資訊頁按修改
 	public String MemberPage_update(Model m) {
 		Member member = new Member();
 		m.addAttribute("Member", member);
 		return "MemberPage_update";
 	}
-	
+
 	@RequestMapping("/getPhoto/{id}")
 	public void getPhoto(HttpServletResponse response, HttpSession session) {
 		response.setContentType("image/jpeg");
 		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		
-		if(member.getPicture_1()!=null) {
+
+		if (member.getPicture_1() != null) {
 			InputStream inputStream = new ByteArrayInputStream(member.getPicture_1());
 			try {
 				IOUtils.copy(inputStream, response.getOutputStream());
@@ -220,7 +223,7 @@ public class MemberController {
 				e.printStackTrace();
 			}
 		}
-		if(member.getPicture_2()!=null) {
+		if (member.getPicture_2() != null) {
 			InputStream inputStream = new ByteArrayInputStream(member.getPicture_2());
 			try {
 				IOUtils.copy(inputStream, response.getOutputStream());
@@ -229,13 +232,13 @@ public class MemberController {
 			}
 		}
 	}
-	
+
 	@RequestMapping("/getPhoto2/{id}")
 	public void getPhoto2(HttpServletResponse response, HttpSession session) {
 		response.setContentType("image/jpeg");
 		Member member = memberService.selectMemberByAccount(session.getAttribute("Account").toString());
-		
-		if(member.getPicture_2()!=null) {
+
+		if (member.getPicture_2() != null) {
 			InputStream inputStream = new ByteArrayInputStream(member.getPicture_2());
 			try {
 				IOUtils.copy(inputStream, response.getOutputStream());
@@ -244,7 +247,7 @@ public class MemberController {
 			}
 		}
 	}
-	
+
 	@GetMapping("/MemberPage_updatePic")
 	public String updatePic() {
 		return "MemberPage_updatePic";
@@ -289,9 +292,9 @@ public class MemberController {
 		memberService.selectMemberByAccount(session.getAttribute("Account").toString());
 	}
 
-	@PostMapping("/MemberPage_DB")	//會員頁資料更新action
+	@PostMapping("/MemberPage_DB") // 會員頁資料更新action
 	public String updateMember(@ModelAttribute("Member") Member member, Model m, HttpSession session) {
-		session.setAttribute("name", member.getMemberName());
+		session.setAttribute("memberName", member.getMemberName());
 		session.setAttribute("nickname", member.getNickname());
 		session.setAttribute("gender", member.getGender());
 		session.setAttribute("email", member.getMemberEmail());

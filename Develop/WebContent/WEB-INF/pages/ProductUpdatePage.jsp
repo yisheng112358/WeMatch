@@ -109,13 +109,13 @@
 							</p>
 						</div>
 						<div class="form-group" style="text-align: right;">
-							<a id='productUpdateBtn' class="btn py-3 px-4 btn-primary">送出</a>
+							<a id='productUpdateBtn' class="btn py-3 px-4 btn-primary">Commit</a>
 						</div>
 					</form>
 					<div style="text-align: right;">
 						<p>
 							<a onclick="history.back()"
-								class="btn btn-primary px-5 py-3 mt-3">返回</a>
+								class="btn btn-primary px-5 py-3 mt-3">Return</a>
 						</p>
 					</div>
 				</div>

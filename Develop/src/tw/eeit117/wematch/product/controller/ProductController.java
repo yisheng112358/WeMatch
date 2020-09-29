@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import tw.eeit117.wematch.member.model.Member;
@@ -131,7 +130,7 @@ public class ProductController {
 		Integer oldProductBeanStock = oldProductBean.getStock();
 		productBeanService.update(newProductBean);
 		if (oldProductBeanStock <= 0 && newProductBean.getStock() > 0) {
-			String emailTitle = "[WeMatch Product Arrive]" + newProductBean.getProductName();
+			String emailTitle = "[WeMatch Product Arrive] " + newProductBean.getProductName();
 			String emailContent = "The product " + newProductBean.getProductName() + " is available now!";
 			@SuppressWarnings("unchecked")
 			Map<Integer, List<String>> productArrival = (Map<Integer, List<String>>) model
