@@ -87,8 +87,9 @@ thead th {
 											<td>${film.videoName}</td>
 											<td>${film.videoLink}</td>
 											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-											<td><a
-												href="<c:url value='/video/delete?id=${film.videoId}' />" onclick="delConfirm()">刪除</a></td>
+											<td>
+									   <%-- <a href="<c:url value='/video/delete?id=${film.videoId}' />" onclick="delConfirm()">刪除</a></td> --%>
+											<a href="#" onclick="if(confirm('您確定要刪除此筆資料嗎?'))location.href='<c:url value="/video/delete?id=${film.videoId}" />'">刪除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
