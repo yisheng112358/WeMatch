@@ -1,6 +1,6 @@
 package tw.eeit117.wematch.product.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,8 +23,8 @@ public class ProductBean {
 	private String productDescription;
 	private byte[] thumbnail;
 	private byte[] detailImg;
-	private Date addDate;
-	private Date updateDate;
+	private Timestamp addDate;
+	private Timestamp updateDate;
 
 	public ProductBean() {
 	}
@@ -116,20 +116,20 @@ public class ProductBean {
 	}
 
 	@CreationTimestamp
-	public Date getAddDate() {
+	public Timestamp getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(Timestamp addDate) {
 		this.addDate = addDate;
 	}
 
 	@UpdateTimestamp
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 
