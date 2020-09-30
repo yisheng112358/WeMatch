@@ -418,7 +418,7 @@ h3:active {
 		<textarea cols='45' rows='14' id='serverResponseArea'
 			style="margin-left: 15px;" autofocus></textarea>
 		<br> <span
-			style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${name}：</span><br>
+			style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${memberName}：</span><br>
 		<input type='text' size="45" id='message'
 			style="margin-left: 15px; margin-bottom: 10px;"><br>
 

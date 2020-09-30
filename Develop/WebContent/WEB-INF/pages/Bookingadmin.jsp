@@ -124,7 +124,7 @@
 	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
 
 <div>
-      <input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${name}"><p style="font-size:30px;">預約者:${name}</p>
+      <input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${memberName}"><p style="font-size:30px;">預約者:${memberName}</p>
 	 
 	 <br>	 
 	 

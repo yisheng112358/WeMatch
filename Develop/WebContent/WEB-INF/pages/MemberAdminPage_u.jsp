@@ -26,7 +26,7 @@
 					</div>
 					<div class="form-group">
 						<label for="memberName">姓名：</label> <input type="text"
-							id="memberName" class="form-control" value="${name}"
+							id="memberName" class="form-control" value="${memberName}"
 							name="memberName" maxlength="20" autocomplete="on">
 					</div>
 					<div class="form-group">
