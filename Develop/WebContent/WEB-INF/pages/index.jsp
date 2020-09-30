@@ -1,16 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Fitness Space</title>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
-	rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="google-signin-client_id" content="208671900981-890jifipft9v6hirpnlopdgkbo8sqk2p.apps.googleusercontent.com">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet"> -->
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -39,7 +37,7 @@
 .v_code {
 	width: 600px;
 	margin: 0 auto;
-	padding-left:10px;
+	padding-left: 10px;
 }
 
 .v_code>input {
@@ -91,10 +89,10 @@
 		var codeLength = 6; //驗證碼的長度
 		var checkCode = document.getElementById("checkCode");
 		var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c',
-				'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-				'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
-				'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-				'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+		    'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+		    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
+		    'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+		    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
 		for (var index = 0; index < codeLength; index++) {
 			var charNum = Math.floor(Math.random() * 52);
 			code += codeChars[charNum];
@@ -102,9 +100,9 @@
 		if (checkCode) {
 			checkCode.className = "code";
 			checkCode.innerHTML = code;
-<%-- 		<% session.setAttribute("code", code); %> --%>
+		}
 	}
-	}
+	
 	function validateCode() {
 		var inputCode = document.getElementById("inputCode").value;
 		var textShow = document.getElementById("text_show")
@@ -123,12 +121,14 @@
 			return true;
 		}
 	}
+	
 	function checkCode() {
 		var btn = document.getElementById("Button1");
 		btn.onclick = function() {
-			validateCode();
+		validateCode();
 		}
 	}
+	
 	window.onload = function() {
 		checkCode();
 		createCode();
@@ -142,13 +142,14 @@
 			validateCode();
 		};
 	}
+	
 	function checkAccount() {
 		let theAccountObj = document.getElementById("account1");
 		let theAccountObjVal = theAccountObj.value;
 		let theAccountObjValLen = theAccountObjVal.length;
 		let flag1 = false, flag2 = false;
 		let accountObj = document.getElementById("accountsp");
-
+	
 		if (theAccountObjVal == "") {
 			accountObj.innerHTML = "帳號不可空白";
 			return false;
@@ -174,7 +175,7 @@
 				accountObj.innerHTML = "帳號格式錯誤";
 				return false;
 			}
-		}
+  		}
 	}
 
 	function checkPwd() {
@@ -183,7 +184,7 @@
 		let thePwdObjValLen = thePwdObjVal.length;
 		let flag3 = false, flag4 = false, flag5 = false;
 		let pwdObj = document.getElementById("pwdsp");
-
+	
 		if (thePwdObjVal == "") {
 			pwdObj.innerHTML = "密碼不可空白";
 			return false;
@@ -213,97 +214,198 @@
 			}
 		}
 	}
+	
 	function submitFunc(){
 		if(checkAccount() && checkPwd()){
 			return true;
-		}else{
+		} else {
 			alert("帳號或密碼格式錯誤, 請再確認輸入內容");
 			return false;
-		}
+		}	
 	}
 
 	function submitFunc2(){
-		if(checkAccount() && checkPwd() && validateCode()){
-			return true;
-		}else{
-			alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
-			return false;
-		}
+// 		if(checkAccount() && checkPwd() && validateCode()){
+			if(checkAccount() && checkPwd()){
+				return true;
+			}else{
+				alert("所有欄位皆為必填且須遵照規定填寫, 請再次確認輸入內容後送出!!");
+				return false;
+			} 
+ 	}
+
+ 	//一鍵登入
+	function adminkey() {
+		document.getElementById("account1").value = "admintest123";
+		document.getElementById("pwd1").value = "P@ssw0rd";
+		document.getElementById("inputCode").disabled = true;
+	}
+	function memberkey1() {
+		document.getElementById("account1").value = "membertest123";
+		document.getElementById("pwd1").value = "P@ssw0rd";
+		document.getElementById("inputCode").disabled = true;
+	}
+	function memberkey2() {
+		document.getElementById("account1").value = "visitortest123";
+		document.getElementById("pwd1").value = "P@ssw0rd";
+		document.getElementById("inputCode").disabled = true;
 	}
 </script>
+<!-- google -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https: //ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300" style="background-image: url('images/ind_1.jpg'); background-size: 100%;">
-
-	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb"
-		id="schedule-section">
-		<div class="container"  style="margin-left: 5px; padding-right: 450px;">
-			<div class="comment-form-wrap pt-5"
-				style="padding: 20px; ">
-				<h2 class="mb-5" style="margin-left:90px;">Welcome to <span class="navbar-brand" style="font-size:38px;">FITNESS SPACE</span> </h2>
-				<form action="loginsystem.controller" method="post"
-					enctype="multipart/form-data" class="p-5 bg-light"
-					style="position: relative; border: 1px solid; margin-left:10px;"
-					onsubmit="return submitFunc2()">
+	data-offset="300"
+	style="background-image: url('images/ind_1.jpg'); background-size: 100%;">
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="schedule-section">
+		<div class="container" style="margin-left: 5px; padding-right: 450px;">
+			<div class="comment-form-wrap pt-5" style="padding: 20px;">
+				<h2 class="mb-5" style="margin-left: 90px;">Welcome to 
+				<span class="navbar-brand" style="font-size: 38px;">FITNESS SPACE</span>
+				</h2>
+				<form action="loginsystem.controller" method="post" enctype="multipart/form-data"
+				class="p-5 bg-light" style="position: relative; border: 1px solid; margin-left: 10px;"
+				onsubmit="return submitFunc2()">
 					<div id="memo">*為必填</div>
 					<div class="form-group">
-						<label for="memberAccount">帳號 *</label> <span id="accountsp"
-							class="notice"></span><br /> <input type="text" id="account1"
-							class="form-control" name="memberAccount" required="required"
-							 maxlength="20"
-							autocomplete="on" onblur="checkAccount()"> <span>${errors.name}</span>
+						<label for="memberAccount">帳號 *</label> <span id="accountsp" class="notice"></span><br />
+						<input type="text" id="account1" class="form-control" name="memberAccount" 
+						required="required" maxlength="20" autocomplete="on" onblur="checkAccount()">
+						<span>${errors.name}</span>
 					</div>
 					<div class="form-group">
-						<label for="memberPwd">密碼 *</label> <span id="pwdsp"
-							class="notice"></span><br />  <input
-							type="password" id="pwd1" class="form-control" name="memberPwd"
-							required="required"
-							
-							maxlength="20" onblur="checkPwd()"> <span>${errors.pwd}</span>
+						<label for="memberPwd">密碼 *</label> <span id="pwdsp" class="notice"></span><br />
+						<input type="password" id="pwd1" class="form-control" name="memberPwd" 
+						required="required" maxlength="20" onblur="checkPwd()">
+						<span>${errors.pwd}</span>
 					</div>
-					<a href="MemberForgot">忘記密碼？</a> <a
-						href='<c:url value="/register"/>'
-						style="position: absolute; right: 0; padding-right: 50px;">尚未註冊？</a>
-
+						<a href="MemberForgot">忘記密碼？</a>
+						<a href='<c:url value="/register"/>' style="position: absolute; right: 0; 
+						padding-right: 50px;">尚未註冊？</a>
 					<div class="form-group">
-						 <br />
 						<div class="v_code">
 							<div class="code_show">
-								<span class="code" id="checkCode"
-									style="-webkit-user-select: none;" unselectable="on"></span> <a
-									id="linkbt">看不清換一張</a>
+								<span class="code" id="checkCode" style="-webkit-user-select: none;" unselectable="on"></span>
+								<a id="linkbt">看不清換一張</a>
+								</div>
+								<div class="input_code">
+									<label for="inputCode">驗證碼：</label>
+									<input type="text" id="inputCode" name="inputCode" required="required" />
+									<span id="text_show"></span>
+								</div>
 							</div>
-							<div class="input_code">
-								<label for="inputCode">驗證碼：</label> <input type="text"
-									id="inputCode" name="inputCode" required="required" /> <span
-									id="text_show"></span>
-							</div>
-						</div>
-						<input id="Button1" type="submit" value="登入"
-							class="btn py-3 px-4 btn-primary" style="margin-top: 20px;">  <span>${errors.msg}</span>
-					</div>
+							<input id="Button1" type="submit" value="登入" class="btn py-3 px-4 btn-primary" style="margin-top: 20px;">
+							<span>${errors.msg}</span>
+							<!-- 一鍵登入 -->
+							<input style="position: absolute; right: 0; margin-right: 50px; margin-top: 20px; background-color: #FFC1E0;"
+								class="btn py-3 px-4 btn-primary" type="button" value="Admin" id="Admin" onclick="adminkey()">
+							<input style="position: absolute; right: 0; margin-right: 150px; margin-top: 20px; background-color: #FFAD86;"
+								class="btn py-3 px-4 btn-primary" type="button" value="M1" id="M1" onclick="memberkey1()">
+							<input style="position: absolute; right: 0; margin-right: 227px; margin-top: 20px; background-color: #FFAD86;"
+								class="btn py-3 px-4 btn-primary" type="button" value="M2" id="M2" onclick="memberkey2()"> <br />
+							<br/>
+							<!-- FaceBook -->
+							<!-- The JS SDK Login Button -->
 
+							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+							<div id="status"></div>
+
+							<!-- Load the JS SDK asynchronously -->
+							<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+							<!-- Google -->
+							<div class="g-signin2" data-onsuccess="onSignin" id="myP"></div>
+						</div>
+						
+<!-- FaceBook -->
+<script>
+
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2685961804992031',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v8.0'           // Use this Graph API version for this call.
+    });
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+      document.location.href="http://localhost:8080/WeMatch_dev/homepage";
+    });
+  }
+
+</script>
+<!-- Google -->
+<script type="text/javascript">
+auth2.attachClickHandler('myP',{},startApp.onSuccess,startApp.onFailure);
+   	function onSignIn(googleUser, go, false) {  
+   	    // Useful data for your client-side scripts:  
+   	    var profile = googleUser.getBasicProfile();
+   	    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+  	    console.log('Full Name: ' + profile.getName());
+   	    console.log('Given Name: ' + profile.getGivenName());
+   	    console.log('Family Name: ' + profile.getFamilyName());
+   	    console.log("Image URL: " + profile.getImageUrl());
+   	    console.log("Email: " + profile.getEmail());
+	
+   	    // The ID token you need to pass to your backend:
+   	    var id_token = googleUser.getAuthResponse().id_token;
+   	    console.log("ID Token: " + id_token);
+ 		} -->
+ 	function go(){
+ 		document.location.href="http://localhost:8080/WeMatch_dev/homepage";
+ 		console.log("aaaaa")
+  	 }
+</script>
 				</form>
 			</div>
 		</div>
 	</section>
-	
-			<div class="col-md-12 text-center">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart color-danger" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-	
-	<%-- 	<%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
-	<%@ include file="JSsettingout.jsp"%>
 
+	<div class="col-md-12 text-center">
+		<p>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			Copyright &copy;
+			<script>
+      document.write(new Date().getFullYear());
+     </script>
+			All rights reserved | This template is made with <i
+				class="icon-heart color-danger" aria-hidden="true"></i> by <a
+				href="https://colorlib.com" target="_blank">Colorlib</a>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+		</p>
+	</div>
+
+	<%--  <%@ include file="WEB-INF/pages/footerout.jsp"%> --%>
+	<%@ include file="JSsettingout.jsp"%>
 </body>
 </html>

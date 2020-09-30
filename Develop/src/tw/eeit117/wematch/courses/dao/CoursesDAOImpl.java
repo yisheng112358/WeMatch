@@ -55,10 +55,10 @@ public class CoursesDAOImpl implements CoursesDAO{
 	@Transactional
 	public void deleteCourses(int coursesId) {
 		Courses courses = (Courses) sessionFactory.getCurrentSession()
-				.load(Courses.class, coursesId);
+				.get(Courses.class, coursesId);
 		if (courses != null  ) {
 			this.sessionFactory.getCurrentSession().delete(courses);
 		}
-		
-	}
+			
+	}	
 }

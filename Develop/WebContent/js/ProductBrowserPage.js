@@ -1,3 +1,16 @@
+function addCart(productId, productName) {
+    if (confirm(`Add ${productName} to your shopping cart?`)) {
+        location = `shoppingCart/${productId}`;
+    }
+}
+
+function addArrivalNotice(productId, productName) {
+    if (confirm(`Notice you when ${productName} arrive?`)) {
+        // 把productId傳到控制器和抓會員的Email
+        location = `productArrival/${productId}`;
+    }
+}
+
 $(document).ready(() => {
     var productCategories = ["Massager", "Yoga", "Supplement"];
 
@@ -15,7 +28,7 @@ $(document).ready(() => {
             dataType: "json",
             success: function(data) {
                 $("#searchNum").empty();
-                $("#searchNum").html("目前共有：" + data.length + " 筆商品 ");
+                $("#searchNum").html("Currently we have " + data.length + " search results: ");
                 // 上傳檔案
                 function uploadDataToTable(productCategory) {
                     $("#content" + productCategory).empty();
@@ -29,14 +42,14 @@ $(document).ready(() => {
                                 "<a href='examProduct/" + data[i].productId + "'><img alt='No image' src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
                                 '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
-                                "<a style='display:block;' href='examProduct/" + data[i].productId + "'><input class='cartbutton' type='button' value='詳細資訊' style='width:100px;'></a>" +
-                                "<a style='display:block;' href='ShoppingCart?productId=" + data[i].productId + "'><input class='cartbutton' type='button' value='加入購物車' style='width:100px;'></a>" +
+                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value=' Cart '></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }
                     }
                     $("#content" + productCategory).append(txt);
-                    $("#searchNum").append(productCategory + ": " + $("td." + productCategory).length + " ");
+                    $("#searchNum").append($("td." + productCategory).length + " " + productCategory + " ");
                     // 計算總頁數
                     totalPage = Math.ceil(dataLength / itemPerPage);
                     // 建立頁面數字連結
@@ -201,7 +214,7 @@ $(document).ready(() => {
             success: function(data) {
                 Array.prototype.push.apply(allProducts, data); // 收集全部的商品物件給其他方法使用，data直接塞。
                 $("#searchNum").empty();
-                $("#searchNum").html("目前共有：" + data.length + " 筆商品 ");
+                $("#searchNum").html("Currently we have " + data.length + " products: ");
                 // 上傳檔案
                 function uploadDataToTable(productCategory) {
                     $("#content" + productCategory).empty();
@@ -213,16 +226,16 @@ $(document).ready(() => {
                             var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(data[i].thumbnail)));
                             txt += "<tr><td>" +
                                 "<a href='examProduct/" + data[i].productId + "'><img alt='No image' src='data:image/jpg;base64," + base64String + "'hight='250px' width='250px'></a>" +
-                                '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].productName +
+                                '</td><td class="' + productCategory + '" id="' + data[i].productId + '" style="width:200px;">' + data[i].updateDate + "<br/>" + data[i].productName +
                                 '</td><td style="width:100px;"><h6 style="color:black;">$ ' + data[i].price + '</h6></td><td>' +
-                                "<a style='display:block;' href='examProduct/" + data[i].productId + "'><input class='cartbutton' type='button' value='詳細資訊' style='width:100px;'></a>" +
-                                "<a style='display:block;' href='ShoppingCart?productId=" + data[i].productId + "'><input class='cartbutton' type='button' value='加入購物車' style='width:100px;'></a>" +
+                                `<p style='text-align: center;'><input type='button' onclick='addCart("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value=' Cart '></p>` +
+                                `<p style='text-align: center;'><input type='button' onclick='addArrivalNotice("${data[i].productId}", "${data[i].productName}")' class='btn btn-primary px-5 py-3 mt-3' value='Notice'></p>` +
                                 '</td></tr>';
                             dataLength++;
                         }
                     }
                     $("#content" + productCategory).append(txt);
-                    $("#searchNum").append(productCategory + ": " + $("td." + productCategory).length + " ");
+                    $("#searchNum").append($("td." + productCategory).length + " " + productCategory + " ");
                     // 計算總頁數
                     totalPage = Math.ceil(dataLength / itemPerPage);
                     // 建立頁面數字連結

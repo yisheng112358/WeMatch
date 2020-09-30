@@ -42,14 +42,15 @@
 								<p id='stock'>Stock: ${productExam.getStock()}</p>
 								<p id='productDescription'>${productExam.getProductDescription()}</p>
 								<div style="text-align: left;">
-									<a href="/WeMatch_dev/product/browse"
-										class="btn btn-primary px-5 py-3 mt-3">加入購物車</a>
+									<input type='button'
+										onclick='addCart("${productExam.getProductId()}", "${productExam.getProductName()}")'
+										class='btn btn-primary px-5 py-3 mt-3' value='Cart'>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div style="text-align: right;">
-						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">返回</a>
+						<a onclick="history.back()" class="btn btn-primary px-5 py-3 mt-3">Return</a>
 					</div>
 				</div>
 			</div>
@@ -58,6 +59,7 @@
 
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
+	<script src="../js/ProductExamPage.js" type="text/javascript"></script>
 
 </body>
 </html>

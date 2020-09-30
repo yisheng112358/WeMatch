@@ -25,7 +25,7 @@
 			<div class="ftco-schedule">
 				<p style="text-align: right;">
 					<a href="/WeMatch_dev/product/addProduct"
-						class="btn btn-primary px-5 py-3 mt-3">新增</a>
+						class="btn btn-primary px-5 py-3 mt-3">Add</a>
 				</p>
 				<div class="sidebar-box">
 					<div class="search-form" id="searchForm">
@@ -44,7 +44,7 @@
 							role="tablist" aria-orientation="vertical">
 							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
 								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
+								aria-controls="v-pills-8" aria-selected="true">Massager <span>Massager,
 									Fascia gun...</span></a> <a class="nav-link ftco-animate"
 								id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9"
 								role="tab" aria-controls="v-pills-9" aria-selected="false">Yoga
@@ -56,13 +56,12 @@
 							</a>
 						</div>
 						<div class="form-group">
-							<label for="categorySelect">商品排序</label><br /> <select
+							<label for="categorySelect">Sort by:</label><br /> <select
 								name="category" id="sorttingSelect">
-								<option value="">請選擇</option>
-								<option value="HighPriceUp">價格由高到低</option>
-								<option value="HighPriceDown">價格由低到高</option>
-								<option value="LatestUp">日期由新到舊</option>
-								<option value="LatestDown">日期由舊到新</option>
+								<option value="HighPriceUp">High Price Up</option>
+								<option value="HighPriceDown">High Price Down</option>
+								<option value="LatestUp">Latest Up</option>
+								<option value="LatestDown" selected>Latest Down</option>
 							</select>
 						</div>
 						<p style="text-align: center;">

@@ -24,7 +24,13 @@ public class TestProductsGenerator {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		ProductBean product1 = new ProductBean(null, "Massager", "3D massager 鑽石按摩儀", 299., 1, "微雕按摩儀/體雕棒(按摩儀)",
+		ProductBean product0 = new ProductBean(null, "Massager", "Reak Hot Mask Treatment", 999999., 0,
+				"5 Modes amp New Year Gift Equipped with vibration air pressure warming and music functions you can select combination modes as .",
+				imageToByteArray("resource\\massager\\massager0_t.jpg"),
+				imageToByteArray("resource\\massager\\massager0_d.jpg"));
+		session.save(product0);
+
+		ProductBean product1 = new ProductBean(null, "Massager", "3D massager 鑽石按摩儀", 299., 2, "微雕按摩儀/體雕棒(按摩儀)",
 				imageToByteArray("resource\\massager\\massager1_t.jpg"),
 				imageToByteArray("resource\\massager\\massager1_d.jpg"));
 		session.save(product1);

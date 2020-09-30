@@ -27,7 +27,7 @@ selfIntro nvarchar(MAX)
 )
 GO
 
--- (4)
+-- (4)商品
 CREATE table Product(
 productId int IDENTITY(1,1) PRIMARY KEY NOT NULL,
 category nvarchar(50),
@@ -119,3 +119,16 @@ listType nvarchar(50) not null, --食物類別
 listName nvarchar(50) not null, --食物名稱
 calories nvarchar(50) not null, --熱量
 )
+GO
+
+--(9)訂單
+create table Receiver(
+receiverId int  Identity(1, 1) Primary Key NOT NULL,
+receiverName nvarchar(50),
+receiverPhone nvarchar(50),
+receiverAddress nvarchar(50),
+receiverEmail nvarchar(50),
+receiverNote nvarchar(50),
+totalAmount money DEFAULT 0,
+)
+GO
