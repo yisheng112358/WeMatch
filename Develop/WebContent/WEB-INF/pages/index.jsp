@@ -6,9 +6,6 @@
 <title>Fitness Space</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="google-signin-client_id" content="208671900981-890jifipft9v6hirpnlopdgkbo8sqk2p.apps.googleusercontent.com">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet"> -->
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -341,7 +338,7 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '2685961804992031',
+      appId      : 'xxx',
       cookie     : true,                     // Enable cookies to allow the server to access the session.
       xfbml      : true,                     // Parse social plugins on this webpage.
       version    : 'v8.0'           // Use this Graph API version for this call.
