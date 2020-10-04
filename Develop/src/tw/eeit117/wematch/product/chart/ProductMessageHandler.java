@@ -30,6 +30,36 @@ public class ProductMessageHandler implements MessageHandler.Whole<String> {
 				}
 			}
 
+			String[] massagers = { "按", "舒", "筋" };
+			for (String massager : massagers) {
+				if (message.trim().toLowerCase().contains(massager)) {
+					response = "您可以試試看我們的：\n";
+					response += "	3D massager 鑽石按摩儀\n";
+					response += "	Thera-Band Roller Massager\n";
+					response += "	Reak Hot Mask Treatment...等\n";
+				}
+			}
+
+			String[] yogas = { "瑜", "球", "柱" };
+			for (String yoga : yogas) {
+				if (message.trim().toLowerCase().contains(yoga)) {
+					response = "您可以試試看我們的：\n";
+					response += "	高密度瑜珈墊\n";
+					response += "	瑜珈球\n";
+					response += "	空中瑜伽吊床瑜珈秋千...等\n";
+				}
+			}
+
+			String[] supplements = { "肌", "乳", "補" };
+			for (String supplement : supplements) {
+				if (message.trim().toLowerCase().contains(supplement)) {
+					response = "您可以試試看我們的：\n";
+					response += "	Rule One R1\n";
+					response += "	Optimum Nutrition ON\n";
+					response += "	MYPROTEIN...等\n";
+				}
+			}
+
 			String[] farewells = { "thank", "3Q", "謝", "掰", "88" };
 			for (String farewell : farewells) {
 				if (message.trim().toLowerCase().contains(farewell)) {

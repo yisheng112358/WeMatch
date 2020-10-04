@@ -4,15 +4,12 @@
 		    const endpoint = "/productServer";
 		    const connString = ws_host_port + contextPath + endpoint;
 		    const status = document.getElementById('status');
-		    var btnConn = document.getElementById('btnConn');
 		    var btnSend = document.getElementById('btnSend');
-		    var btnClose = document.getElementById('btnClose');
 		    var message = document.getElementById('message');
 		    var serverResponseArea = document
 		        .getElementById('serverResponseArea');
 		    var btntest = document.getElementById('tabHelper');
 		    var socket = null;
-		    btnClose.disabled = true;
 		    btnSend.disabled = true;
 
 		    btnSend.onclick = function() {
@@ -27,28 +24,24 @@
 		        }
 		        appendMsg("Member: " + message.value);
 		        socket.send(message.value);
+		        message.value = "";
 		    }
 
 		    btntest.onclick = function() {
 		        socket = new WebSocket(connString);
 
 		        socket.onopen = function(e) {
-		            //					status.innerHTML = "已連線";
+		            serverResponseArea.value = "小幫手已上線！\n";
 		        };
 
 		        socket.onmessage = function(event) {
 		            appendMsg("Helper: " + event.data);
 		        };
-		        btnClose.disabled = false;
 		        btnSend.disabled = false;
 		        socket.onclose = function(event) {
 		            if (event.wasClean) {
-		                //						status.innerHTML = "[close] 連線正常關閉, code=" + event.code
 		                +", reason= " + event.reason;
-		            } else {
-		                //						status.innerHTML = "[close] 連線不正常結束";
-		            }
-		            btnClose.disabled = true;
+		            } else {}
 		            btnSend.disabled = true;
 
 		        };
@@ -58,31 +51,15 @@
 		        };
 		    }
 
-		    cc.onclick = function() {
-		        if (socket == null) {
-		            //					status.innerHTML = "必須先連到主機才能關閉連線";
-		            return;
-		        }
-		        if (socket.readyState === WebSocket.OPEN) {
-		            socket.onclose = function() {}; // disable onclose handler first
-		            socket.close();
-		            //					status.innerHTML = "已離線";
-		        }
-
-		        btnClose.disabled = true;
-		        btnSend.disabled = true;
-		    }
 		}
 
 		function appendMsg(message) {
-		    //	 		serverResponseArea.value = serverResponseArea.value + message + "\n";
 		    serverResponseArea.value += message + "\n";
 		}
 
 
-		//		$("#message").keydown(function(event) {
-		//		    if(event.keyCode == 13){
-		//		    	
-		//		    	return;
-		//		    };
-		//		});
+		$("#message").keydown(function(event) {
+		    if (event.keyCode == 13) {
+		        btnSend.click();
+		    };
+		});

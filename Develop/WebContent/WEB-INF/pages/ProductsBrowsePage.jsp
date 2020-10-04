@@ -112,17 +112,15 @@
 										<h5 class="text-center"
 											style="font-weight: bold; color: blue; padding-top: 8px;">Helper</h5>
 										<span id='status'></span>
-										<textarea cols='45' rows='14' id='serverResponseArea'
+										<textarea cols='60' rows='14' id='serverResponseArea'
 											style="margin-left: 15px;"></textarea>
 										<br> <span
 											style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${memberName}：</span><br>
-										<input type='text' size="45" id='message'
+										<input type='text' size="60" id='message'
 											style="margin-left: 15px; margin-bottom: 10px;"><br>
 
 										<button id='btnSend' class="btn btn-primary"
 											style="margin-left: 15px; margin-bottom: 10px; float: right; margin-right: 15px;">送出</button>
-										<button id='btnClose' class="btn btn-primary"
-											style="margin-left: 10px; margin-bottom: 10px; float: right;">離開</button>
 									</div>
 									<!-- 購物小幫手End -->
 
