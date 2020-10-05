@@ -124,8 +124,14 @@ table-->.table {
 		id="schedule-section">
 		<div class="container">
 			<div class="comment-form-wrap pt-5" style="padding: 20px;">
-					<h1 align="center">待選課程區</h1>
-					<table class="table table-striped">
+				<h1 align="center">
+					待選課程區 <a
+						href="http://localhost:8080/WeMatch_dev/download/pdf/CoursesIT.pdf"
+						target="_blank" class="badge badge-warning"
+						style="width: 115px; font-size: 20px">操作說明<span
+						style="font-size: 10px">下載</span></a>
+				</h1>
+				<table class="table table-striped">
 						<tr align="center" color="brack">
 							<th>課程名稱</th>
 							<th>上課星期</th>
