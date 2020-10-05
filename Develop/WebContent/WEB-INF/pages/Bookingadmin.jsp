@@ -129,7 +129,7 @@
 	 <br>	 
 	 
 	 
-	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-24"max="2020-10-01" step="1"> <br />
+	<input type="date" class="date" id="date" name="date" required value="2020-09-22"  max="2020-10-10" step="1"> <br />
 
 	    <br/><br/>
 	    
@@ -233,7 +233,13 @@
 
     var x= document.getElementById("date");
 
- x.setAttribute("value", Today.getFullYear()+"-"+"0"+(Today.getMonth()+1)+"-"+Today.getDate());
+ x.setAttribute("value", Today.getFullYear()+"-"+(Today.getMonth()+1)+"-"+"0"+Today.getDate());
+
+ console.log(Today.getFullYear())
+ console.log(Today.getMonth()+1)
+ console.log(Today.getDate())
+
+ 
 
      </script>
      <script>
