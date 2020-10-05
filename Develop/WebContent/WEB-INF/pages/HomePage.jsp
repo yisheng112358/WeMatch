@@ -13,6 +13,11 @@
 <head>
 <title>Fitness Space Homepage</title>
 <%@ include file="CSSsettingout.jsp"%>
+<style>
+.col-md.d-flex.align-self-stretch.ftco-animate.fadeInUp.ftco-animated:hover {
+    border: 2px #fe9191 solid;
+}
+</style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -225,9 +230,11 @@
 						<div class="media-body">
 							<h3 class="heading mb-3">健身產品</h3>
 							<p style="text-align: justify; text-justify: inter-ideograph;">「I
-								don’t eat for taste, I eat for function.」</p><div style="text-align: right;">
-							<br><br><br>Jay Cutler
-						</div></div>
+								don’t eat for taste, I eat for function.」</p>
+							<div style="text-align: right;">
+								<br> <br> <br>-- Jay Cutler
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-md d-flex align-self-stretch ftco-animate"
@@ -241,8 +248,8 @@
 							<h3 class="heading mb-3">健身課程</h3>
 							<p style="text-align: justify; text-justify: inter-ideograph;">「Dream
 								more than others think practical. Expect more than others think
-								is possible.」
-							<div style="text-align: right;">Frank Zane</div>
+								that is possible.」
+							<div style="text-align: right;">-- Frank Zane</div>
 						</div>
 					</div>
 				</div>
@@ -257,7 +264,9 @@
 							<h3 class="heading mb-3">器材預約</h3>
 							<p style="text-align: justify; text-justify: inter-ideograph;">「The
 								hardest things in life are done the least and provide the most.」</p>
-							<div style="text-align: right;"><br>Greg Plitt</div>
+							<div style="text-align: right;">
+								<br>-- Greg Plitt
+							</div>
 						</div>
 					</div>
 				</div>
@@ -272,7 +281,9 @@
 							<h3 class="heading mb-3">飲食管理</h3>
 							<p style="text-align: justify; text-justify: inter-ideograph;">「To
 								be a champion you must act like one, act like a champion.」</p>
-							<div style="text-align: right;"><br><br>Lou Ferrigno</div>
+							<div style="text-align: right;">
+								<br> <br>-- Lou Ferrigno
+							</div>
 						</div>
 					</div>
 				</div>
@@ -288,7 +299,9 @@
 							<p style="text-align: justify; text-justify: inter-ideograph;">「If
 								you spend too much time thinking about a thing, you’ll never get
 								it done.」</p>
-							<div style="text-align: right;"><br>Bruce Lee</div>
+							<div style="text-align: right;">
+								<br>-- Bruce Lee
+							</div>
 						</div>
 					</div>
 				</div>
@@ -303,7 +316,9 @@
 							<h3 class="heading mb-3">教練資格</h3>
 							<p style="text-align: justify; text-justify: inter-ideograph;">「If
 								you don’t learn from your mistakes, then they become regrets.」</p>
-							<div style="text-align: right;"><br>John Cena</div>
+							<div style="text-align: right;">
+								<br>-- John Cena
+							</div>
 						</div>
 					</div>
 				</div>
