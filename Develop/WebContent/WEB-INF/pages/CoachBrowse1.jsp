@@ -10,10 +10,6 @@
 <%@ include file="CSSsettingout.jsp"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"
-	integrity="sha512-frFP3ZxLshB4CErXkPVEXnd5ingvYYtYhE5qllGdZmcOlRKNEPbufyupfdSTNmoF5ICaQNO6SenXzOZvoGkiIA=="
-	crossorigin="anonymous"></script>
 <script>
 	window.onload = function() {
 		var xhr = new XMLHttpRequest();
@@ -149,33 +145,7 @@ tr {
 	transform: translateY(4px);
 }
 
-.pageDiv {
-	margin-left: 430px;
-}
-
-#pagination-demo {
-	display: inline-block;
-	margin-bottom: 1.75em;
-}
-
-#pagination-demo li {
-	display: inline-block;
-}
-
-.page-content {
-	color: black;
-	display: inline-block;
-	padding: 10px;
-	width: 100%;
-	max-width: 660px;
-	display: inline-block;
-	padding: 10px;
-	width: 100%;
-	max-width: 660px;
-	margin-left: 550px;
-}
-
-.up {
+.up { 
 	margin-left: 1100px;
 	font-size: 24px;
 }
@@ -209,28 +179,13 @@ tr {
 				</div>
 				<div class="coachDiv" id="coachIntro"></div>
 				<br />
-				<div class="pageDiv">
-					<ul id="pagination-demo" class="pagination-sm"></ul>
-				</div>
-				<div id="page-content" class="page-content">Page 1</div>
 				<div class="up">
 					<a href="#schedule-section">top🔺</a>
 				</div>
 			</div>
 		</div>
 	</section>
-	<script>
-		$('#pagination-demo').twbsPagination({
-			totalPages : 10,
-			visiblePages : 5,
-			next : 'Next',
-			prev : 'Prev',
-			onPageClick : function(event, page) {
-				//fetch content and render here
-				$('#page-content').text('Page ' + page) + ' content here';
-			}
-		});
-	</script>
+	
 	<%
 		if (memberStatus.equals("2")) {
 		response.sendRedirect("/WeMatch_dev/coachAdminPage");
