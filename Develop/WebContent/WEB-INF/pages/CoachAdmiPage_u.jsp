@@ -206,14 +206,14 @@ h3:active {
 		}
 	}
 
-	function submitFunc(){
-		if(checkcoachName() && checkcoachNickname() && checkcoachAge() && checkcourseName() && checkcourseType() && checklicense()){
-			return true;
-		}else{
-			alert("輸入內容有誤, 請再次確認後送出!!");
-			return false;
-		}
-	}
+// 	function submitFunc(){
+// 		if(checkcoachName() && checkcoachNickname() && checkcoachAge() && checkcourseName() && checkcourseType() && checklicense()){
+// 			return true;
+// 		}else{
+// 			alert("輸入內容有誤, 請再次確認後送出!!");
+// 			return false;
+// 		}
+// 	} 
 </script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"

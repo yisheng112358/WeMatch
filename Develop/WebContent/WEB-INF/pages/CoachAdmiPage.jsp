@@ -47,7 +47,10 @@
 							+ "</td>"
 							+ "<td><a href='coachEdit/" + coach[i].coachId + "'>"
 							+ "<input type='button' id='changeCoach' value='修改'></a></td>"
-							+ "<td><a href='coachDelete/" + coach[i].coachId + "'>"
+							+ "<td><a onclick="
+							+ "if(confirm('您確定要刪除此筆資料嗎?'))location.href='coachDelete/"
+							+ coach[i].coachId
+							+ "'>"
 							+ "<input type='button' id='deleteCoach' value='刪除'></a></td>"
 							+ "</tr>";
 				}
@@ -137,7 +140,7 @@ tbody tr:nth-child(2n+1) {
 }
 
 tbody tr:hover {
-	background-color:	#D2E9FF;
+	background-color: #D2E9FF;
 	color: black;
 }
 
@@ -199,6 +202,11 @@ tbody tr:hover {
 	background-color: #FF7575;
 	transform: translateY(4px);
 }
+
+.up {
+	margin-left: 1100px;
+	font-size: 24px;
+}
 </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -234,11 +242,14 @@ tbody tr:hover {
 						onclick="location.href='admin/newCoach'"
 						style="margin-left: 100px">
 				</div>
+				<div class="up">
+					<a href="#schedule-section">top🔺</a>
+				</div>
 			</div>
 		</div>
 	</section>
 
-
+ 
 
 	<%@ include file="footerout.jsp"%>
 	<%@ include file="JSsettingout.jsp"%>
