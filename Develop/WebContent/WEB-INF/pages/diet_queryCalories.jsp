@@ -1,50 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
+<%@ page import="java.util.*,java.sql.*"%>
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="com.google.gson.JsonObject"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	Gson gsonObj = new Gson();
-Map<Object, Object> map = null;
-List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
 
-map = new HashMap<Object, Object>();
-map.put("label", "飲料");
-map.put("y", 150);
-list.add(map);
-map = new HashMap<Object, Object>();
-map.put("label", "飯糰");
-map.put("y", 232);
-list.add(map);
-map = new HashMap<Object, Object>();
-map.put("label", "麵包");
-map.put("y", 195);
-list.add(map);
-
-String dataPoints = gsonObj.toJson(list);
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Products</title>
+<title>查詢熱量</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/diet/home.css">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<%@ include file="CSSsettingout.jsp"%>
 <style>
 .notice {
 	color: #ff0000;
@@ -62,32 +37,79 @@ String dataPoints = gsonObj.toJson(list);
 th, td {
 	border: 1px solid black
 }
+
+div.title {
+	margin-left: 600px;
+	font-size: 300%;
+}
+
+div.choose-oneday {
+	margin-left: 610px;
+	color: black;
+	font-size: 120%
+}
+
+button {
+	border: 1px solid black;
+	outline: none;
+	box-shadow: none;
+	background-color: #FFA488;
+}
+
+button:hover {
+	background-color: black;
+	color: white;
+}
 </style>
-<script type="text/javascript">
-	window.onload = function() {
-
-		var chart = new CanvasJS.Chart("chartContainer", {
-			animationEnabled : true,
-			theme : "light2",
-			data : [ {
-				type : "doughnut",
-				yValueFormatString : "#,##0",
-				indexLabel : "{label}: {y}cal",
-				toolTipContent : "{y}cal",
-				dataPoints :
-<%out.print(dataPoints);%>
-	} ]
-		});
-		chart.render();
-
-	}
-</script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	<%@ include file="headerout.jsp"%>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="/WeMatch_dev/homepage">Fitness</a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+				type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a
+						href="<c:url value='/product/browse' />" class="nav-link"><span>Products</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/addCourses' />"
+						class="nav-link"><span>Courses</span></a></li>
+					<li class="nav-item"><a
+						href="<c:url value='/bookingcontroller/booking' />"
+						class="nav-link"><span>Schedule</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/diet' />"
+						class="nav-link"><span>Diet</span></a></li>
+					<li class="nav-item"><a href="/WeMatch_dev/video"
+						class="nav-link"><span>Videoflix</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/coachPage' />"
+						class="nav-link"><span>Coach Intro.</span></a></li>
+					<li class="nav-item"><a
+						href="<c:url value='/shoppingCart/cart' />" class="nav-link"><span>Shopping
+								Cart</span></a></li>
+					<li class="nav-item"><a href="<c:url value='/MemberPage' />"
+						class='nav-link'><span>Membership</span></a></li>
+					<%
+						String memberStatus = "" + (Integer) session.getAttribute("Status");
+					if (memberStatus.equals("1") || memberStatus.equals("2")) {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Logout</span></a></li>");
+					} else {
+						out.write("<li class='nav-item'><a href='/WeMatch_dev/index.jsp' class='nav-link'><span>Login</span></a></li>");
+					}
+					%>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 
 	<section class="ftco-section ftco-services-2" id="services-section">
 
@@ -104,64 +126,122 @@ th, td {
 			<a href="diet_queryCalories">查詢熱量</a>
 		</div>
 
-		<div style="margin-left: 600px; font-size: 300%">查詢每日熱量</div>
+		<div class="title">查詢每日熱量</div>
+		<button style="margin: 30px 0 0 1185px; position: absolute;"
+			onclick="block_capture()">點我下載圖片</button>
 		<br>
-		<div style="margin-left: 610px; color: black; font-size: 120%">
-			選擇日期 <input type="date" onchange="showTo()" id="time" value="請選擇">
+		<div class="choose-oneday">
+			選擇日期 <input type="date" class="dateclas" id="oneday"
+				onchange="handler(event)" />
 		</div>
+
 		<br>
-		<div
-			style="margin-left: 300px; width: 1000px; height: 450px; border: 1px solid black;">
-			<div id="yesNo" style="display: none;">
+		<div id="img-this"
+			style="margin-left: 300px; width: 1000px; height: 450px; border: 1px solid black; ">
+			<div>
 				<div id="chartContainer"
 					style="height: 430px; width: 460px; margin: 0 5px 5px 20px; position: absolute;"></div>
-				<div
-					style="height: 50px; width: 300px; margin: 20px 0 0 600px; position: absolute; color: black">
-					總熱量 <span><a style="color: blue; font-size: 300%">577</a>大卡</span>
+				<div id="showThis"
+					style="height: 50px; width: 300px; margin: 20px 0 0 600px; position: absolute; color: black; display: none;">
+					總熱量 <span><a id="cal" style="color: blue; font-size: 300%"></a>大卡</span>
+				</div>
+				<div id="thatDay" style="margin-left: 900px; position: absolute">
 				</div>
 				<div
 					style="height: 200px; width: 300px; margin: 200px 0 0 600px; position: absolute;">
-					<table style="color: black; font-size: 120%;">
-						<tr>
-							<th>食物類別</th>
-							<th>食物名稱</th>
-							<th>熱量(大卡)</th>
-						</tr>
-						<tr>
-							<td>飲料</td>
-							<td>豆漿</td>
-							<td>150</td>
-						</tr>
-						<tr>
-							<td>飯糰</td>
-							<td>肉鬆</td>
-							<td>232</td>
-						</tr>
-						<tr>
-							<td>麵包</td>
-							<td>巧克力</td>
-							<td>195</td>
-						</tr>
-					</table>
+					<div id="foodarea"></div>
 				</div>
 			</div>
 		</div>
 
 		<script>
-			function showTo() {
-				document.getElementById('yesNo').style.display = 'block';
-			}
+			//限制不能選擇今天之後的日期
 			var date = new Date();
 			var year = date.getFullYear();
 			var month = ('0' + (date.getMonth() + 1)).slice(-2);
 			var day = ('0' + date.getDate()).slice(-2);
-			// var day = date.getDay();
-			var time = year + '-' + month + '-' + day;
-			console.log(time);
-			document.getElementById('time').value = time;
-			//限制不能選擇今天之後的日期
-			document.getElementById('time').setAttribute('max', time);
+			var oneday = year + '-' + month + '-' + day;
+			document.getElementById('oneday').value = oneday;
+			document.getElementById('oneday').setAttribute('max', oneday);
+
+			//根據選擇的日期，呈現當日數據
+			function handler(e) {
+				document.getElementById('showThis').style.display = 'block';
+				
+				var onedays = document.getElementById('oneday').value;
+
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", "<c:url value='/foodList' />" + "?oneday="
+						+ onedays, true);
+				xhr.send();
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var content = "<table style='color: black; font-size: 120%;'>"
+						content += "<tr><th>食物類別</th><th>食物名稱</th><th>熱量(大卡)</th></tr>";
+						var foods = JSON.parse(xhr.responseText);
+
+						var sumcal = 0;
+						for (var i = 0; i < foods.length; i++) {
+							var cal = Number(foods[i].calories);
+							sumcal = sumcal + cal;
+
+							content += "<tr><td>" + foods[i].listType
+									+ "</td><td>" + foods[i].listName
+									+ "</td><td>" + foods[i].calories
+									+ "</td></tr>";
+
+							var thatDay = foods[i].addDate;
+						}
+						content += "</table>";
+						document.getElementById("foodarea").innerHTML = content;
+
+						document.getElementById("cal").innerHTML = sumcal;
+
+						document.getElementById("thatDay").innerHTML = thatDay;
+
+						var chart = new CanvasJS.Chart("chartContainer", {
+							animationEnabled : true,
+							theme : "light2",
+							data : [ {
+								type : "doughnut",
+								yValueFormatString : "#,##0",
+								indexLabel : "{label}: {y}大卡",
+								toolTipContent : "{y}大卡",
+								dataPoints : dps
+							} ]
+						});
+						var dps = [];
+						function parseDataPoints() {
+							for (var j = 0; j < foods.length; j++)
+								dps.push({
+									label : foods[j].listType,
+									y : foods[j].calories
+								});
+						}
+						;
+						parseDataPoints();
+						chart.options.data[0].dataPoints = dps;
+						chart.render();
+					}
+				}
+			}
+
+			//點我下載圖片事件
+			function block_capture() {
+				html2canvas(document.querySelector("#img-this"))
+						.then(
+								function(canvas2) {
+									a = document.createElement('a');
+									a.href = canvas2.toDataURL("image/jpeg",
+											0.92).replace("image/jpeg",
+											"image/octet-stream");
+									a.download = 'image.jpg';
+									a.click();
+								});
+			}
 		</script>
+
 	</section>
 
 	<%@ include file="footerout.jsp"%>

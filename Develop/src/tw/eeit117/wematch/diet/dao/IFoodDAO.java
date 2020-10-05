@@ -8,10 +8,7 @@ public interface IFoodDAO {
 
 	//新增
 	public void addFood(Food food);  
-	
-	// 單筆查詢
-	public Food select(Integer Id);
 
 	// 多筆查詢
-	public List<Food> selectAll();
+	public List<Food> selectSome(String oneday);
 }

@@ -22,16 +22,10 @@ public class FoodService implements IFoodService {
 		foodDAO.addFood(food);
 	}
 	
-	@Override
-	@Transactional
-	public Food select(Integer Id) {
-		return foodDAO.select(Id);
-	}
 
 	@Override
-	@Transactional
-	public List<Food> selectAll() {
-		return foodDAO.selectAll();
+	public List<Food> selectSome(String oneday) {
+		return foodDAO.selectSome(oneday);
 	}
 }
 

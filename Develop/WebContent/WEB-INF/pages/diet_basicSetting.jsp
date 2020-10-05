@@ -81,14 +81,14 @@ input[type="button"]:focus {
 }
 
 button {
-	border: 1px solid black;
+ 	border: 1px solid black; 
 	outline: none;
 	box-shadow: none;
 	background-color: #FFA488;
 }
 
 button:hover {
-	background-color: black;
+ 	background-color: black; 
 	color: white;
 }
 
