@@ -16,4 +16,6 @@ public interface CoachService {
 	public Coach update(Coach coach);
 	//刪除
 	public void delete(Integer coachId);
+	//搜尋
+	public List<Coach> findByKeyword(String keyword);
 }

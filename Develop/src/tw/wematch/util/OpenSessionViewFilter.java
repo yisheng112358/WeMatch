@@ -33,15 +33,15 @@ public class OpenSessionViewFilter implements Filter {
 			throws IOException, ServletException {
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();
-			System.out.println("Filter Transaction Begin.");
+//			System.out.println("Filter Transaction Begin.");
 			chain.doFilter(request, response);
 			sessionFactory.getCurrentSession().getTransaction().commit();
 		} catch (Exception e) {
 			sessionFactory.getCurrentSession().getTransaction().rollback();
-			System.out.println("Filter Transaction RollBack.");
+//			System.out.println("Filter Transaction RollBack.");
 			chain.doFilter(request, response);
 		} finally {
-			System.out.println("Filter Transaction Closed.");
+//			System.out.println("Filter Transaction Closed.");
 		}
 	}
 

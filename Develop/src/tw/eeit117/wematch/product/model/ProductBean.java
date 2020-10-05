@@ -1,6 +1,6 @@
 package tw.eeit117.wematch.product.model;
 
-import java.util.Arrays;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "Product")
@@ -20,6 +23,8 @@ public class ProductBean {
 	private String productDescription;
 	private byte[] thumbnail;
 	private byte[] detailImg;
+	private Timestamp addDate;
+	private Timestamp updateDate;
 
 	public ProductBean() {
 	}
@@ -110,11 +115,28 @@ public class ProductBean {
 		this.detailImg = detailImg;
 	}
 
+	@CreationTimestamp
+	public Timestamp getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Timestamp addDate) {
+		this.addDate = addDate;
+	}
+
+	@UpdateTimestamp
+	public Timestamp getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Timestamp updateDate) {
+		this.updateDate = updateDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", category=" + category + ", productName=" + productName
-				+ ", price=" + price + ", stock=" + stock + ", productDescription=" + productDescription
-				+ ", thumbnail=" + Arrays.toString(thumbnail) + ", detailImg=" + Arrays.toString(detailImg) + "]";
+				+ ", price=" + price + ", stock=" + stock + ", productDescription=" + productDescription + "]";
 	}
 
 }

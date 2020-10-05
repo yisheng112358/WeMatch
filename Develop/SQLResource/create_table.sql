@@ -11,7 +11,7 @@ create table Member(
 memberId int not null primary key identity(1,1),
 memberAccount varchar(50) not null unique,
 memberPwd varchar(50) not null,
-memberStatus int,
+memberStatus int default 1,
 memberName nvarchar(20),
 memberEmail varchar(50),
 birthdayDate date,
@@ -27,7 +27,7 @@ selfIntro nvarchar(MAX)
 )
 GO
 
--- (4)
+-- (4)商品
 CREATE table Product(
 productId int IDENTITY(1,1) PRIMARY KEY NOT NULL,
 category nvarchar(50),
@@ -35,9 +35,10 @@ productName nvarchar(50)  NOT NULL,
 price money DEFAULT 0,
 stock int NOT NULL DEFAULT 0,
 productDescription nvarchar(MAX),
-thumbnail image,
-detailImg image,
-addTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+thumbnail varbinary(max),
+detailImg varbinary(max),
+addDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updateDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 )
 GO
 
@@ -102,8 +103,7 @@ GO
  Create Table Curriculum(
  curriculumId int not null primary Key identity(2000,1),--課表
  memberId int,--會員
- coursesId int unique,--課程
- --coursesMany int  null, -- 關聯的欄位
+ coursesId int,--課程
  coursesName nvarchar(50),--課程名稱
  coursesWeek nvarchar(50),--星期
  sectionNumber nvarchar(50), --課程節數(第幾堂)
@@ -111,3 +111,24 @@ GO
 )
 GO
 
+--(9)飲食
+Create Table Food(
+Id int not null primary key identity(1,1),--ID
+addDate nvarchar(50) not null , --日期
+listType nvarchar(50) not null, --食物類別
+listName nvarchar(50) not null, --食物名稱
+calories nvarchar(50) not null, --熱量
+)
+GO
+
+--(9)訂單
+create table Receiver(
+receiverId int  Identity(1, 1) Primary Key NOT NULL,
+receiverName nvarchar(50),
+receiverPhone nvarchar(50),
+receiverAddress nvarchar(50),
+receiverEmail nvarchar(50),
+receiverNote nvarchar(50),
+totalAmount money DEFAULT 0,
+)
+GO

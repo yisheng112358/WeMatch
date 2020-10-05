@@ -29,7 +29,7 @@
 						<div class="form-group">
 							<span class="icon icon-search"></span> <input type="text"
 								id="searchInput" class="form-control"
-								placeholder="Type a keyword to search">
+								placeholder="Type a keyword and enter or select the suggestions">
 						</div>
 					</div>
 					<p id="searchNum">
@@ -39,18 +39,31 @@
 					<div class="col-md-4 nav-link-wrap">
 						<div class="nav flex-column nav-pills" id="v-pills-tab"
 							role="tablist" aria-orientation="vertical">
-							<a class="nav-link ftco-animate active" id="v-pills-8-tab"
+							<a class="nav-link ftco-animate active" id="tabMassager"
 								data-toggle="pill" href="#v-pills-8" role="tab"
-								aria-controls="v-pills-8" aria-selected="true">Massage <span>Massager,
-									Fascia gun...</span></a> <a class="nav-link ftco-animate"
-								id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9"
-								role="tab" aria-controls="v-pills-9" aria-selected="false">Yoga
-								<span>Mat, Roller...</span>
-							</a> <a class="nav-link ftco-animate" id="v-pills-10-tab"
+								aria-controls="v-pills-8" aria-selected="true">Massager <span>Massager,
+									Fascia gun...</span></a> <a class="nav-link ftco-animate" id="tabYoga"
+								data-toggle="pill" href="#v-pills-9" role="tab"
+								aria-controls="v-pills-9" aria-selected="false">Yoga <span>Mat,
+									Roller...</span>
+							</a> <a class="nav-link ftco-animate" id="tabSupplement"
 								data-toggle="pill" href="#v-pills-10" role="tab"
 								aria-controls="v-pills-10" aria-selected="false">Supplement
 								<span>Protein, Vitamin...</span>
+							</a> <a class="nav-link ftco-animate" id="tabHelper"
+								data-toggle="pill" href="#v-pills-11" role="tab"
+								aria-controls="v-pills-11" aria-selected="false">Helper <span>You
+									can ask me</span>
 							</a>
+						</div>
+						<div class="form-group">
+							<label for="categorySelect">Sort by:</label><br /> <select
+								name="category" id="sorttingSelect">
+								<option value="HighPriceUp">High Price Up</option>
+								<option value="HighPriceDown">High Price Down</option>
+								<option value="LatestUp">Latest Up</option>
+								<option value="LatestDown" selected>Latest Down</option>
+							</select>
 						</div>
 						<%
 							if (memberStatus.equals("2")) {
@@ -90,6 +103,30 @@
 								<div id="pageSupplement" class="text-center"></div>
 							</div>
 
+							<div class="tab-pane fade" id="v-pills-11" role="tabpanel"
+								aria-labelledby="v-pills-day-11-tab">
+								<div class="coach-wrap ftco-animate d-sm-flex">
+
+									<!-- 購物小幫手Start -->
+									<div class="fixed1" id="tt">
+										<h5 class="text-center"
+											style="font-weight: bold; color: blue; padding-top: 8px;">Helper</h5>
+										<span id='status'></span>
+										<textarea cols='60' rows='14' id='serverResponseArea'
+											style="margin-left: 15px;"></textarea>
+										<br> <span
+											style="padding-bottom: 8px; font-weight: bold; color: black; margin-left: 15px;">會員&nbsp;${memberName}：</span><br>
+										<input type='text' size="60" id='message'
+											style="margin-left: 15px; margin-bottom: 10px;"><br>
+
+										<button id='btnSend' class="btn btn-primary"
+											style="margin-left: 15px; margin-bottom: 10px; float: right; margin-right: 15px;">送出</button>
+									</div>
+									<!-- 購物小幫手End -->
+
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -100,6 +137,7 @@
 	<%@ include file="footer.jsp"%>
 	<%@ include file="JSsetting.jsp"%>
 	<script src="../js/ProductBrowserPage.js" type="text/javascript"></script>
+	<script src="../js/ProductChat.js" type="text/javascript"></script>
 
 </body>
 </html>

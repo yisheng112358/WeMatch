@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ProductBeanService implements IProductBeanService {
 
 	@Autowired
@@ -17,13 +19,14 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
+	@Transactional
 	public void insert(ProductBean productBean) {
 		productDao.insert(productBean);
 	}
 
 	@Override
-	public String deleteById(Integer productId) {
-		return productDao.deleteById(productId);
+	public void deleteById(Integer productId) {
+		productDao.deleteById(productId);
 	}
 
 	@Override
@@ -32,6 +35,7 @@ public class ProductBeanService implements IProductBeanService {
 	}
 
 	@Override
+	@Transactional
 	public void update(ProductBean productBean) {
 		productDao.update(productBean);
 	}

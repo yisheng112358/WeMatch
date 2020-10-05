@@ -13,6 +13,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
 
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
@@ -45,35 +46,107 @@
 				</table>
 				</div>
 			</div>
-
+			
+			<div class="col-md-12 heading-section ftco-animate">
+			          	<span class="subheading">A Few Words About Us</span>
+			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">We're Functioning for Almost <span class="number" data-number="30">0</span> Years</h2>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			          </div>
+</div>
+</section>
 <hr/>
-<div>
-	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
-	
 
-      <input style="display:none" type="hidden"  name="bookingname"  value="${name}">${name}
+
+      <section class="ftco-section ftco-no-pb ftco-no-pt ftco-program bg-light" id="programs-section">
+      <div class="container"  >
+        <div class="row no-gutters" >
+          <div class="col-md-4 ftco-animate py-5 nav-link-wrap js-fullheight" >
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link px-4 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-gym"></span> 巨巨之路</a>
+
+              <a class="nav-link px-4" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false"><span class="mr-3 flaticon-body"></span> 苗條一路</a>
+
+              <a class="nav-link px-4" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-woman"></span> 健美之路</a>
+
+              <a class="nav-link px-4" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-abs"></span> 造肌之路</a>
+
+
+            </div>
+          </div>
+          <div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center js-fullheight">
+            
+            <div class="tab-content pl-md-5" id="v-pills-tabContent">
+
+              <div class="tab-pane fade show active py-0" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                <span class="icon mb-3 d-block flaticon-gym"></span>
+                <h2 class="mb-4">巨巨之路</h2>    <img width="400" height="400" src="../images/bigh.jpg">
+                <p style="font-size:30px;">前往巨巨之路,都是孤獨的</p>
+                <p style="font-size:30px">我不是不練,我只是不想練太壯</p>
+                
+              </div>
+
+              <div class="tab-pane fade py-0" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                <span class="icon mb-3 d-block flaticon-body"></span>
+                <h2 class="mb-4">苗條一路</h2>    <img width="400" height="400" src="../images/biga.jpg">
+                <p style="font-size:30px;">苗條一路,有我沒你</p>
+                <p style="font-size:30px;">只有非常努力,才能看起來毫不費力</p>
+               
+              </div>
+
+              <div class="tab-pane fade py-0" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                <span class="icon mb-3 d-block flaticon-woman"></span>
+                <h2 class="mb-4">健美之路</h2>   <img width="400" height="400" src="../images/bigb.jpg">
+                <p style="font-size:30px;">健身到了一定境界，何需再看臉,當你不要臉時,你就贏了</p>
+                <p style="font-size:30px;">既然沒有俊美的外表,那就去擁有野獸的身體吧</p>
+               
+              </div>
+
+              <div class="tab-pane fade py-0" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                <span class="icon mb-3 d-block flaticon-abs"></span>
+                <h2 class="mb-4">造肌之路</h2>   <img width="400" height="400" src="../images/bigc.jpg">
+                <p style="font-size:30px;">再一下,再一下就好,到底再三小</p>
+                <p style="font-size:30px;">我不是在深蹲,就是在深蹲的路上</p>
+               
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<br><br>
+
+
+	
+	<form style="text-align:center;" action="<c:url  value="/bookingcontroller/bookingCheck"/>" method="post" id="form1" name="form1">
+
+<div>
+      <input style="display:none" type="hidden" id="bookingname" name="bookingname"  value="${memberName}"><p style="font-size:30px;">預約者:${memberName}</p>
 	 
-	 <br><br>	 
+	 <br>	 
 	 
 	 
-	<input type="date" class="date" id="date" name="date" required value="2020-09-22" min="2020-09-22"max="2020-09-30" step="1"> <br />
+	<input type="date" class="date" id="date" name="date" required value="2020-09-22"  max="2020-10-10" step="1"> <br />
 
 	    <br/><br/>
 	    
 	  
         
 <div id="checkboxGroup" name="checkboxGroup">
-        <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="9"/>9:00</label>
+        <label class="timefont">預約時間:          <input name="time" type="checkbox" class="checkbox" value="9"/>9:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="11"/>11:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="13"/>13:00</label>
         <label class="timefont"><input name="time" type="checkbox" class="checkbox" value="15"/>15:00</label>
 </div>
-<!--                       draggable="false" 不被拖動 -->
-       </div>                            
+
+</div>                            
 	    <br/><br/>
 	    
 	    <div  id="loaction" style="text-align:center;" >
-	    
+	   
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells1" id="Dumbbells1" value="Dumbbells1"><img width="150" height="150" id="image1" src="../images/yet.jpg" onclick="myfunction()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells2" id="Dumbbells2" value="Dumbbells2"><img width="150" height="150" id="image2" src="../images/yet.jpg" onclick="myfunction2()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells3" id="Dumbbells3" value="Dumbbells3"><img width="150" height="150" id="image3" src="../images/yet.jpg" onclick="myfunction3()"></label></span>
@@ -91,8 +164,7 @@
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells11" id="Dumbbells11" value="Dumbbells11"><img width="150" height="150" id="image11" src="../images/yet.jpg" onclick="myfunction11()"></label></span>
 		<span style="padding:50px 50px;"><label> <input style="display:none" type="checkbox" name="Dumbbells12" id="Dumbbells12" value="Dumbbells12"><img width="150" height="150" id="image12" src="../images/yet.jpg" onclick="myfunction12()"></label></span>
 		
-		
-		
+	
 		<input style="display:none" type="hidden" id="test1"  value="${D1}">
 
 		<input style="display:none" type="hidden" id="test2"  value="${D2}">
@@ -119,23 +191,24 @@
 
                                                                      
         <br/><br/>                                                                        
-		<input type="submit" name="button" id="button" value="預約" >
+		<input type="submit" name="button" id="button" value="預約" style="margin: 80px" >
 		<input type="reset" name="button" id="reset" value="重製" >
-		
+<!-- 		<input type="button" class="checkbooking" name="button" id="checkbooking" value="查詢" > -->
+
 		</div>
-		
-		<br/><br/>
-		
-
-    </form>
- </div>
+ </form>
  
-
+ 
  <% if (memberStatus.equals("2")) {
  	response.sendRedirect("/WeMatch_dev/bookingcontroller/booking2"); 
  }
+%>
+ 
+   
+<%@ include file="BookingBrowse3.jsp"%>
+   
+   
 
- %>
 
 
 
@@ -160,8 +233,46 @@
 
     var x= document.getElementById("date");
 
- x.setAttribute("value", Today.getFullYear()+"-"+"0"+(Today.getMonth()+1)+"-"+Today.getDate());
+ x.setAttribute("value", Today.getFullYear()+"-"+(Today.getMonth()+1)+"-"+"0"+Today.getDate());
+
+ console.log(Today.getFullYear())
+ console.log(Today.getMonth()+1)
+ console.log(Today.getDate())
+
+ 
 
      </script>
+     <script>
+
+ $('.checkbooking').click(function(){
+		var dateA=document.getElementById("date");
+		var date=dateA.value;
+		var time=$('input[name=time]:checked').val();
+		var nameA=document.getElementById("bookingname");
+		var name=nameA.value;
+
+		$.ajax({
+type:"GET",
+url:"/WeMatch_dev/bookingcontroller/selectbooking",
+data:{
+	'date':date,
+	'time':time,
+	'name':name,
+},
+
+success:function(data){
+console.log("success");
+	
+}
+})
+			
+})
+	   
+	   
+
+
+     </script>
+     
+     
 </body>
 </html>

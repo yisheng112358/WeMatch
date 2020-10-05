@@ -2,6 +2,7 @@ package tw.eeit117.wematch.coach.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,5 +53,14 @@ public class CoachDAOImpl implements CoachDAO {
 		}
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Coach> findByKeyword(String keyword) {
+		String hql = "From Coach where coachName like '%" + keyword + "%' or coachNickname like '%"
+				+ keyword + "%' or courseName like '%" + keyword + "%'";
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery(hql).list();
+	}
+	
 
 }

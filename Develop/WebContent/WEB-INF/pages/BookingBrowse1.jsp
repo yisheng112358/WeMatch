@@ -17,10 +17,10 @@
 
 </head>
 <body>
-
-	<form action="" method="get" class="p-5 bg-light"
-							style="position: relative; border: 1px solid black; text-align: center">
-							<table>
+<setion >
+<div >
+	<form action="" method="get" class="p-5 bg-light" style=" border: 1px solid black; text-align: center; margin:10px 900px 10px 10px;float:none">
+							<table style="font-size:20px"  >
 								<thead>
 									<tr>
 										<th>序號</th>
@@ -44,7 +44,9 @@
 										<tr>
 											<td>&nbsp;</td>
 										</tr>
-									<c:forEach var="film" varStatus="status" items="${films}">
+									<c:forEach var="film" items="${films}" varStatus="status" >
+										
+										<c:if test="${status.count <11}">
 										<tr>
 											<td>${status.count}</td>
 											<td>&nbsp;&nbsp;</td>
@@ -58,29 +60,54 @@
 											<td><a
 												href="<c:url value='/bookingcontroller/delete?id=${film.bookingId}' />">刪除</a></td>
 										</tr>
+										</c:if>
 									</c:forEach>
 								</tbody>
 							</table>
 						</form>
+</div>
 
+<!-- <div style = "position:relative;top:-560px;left:650px;"> -->
+<div>
+	<form action="" method="get" class="p-5 bg-light"
+							style=" border: 1px solid black; text-align: center;margin:10px 900px 10px 10px;">
+							<table style="font-size:20px" >
+								<thead>
 
+								</thead>
+								<tbody>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+									<c:forEach var="film" items="${films}" varStatus="status" >
+										
+										<c:if test="${status.count >10 && status.count<21}">
+										<tr>
+											<td>${status.count}</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>${film.bookingDate}</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>${film.bookingTime}點鐘</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>${film.bookingName}</td>
+
+											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+											<td><a
+												href="<c:url value='/bookingcontroller/delete?id=${film.bookingId}' />">刪除</a></td>
+										</tr>
+										</c:if>
+									</c:forEach>
+								</tbody>
+							</table>
+						</form>
+</div>
+</setion>
 
 
 
 
     <script src="../js/bookingcheck3.js"></script>
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../js/popper.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/jquery.easing.1.3.js"></script>
-	<script src="../js/jquery.waypoints.min.js"></script>
-	<script src="../js/jquery.stellar.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
 
-	<script src="../js/jquery.animateNumber.min.js"></script>
-	<script src="../js/scrollax.min.js"></script>
 
 </body>
 </html>
