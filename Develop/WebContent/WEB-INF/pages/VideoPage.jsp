@@ -204,7 +204,7 @@ h3:active {
 							<p style="color: rgb(95, 92, 92);">核心肌群之一的背部，由多裂肌、豎脊肌、腰方肌等多項肌群組成，當我們站立、起身、前彎時這些肌群就會啟動進行動作，扮演著穩定軀幹的角色。強壯的背部核心肌群不僅能改善一些症狀外同時也能增進在運動上的表現。</p>
 							<div class="d-flex align-items-center mt-4 meta">
 								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
+									<a href="#v-pills-10-tab" class="btn btn-primary">Go <span
 										class="ion-ios-arrow-round-forward"></span></a>
 								</p>
 								<p class="ml-auto mb-0"></p>
@@ -230,7 +230,7 @@ h3:active {
 							<p style="color: rgb(95, 92, 92);">胸部肌肉可分為胸大肌、胸小肌和前鋸肌。相對其他部位的肌群而言，胸部肌群要簡單很多，其重點在於對於胸大肌的訓練，常用徒手方法為伏地挺身以及各種變式，負重訓練可採用飛鳥和臥推的方式刺激。</p>
 							<div class="d-flex align-items-center mt-4 meta">
 								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
+									<a href="#v-pills-10-tab" class="btn btn-primary">Go <span
 										class="ion-ios-arrow-round-forward"></span></a>
 								</p>
 								<p class="ml-auto mb-0"></p>
@@ -256,7 +256,7 @@ h3:active {
 							<p style="color: rgb(95, 92, 92);">大腿主要分為前外側、後側和內側三個肌群。勤練腿部肌群好處相當的多，主要能強化腿部肌群、增強核心肌力、消耗更多的熱量、促進生長激素與睪固酮的濃度、提高新陳代謝等等，因此，腿部肌肉沒練好，幾乎是等於健身無效。</p>
 							<div class="d-flex align-items-center mt-4 meta">
 								<p class="mb-0">
-									<a href="#contentupdate" class="btn btn-primary">Go <span
+									<a href="#v-pills-10-tab" class="btn btn-primary">Go <span
 										class="ion-ios-arrow-round-forward"></span></a>
 								</p>
 								<p class="ml-auto mb-0"></p>
