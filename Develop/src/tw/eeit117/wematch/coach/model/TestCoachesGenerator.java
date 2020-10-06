@@ -26,19 +26,19 @@ public class TestCoachesGenerator {
 		session.beginTransaction();
 		
 		Coach coach1 = new Coach(imageToByteArray("resource\\coaches\\01.jpg"),
-				"王曉明","Jack",25,"初階自由搏擊","格鬥競技類","A級教練證照");
+				"歐陽修","Jack",25,"初階自由搏擊","格鬥競技類","A級教練證照");
 		session.save(coach1);
 		
 		Coach coach2 = new Coach(imageToByteArray("resource\\coaches\\02.jpg"),
-				"李思銘","Ben",30,"有氧體操","有氧健身類","S級教練證照");
+				"蘇軾","Ben",30,"有氧體操","有氧健身類","S級教練證照");
 		session.save(coach2);
 		
 		Coach coach3 = new Coach(imageToByteArray("resource\\coaches\\03.jpg"),
-				"白起","Peter",27,"進階自由搏擊","格鬥競技類","S級教練證照");
+				"白居易","Peter",27,"進階自由搏擊","格鬥競技類","S級教練證照");
 		session.save(coach3);
 		
 		Coach coach4 = new Coach(imageToByteArray("resource\\coaches\\04.jpg"),
-				"傅建","Leo",21,"流行街舞","有氧舞蹈類","S級教練證照");
+				"韓愈","Leo",21,"流行街舞","有氧舞蹈類","S級教練證照");
 		session.save(coach4);
 		
 		Coach coach5 = new Coach(imageToByteArray("resource\\coaches\\05.jpg"),
@@ -46,27 +46,27 @@ public class TestCoachesGenerator {
 		session.save(coach5);
 		
 		Coach coach6 = new Coach(imageToByteArray("resource\\coaches\\06.jpg"),
-				"陳參","Steve",26,"瑜珈伸展","瑜珈類","A級教練證照");
+				"蘇轍","Steve",26,"瑜珈伸展","瑜珈類","A級教練證照");
 		session.save(coach6);
 		
 		Coach coach7 = new Coach(imageToByteArray("resource\\coaches\\07.jpg"),
-				"車善浩","David",24,"爵士舞","有氧舞蹈類","S級教練證照");
+				"曾鞏","David",24,"爵士舞","有氧舞蹈類","S級教練證照");
 		session.save(coach7);
 		
 		Coach coach8 = new Coach(imageToByteArray("resource\\coaches\\08.jpg"),
-				"鄭美心","Dora",28,"瑜珈基礎","瑜珈類","A級教練證照");
+				"武則天","Dora",28,"瑜珈基礎","瑜珈類","A級教練證照");
 		session.save(coach8);
 		
 		Coach coach9 = new Coach(imageToByteArray("resource\\coaches\\09.jpg"),
-				"張筱梵","Rice",25,"階梯有氧","有氧健身類","S級教練證照");
+				"李清照","Rice",25,"階梯有氧","有氧健身類","S級教練證照");
 		session.save(coach9);
 		
 		Coach coach10 = new Coach(imageToByteArray("resource\\coaches\\10.jpg"),
-				"曾玉啟","Rebecca",29,"瑜珈基礎","瑜珈類","S級教練證照");
+				"楊玉環","Rebecca",29,"瑜珈基礎","瑜珈類","S級教練證照");
 		session.save(coach10);
 		
 		Coach coach11 = new Coach(imageToByteArray("resource\\coaches\\11.jpg"),
-				"俞采","Sana",25,"流行街舞","有氧舞蹈類","S級教練證照");
+				"龍應台","Sana",25,"流行街舞","有氧舞蹈類","S級教練證照");
 		session.save(coach11);
 		
 		Coach coach12 = new Coach(imageToByteArray("resource\\coaches\\12.jpg"),
@@ -82,8 +82,9 @@ public class TestCoachesGenerator {
 		session.save(coach14);
 		
 		Coach coach15 = new Coach(imageToByteArray("resource\\coaches\\15.jpg"),
-				"古瀚","Hanter",20,"初階自由搏擊","格鬥競技類","S級教練證照");
+				"柳宗元","Hanter",20,"初階自由搏擊","格鬥競技類","S級教練證照");
 		session.save(coach15);
+		
 		
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		session.close();
