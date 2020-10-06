@@ -39,7 +39,7 @@
 									<td>${result.memberAccount}</td>
 									<td><a
 										href="<c:url value='/preUpdate?id=${result.memberId}' />">查詢</a>
-										<a href="<c:url value='/delete?id=${result.memberId}' />">刪除</a>
+										<a href="#" onclick="if(confirm('您確定要刪除此筆資料嗎?'))location.href='<c:url value="/delete?id=${result.memberId}" />'">刪除</a>
 									</td>
 								</tr>
 							</c:forEach>
