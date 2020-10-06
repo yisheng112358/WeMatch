@@ -145,14 +145,17 @@ button:hover {
 				document.getElementById("caloRIES").value = "195";
 			}
 			function oneGo3() {
+				document.getElementById("listType").value = "麵食";
 				document.getElementById("listNAME").value = "醬油拉麵";
 				document.getElementById("caloRIES").value = "718";
 			}
 			function oneGo4() {
+				document.getElementById("listType").value = "餅乾";
 				document.getElementById("listNAME").value = "米餅";
 				document.getElementById("caloRIES").value = "512";
 			}
 			function oneGo5() {
+				document.getElementById("listType").value = "飲料";
 				document.getElementById("listNAME").value ="珍珠奶茶";
 				document.getElementById("caloRIES").value = "600";
 			}
