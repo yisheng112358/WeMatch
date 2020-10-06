@@ -127,7 +127,7 @@
 								<td>${courses.regNumber}</td>
 								<td>${courses.coursesBalance}</td>
 								<td><a href="editCourses?coursesId=${courses.coursesId}">📝</a>
-									 <a href="#" onclick="if(confirm('您確定要刪除此筆資料嗎?'))location.href='<c:url value="/deleteCourses?coursesId=${courses.coursesId}"/>'">❌</a>
+									<a href="#" onclick="if(confirm('您確定要刪除${courses.coursesName}這門課程嗎?'))location.href='<c:url value="/deleteCourses?coursesId=${courses.coursesId}"/>'">❌</a>
 								</td>
 							</tr>
 						</c:forEach>
