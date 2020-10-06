@@ -19,6 +19,11 @@ table {
 	margin-right: auto;
 	background-color: white;
 }
+
+body{
+    color:#984B4B;
+    font-weight: bold;
+    font-size:20PX;
 </style>
 
 </head>
