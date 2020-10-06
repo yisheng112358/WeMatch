@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -30,7 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tw.eeit117.wematch.member.model.Member;
 import tw.eeit117.wematch.product.model.ProductBean;
 import tw.eeit117.wematch.product.model.ProductBeanService;
-import tw.wematch.util.Sender;
+import tw.wematch.util.MailUtils;
 
 @Controller
 @RequestMapping("/product")
@@ -123,7 +125,7 @@ public class ProductController {
 	@PostMapping("/updateProduct")
 	public String updateProduct(Model model, Integer productId, String category, String productName, Double price,
 			Integer stock, String productDescription, MultipartFile thumbnail, MultipartFile detailImg)
-			throws IOException {
+			throws IOException, AddressException, MessagingException {
 		ProductBean newProductBean = newProductBeanCheck(productId, category, productName, price, stock,
 				productDescription, thumbnail, detailImg);
 		ProductBean oldProductBean = (ProductBean) model.getAttribute("productUpdate");
@@ -138,7 +140,8 @@ public class ProductController {
 			if (productArrival != null && productArrival.containsKey(productId)) {
 				List<String> subscribeEmailList = productArrival.get(productId);
 				for (String subscribeEmail : subscribeEmailList) {
-					(new Sender(subscribeEmail, emailTitle, emailContent)).start();
+//					(new Sender(subscribeEmail, emailTitle, emailContent)).start(); // 在特定環境下會有錯誤。
+					MailUtils.generateAndSendEmail(new String[] { subscribeEmail }, emailTitle, emailContent);
 				}
 			} else {
 				System.out.println("目前會員沒有訂閱此商品之到貨通知或找不到映射關係");
