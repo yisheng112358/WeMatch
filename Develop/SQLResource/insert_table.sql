@@ -39,3 +39,18 @@ values('花式有氧','星期三','第三節','B300',30,20,10)
 insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
 values('流行街舞','星期四','第四節','B305',20,0,20)
 GO
+
+-- (4) 新增課程
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('瑜珈','星期一','第一節','B200',20,10,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('國標舞','星期二','第二節','B205',10,5,5)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('花式有氧','星期三','第三節','B300',30,20,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('流行街舞','星期四','第四節','B305',20,0,20)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('間歇','星期五','第五節','B305',50,20,30)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('拉丁有氧','星期一','第一節','B200',20,0,20)
+GO
