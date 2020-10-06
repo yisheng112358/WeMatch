@@ -7,7 +7,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
 /**
- * @author https://luckyboy7527.pixnet.net/blog/post/97538891
+ * @author https://blog.yslifes.com/archives/930
  *
  */
 public class Sender extends java.lang.Thread {
@@ -53,7 +53,7 @@ public class Sender extends java.lang.Thread {
 			String user = property.getProperty("user");
 			String pwd = property.getProperty("pwd");
 			String port = property.getProperty("port");
-			email.setTLS(true);
+			email.setStartTLSEnabled(true);
 			email.setHostName(host);
 			email.setAuthenticator(new DefaultAuthenticator(user, pwd));
 			email.setSmtpPort(Integer.parseInt(port));
