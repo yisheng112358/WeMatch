@@ -127,8 +127,7 @@
 								<td>${curriculum.classRoom}</td>
 								
 								<td>
-<%-- 								<a href="deleteCurriculum?curriculumId=${curriculum.curriculumId}">🗑️</a> --%>
-								<a href="#" onclick="if(confirm('您確定要刪除此筆資料嗎?'))location.href='<c:url value="/deleteCurriculum?curriculumId=${curriculum.curriculumId}"/>'">🗑️</a>
+									<a href="#" onclick="if(confirm('您確定要退選${curriculum.coursesName}這門課程嗎?'))location.href='<c:url value="/deleteCurriculum?curriculumId=${curriculum.curriculumId}"/>'">🗑️</a>
 								</td>
 							</tr>
 						</c:forEach>
