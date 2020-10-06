@@ -23,10 +23,10 @@ VALUES('背部肌群練習1', 'bodyback', 'https://www.youtube.com/watch?v=9pdk5
 GO
 
 --  (3) 新增管理員帳號
-insert into Member(memberAccount, memberPwd, memberStatus, memberName) values ('nana99156', 'Do!ng123', 2, 'nana')
-insert into Member(memberAccount, memberPwd, memberStatus, memberName) values ('admintest123', 'P@ssw0rd', 2, 'admin')
-insert into Member(memberAccount, memberPwd, memberStatus, memberName) values ('membertest123', 'P@ssw0rd', 1, 'member')
-insert into Member(memberAccount, memberPwd, memberStatus, memberName) values ('visitortest123', 'P@ssw0rd', 1, 'visitor')
+insert into Member(memberAccount, memberPwd, memberStatus) values ('nana99156', 'Do!ng123', 2)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('admintest123', 'P@ssw0rd', 2)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('membertest123', 'P@ssw0rd', 1)
+insert into Member(memberAccount, memberPwd, memberStatus) values ('visitortest123', 'P@ssw0rd', 1)
 GO
 
 -- (4) 新增課程
@@ -38,4 +38,19 @@ insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople
 values('花式有氧','星期三','第三節','B300',30,20,10)
 insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
 values('流行街舞','星期四','第四節','B305',20,0,20)
+GO
+
+-- (4) 新增課程
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('瑜珈','星期一','第一節','B200',20,10,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('國標舞','星期二','第二節','B205',10,5,5)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('花式有氧','星期三','第三節','B300',30,20,10)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('流行街舞','星期四','第四節','B305',20,0,20)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('間歇','星期五','第五節','B305',50,20,30)
+insert into Courses(coursesName,coursesWeek,sectionNumber,classRoom,numberPeople,regNumber,coursesBalance)
+values('拉丁有氧','星期一','第一節','B200',20,0,20)
 GO
